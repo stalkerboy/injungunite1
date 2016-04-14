@@ -30,6 +30,7 @@ import com.injung.vo.UserVO;
 import com.mongodb.DBObject;
 import com.mongodb.util.JSON;
 import com.injung.service.BoardService;
+import com.injung.service.FriendService;
 import com.injung.service.MongoService;
 import com.injung.service.UserService;
 import com.injung.util.UploadFileUtils;
@@ -48,6 +49,8 @@ public class BoardController {
     @Inject
     private UserService uservice;
     
+    @Inject
+    private FriendService fservice;
     
     @Auth
     @RequestMapping(value="/boardlist", method=RequestMethod.GET)
@@ -61,6 +64,16 @@ public class BoardController {
         
         List<CategoryVO>listco = bservice.getCategoryListByUserId(mem_id);
         model.addAttribute("categoryList",listco);    
+        
+        model.addAttribute("boardCount", bservice.getBoardCount(mem_id));
+        
+        model.addAttribute("followingCount", fservice.followingCount(mem_id));
+        
+        model.addAttribute("followerCount", fservice.followerCount(mem_id));
+        
+        System.out.println(bservice.getBoardCount(mem_id));
+        System.out.println(fservice.followingCount(mem_id));
+        System.out.println(fservice.followerCount(mem_id));
     }
     
 

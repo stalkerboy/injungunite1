@@ -13,6 +13,8 @@ public class FriendVO {
    private String fri_mem_id;
    private String fri_mem_name;
    private String fri_mem_profile;
+   private long following_count;
+   private long follower_count;
    
    
     public long getFri_snum() {
@@ -73,6 +75,18 @@ public class FriendVO {
     @Override
     public String toString() {
         return "FriendVO [fri_snum=" + fri_snum + ", mem_snum=" + mem_snum + ", mem_id=" + mem_id + ", mem_name=" + mem_name + ", fri_level=" + fri_level + ", fri_mem_snum=" + fri_mem_snum + ", fri_mem_id=" + fri_mem_id + ", fri_mem_name=" + fri_mem_name + ", fri_mem_profile=" + fri_mem_profile + "]";
+    }
+    public long getFollower_count() {
+        return follower_count;
+    }
+    public void setFollower_count(long follower_count) {
+        this.follower_count = follower_count;
+    }
+    public long getFollowing_count() {
+        return following_count;
+    }
+    public void setFollowing_count(long following_count) {
+        this.following_count = following_count;
     }
    
     

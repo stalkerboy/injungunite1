@@ -16,6 +16,7 @@ public class BoardVO {
 	private String cat_name;
 	private String tags;
 	private String tag;
+	private Long boa_count;
 	
 	public String getCategory() {
 		return cat_name;
@@ -107,6 +108,12 @@ public class BoardVO {
     }
     public void setMem_profile(String mem_profile) {
         this.mem_profile = mem_profile;
+    }
+    public Long getBoa_count() {
+        return boa_count;
+    }
+    public void setBoa_count(Long boa_count) {
+        this.boa_count = boa_count;
     }
 	
 }

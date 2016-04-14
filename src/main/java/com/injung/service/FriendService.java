@@ -40,7 +40,14 @@ public class FriendService {
     
     public void deleteFriend(FriendVO fv) throws Exception {
        fdao.deleteFriend(fv);      
-    }   
+    }
+
+    public FriendVO followingCount(String mem_id)throws Exception{
+        return fdao.followingCount(mem_id);
+    }
+    public FriendVO followerCount(String mem_id)throws Exception{
+        return fdao.followerCount(mem_id);
+    }
     
     
 }

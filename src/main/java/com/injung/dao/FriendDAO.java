@@ -35,5 +35,13 @@ public class FriendDAO{
     public FriendVO selectFriend(FriendVO fv) throws Exception {
         return session.selectOne(namespace+".selectFriend", fv);      
      }
+
+
+    public FriendVO followingCount(String mem_id) throws Exception{
+        return session.selectOne(namespace+".followingCount", mem_id);
+    }
+    public FriendVO followerCount(String mem_id) throws Exception{
+        return session.selectOne(namespace+".followerCount", mem_id);
+    }
     
 }

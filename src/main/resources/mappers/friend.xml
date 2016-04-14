@@ -36,5 +36,23 @@
             where fri_snum=#{fri_snum }
        ]]>
    </delete>			
-				
+
+ <select id="followingCount" parameterType="String" resultType="FriendVO">
+      <![CDATA[
+       select count(f.fri_snum) following_count 
+       from fri_list f, member m 
+       where f.mem_snum = m.mem_snum 
+       and m.mem_id = #{mem_id}
+      ]]>
+   </select> 
+   
+    <select id="followerCount" parameterType="String" resultType="FriendVO">
+      <![CDATA[
+       select count(f.fri_snum) follower_count
+       from fri_list f, member m 
+       where f.fri_mem_snum = m.mem_snum 
+       and m.mem_id = #{mem_id}
+      ]]>
+   </select>     			
+
 </mapper>

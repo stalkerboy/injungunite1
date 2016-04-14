@@ -150,7 +150,14 @@ select b.boa_snum, b.boa_imgpng, b.boa_subject, b.boa_regdate, m.mem_snum, m.mem
 	
 ]]>
 </select>
-
+<select id="getBoardCount" parameterType="String" resultType="BoardVO">
+      <![CDATA[
+      	select count(b.boa_subject) boa_count
+      	from board b, member m 
+      	where b.mem_snum = m.mem_snum 
+      	and m.mem_id = #{mem_id}
+      ]]>
+</select>
 
 
 </mapper>
