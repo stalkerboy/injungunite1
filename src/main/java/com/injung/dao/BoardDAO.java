@@ -74,5 +74,8 @@ public class BoardDAO {
         session.delete(namespace+".deleteInjung", bv);
         
     }
+    public void insertQueryBoardList(Map<String, Long> map) {
+        session.insert(namespace+".insertQueryBoardList", map);
+    }
 	
 }

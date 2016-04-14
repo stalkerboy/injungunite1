@@ -127,7 +127,7 @@ public class BoardController {
     @ResponseBody
     @RequestMapping(value="/view", method=RequestMethod.GET)
     public Map<String, Object> view(@AuthUser UserVO authuser, @RequestParam("bno") Long boa_snum) throws Exception{
-        System.out.println(boa_snum);
+        bservice.createQueryBoardList(authuser.getMem_snum(), boa_snum);
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("boardVO", bservice.getBoard(boa_snum));
         map.put("boardCommentList", bservice.getBoardCommentList(boa_snum));

@@ -116,7 +116,6 @@
       ]]>
 </insert>
 
-
 <select id="selectCountInjung" parameterType="long" resultType="BoardVO">
     <![CDATA[
 		select b.boa_snum, count(l.boa_snum) boa_injeong from board b, likelist l where b.boa_snum = l.boa_snum(+) and b.boa_snum = #{boa_snum} group by b.boa_snum      
@@ -129,5 +128,10 @@
       ]]>
 </delete>
 
+<insert id="insertQueryBoardList" parameterType="map" >
+      <![CDATA[
+      insert into QUERY_BOARDLIST values (seq_qur_snum.nextval, #{boa_snum}, #{mem_snum}, sysdate)
+      ]]>
+</insert>
 
 </mapper>

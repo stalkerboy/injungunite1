@@ -89,4 +89,13 @@ public class BoardService  {
     public void injungCancel(BoardVO bv) {
         dao.deleteInjung(bv);
     }
+
+
+
+    public void createQueryBoardList(long mem_snum, Long boa_snum) {
+        Map<String, Long> map = new HashMap<String, Long>();
+        map.put("mem_snum", mem_snum);
+        map.put("boa_snum", boa_snum);
+        dao.insertQueryBoardList(map);
+    }
 }
