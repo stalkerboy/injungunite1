@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration>
+ 
+ <typeAliases>
+ <typeAlias alias="UserVO" type="com.injung.vo.UserVO"/>
+ <typeAlias alias="FriendVO" type="com.injung.vo.FriendVO"/>
+ <typeAlias alias="BoardVO" type="com.injung.vo.BoardVO"/>
+ <typeAlias alias="CategoryVO" type="com.injung.vo.CategoryVO"/>
+ <typeAlias alias="MessageVO" type="com.injung.vo.MessageVO"/>
+ <typeAlias alias="BoardCommentVO" type="com.injung.vo.BoardCommentVO"/>
+ </typeAliases>
+ <mappers>
+		<mapper resource="/mappers/user.xml" />
+		<mapper resource="/mappers/board.xml" />
+		<mapper resource="/mappers/message.xml" />
+		<mapper resource="/mappers/friend.xml" />
+	</mappers>
+ </configuration>
+ 
+ 

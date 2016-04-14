@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+
+<select id="selectBoardListByUserId" parameterType="string" resultType="BoardVO">
+      <![CDATA[
+      select b.boa_snum boa_snum, b.boa_imgpng boa_imgpng, b.boa_subject boa_subject, b.boa_context boa_context, b.boa_regdate boa_regdate, m.mem_snum mem_snum, m.mem_id mem_id, m.mem_profile mem_profile, c.cat_name
+		 from board b, member m, categorylist c
+		 where b.mem_snum = m.mem_snum 
+		 and m.mem_id = #{mem_id}
+		 and b.boa_snum = c.boa_snum
+		 order by b.boa_snum desc, b.boa_regdate desc 
+      ]]>
+   </select>   
+
+<select id="selectCategoryListById" parameterType="string" resultType="CategoryVO">
+      <![CDATA[
+      select c.cat_name cat_name
+      from categorylist c, member m, board b 
+      where c.boa_snum = b.boa_snum 
+      	and b.mem_snum = m.mem_snum 
+     		and m.mem_id = #{mem_id }
+   		GROUP BY c.CAT_NAME
+      ]]>
+   </select>
+   
+   
+   
+<insert id="insertBoard" parameterType="BoardVO" >
+	   <![CDATA[      
+		insert into board(boa_snum, boa_subject, boa_regdate, mem_snum, boa_imgpng)
+			select seq_boa_snum.nextval, #{boa_subject}, sysdate, member.mem_snum, #{boa_imgpng}
+			from member
+			where member.mem_snum=#{mem_snum}      
+	   ]]>
+	   <selectKey keyProperty="boa_snum" resultType="Long" order="AFTER">
+	   	select seq_boa_snum.currval from dual
+	   </selectKey>
+</insert>
+
+<insert id="insertCategory" parameterType="BoardVO" >
+      <![CDATA[
+      insert into categoryList values(seq_cat_snum.nextval, #{category}, #{boa_snum})
+      ]]>
+</insert>
+
+<insert id="insertTag" parameterType="BoardVO" >
+      <![CDATA[
+      insert into taglist values(seq_cat_snum.nextval, #{tag}, #{boa_snum})
+      ]]>
+</insert>
+
+<select id="selectBoardListByCategoryUserId" parameterType="BoardVO" resultType="BoardVO">
+      <![CDATA[
+      select b.boa_snum boa_snum, b.boa_imgpng boa_imgpng, b.boa_subject boa_subject, b.boa_context boa_context, b.boa_regdate boa_regdate, m.mem_snum mem_snum, m.mem_id mem_id, m.mem_profile mem_profile, c.cat_name
+		 from board b, member m, categorylist c
+		 where b.mem_snum = m.mem_snum 
+		 and m.mem_id = #{mem_id}
+		 and b.boa_snum = c.boa_snum
+		 and c.cat_name = #{cat_name}
+		 order by b.boa_snum desc, b.boa_regdate desc 
+      ]]>
+   </select>
+
+<select id="selectCategoryList" resultType="CategoryVO">
+      <![CDATA[
+      select cat_name
+      from categorylist
+   		GROUP BY CAT_NAME
+      ]]>
+   </select>
+
+<select id="selectBoard" parameterType="long" resultType="BoardVO">
+      <![CDATA[
+      select boa_snum, boa_subject, boa_regdate, boa_injeong, boa_hitcnt, m.mem_snum,m.mem_id, boa_imgpng, m.mem_profile
+		 from board b, member m
+		 where boa_snum = #{boa_snum} 
+		 	and b.mem_snum = m.mem_snum
+      ]]>
+</select>
+
+<select id="selectBoardCommentList" parameterType="long" resultType="BoardCommentVO">
+      <![CDATA[
+      	select c.com_snum, c.com_context, c.com_regdate, b.boa_snum, m.mem_id, m.mem_profile
+		from board_comment c, board b, member m
+		where b.boa_snum = #{boa_snum}
+			and b.boa_snum = c.boa_snum 
+			and c.mem_snum = m.mem_snum
+		order by c.com_snum desc
+      ]]>
+</select>
+
+<insert id="insertComment" parameterType="BoardCommentVO" >
+      <![CDATA[
+      insert into board_comment (com_snum, boa_snum, com_context, mem_snum, com_regdate)
+  values (seq_com_snum.nextval, #{boa_snum}, #{com_context}, #{mem_snum}, sysdate)
+      ]]>
+</insert>
+
+				
+</mapper>

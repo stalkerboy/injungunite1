@@ -1,0 +1,37 @@
+  body {
+        background-color: #444;
+        background: url(http://s15.postimg.org/tgkts200b/flat_550x550_075_f_u1.jpg);
+
+    }
+    .panel {
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    }
+ .img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+    }
+.panel-heading {
+    padding: 5px 15px;
+}
+
+.panel-footer {
+    padding: 1px 15px;
+    color: #A0A0A0;
+}
+
+.profile-img {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
