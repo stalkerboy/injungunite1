@@ -77,5 +77,13 @@ public class BoardDAO {
     public void insertQueryBoardList(Map<String, Long> map) {
         session.insert(namespace+".insertQueryBoardList", map);
     }
+    public void updateBoardHitCnt(Long boa_snum) {
+        session.update(namespace+".updateBoardHitCnt", boa_snum);
+        
+    }
+    public List<BoardVO> selectInjungBoardList(Long mem_snum){
+        return session.selectList(namespace+".selectInjungBoardList", mem_snum);
+    }
+    
 	
 }

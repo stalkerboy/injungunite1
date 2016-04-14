@@ -22,7 +22,7 @@
 						<i class="fa fa-pencil"></i> 글쓰기 </a></li>
 					<li><a href="/board/boardlist?user=${authUser.mem_id }" >
 						<i class="fa fa-child"></i> 내글보기 </a></li>
-					<li><a href="/user/likeboard">
+					<li><a href="/board/injungboardlist">
 						<i class="fa fa-columns"></i> 인정 글보기 </a></li>
 					<li><a href="#" data-toggle="modal" data-target="#checkPw1"  >
 						<i class="fa fa-cogs"></i> 계정관리 </a></li>

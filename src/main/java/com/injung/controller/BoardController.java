@@ -127,7 +127,9 @@ public class BoardController {
     @ResponseBody
     @RequestMapping(value="/view", method=RequestMethod.GET)
     public Map<String, Object> view(@AuthUser UserVO authuser, @RequestParam("bno") Long boa_snum) throws Exception{
+        bservice.increaseBoardHitCnt(boa_snum);
         bservice.createQueryBoardList(authuser.getMem_snum(), boa_snum);
+        
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("boardVO", bservice.getBoard(boa_snum));
         map.put("boardCommentList", bservice.getBoardCommentList(boa_snum));
@@ -174,12 +176,19 @@ public class BoardController {
     @RequestMapping(value="/injungCancel", method = RequestMethod.POST)
     public Map<String, Object> injungCancel(@AuthUser UserVO authuser, BoardVO bv) throws Exception {
         bv.setMem_snum(authuser.getMem_snum());
-        bservice.injungCancel(bv);
-        
+        bservice.injungCancel(bv);        
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("data", bservice.getCountInjung(bv.getBoa_snum()));
 
         return map;
+    }
+    
+
+    @Auth
+    @RequestMapping(value="/injungboardlist", method = RequestMethod.GET)
+    public void injungboardlist(@AuthUser UserVO authUser, Model model) throws Exception {
+        model.addAttribute("injungboardlist", bservice.getInjungBoardList(authUser.getMem_snum()));
+        
     }
     
 }

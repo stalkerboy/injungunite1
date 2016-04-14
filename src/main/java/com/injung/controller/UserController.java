@@ -21,9 +21,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.injung.annotation.Auth;
 import com.injung.annotation.AuthUser;
+import com.injung.service.BoardService;
 import com.injung.service.FriendService;
 import com.injung.service.UserService;
 import com.injung.util.UploadFileUtils;
+import com.injung.vo.BoardVO;
 import com.injung.vo.CategoryVO;
 import com.injung.vo.FriendVO;
 import com.injung.vo.UserVO;
@@ -35,6 +37,9 @@ public class UserController {
 	
 	@Inject
 	private UserService service;
+	
+	@Inject
+    private BoardService bservice;
 	
 	@Inject
     private FriendService fservice;
@@ -129,5 +134,5 @@ public class UserController {
        
        return map;
     }
-	
+
 }

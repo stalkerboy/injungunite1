@@ -134,4 +134,23 @@
       ]]>
 </insert>
 
+<update id="updateBoardHitCnt" parameterType="long">
+<![CDATA[
+update board set boa_hitcnt = boa_hitcnt + 1 where boa_snum = #{boa_snum}
+]]>
+</update>
+
+<select id="selectInjungBoardList" parameterType="long" resultType="BoardVO">
+<![CDATA[
+select b.boa_snum, b.boa_imgpng, b.boa_subject, b.boa_regdate, m.mem_snum, m.mem_id, m.mem_profile 
+	from board b, member m, likelist l
+	where b.mem_snum=#{mem_snum}
+    and b.boa_snum = l.boa_snum
+		and	m.mem_snum = b.mem_snum  
+	
+]]>
+</select>
+
+
+
 </mapper>

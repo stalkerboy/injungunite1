@@ -98,4 +98,17 @@ public class BoardService  {
         map.put("boa_snum", boa_snum);
         dao.insertQueryBoardList(map);
     }
+
+
+
+    public void increaseBoardHitCnt(Long boa_snum) {
+        dao.updateBoardHitCnt(boa_snum);
+        
+    }
+
+
+
+    public List<BoardVO> getInjungBoardList(long mem_snum) {
+        return dao.selectInjungBoardList(mem_snum);
+    }
 }
