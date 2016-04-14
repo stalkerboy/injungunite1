@@ -6,7 +6,7 @@ public class BoardVO {
 	private String boa_subject;
 	private String boa_context;
 	private String boa_regdate;
-	private String boa_injeong;
+	private Long boa_injeong;
 	private String boa_hitcnt;
 	private Long mem_snum;
 	    private String mem_id;
@@ -47,10 +47,10 @@ public class BoardVO {
 	public void setBoa_regdate(String boa_regdate) {
 		this.boa_regdate = boa_regdate;
 	}
-	public String getBoa_injeong() {
+	public Long getBoa_injeong() {
 		return boa_injeong;
 	}
-	public void setBoa_injeong(String boa_injeong) {
+	public void setBoa_injeong(Long boa_injeong) {
 		this.boa_injeong = boa_injeong;
 	}
 	public String getBoa_hitcnt() {

@@ -15,7 +15,7 @@ function onClickCategoryBtn(userid, cat_name){
 			$("#works-grid").empty();
 			var strBoard = "";
 			for(var i=0; i<boardlist.length; i++){
-				strBoard += "<article class=\"work-item\"><div class=\"work-wrapper\"><div class=\"work-thumbnail\"><img src=\"/resources/img/boardimg/"+ boardlist[i].boa_imgpng +"\" ></div><div class=\"work-caption\"><h3 class=\"work-title font-alt\">" + boardlist[i].boa_subject + "</h3><span class=\"work-category font-serif\"><a href=\"#\" onclick=\"onClickBoard(" + boardlist[i].boa_snum + ");\">" + boardlist[i].mem_id + "</a></span></div><a href=\"portfolio-single-1.html\" class=\"work-link\"></a></div></article>";
+				strBoard += "<article class=\"work-item\"><div class=\"work-wrapper\"><div class=\"work-thumbnail\"><img src=\"/resources/img/boardimg/"+ boardlist[i].boa_imgpng +"\" ></div><div class=\"work-caption\"><h3 class=\"work-title font-alt\">" + boardlist[i].boa_subject + "</h3><span class=\"work-category font-serif\"><a href=\"#\" >" + boardlist[i].mem_id + "</a></span></div><a href=\"#\" onclick=\"onClickBoard(" + boardlist[i].boa_snum + ");\" class=\"work-link\"></a></div></article>";
 			}
 			$("#works-grid").append(strBoard);
 		}

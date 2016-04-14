@@ -75,10 +75,11 @@
 
 <select id="selectBoard" parameterType="long" resultType="BoardVO">
       <![CDATA[
-      select boa_snum, boa_subject, boa_regdate, boa_injeong, boa_hitcnt, m.mem_snum,m.mem_id, boa_imgpng, m.mem_profile
-		 from board b, member m
-		 where boa_snum = #{boa_snum} 
+      select b.boa_snum, b.boa_subject, b.boa_regdate, b.boa_hitcnt, m.mem_snum,m.mem_id, b.boa_imgpng, m.mem_profile, lc.boa_injeong
+		 from board b, member m, (select b.boa_snum, count(l.boa_snum) boa_injeong from board b, likelist l where b.boa_snum = l.boa_snum(+) group by b.boa_snum) lc
+		 where b.boa_snum = #{boa_snum} 
 		 	and b.mem_snum = m.mem_snum
+		 	and lc.BOA_SNUM=b.BOA_snum
       ]]>
 </select>
 
@@ -96,9 +97,37 @@
 <insert id="insertComment" parameterType="BoardCommentVO" >
       <![CDATA[
       insert into board_comment (com_snum, boa_snum, com_context, mem_snum, com_regdate)
-  values (seq_com_snum.nextval, #{boa_snum}, #{com_context}, #{mem_snum}, sysdate)
+		values (seq_com_snum.nextval, #{boa_snum}, #{com_context}, #{mem_snum}, sysdate)
       ]]>
 </insert>
 
+<select id="selectBoardMyInjung" parameterType="map" resultType="BoardVO">
+	<![CDATA[
+		select 1 boa_snum
+		from likelist
+		where mem_snum=#{mem_snum} and boa_snum=#{boa_snum}
+	]]>
+</select>
 				
+				
+<insert id="insertInjung" parameterType="BoardVO" >
+      <![CDATA[
+      insert into likelist values (seq_lkl_snum.nextval, sysdate, #{mem_snum}, #{boa_snum})
+      ]]>
+</insert>
+
+
+<select id="selectCountInjung" parameterType="long" resultType="BoardVO">
+    <![CDATA[
+		select b.boa_snum, count(l.boa_snum) boa_injeong from board b, likelist l where b.boa_snum = l.boa_snum(+) and b.boa_snum = #{boa_snum} group by b.boa_snum      
+	]]>
+</select>
+
+<delete id="deleteInjung" parameterType="BoardVO" >
+      <![CDATA[
+      delete from likelist where mem_snum = #{mem_snum} and boa_snum = #{boa_snum}
+      ]]>
+</delete>
+
+
 </mapper>

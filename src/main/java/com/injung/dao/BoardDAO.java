@@ -1,6 +1,7 @@
 package com.injung.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -57,6 +58,20 @@ public class BoardDAO {
     }
     public void insertComment(BoardCommentVO cv) {
         session.insert(namespace+".insertComment", cv);     
+        
+    }
+    public BoardVO selectBoardMyInjung(Map<String, Long> map) {
+        return session.selectOne(namespace+".selectBoardMyInjung", map);
+    }
+    public void insertInjung(BoardVO bv) {
+        session.insert(namespace+".insertInjung", bv);
+        
+    }
+    public BoardVO selectCountInjung(long boa_snum) {
+        return session.selectOne(namespace+".selectCountInjung", boa_snum);
+    }
+    public void deleteInjung(BoardVO bv) {
+        session.delete(namespace+".deleteInjung", bv);
         
     }
 	

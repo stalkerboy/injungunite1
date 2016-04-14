@@ -26,6 +26,7 @@
 	<!-- modals -->
 	<c:import url="/WEB-INF/views/modal/pwformodifymodal.jsp"></c:import>
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
+	<c:import url="/WEB-INF/views/modal/viewmodal.jsp"></c:import>
     
 
 <div class="wrapper" >
@@ -121,7 +122,7 @@
 <script src='/resources/custom/js/customwrite.js'></script>
 <script src='/resources/custom/js/customboard.js'></script>
 
-<script src='/resources/custom/js/customboard.js'></script>
+<script src='/resources/custom/js/custommodals.js'></script>
 
 <script src="/resources/custom/js/jquery.superslides.min.js"></script>
 

@@ -18,6 +18,8 @@
 	<link rel="stylesheet" href="/resources/plugins/AdminLTE/css/AdminLTE.min.css">
 	
 	<link rel="stylesheet" href="/resources/custom/css/custom.css">
+	
+	<link rel="stylesheet" href="/resources/custom/css/customboard.css">
 
 	</head>
 <body>
@@ -54,13 +56,13 @@
 
 <script src='/resources/plugins/fabric/js/fabric.min.js'></script>
 
-<script src='/resources/plugins/jQueryUI/jquery-ui.min.js'></script>
-<!-- <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
+<!-- <script src='/resources/plugins/jQueryUI/jquery-ui.min.js'></script> -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src='/resources/custom/js/customwrite.js'></script>
 <script src='/resources/custom/js/custommodals.js'></script>
 <script src='/resources/custom/js/customwrite.js'></script>
-<script>
-$("#viewmodal").modal();
-</script>
+
+<script src="/resources/custom/js/custombackground.js"></script>
+
 </body>
 </html>

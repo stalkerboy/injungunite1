@@ -53,7 +53,42 @@ function notreadmessage(){
 };
 
 function onClickBoard(boa_snum){
-	
+	$.ajax( {
+		url : "/board/view?bno="+boa_snum,
+		type: "get",
+		dataType: "json",
+		success: function( response ){
+			var boardVO = response.boardVO;
+			var boardCommentList = response.boardCommentList;
+			var hasMyInjung = response.hasMyInjung;
+			var newStrCom = '';
+			$("#viewmodalbox").empty();
+//			헤더
+			newStrCom += "<div class=\'box-header with-border\'><div class=\'user-block\'><img class=\'img-circle\' src=\'/resources/img/profile/" + boardVO.mem_profile + "\' alt=\'user image\' ><span class=\'username\'><a href=\"#\">" +boardVO.mem_id+"</a></span><span class=\'description\'>"+ boardVO.boa_regdate +"</span></div><div class=\'box-tools\'><button class=\'btn btn-box-tool\' data-dismiss=\'modal\'><i class=\'fa fa-times\'></i></button></div></div>";
+
+//			바디 ~ overflow전
+			newStrCom += "<div class=\'box-body row\'><div class=\"col-sm-7\"><img class=\"img-responsive pad\" src=\"/resources/img/boardimg/"+ boardVO.boa_imgpng.substring(0, 12) + boardVO.boa_imgpng.substring(14, 100) + "\" alt=\"Photo\" width=\"400\" height=\"200\" ></div><div class=\'col-sm-5\'><img class=\"img-responsive img-circle img-sm\" src=\'/resources/img/profile/"+ boardVO.mem_profile+ "\' alt=\"alt text\"><div class=\"input-group\"><input id=\"com_context\" type=\"text\" class=\"form-control input-sm\" placeholder=\"comment\"><span class=\"input-group-btn\"><button type=\"button\" class=\"btn\" onclick=\"onClickCommentWriteBtn(" + boardVO.boa_snum + ");\">comment</button></span></div><br>";
+
+//			overflow~commets 
+			newStrCom += "<div style=\"height: 500px; overflow: auto;\"><div id=\"div_comments\" class=\'box-comments\'>";
+			for(var i=0; i<boardCommentList.length; i++){
+				newStrCom += "<div class=\'box-comment\'><img class=\'img-circle img-sm\' src=\'/resources/img/profile/"+ boardCommentList[i].mem_profile +"\' alt=\'user image\'><div class=\'comment-text\'><span class=\"username\">"+ boardCommentList[i].mem_id + "<span class=\'text-muted pull-right\'>"+ boardCommentList[i].com_regdate +"</span></span>"+ boardCommentList[i].com_context + "</div></div>";
+			}
+//			comments루프 다음
+			newStrCom += "</div><a href=\"#\" class=\"btn form-control\" style=\"text-align: center;\">view more</a></div></div></div><div class=\"box-footer\"><div id=\"divinjungbtn\">"; 
+			if(hasMyInjung){
+				newStrCom += "<button class=\'btn btn-default btn-xs\' onclick=\"onClickInjungCancelBtn("+ boardVO.boa_snum +");\"><i class=\'fa fa-thumbs-o-down\'></i> 인정취소</button>";
+			}
+			else{
+				newStrCom += "<button class=\'btn btn-default btn-xs\' onclick=\"onClickInjungBtn("+boardVO.boa_snum+");\"><i class=\'fa fa-thumbs-o-up\'></i> 인정</button>";
+			}
+			newStrCom += "<span class=\'text-muted\'>"+ boardVO.boa_injeong+" 명이 인정했습니다.</span></div></div>";
+			
+			$("#viewmodalbox").append(newStrCom);
+			
+			$("#viewmodal").modal();
+		}
+	});	
 }
 
 function onClickCommentWriteBtn(boa_snum){
@@ -77,16 +112,32 @@ function onClickCommentWriteBtn(boa_snum){
 	});
 }
 
-function onClickInjungBtn(boa_snum, mem_snum){
+function onClickInjungBtn(boa_snum){
 	$.ajax( {
-		url : "/board/writecomment",
+		url : "/board/injungAdd",
 		type: "post",
 		dataType: "json",
 		data:{'boa_snum': boa_snum},
 		success: function( response ){
-			var newcomments = response.data;
-			$("#div_comments").empty();
-			$("#div_comments").append(newStrCom);
+			$("#divinjungbtn").empty();
+			var innerInjung = "<button class=\'btn btn-default btn-xs\' onclick=\"onClickInjungCancelBtn(" + boa_snum + ");\"><i class=\'fa fa-thumbs-o-down\'></i> 인정취소</button>";
+			innerInjung += "<span class=\'text-muted\'>" + response.data.boa_injeong +" 명이 인정했습니다.</span>";
+			$("#divinjungbtn").append(innerInjung);
+		}
+	});
+}
+
+function onClickInjungCancelBtn(boa_snum){
+	$.ajax( {
+		url : "/board/injungCancel",
+		type: "post",
+		dataType: "json",
+		data:{'boa_snum': boa_snum},
+		success: function( response ){
+			$("#divinjungbtn").empty();
+			var innerInjungCancel = "<button class=\'btn btn-default btn-xs\' onclick=\"onClickInjungBtn("+ boa_snum +")\"><i class=\'fa fa-thumbs-o-up\'></i> 인정</button>";
+			innerInjungCancel += "<span class=\'text-muted\'>" + response.data.boa_injeong +" 명이 인정했습니다.</span>";
+			$("#divinjungbtn").append(innerInjungCancel);
 		}
 	});
 }

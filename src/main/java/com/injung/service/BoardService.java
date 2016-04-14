@@ -1,6 +1,8 @@
 package com.injung.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -61,5 +63,30 @@ public class BoardService  {
     public void createComment(BoardCommentVO cv) {
         dao.insertComment(cv);
         
+    }
+
+
+    public Boolean hasMyInjung(long mem_snum, long boa_snum) {
+        Map<String, Long> map = new HashMap<String, Long>();
+        map.put("mem_snum", mem_snum);
+        map.put("boa_snum", boa_snum);
+        return dao.selectBoardMyInjung(map) != null;
+    }
+
+
+
+    public void injungAdd(BoardVO bv) {
+        dao.insertInjung(bv);
+    }
+
+
+    public BoardVO getCountInjung(long boa_snum) {
+        return dao.selectCountInjung(boa_snum);
+    }
+
+
+
+    public void injungCancel(BoardVO bv) {
+        dao.deleteInjung(bv);
     }
 }

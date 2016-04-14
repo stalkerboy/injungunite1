@@ -124,10 +124,15 @@ public class BoardController {
     }
     
     @Auth
+    @ResponseBody
     @RequestMapping(value="/view", method=RequestMethod.GET)
-    public void view(Model model, @RequestParam("bno") Long boa_snum) throws Exception{
-        model.addAttribute("boardVO", bservice.getBoard(boa_snum));
-        model.addAttribute("boardCommentList", bservice.getBoardCommentList(boa_snum));
+    public Map<String, Object> view(@AuthUser UserVO authuser, @RequestParam("bno") Long boa_snum) throws Exception{
+        System.out.println(boa_snum);
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("boardVO", bservice.getBoard(boa_snum));
+        map.put("boardCommentList", bservice.getBoardCommentList(boa_snum));
+        map.put("hasMyInjung", bservice.hasMyInjung(authuser.getMem_snum(), boa_snum));
+        return map;
     }
     
     @Auth
@@ -143,5 +148,38 @@ public class BoardController {
         return map;
     }
     
+    @Auth
+    @RequestMapping(value="/viewtest", method=RequestMethod.GET)
+    public void viewtest(@RequestParam("bno") Long boa_snum, @AuthUser UserVO authuser, Model model) throws Exception{
+        model.addAttribute("boardVO", bservice.getBoard(boa_snum));
+        model.addAttribute("boardCommentList", bservice.getBoardCommentList(boa_snum));
+        model.addAttribute("hasMyInjung", bservice.hasMyInjung(authuser.getMem_snum(), boa_snum));
+    }
+    
+
+    @Auth
+    @ResponseBody
+    @RequestMapping(value="/injungAdd", method = RequestMethod.POST)
+    public Map<String, Object> injungAdd(@AuthUser UserVO authuser, BoardVO bv) throws Exception {
+        bv.setMem_snum(authuser.getMem_snum());
+        bservice.injungAdd(bv);
+        
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("data", bservice.getCountInjung(bv.getBoa_snum()));
+
+        return map;
+    }
+    @Auth
+    @ResponseBody
+    @RequestMapping(value="/injungCancel", method = RequestMethod.POST)
+    public Map<String, Object> injungCancel(@AuthUser UserVO authuser, BoardVO bv) throws Exception {
+        bv.setMem_snum(authuser.getMem_snum());
+        bservice.injungCancel(bv);
+        
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("data", bservice.getCountInjung(bv.getBoa_snum()));
+
+        return map;
+    }
     
 }

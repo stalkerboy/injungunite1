@@ -7,23 +7,23 @@
 <div id="viewmodal" class="modal fade" id="viewmodal" >
 	<div class="modal-dialog modal" style="width: 80%;" >
 
-		<div class="box box-widget">
+		<div class="box box-widget" id="viewmodalbox">
 			<div class='box-header with-border'>
             	<div class='user-block'>
                 	<img class='img-circle' src='/resources/img/profile/${boardVO.mem_profile }' alt='user image' >
                     	<span class='username'><a href="#">${boardVO.mem_id }</a></span>
                     	<span class='description'>${boardVO.boa_regdate }</span>
-				</div><!-- /.user-block -->
+				</div>
                 <div class='box-tools'>
                 	<button class='btn btn-box-tool' data-dismiss='modal'><i class='fa fa-times'></i></button>
-				</div><!-- /.box-tools -->
-			</div><!-- /.box-header -->
+				</div>
+			</div>
 			<div class='box-body row'>
             	<div class="col-sm-7">
                 	<img class="img-responsive pad" src="/resources/img/profile/${fn:substring(boardVO.boa_imgpng, 0, 12)}${fn:substring(boardVO.boa_imgpng, 14, 100)}" alt="Photo" width="400" height="200" >
-                </div><!-- /.box-body -->
+                </div>
                 <div class='col-sm-5'>
-					<img class="img-responsive img-circle img-sm" src='/resources/img/profile/${boardVO.mem_profile }' alt="alt text">
+					<img class="img-responsive img-circle img-sm" src='/resources/img/boardimg/${boardVO.mem_profile }' alt="alt text">
                    	<div class="input-group">
                        	<input id="com_context" type="text" class="form-control input-sm" placeholder="comment">
                            <span class="input-group-btn">
@@ -43,15 +43,23 @@
                   		</c:forEach>
 						</div>
                			<a href="#" class="btn form-control" style="text-align: center;">view more</a>
-                	</div> <!-- overflow -->
+                	</div>
 				</div>
 			</div>
 			<div class="box-footer">
-				<button class='btn btn-default btn-xs'><i class='fa fa-share'></i> Share</button>
-                <button class='btn btn-default btn-xs'><i class='fa fa-thumbs-o-up'></i> Like</button>
-                <span class='pull-right text-muted'>127 likes - 3 comments</span>
-			</div><!-- /.box-footer -->
-		</div><!-- /.box -->
+				<div id="divinjungbtn">
+				<c:choose>
+					<c:when test="${hasMyInjung }">
+						<button class='btn btn-default btn-xs' onclick="onClickInjungCancelBtn(${boardVO.boa_snum})"><i class='fa fa-thumbs-o-down'></i> 인정취소</button>
+					</c:when>
+					<c:otherwise>
+						<button class='btn btn-default btn-xs' onclick="onClickInjungBtn(${boardVO.boa_snum})"><i class='fa fa-thumbs-o-up'></i> 인정</button>
+					</c:otherwise>
+				</c:choose>
+                <span class='text-muted'>${boardVO.boa_injeong } 명이 인정했습니다.</span>
+                </div>
+			</div>
+		</div>
 		
 	</div>
 </div>	
