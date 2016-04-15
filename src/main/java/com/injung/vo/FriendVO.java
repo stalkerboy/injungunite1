@@ -17,6 +17,7 @@ public class FriendVO {
    private long follower_count;
    
    
+   
     public long getFri_snum() {
         return fri_snum;
     }
@@ -88,7 +89,6 @@ public class FriendVO {
     public void setFollowing_count(long following_count) {
         this.following_count = following_count;
     }
-   
     
      
 }

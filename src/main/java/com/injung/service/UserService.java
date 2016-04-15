@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.injung.vo.FriendVO;
 import com.injung.vo.UserVO;
 import com.injung.dao.UserDAO;
 
@@ -66,4 +67,7 @@ public class UserService{
 	public UserVO getUserInfoById(String mem_id) throws Exception{
 	    return dao.selectUserInfoById(mem_id);
 	}
+
+
+	
 }

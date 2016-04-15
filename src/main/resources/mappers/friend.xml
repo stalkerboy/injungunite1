@@ -55,4 +55,41 @@
       ]]>
    </select>     			
 
+
+<insert id="addfriend" parameterType="map">
+      <![CDATA[
+         insert
+         into fri_list
+         values(seq_fri_snum.nextval, null, #{memNo}, #{friendNo} )
+      ]]>
+   </insert> 
+  
+   <delete id="deletefriend" parameterType="long">
+      <![CDATA[
+            delete from fri_list
+            where fri_snum=#{fri_snum}
+       ]]>
+   </delete>
+   
+   <select id="userfind" parameterType="map" resultType="UserVO" >
+    <![CDATA[
+     select s.mem_snum, s.mem_id, s.mem_profile, decode(s.mem_snum, f.fri_mem_snum, 1, 0) ismyfriend
+     from
+     (select m.mem_snum, m.mem_id, m.mem_profile
+	 from member m
+	 where m.mem_id like '%' || #{mem_id} || '%') s,
+     fri_list f
+     where f.mem_snum(+) = #{userNo} and f.FRI_MEM_SNUM(+)= s.mem_snum
+      ]]>
+   </select>
+
+	<select id="friendlist" parameterType="long" resultType="FriendVo">
+      <![CDATA[
+         select  f.mem_snum, fri_snum, m.mem_id fri_mem_id, m.mem_profile fri_mem_profile 
+         from fri_list f, member m
+         where f.fri_mem_snum = m.mem_snum and f.mem_snum = #{memNo }
+      ]]>
+   </select>
+
+
 </mapper>

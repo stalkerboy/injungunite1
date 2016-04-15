@@ -47,7 +47,7 @@
 					<div class="col-sm-4 col-xs-4 ">
 						<div class="counter text-light">
 							<div class="counter-header">
-								<h4 class="counter-title"><span class="counter-timer" data-from="0" data-to="${followingCount.following_count }" style="color:black;">0</span></h4>
+								<h4 class="counter-title"><span class="counter-timer" data-from="0" data-to="${followingCount.following_count }" style="color:black;">${followingCount.following_count }</span></h4>
 							</div>
 							<div class="counter-content">	
 								<h4><font color="black">Following</font></h4>	

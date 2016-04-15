@@ -1,10 +1,15 @@
 package com.injung.dao;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.injung.vo.FriendVO;
 import com.injung.vo.UserVO;
 
 
@@ -56,5 +61,4 @@ public class UserDAO{
         return  session.selectOne(namespace+".selectPw", mem_snum);        
     }
 
-    
 }

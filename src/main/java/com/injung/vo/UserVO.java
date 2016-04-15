@@ -11,6 +11,7 @@ public class UserVO {
 	private String mem_birth;
 	private String mem_profile;
 	private String mem_regdate;
+    private long ismyfriend;
 	
 	public long getMem_snum() {
 		return mem_snum;
@@ -66,6 +67,16 @@ public class UserVO {
 	public void setMem_regdate(String mem_regdate) {
 		this.mem_regdate = mem_regdate;
 	}
+	
+
+    public long getIsmyfriend() {
+        return ismyfriend;
+    }
+    public void setIsmyfriend(long ismyfriend) {
+        this.ismyfriend = ismyfriend;
+    }
+   
+    
 	@Override
 	public String toString() {
 		return "UserVO [mem_snum=" + mem_snum + ", mem_id=" + mem_id + ", mem_passwd=" + mem_passwd + ", mem_name=" + mem_name + ", mem_email=" + mem_email + ", mem_gender=" + mem_gender + ", mem_birth=" + mem_birth + ", mem_profile=" + mem_profile + ", mem_regdate=" + mem_regdate + "]";

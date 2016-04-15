@@ -1,33 +1,33 @@
 tagNum = 1;
-$('#addTagBtn').click(function(){   
+$('#addTagBtn').click(function(){
    var tagText = $('#addTagText').val();
-   var newtagcode = 
+   var newtagcode =
       "<div id=\'tag" + tagNum + "\'><span  class=\' boardtag label label-danger pull-right\'>" + tagText + "<a href=\'#\' onclick=\'onClickTagRemove(" + tagNum + ");\'><i class=\'fa fa-close\'></a></span></div>";
-   tagNum = tagNum + 1;   
-   $("div#taglistdiv").append(newtagcode);   
+   tagNum = tagNum + 1;
+   $("div#taglistdiv").append(newtagcode);
 });
-function onClickTagRemove(tagNum){   
+function onClickTagRemove(tagNum){
    var targetdiv ='#tag'+tagNum;
-   $(targetdiv).remove();   
+   $(targetdiv).remove();
 }
 
 $('#writeSubmit').click(function(){
-   canvas.deactivateAll();   
+   canvas.deactivateAll();
    var imgjson = {};
-   imgjson = JSON.stringify(canvas);   
+   imgjson = JSON.stringify(canvas);
    $('#boa_imgjson').val(imgjson);
    imgpng = canvas.toDataURL('png');
    var base64img = imgpng.substring(imgpng.indexOf(',')+1);
    $('#boa_imgpng').val(base64img);
-   
-   tagTextList = [];   
+
+   tagTextList = [];
    $('.boardtag').each(function() {
        tagTextList.push( this.innerText );
-   });   
-   
+   });
+
    $('#tags').val(tagTextList);
-   
-   $('#writeform').submit();   
+
+   $('#writeform').submit();
 });
 
 
@@ -88,22 +88,10 @@ $("#textBtn").click(function(){
 
 $('#text-area').keyup(function(event) {
    var object = canvas.getActiveObject();
-   var value = $(this).val();
-   var itext = new fabric.IText(value, {
-         left: object.left,
-         top: object.top,
-         fontSize: 40,
-         fill: '#000'
-     })
-   canvas.remove(object);
-   canvas.add(itext);
-   canvas.setActiveObject(itext);
+   object.set('text', $(this).val());
+   canvas.renderAll();
 });
 
-function textVal() {
-   var text = canvas.getActiveObject();
-   return text.getText();
-};
 
 function getActiveStyle(styleName, object) {
      object = object || canvas.getActiveObject();
@@ -187,42 +175,42 @@ function getActiveStyle(styleName, object) {
          text.fontFamily=fontfamily.value.toLowerCase();
          canvas.renderAll();
       }
-      
+
       var textbgcolor = document.getElementById("text-bg-color");
       textbgcolor.onchange = function() {
          var text = canvas.getActiveObject();
          text.backgroundColor = textbgcolor.value;
          canvas.renderAll();
       }
-      
+
       var textlinebgcolor = document.getElementById("text-lines-bg-color");
       textlinebgcolor.onchange = function() {
          var text = canvas.getActiveObject();
          text.textBackgroundColor = textlinebgcolor.value;
          canvas.renderAll();
       }
-      
+
       var textstrokecolor = document.getElementById("text-stroke-color");
       textstrokecolor.onchange = function() {
          var text = canvas.getActiveObject();
          text.stroke = textstrokecolor.value;
          canvas.renderAll();
       }
-      
+
       var textstrokewidth = document.getElementById("text-stroke-width");
       textstrokewidth.onchange = function() {
          var text = canvas.getActiveObject();
          text.strokeWidth = textstrokewidth.value;
          canvas.renderAll();
       }
-      
+
       var textsize = document.getElementById("text-font-size");
       textsize.onchange = function() {
          var text = canvas.getActiveObject();
          text.fontSize = textsize.value;
          canvas.renderAll();
       }
-      
+
       var textheight = document.getElementById("text-line-height");
       textheight.onchange = function() {
          var text = canvas.getActiveObject();
@@ -237,8 +225,12 @@ canvas
   .on('selection:cleared', updateScope);
 
 function updateScope() {
+  var selectedObjectType = getObjectType();
+  refreashModal(selectedObjectType);
+}
+function getObjectType(){
   var activeObject = canvas.getActiveObject(),
-    activeGroup = canvas.getActiveGroup();
+  activeGroup = canvas.getActiveGroup();
 
   var selectedObjectType = '';
   if(activeGroup){
@@ -251,18 +243,16 @@ function updateScope() {
   else{
     selectedObjectType = "null";
   }
-
-  refreashModal(selectedObjectType);
+  return selectedObjectType;
 }
-
 
 function refreashModal(type){
   if(type=="i-text"){
    var textarea = document.getElementById('text-area');
-   textarea.innerHTML = textVal();
+   $("#text-area").val(canvas.getActiveObject().getText());
    $('#textModal').modal({
       backdrop:false
-    });    
+    });
     $('#defaultModal').modal('hide');
     $('#drawModal').modal('hide');
     $('#imgModal').modal('hide');
@@ -303,7 +293,7 @@ function onClickClearBtn(){
 function onClickDrawingModeBtn(){
   if(canvas.isDrawingMode){
     document.getElementById('drawModeBtn').style.display = 'block';
-    document.getElementById('selModeBtn').style.display = 'none';    
+    document.getElementById('selModeBtn').style.display = 'none';
   }
   else{
     document.getElementById('drawModeBtn').style.display = 'none';
@@ -410,8 +400,6 @@ if (fabric.PatternBrush) {
   }
 
   document.getElementById('drawing-mode-selector').onchange = function() {
-
-   console.log(this.value);
     if (this.value === 'hline') {
       canvas.freeDrawingBrush = vLinePatternBrush;
     }
@@ -461,7 +449,7 @@ if (fabric.PatternBrush) {
   if (canvas.freeDrawingBrush) {
     canvas.freeDrawingBrush.color = drawingColorEl.value;
     canvas.freeDrawingBrush.width = parseInt(drawingLineWidthEl.value, 10) || 1;
-    canvas.freeDrawingBrush.shadowBlur = 0;        
+    canvas.freeDrawingBrush.shadowBlur = 0;
 }
 
 var bgcolor = document.getElementById('bgcolor');
@@ -562,6 +550,8 @@ canvas.renderAll()
 
 $(".modalbtn-common-copy").click(function(){
 var object = fabric.util.object.clone(canvas.getActiveObject());
+if (getObjectType()=="i-text") object.initBehavior();
+
 object.set("top", object.top+5);
 object.set("left", object.left+5);
 canvas.add(object);
@@ -628,23 +618,23 @@ function applyFilter(index, filter) {
 
   canvas.on({
     'object:selected': function() {
-      fabric.util.toArray(document.getElementsByTagName('input'))
-                          .forEach(function(el){ el.disabled = false; })
+      if(getObjectType!='group'){
+        fabric.util.toArray(document.getElementsByClassName('writeProperty')).forEach(function(el){ el.disabled = false; })
 
-      var filters = ['grayscale', 'invert', 'remove-white', 'sepia', 'sepia2',
-                      'brightness', 'noise', 'gradient-transparency', 'pixelate',
-                      'blur', 'sharpen', 'emboss', 'tint', 'multiply', 'blend'];
+        var filters = ['grayscale', 'invert', 'remove-white', 'sepia', 'sepia2',
+                        'brightness', 'noise', 'gradient-transparency', 'pixelate',
+                        'blur', 'sharpen', 'emboss', 'tint', 'multiply', 'blend'];
 
-      for (var i = 0; i < filters.length; i++) {
-        //$(filters[i]).checked = !!canvas.getActiveObject().filters[i];
+        // for (var i = 0; i < filters.length; i++) {
+        //   $(filters[i]).checked = !!canvas.getActiveObject().filters[i];
+        // }
       }
     },
     'selection:cleared': function() {
-      fabric.util.toArray(document.getElementsByTagName('input'))
-                          .forEach(function(el){ el.disabled = true; })
+      fabric.util.toArray(document.getElementsByClassName('writeProperty')).forEach(function(el){ el.disabled = true; })
     }
   });
-  
+
 
   $('#grayscale').click(function() {
     applyFilter(0, this.checked && new f.Grayscale());
@@ -743,34 +733,34 @@ function applyFilter(index, filter) {
   $('#multiply-color').change(function() {
     applyFilterValue(13, 'color', this.value);
   });
-  
-  $('#blend').click(function() { 
+
+  $('#blend').click(function() {
     applyFilter(14, this.checked && new f.Blend({
       color: document.getElementById('blend-color').value,
       mode: document.getElementById('blend-mode').value
     }));
   });
- 
+
   $('#blend-mode').change(function() {
     applyFilterValue(14, 'mode', this.value);
   });
- 
+
   $('#blend-color').change(function() {
     applyFilterValue(14, 'color', this.value);
   });
-  
+
   var opacity = document.getElementById('opacity');
-  opacity.onchange = function() {   
+  opacity.onchange = function() {
      var activeObject = canvas.getActiveObject();
      activeObject.set({opacity : opacity.value/100});
      canvas.renderAll();
   }
-  
+
   var objcolor = document.getElementById('objectColor');
   objcolor.onchange = function() {
      var activeObject = canvas.getActiveObject();
      activeObject.setColor(objcolor.value);
-     canvas.renderAll();   
+     canvas.renderAll();
   }
 
 function onClickWriteModal(){

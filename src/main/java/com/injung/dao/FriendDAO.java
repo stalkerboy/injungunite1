@@ -1,6 +1,8 @@
 package com.injung.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -8,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.injung.vo.FriendVO;
+import com.injung.vo.UserVO;
 
 
 @Repository
@@ -18,15 +21,31 @@ public class FriendDAO{
     private SqlSession session;
     
 
-    public void insertFriend(FriendVO fv) throws Exception {
-       session.insert(namespace+".insertFriend", fv);  
+    public List<UserVO> userfind(String mem_id, long userNo) throws Exception {
+        Map<String, Object> numMap = new HashMap<String, Object>();
+        numMap.put("userNo", userNo);
+        numMap.put("mem_id",mem_id);
+        List<UserVO> userfind = session.selectList(namespace+".userfind", numMap );
+        
+        return userfind;
     }
     
+    public void deletefriend(long fri_snum) throws Exception {
+        session.delete(namespace+".deletefriend", fri_snum);      
+     }
     
-    public void deleteFriend(FriendVO fv) throws Exception {
-       session.delete(namespace+".deleteFriend", fv);      
+    public void addfriend(long memNo, long mem_snum) throws Exception {
+        Map<String, Long> numMap = new HashMap<String, Long>();
+        numMap.put("memNo", memNo);
+        numMap.put("friendNo", mem_snum);
+        session.insert(namespace+".addfriend", numMap);
+        
+     }
+    
+    public List<FriendVO> friendlist(long memNo) throws Exception {
+        return session.selectList(namespace+".friendlist", memNo);
     }
-
+    
 
     public List<FriendVO> selectFriendList(long memNo) throws Exception {
        return session.selectList(namespace+".selectFriendList", memNo);

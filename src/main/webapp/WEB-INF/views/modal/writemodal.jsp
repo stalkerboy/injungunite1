@@ -1,34 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-   <style type="text/css">
-    .myattr-modal .modal {
-      position: absolute;
-      display: none;
-      width:350px;
-      height: 500px;
-      
-       top:20%;
-       left:70%;
-
-      background: transparent !important;
-
-      background-color: #ffffff;
-      border: 1px solid #999;
-      border: 1px solid rgba(0, 0, 0, 0.3);
-    }
-    
-    .myattr-modal :before {
-       height: auto;
-    }
-    </style>
-
 
 <div class="writeform-modal">
    <div id="writemodal" class="modal fade">
       <div class="modal-dialog " style="width: 80%; ">
-      
+
       <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">글쓰기</h3>
@@ -37,8 +11,8 @@
                   </div>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  
-                  
+
+
                   <form id="writeform" action="/board/write" method="post">
             <input type="text" id="boa_imgjson" name="boa_imgjson" value="" hidden>
             <input type="text" id="boa_imgpng" name="boa_imgpng" value="" hidden>
@@ -47,25 +21,14 @@
                <div class="modal-header text-align">
                   <div class="row">
                      <div class="col-sm-2">
-<!--                         <input type="text" list="datalist" name="category" id="category" class="form-control" placeholder="카테고리" > -->
-<!--                         <datalist id="datalist"></datalist>                      -->
+
                         <select id="datalist"  name="category" id="category" class="form-control"></select>
                      </div>
                      <div class="col-sm-10">
                         <input type="text" id="boa_subject" name="boa_subject" value="" class="form-control" placeholder="주제">
                      </div>
                   </div>
-                  
-<!--                   <select class="form-control" id="category" name="category"> -->
-<!--                      <option value='미분류'>미분류</option>                     -->
-<%--                  <c:forEach items="${categoryList}" var="category"> --%>
-<%--                     <option value='${category.cat_name}'>${category.cat_name}</option> --%>
-<%--                      </c:forEach> --%>
 
-<!--                </select> -->
-                  
-                  
-                  
 
                </div>
                <div class="modal-body">
@@ -103,27 +66,27 @@
                            <button id="addTagBtn" type="button" class="btn btn-primary btn-xs">tagAdd</button>
                 </div><!-- /input-group -->
                      </div>
-                     <div class="col-lg-9" id="taglistdiv">                                          
+                     <div class="col-lg-9" id="taglistdiv">
 <!--                         <span class="label label-danger pull-right">태그1<a href="#"> X</a></span> -->
                      </div>
-                  </div>                  
+                  </div>
                </div>
-               
+
             </div><!-- /.modal-content -->
          </form>
-                  
-                  
+
+
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
                              <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
-                <button id="writeSubmit" type="button" class="btn btn-default pull-right" >글쓰기</button>                  
+                <button id="writeSubmit" type="button" class="btn btn-default pull-right" >글쓰기</button>
 
-              
-               
-                
+
+
+
                 </div><!-- /.box-footer -->
-              </div><!-- /.box -->      
-         
+              </div><!-- /.box -->
+
       </div><!-- /.modal-dialog -->
    </div><!-- /.modal -->
 </div>
@@ -149,7 +112,6 @@
               <button class="btn btn-default btn-sm modalbtn-common-mirror" style="CURSOR:hand;" title="좌우반전"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA/0lEQVQ4T62SSw4BURBFT8fAhKGhVVgAdiAStmDgswLiEzvAxBJIbAELsAkxM+2JgbSUVHVeP91IkHSkX917qm69Dsj+lYGFlnvAJU0apBzmgAEwAwpaD4GRAu+uxwdUgDUg3bvARsVtYAWcgQ5wMogBisBcTTv9vwKRCkVXUkgTWAJDIJRCQ0fLq3HrjOgC7LiloBvQF4CIxCQjS9eJPmLwAVazaVoGsCgiGANpyzXg1G3gAsz85mbjkkGivwIE/1MEm++bJZo2EcHNXtNpqnp41PeDt6AXgGs0k0UTmA+KAXWnY1a3NPjebkG6ZBn9a03EE4DkksX5+T59D0/QA1YGTxf+xU4SAAAAAElFTkSuQmCC" style="width:10px;height:12px;"></i></button>
               <button class="btn btn-default btn-sm modalbtn-common-copy" style="CURSOR:hand;" title="복사"><i class="fa fa-copy"></i></button>
             </div>
-            <br>
             <div class="btn-group">
               <button class="btn btn-default btn-sm modalbtn-common-sendbackwards" style="CURSOR:hand;" title="맨뒤로"><i class="fa fa-angle-double-left"></i></button>
               <button class="btn btn-default btn-sm modalbtn-common-sendtoback" style="CURSOR:hand;" title="뒤로"><i class="fa fa-angle-left"></i></button>
@@ -157,7 +119,6 @@
               <button class="btn btn-default btn-sm modalbtn-common-bringtofront" style="CURSOR:hand;" title="맨앞으로"><i class="fa fa-angle-double-right"></i></button>
             </div>
 
-            <br>
 
           </div>
 
@@ -176,23 +137,23 @@
 
 <input type="range" value="0" min="0" max="50" bind-value-to="thcik">
 <div id="text-controls-additional">
-      <button type="button" class="btn btn-object-action"
+      <button type="button" class="btn btn-object-action writeProperty"
         onclick="toggleBold()">
         Bold
       </button>
-      <button type="button" class="btn btn-object-action" id="text-cmd-italic"
+      <button type="button" class="btn btn-object-action writeProperty" id="text-cmd-italic"
         onclick="toggleItalic()">
         Italic
       </button>
-      <button type="button" class="btn btn-object-action" id="text-cmd-underline"
+      <button type="button" class="btn btn-object-action writeProperty" id="text-cmd-underline"
         onclick="toggleUnderline()">
         Underline
       </button>
-      <button type="button" class="btn btn-object-action" id="text-cmd-linethrough"
+      <button type="button" class="btn btn-object-action writeProperty" id="text-cmd-linethrough"
         onclick="toggleLinethrough()">
         Linethrough
       </button>
-      <button type="button" class="btn btn-object-action" id="text-cmd-overline"
+      <button type="button" class="btn btn-object-action writeProperty" id="text-cmd-overline"
         onclick="toggleOverline()">
         Overline
       </button>
@@ -241,13 +202,9 @@
         <label for="text-line-height">Line height:</label>
         <input type="range" value="" min="0" max="10" step="0.1" id="text-line-height" class="btn-object-action">
       </div>
-</div>    
+</div>
 
           </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -274,7 +231,6 @@
               <button class="btn btn-default btn-sm modalbtn-common-mirror" style="CURSOR:hand;" title="좌우반전"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA/0lEQVQ4T62SSw4BURBFT8fAhKGhVVgAdiAStmDgswLiEzvAxBJIbAELsAkxM+2JgbSUVHVeP91IkHSkX917qm69Dsj+lYGFlnvAJU0apBzmgAEwAwpaD4GRAu+uxwdUgDUg3bvARsVtYAWcgQ5wMogBisBcTTv9vwKRCkVXUkgTWAJDIJRCQ0fLq3HrjOgC7LiloBvQF4CIxCQjS9eJPmLwAVazaVoGsCgiGANpyzXg1G3gAsz85mbjkkGivwIE/1MEm++bJZo2EcHNXtNpqnp41PeDt6AXgGs0k0UTmA+KAXWnY1a3NPjebkG6ZBn9a03EE4DkksX5+T59D0/QA1YGTxf+xU4SAAAAAElFTkSuQmCC" style="width:10px;height:12px;"></i></button>
               <button class="btn btn-default btn-sm modalbtn-common-copy" style="CURSOR:hand;" title="복사"><i class="fa fa-copy"></i></button>
             </div>
-            <br>      
             <div class="btn-group">
               <button class="btn btn-default btn-sm modalbtn-common-sendbackwards" style="CURSOR:hand;" title="맨뒤로"><i class="fa fa-angle-double-left"></i></button>
               <button class="btn btn-default btn-sm modalbtn-common-sendtoback" style="CURSOR:hand;" title="뒤로"><i class="fa fa-angle-left"></i></button>
@@ -285,49 +241,44 @@
               <input type="range" value="100" min="0" max="100" id="opacity">
             </div>
           </div>
-          
+
           <div id="drawing-mode-options">
-    <label for="drawing-mode-selector">Mode:</label>
-    <select id="drawing-mode-selector">
-      <option>Pencil</option>
-      <option>Circle</option>
-      <option>Spray</option>
-      <option>Pattern</option>
+            <label for="drawing-mode-selector">Mode:</label>
+            <select id="drawing-mode-selector" style="color:black;">
+              <option>Pencil</option>
+              <option>Circle</option>
+              <option>Spray</option>
+              <option>Pattern</option>
 
-      <option>hline</option>
-      <option>vline</option>
-      <option>square</option>
-      <option>diamond</option>
-      <option>texture</option>
-    </select><br>
+              <option>hline</option>
+              <option>vline</option>
+              <option>square</option>
+              <option>diamond</option>
+              <option>texture</option>
+            </select>
 
-    <label for="drawing-line-width">Line width:</label>
-    <span class="info">30</span><input type="range" value="30" min="0" max="150" id="drawing-line-width"><br>
+            <label for="drawing-line-width">Line width:</label>
+            <span class="info">5</span><input type="range" value="5" min="0" max="150" id="drawing-line-width">
 
-    <label for="drawing-color">Line color:</label>
-    <input type="color" value="#005E7A" id="drawing-color"><br>
+            <label for="drawing-color">Line color:</label>
+            <input type="color" value="#005E7A" id="drawing-color">
 
-    <label for="drawing-shadow-color">Shadow color:</label>
-    <input type="color" value="#005E7A" id="drawing-shadow-color"><br>
+            <label for="drawing-shadow-color">Shadow color:</label>
+            <input type="color" value="#005E7A" id="drawing-shadow-color">
 
-    <label for="drawing-shadow-width">Shadow width:</label>
-    <span class="info">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-width"><br>
+            <label for="drawing-shadow-width">Shadow width:</label>
+            <span class="info">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-width">
 
-    <label for="drawing-shadow-offset">Shadow offset:</label>
-    <span class="info">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-offset"><br>
-  </div>
-</div>
-          <div>
+            <label for="drawing-shadow-offset">Shadow offset:</label>
+            <span class="info">0</span><input type="range" value="0" min="0" max="50" id="drawing-shadow-offset">
           </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 </div>
+
 
 
 
@@ -358,51 +309,51 @@
               <button class="btn btn-default btn-sm modalbtn-common-bringtofront" style="CURSOR:hand;" title="맨앞으로"><i class="fa fa-angle-double-right"></i></button>
             </div>
           </div>
-          
+
           <div id="img-fillter">
-  
-    <label><span>Grayscale:</span> <input type="checkbox" id="grayscale" disabled></label>  
-    <label><span>Invert:</span> <input type="checkbox" id="invert" disabled></label><br>  
-    <label><span>Sepia:</span> <input type="checkbox" id="sepia" disabled></label>  
-    <label><span>Sepia2:</span> <input type="checkbox" id="sepia2" disabled></label><br>  
-  
-    <label><span>Remove white:</span> <input type="checkbox" id="remove-white" disabled></label>
+
+    <label><span>Grayscale:</span> <input type="checkbox" id="grayscale" class="writeProperty" disabled></label>
+    <label><span>Invert:</span> <input type="checkbox" id="invert" class="writeProperty" disabled></label><br>
+    <label><span>Sepia:</span> <input type="checkbox" id="sepia" class="writeProperty" disabled></label>
+    <label><span>Sepia2:</span> <input type="checkbox" id="sepia2" class="writeProperty" disabled></label><br>
+
+    <label><span>Remove white:</span> <input type="checkbox" id="remove-white" class="writeProperty" disabled></label>
     <br>
-    <label>Threshold: <input type="range" id="remove-white-threshold" value="60" min="0" max="255" disabled></label>
+    <label>Threshold: <input type="range" id="remove-white-threshold" value="60" min="0" max="255" class="writeProperty" disabled></label>
     <br>
-    <label>Distance: <input type="range" id="remove-white-distance" value="50" min="0" max="255" disabled></label>  
+    <label>Distance: <input type="range" id="remove-white-distance" value="50" min="0" max="255" class="writeProperty" disabled></label>
      <br>
-    <label><span>Brightness:</span> <input type="checkbox" id="brightness" disabled></label>
+    <label><span>Brightness:</span> <input type="checkbox" id="brightness" class="writeProperty" disabled></label>
     <br>
-    <label>Value: <input type="range" id="brightness-value" value="100" min="0" max="255" disabled></label>  
+    <label>Value: <input type="range" id="brightness-value" value="100" min="0" max="255" class="writeProperty" disabled></label>
      <br>
-    <label><span>Noise:</span> <input type="checkbox" id="noise" disabled></label>
+    <label><span>Noise:</span> <input type="checkbox" id="noise" class="writeProperty" disabled></label>
     <br>
-    <label>Value: <input type="range" id="noise-value" value="100" min="0" max="1000" disabled></label>  
+    <label>Value: <input type="range" id="noise-value" value="100" min="0" max="1000" class="writeProperty" disabled></label>
      <br>
-    <label><span>GradientTransparency:</span> <input type="checkbox" id="gradient-transparency" disabled></label>
+    <label><span>GradientTransparency:</span> <input type="checkbox" id="gradient-transparency" class="writeProperty" disabled></label>
     <br>
-    <label>Value: <input type="range" id="gradient-transparency-value" value="100" min="0" max="255" disabled></label>  
+    <label>Value: <input type="range" id="gradient-transparency-value" value="100" min="0" max="255" class="writeProperty" disabled></label>
      <br>
-    <label><span>Pixelate:</span> <input type="checkbox" id="pixelate" disabled></label>
+    <label><span>Pixelate:</span> <input type="checkbox" id="pixelate" class="writeProperty" disabled></label>
     <br>
-    <label>Value: <input type="range" id="pixelate-value" value="4" min="2" max="20" disabled></label>
-     <br>  
-    <label><span>Blur:</span> <input type="checkbox" id="blur" disabled></label>  
-     
-    <label><span>Sharpen:</span> <input type="checkbox" id="sharpen" disabled></label>
-       
-    <label><span>Emboss:</span> <input type="checkbox" id="emboss" disabled></label>
-     <br>  
-    <label><span>Tint:</span> <input type="checkbox" id="tint" disabled></label><br>
-    <label>Color: <input type="color" id="tint-color" value=""></label><br>
-    <label>Opacity: <input type="range" id="tint-opacity" min="0" max="1" value="1" step="0.1"></label><br>  
-  
-    <label><span>Multiply:</span> <input type="checkbox" id="multiply" disabled></label><br>
-    <label>Color: <input type="color" id="multiply-color" value=""></label><br>
-  
-  
-  <label><span>Blend:</span> <input type="checkbox" id="blend" disabled></label>
+    <label>Value: <input type="range" id="pixelate-value" value="4" min="2" max="20" class="writeProperty" disabled></label>
+     <br>
+    <label><span>Blur:</span> <input type="checkbox" id="blur" class="writeProperty" disabled></label>
+
+    <label><span>Sharpen:</span> <input type="checkbox" id="sharpen" class="writeProperty" disabled></label>
+
+    <label><span>Emboss:</span> <input type="checkbox" id="emboss" class="writeProperty" disabled></label>
+     <br>
+    <label><span>Tint:</span> <input type="checkbox" id="tint" class="writeProperty" disabled></label><br>
+    <label>Color: <input type="color" id="tint-color" value="" class="writeProperty" ></label><br>
+    <label>Opacity: <input type="range" id="tint-opacity" min="0" max="1" value="1" step="0.1" class="writeProperty" ></label><br>
+
+    <label><span>Multiply:</span> <input type="checkbox" id="multiply" class="writeProperty" disabled></label><br>
+    <label>Color: <input type="color" id="multiply-color" value="" class="writeProperty" ></label><br>
+
+
+  <label><span>Blend:</span> <input type="checkbox" id="blend" class="writeProperty" disabled></label>
   <br>
   <label>Mode:</label>
     <select id="blend-mode" name="blend-mode">
@@ -415,17 +366,11 @@
       <option value="darken">Darken</option>
     </select>
     <br>
-    <label>Color: <input type="color" id="blend-color" value="#00f900"></label><br>
-  
-  </div>
-            <div>
+    <label>Color: <input type="color" id="blend-color" value="#00f900" class="writeProperty" ></label><br>
 
-          </div>
+  </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
@@ -451,7 +396,6 @@
               <button class="btn btn-default btn-sm modalbtn-common-mirror" style="CURSOR:hand;" title="좌우반전"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA/0lEQVQ4T62SSw4BURBFT8fAhKGhVVgAdiAStmDgswLiEzvAxBJIbAELsAkxM+2JgbSUVHVeP91IkHSkX917qm69Dsj+lYGFlnvAJU0apBzmgAEwAwpaD4GRAu+uxwdUgDUg3bvARsVtYAWcgQ5wMogBisBcTTv9vwKRCkVXUkgTWAJDIJRCQ0fLq3HrjOgC7LiloBvQF4CIxCQjS9eJPmLwAVazaVoGsCgiGANpyzXg1G3gAsz85mbjkkGivwIE/1MEm++bJZo2EcHNXtNpqnp41PeDt6AXgGs0k0UTmA+KAXWnY1a3NPjebkG6ZBn9a03EE4DkksX5+T59D0/QA1YGTxf+xU4SAAAAAElFTkSuQmCC" style="width:10px;height:12px;"></i></button>
               <button class="btn btn-default btn-sm modalbtn-common-copy" style="CURSOR:hand;" title="복사"><i class="fa fa-copy"></i></button>
             </div>
-            <br>
             <div class="btn-group">
               <button class="btn btn-default btn-sm modalbtn-common-sendbackwards" style="CURSOR:hand;" title="맨뒤로"><i class="fa fa-angle-double-left"></i></button>
               <button class="btn btn-default btn-sm modalbtn-common-sendtoback" style="CURSOR:hand;" title="뒤로"><i class="fa fa-angle-left"></i></button>
@@ -465,8 +409,6 @@
 
           <div>
 
-<textarea id="text-area" class="form-control" rows="3"></textarea>
-
 
 <div class="btn-group">
   <button class="btn btn-default btn-sm"><i class="fa fa-align-center"></i></button>
@@ -477,13 +419,8 @@
 
 </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 </div>
-
-

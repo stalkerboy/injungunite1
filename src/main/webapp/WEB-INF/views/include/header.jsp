@@ -38,19 +38,6 @@
 	                  	</li>
 	                  	<li>
 	                  		<ul id="messagemenu" class="menu">
-<!-- 	                        	<li>start message -->
-<!-- 	                        		<a href="#"> -->
-<!-- 	                          			<div class="pull-left"> -->
-<!-- 	                            			<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"> -->
-<!-- 	                         			</div> -->
-<!-- 	                          			<h4> -->
-<!-- 	                            			Support Team -->
-<!-- 	                            			<small><i class="fa fa-clock-o"></i> 5 mins</small> -->
-<!-- 	                          			</h4> -->
-<!-- 	                          			<p>Why not buy a new awesome theme?</p> -->
-<!-- 	                        		</a> -->
-<!-- 	                        	</li> -->
-                        	
 	                    	</ul>
 	                  	</li>
                 	</ul>
@@ -85,13 +72,13 @@
               
               	<li class="dropdown user user-menu">
                 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  		<img src="/displayFile?fileName=${authUser.mem_profile }"  class="user-image" alt="User Image">
+                  		<img src="/resources/img/profile/${authUser.mem_profile }"  class="user-image" alt="User Image">
                   		<span class="hidden-xs">${authUser.mem_id }</span>
                		</a>
                 	<ul class="dropdown-menu">
 	                  <!-- User image -->
                   		<li class="user-header">
-	                    	<img src="/displayFile?fileName=${authUser.mem_profile }" class="img-circle" alt="User Image">
+	                    	<img src="/resources/img/profile/${authUser.mem_profile }" class="img-circle" alt="User Image">
 	                    	<hr class="divider">
 	                 		<h5>${authUser.mem_id }</h5>
 	                 		<span class="label label-default">followers</span>   

@@ -9,39 +9,35 @@ import org.springframework.stereotype.Service;
 import com.injung.dao.FriendDAO;
 import com.injung.dao.UserDAO;
 import com.injung.vo.FriendVO;
+import com.injung.vo.UserVO;
 
 @Service
 public class FriendService {
 
     @Inject
     private FriendDAO fdao;
-    @Inject
-    private UserDAO udao;
     
     public List<FriendVO> getFriendList(long memNo) throws Exception {
         return fdao.selectFriendList(memNo);
     }
 
-    public String friendAdd(FriendVO fv) throws Exception {
-        if(fv.getFri_mem_snum() == fv.getFri_snum()) {
-            return "me";
-        }
-        else if ( fdao.selectFriend(fv) != null ){
-            return "old_fri"; 
-        }
-        else if(udao.selectUser(fv.getFri_mem_snum()) == null){
-            return "no_id";
-        }
-        else{ 
-            fdao.insertFriend(fv);
-            return "new_fri";
-        }
+    public List<FriendVO> friendlist(long memNo) throws Exception {
+        return fdao.friendlist(memNo); 
     }
     
-    public void deleteFriend(FriendVO fv) throws Exception {
-       fdao.deleteFriend(fv);      
+    public void addfriend(long memNo, long mem_snum) throws Exception {
+        fdao.addfriend(memNo, mem_snum);
+        
     }
-
+    
+    public void deletefriend(long fri_snum) throws Exception {
+       fdao.deletefriend(fri_snum);      
+    }   
+    
+    public List<UserVO> userfind(String mem_id, long userNo) throws Exception {
+        List<UserVO> users = fdao.userfind(mem_id, userNo);
+        return users;
+    }  
     public FriendVO followingCount(String mem_id)throws Exception{
         return fdao.followingCount(mem_id);
     }

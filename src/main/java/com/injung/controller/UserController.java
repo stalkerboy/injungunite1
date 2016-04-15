@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -93,11 +94,6 @@ public class UserController {
 	
 	
 	@Auth
-    @RequestMapping(value="/friendsearch", method = RequestMethod.GET)
-    public void friendsearch() throws Exception {
-    }
-	
-	@Auth
 	@RequestMapping("/hasid")
     @ResponseBody
     public Map<String, Object> checkid(@RequestParam("id") String id) throws Exception{
@@ -112,28 +108,60 @@ public class UserController {
 	public void friendlist(@AuthUser UserVO authVo, Model model) throws Exception {
 	    
 	    model.addAttribute("friendlist", fservice.getFriendList(authVo.getMem_snum()));
+	    model.addAttribute("followingCount", fservice.followingCount(authVo.getMem_id()));
+        
+        model.addAttribute("followerCount", fservice.followerCount(authVo.getMem_id()));
 	}
 	
-	@Auth
-	@ResponseBody
-	@RequestMapping(value="/frienddel", method = RequestMethod.POST)
-    public Map<String, Object>  deletefriend(@AuthUser UserVO authVo,FriendVO fv) throws Exception {
-        fservice.deleteFriend(fv);
-	    Map<String, Object>map = new HashMap<String, Object>();
-	    map.put("data", fservice.getFriendList(authVo.getMem_snum()));
-	    return map;
-    }
 	
 	@Auth
+    @RequestMapping(value = "/userfind", method = RequestMethod.POST)
     @ResponseBody
-    @RequestMapping(value="/friendadd", method = RequestMethod.POST)
-    public Map<String, Object>  friendadd(@AuthUser UserVO authVo, FriendVO fv) throws Exception {       
-	    Map<String, Object>map = new HashMap<String, Object>();
-	    fv.setMem_snum(authVo.getMem_snum());
-        map.put("type", fservice.friendAdd(fv));
-        map.put("data", fservice.getFriendList(authVo.getMem_snum()));
+    public Map<String, Object> userfind(@RequestBody String mem_id, @AuthUser UserVO authUser) throws Exception {
+        
+        long userNo = authUser.getMem_snum();
+     
+        List<UserVO> users = fservice.userfind(mem_id, userNo);
+        
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("userfind", users);
+        return map;
+    }
+	
+		
+	@Auth
+    @RequestMapping(value="/deletefriend",  method = RequestMethod.POST)
+    @ResponseBody
+    public  Map<String, Object> deletefriend(@RequestBody long fri_snum, @AuthUser UserVO authUser, Model model) throws Exception {
        
+       fservice.deletefriend(fri_snum);
+       
+       long memNo = authUser.getMem_snum();
+
+       List<FriendVO> friendvo = fservice.friendlist(memNo);
+       
+
+       Map<String, Object> map = new HashMap<String, Object>();
+       map.put("friendlist", friendvo);
        return map;
+
+  
+   }
+    
+    @Auth
+    @RequestMapping(value="/addfriend", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> addfriend(@RequestBody long mem_snum, @AuthUser UserVO authUser, Model model) throws Exception {
+        
+       long memNo = authUser.getMem_snum();
+       fservice.addfriend(memNo ,mem_snum);                            
+       
+       List<FriendVO> friendvo = fservice.friendlist(memNo);
+       
+
+       Map<String, Object> map = new HashMap<String, Object>();
+       map.put("friendlist", friendvo);
+       return map; 
     }
 
 	@Auth

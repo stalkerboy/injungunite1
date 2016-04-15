@@ -34,8 +34,6 @@
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="/user/friendlist">
 						<i class="fa fa-users"></i> 내친구 리스트 </a></li>
-					<li><a href="/user/friendsearch">
-						<i class="fa fa-user-plus"></i> 친구 찾기 </a></li>
 				</ul></li>
 
 			<li class="dropdown"><a href="#" class="dropdown-toggle binded"

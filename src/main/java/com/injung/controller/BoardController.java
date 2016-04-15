@@ -70,10 +70,6 @@ public class BoardController {
         model.addAttribute("followingCount", fservice.followingCount(mem_id));
         
         model.addAttribute("followerCount", fservice.followerCount(mem_id));
-        
-        System.out.println(bservice.getBoardCount(mem_id));
-        System.out.println(fservice.followingCount(mem_id));
-        System.out.println(fservice.followerCount(mem_id));
     }
     
 
