@@ -54,16 +54,16 @@
 		]]>					
 	</delete>
 	
-	<update id="update" parameterType="string" >
+	<update id="update" parameterType="UserVO" >
 		<![CDATA[
 			update member 
-			set mem_passwd = #{password }, 	
-			mem_name = #{name }, 
-			mem_email = #{email }, 
-			mem_gender = #{gender }, 
-			mem_birth = #{birthDate },
-			mem_profile = #{profile } 
-			where mem_id = #{id } ]]>
+			set mem_passwd = #{mem_passwd }, 	
+			mem_name = #{mem_name }, 
+			mem_email = #{mem_email }, 
+			mem_gender = #{mem_gender }, 
+			mem_birth = #{mem_birth },
+			mem_profile = #{mem_profile } 
+			where mem_snum = #{mem_snum } ]]>
 	</update>
 	
 	<select id="findId" parameterType="string" resultType="UserVO">

@@ -17,6 +17,30 @@ function onClickPwForModifyBtn() {
 	});
 }
 
+function onClickModifyBtn(){
+	var mem_profile = '';
+	if (!$("#profile").text()){
+		mem_profile = myProfileImg.substring(myProfileImg.indexOf(',')+1);
+	}
+	var mem_id = $("#mem_id").val();
+	var mem_passwd = $("#m_mem_passwd").val();
+	var mem_name = $("#mem_name").val();
+	var mem_email = $("#mem_email").val();
+	var mem_gender = $('input[name="mem_gender"]:checked').val()
+	var mem_birth = $("#mem_birth").val();
+	
+	$.ajax( {
+		url : "/user/userModify",
+		type: "post",
+		dataType: "json",
+		data:{'mem_passwd': mem_passwd,"mem_name":mem_name,"mem_email":mem_email,"mem_gender":mem_gender,"mem_birth":mem_birth, "mem_profile":mem_profile },
+		success: function( response ){
+			post_to_url("/user/login", {'mem_id': mem_id,'mem_passwd': mem_passwd})
+		}
+	});
+}
+
+
 function post_to_url(path, params) {
     var form = document.createElement("form");
     form.setAttribute("method", 'post');

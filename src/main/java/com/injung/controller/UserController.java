@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.injung.annotation.Auth;
 import com.injung.annotation.AuthUser;
@@ -135,4 +136,29 @@ public class UserController {
        return map;
     }
 
+	@Auth
+    @ResponseBody
+    @RequestMapping(value="/userModify", method = RequestMethod.POST)
+    public Map<String, Object>  userModify(@AuthUser UserVO authUser, UserVO userInfo, HttpSession session) throws Exception {       
+	    userInfo.setMem_snum(authUser.getMem_snum());
+	    if(userInfo.getMem_profile() == "") {
+	        userInfo.setMem_profile(authUser.getMem_profile()); 
+	    }
+	    else{
+	        String path = session.getServletContext().getRealPath("/")+"resources/img/profile";
+	        String fileName = ".png";
+	        byte[] data = Base64.decodeBase64(userInfo.getMem_profile());
+	        String newFileName =  UploadFileUtils.uploadProfileFile(path, fileName, data);
+	        
+	        userInfo.setMem_profile(newFileName);
+	    }        
+        SimpleDateFormat olddateformat = new SimpleDateFormat("mm/dd/yyyy");
+        SimpleDateFormat newdateformat = new SimpleDateFormat("yyyy/mm/dd");
+        Date oldformatDate = olddateformat.parse(userInfo.getMem_birth());
+        userInfo.setMem_birth(newdateformat.format(oldformatDate));
+        service.modify(userInfo);
+	    Map<String, Object>map = new HashMap<String, Object>();
+	    return map;
+    }
+	
 }

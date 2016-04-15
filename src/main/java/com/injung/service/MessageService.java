@@ -38,5 +38,20 @@ public class MessageService {
     public MessageVO readMessage(long not_snum) throws Exception {
         return dao.selectMessage(not_snum);
     }
+
+    public int NotReadMessageCount(String vo) throws Exception {
+        return dao.NotReadMessageCount(vo);
+    }
+
+    public List<MessageVO> SentList(Criteria cri) throws Exception {
+        List<MessageVO> list = new ArrayList<MessageVO>();
+        list = (List<MessageVO>) dao.SentList(cri);
+        return list;
+    } //보낸편지함 지은 추가부분 끝.
+    
+    //보낸편지함 페이징처리 지은 추가 부분
+    public long SentcountPaging(Criteria cri) throws Exception{
+        return dao.SentcountPaging(cri); //Receive로 다시 구현하기.
+    } //보낸편지함 페이징처리 지은 추가부분 끝.
     
 }

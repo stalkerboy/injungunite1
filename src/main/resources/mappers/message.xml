@@ -54,5 +54,38 @@
 	 	]]> 
 	</select>
 	
+	<select id="NotReadMessageCount" resultType="Integer">
+		<![CDATA[
+         select nvl(count(1),0) not_readmessage_count from member m, note n
+			where n.not_isread = 0
+			and m.mem_id = #{not_getmem_id }
+			and m.mem_snum = n.not_getmem_snum
+ 		]]>			 
+	</select>
+	
+	<select id="SentList" resultType="MessageVO">
+		<![CDATA[
+			select * 
+			from 
+			(
+			select 
+			/*+INDEX_DESC(note pk_not_snum)*/
+			rownum rm, n.not_snum,  m.mem_id not_getmem_id, m.mem_name not_getmem_name, n.not_subject, n.not_regdate from member m , note n 
+			where m.mem_snum = n.not_getmem_snum
+			and n.not_getmem_deleted != 1
+			and n.not_postmem_snum = #{snum}
+			and n.not_post_sent = 1
+			and rownum <= #{page}*#{perPageNum})
+			where rm > (#{page}-1) * #{perPageNum} order by not_regdate desc
+		]]>		
+	</select>
+
+	<select id = "SentcountPaging" resultType="long">
+		<![CDATA[
+		select count(not_snum) from note  
+		where not_snum > 0
+		and not_getmem_snum != #{snum}
+		]]>
+	</select>
 	
 </mapper>

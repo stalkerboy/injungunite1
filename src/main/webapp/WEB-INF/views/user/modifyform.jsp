@@ -25,42 +25,43 @@
 
     <section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/mypage1.jpg" style="overflow-y: scroll;">
         <div class="inline-block" style="height: 10%;"></div>
-        <form id="modify_form" name="modifyform" action="/user/modify" method="post" onsubmit="return checkJoin(this);">
+
             <div class="row text-center" >
             	<h1 style="color:white;letter-spacing: 1px;font-family: 'Raleway', sans-serif;font-weight: 500;">ACCOUNT SETTING</h1>
             </div>
             <div class="row text-center" >
                 <div class="row text-center">
-					<button type="button"  class="btn btn-default btn-sm" style="padding: 2px 24px;" onclick="document.getElementById('profileLoader').click()"><i class="fa fa-photo">profile</i></button>
-					<button type="button"  hidden><input type="file" id="profileLoader" multiple></button>
+					<button type="button" class="btn btn-default btn-sm" style="padding: 2px 24px;" onclick="document.getElementById('profileLoader').click()"><i class="fa fa-photo">profile</i></button>
+					<button type="button" hidden><input type="file" id="profileLoader" multiple></button>
 				</div>
 				<div class="fileDrop" id="profile">
+					<img id="defaultProfile" alt="profile" src="/resources/img/profile/${authUser.mem_profile }">
 				    Drag files here!
 				</div>
             </div>
             <div class="row text-center">
                 <label>ID</label><br>
-                <input class="input-sm" id="id" name="id" type="text" value="${authUser.mem_id }" size="20" isabled>
+                <input class="input-sm" id="mem_id" name="mem_id" type="text" value="${authUser.mem_id }" size="20" readonly="readonly">
             </div>
             <br>
 
             <div class="row text-center">
                 <label>PASSWORD</label><br>
-                &nbsp; <input id="password" name="password" type="password" value="" class="input-sm"><br>
-                &nbsp; <input id="passwordcheck" name="passwordcheck" type="password" value="" class="input-sm">
+                &nbsp; <input id="m_mem_passwd" name="m_mem_passwd" type="password" class="input-sm"><br>
+                &nbsp; <input id="mem_passwd_check" name="mem_passwd_check" type="password" value="" class="input-sm">
             </div>
             <br>
 
 
             <div class="row text-center">
                 <label>NAME</label><br>
-                <input id="name" name="name" type="text" value="${authUser.mem_name }" class="input-sm">
+                <input id="mem_name" name="mem_name" type="text" value="${authUser.mem_name }" class="input-sm">
             </div>
             <br>
 
             <div class="row text-center">
                 <label>EMAIL</label><br>
-                <input id="email" name="email" type="text" value="${authUser.mem_email }" class="input-sm">
+                <input id="mem_email" name="mem_email" type="text" value="${authUser.mem_email }" class="input-sm">
             </div>
             <br>
 
@@ -68,9 +69,9 @@
                 <label>GENDER</label><br>
                 
                 <fieldset>
-					<input type="radio" name="gender" value="female" checked="checked"><label><i class="fa fa-fw fa-female"></i>FEMALE</label>
+					<input type="radio" id="mem_gender" name="mem_gender" value="female" checked="checked"><label><i class="fa fa-fw fa-female"></i>FEMALE</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="gender" value="male"><label><i class="fa fa-fw fa-male"></i>MALE</label>
+                    <input type="radio" id="mem_gender" name="mem_gender" value="male"><label><i class="fa fa-fw fa-male"></i>MALE</label>
 				</fieldset><br>
                 
             </div>
@@ -81,20 +82,17 @@
             	<label>BIRTH-DATE</label><br>
                 <div style="display: inline-block; width:200px;">
                     <div class="input-group">
-                        <input id="date-picker-2" type="text" class="date-picker form-control" name="birthDate" placeholder="BirthDate" size="50" />
+                        <input id="mem_birth" type="text" class="date-picker form-control" name="mem_birth" placeholder="BirthDate" size="50" />
                         <label for="date-picker-2" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
                     </div>
                 </div>
             </div>
             <br>
 
-
             <div class="row text-center">
-<!--                 <a href="/user/mypage"  class="btn btn-white-line btn-lg">CANCEL</a> -->
                 <input type="reset" class="btn btn-white-line btn-lg" value="REWRITE">
-                <input type="submit" class="stone-btn stone-btn-dark stone-btn-round btn-md" value="UPDATE" >
+                <input type="button" class="stone-btn stone-btn-dark stone-btn-round btn-md" value="MODIFY" onclick="onClickModifyBtn();">
             </div>
-        </form>
     </section>
 
 

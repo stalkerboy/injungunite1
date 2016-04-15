@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="/resources/plugins/AdminLTE/css/AdminLTE.min.css">
 	
 	<link rel="stylesheet" href="/resources/custom/css/custom.css">
+	<link rel="stylesheet" href="/resources/custom/css/hero.css">
 	<link rel="stylesheet" href="/resources/plugins/iCheck/flat/flat.css">
 
 </head>
@@ -24,19 +25,13 @@
 	<c:import url="/WEB-INF/views/modal/pwformodifymodal.jsp"></c:import>
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
 
-<div class="wrapper" >
-	<div style="height: 50px;"></div>
-	<h2 >&nbsp;&nbsp;Mailbox5 <small>13 new messages</small></h2>
-	
+<div class="wrapper">
+	<section id="hero" class="module bg-dark-30 js-fullheight" style="padding:70px 0;" data-background="/resources/img/portfolio-8.jpg">
+	<div style="height: 150px;"></div>
+	</section>
+	<h2 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ReceiveMessagebox</h2>	
               <div class="box box-primary" style="width:90%;left:5%;">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Inbox</h3>
-                  <div class="box-tools pull-right">
-                    <div class="has-feedback">
-                      <input type="text" class="form-control input-sm" placeholder="Search Mail">
-                      <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                    </div>
-                  </div><!-- /.box-tools -->
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                   <div class="mailbox-controls">
@@ -112,6 +107,10 @@
 <script src='/resources/custom/js/customwrite.js'></script>
 <script src='/resources/custom/js/custommodals.js'></script>
 <script src="/resources/plugins/iCheck/icheck.min.js"></script>
+
+<script src="/resources/custom/js/jquery.superslides.min.js"></script>
+<script src="/resources/custom/js/custombackground.js"></script>
+
 <script>
 $(function () {
     $('.mailbox-messages input[type="checkbox"]').iCheck({

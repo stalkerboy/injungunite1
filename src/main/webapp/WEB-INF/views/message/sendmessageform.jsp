@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="/resources/plugins/AdminLTE/css/AdminLTE.min.css">
 	
 	<link rel="stylesheet" href="/resources/custom/css/custom.css">
+	<link rel="stylesheet" href="/resources/custom/css/hero.css">
+	<link rel="stylesheet" href="/resources/plugins/iCheck/flat/flat.css">
 
 </head>
 <body>
@@ -24,75 +26,73 @@
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
 
 <div class="wrapper" >
-	<div style="height: 50px;"></div>
-	<h2 >&nbsp;&nbsp;Mailbox5 <small>13 new messages</small></h2>
-	<div class="box box-primary" style=" width: 90%; left:5%;">
+	<section id="hero" class="module bg-dark-30 js-fullheight" style="padding:70px 0;" data-background="/resources/img/portfolio-8.jpg">
+	<div style="height: 150px;"></div>
+		</section>
+	<h2 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SentMessagebox <small>13 new messages</small></h2>
+              <div class="box box-primary" style="width:90%;left:5%;">
 		<div class="box-header with-border">
-			<h3 class="box-title">Inbox</h3>
-			<div class="box-tools pull-right">
-				<div class="has-feedback">
-					<input type="text" class="form-control input-sm"
-						placeholder="Search Mail"> <span
-						class="glyphicon glyphicon-search form-control-feedback"></span>
-				</div>
-			</div>
 			<!-- /.box-tools -->
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body no-padding">
-			<div class="mailbox-controls">
-				<!-- Check all button -->
-				<button class="btn btn-default btn-sm checkbox-toggle">
-					<i class="fa fa-square-o"></i>
-				</button>
-				<div class="btn-group">
-					<button class="btn btn-default btn-sm">
-						<i class="fa fa-trash-o"></i>
-					</button>
-					<button class="btn btn-default btn-sm">
-						<i class="fa fa-reply"></i>
-					</button>
-					<button class="btn btn-default btn-sm">
-						<i class="fa fa-share"></i>
-					</button>
-				</div>
-				<!-- /.btn-group -->
-				<button class="btn btn-default btn-sm">
-					<i class="fa fa-refresh"></i>
-				</button>
-				<div class="pull-right">
-					1-50/200
-					<div class="btn-group">
-						<button class="btn btn-default btn-sm">
-							<i class="fa fa-chevron-left"></i>
-						</button>
-						<button class="btn btn-default btn-sm">
-							<i class="fa fa-chevron-right"></i>
-						</button>
-					</div>
-					<!-- /.btn-group -->
-				</div>
-				<!-- /.pull-right -->
-			</div>
-			<div class="table-responsive mailbox-messages">
-				<table class="table table-hover table-striped">
-					<tbody>
-						<tr>
-							<td><input type="checkbox"></td>
-							<td class="mailbox-star"><a href="#"><i
-									class="fa fa-star text-yellow"></i></a></td>
-							<td class="mailbox-name"><a href="read-mail.html">Alexander
-									Pierce</a></td>
-							<td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> -
-								Trying to find a solution to this problem...</td>
-							<td class="mailbox-date">5 mins ago</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-</div>
+                  <div class="mailbox-controls">
+                    <!-- Check all button -->
+                    <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+                    <button class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                    
+                  </div>
+                  <div class="table-responsive mailbox-messages">
+                    <table class="table table-hover table-striped">
+                      <tbody>
+                      <c:choose>
+                    <c:when test="${fn:length(list) > 0}">
+                        <c:forEach items="${list }" var="MessagesVO">
+                        <tr>
+                          <td><input type="checkbox" style="width:5%;"></td>
+                          <td class="mailbox-star" style="width:5%;">
+                           	<c:choose>
+                           	<c:when test="${MessagesVO.not_isread == 1 }">
+                    			<i class="fa fa-folder-open-o"></i>
+                    		</c:when>
+                    		<c:otherwise>
+                    			<i class="fa fa-envelope-o"></i>
+                    		</c:otherwise>
+                   			</c:choose>
+                          </td>
+                          <td class="mailbox-name" style="width:10%;"><a href="#"><b>${MessagesVO.not_getmem_id}</b></a></td>
+                          <td class="mailbox-subject" style="width:60%;"><a href="/message/sentreadmessageform?snum=${MessagesVO.not_snum}" ><b>${MessagesVO.not_subject}</b></a></td>
+                          <td class="mailbox-date" style="width:20%;">${fn:substring(MessagesVO.not_regdate, 0, 16)}</td>
+                        </tr>
+                        </c:forEach>
+                    </c:when>
+                    </c:choose>
+                      </tbody>
+                    </table><!-- /.table -->
+                  </div><!-- /.mail-box-messages -->
+                </div><!-- /.box-body -->
+                <div class="box-footer no-padding">
+                  <div class="mailbox-controls">
+                    <!-- Check all button -->                    
+                    <div class="pull-right">	
+					<ul class="pagination pagination-sm inline">
+                        <c:if test="${pageMaker.prev }">
+                            <li><a href="/message/recivemessageform?page=${pageMaker.startPage -1}">&laquo;</a></li>
+                        </c:if>
+                        <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
+                            <li><a href="/message/recivemessageform?page=${idx}">${idx}</a></li>
+                        </c:forEach>
+                        <c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+                             <li><a href="/message/recivemessageform?page=${pageMaker.endPage +1}">&raquo;</a></li>
+                        </c:if>
+                    </ul>                      
+
+                      
+                    </div><!-- /.pull-right -->
+                  </div>
+                </div>
+              </div><!-- /. box -->
+    </div><!-- ./wrapper -->
 <!-- js import -->
 <!-- jquery -->
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -106,5 +106,33 @@
 
 <script src='/resources/custom/js/customwrite.js'></script>
 <script src='/resources/custom/js/custommodals.js'></script>
-</body>
-</html>
+<script src="/resources/plugins/iCheck/icheck.min.js"></script>
+
+<script src="/resources/custom/js/jquery.superslides.min.js"></script>
+<script src="/resources/custom/js/custombackground.js"></script>
+
+<script>
+$(function () {
+    $('.mailbox-messages input[type="checkbox"]').iCheck({
+      checkboxClass: 'icheckbox_flat',
+      radioClass: 'iradio_flat'
+    });
+
+    //Enable check and uncheck all functionality
+    $(".checkbox-toggle").click(function () {
+      var clicks = $(this).data('clicks');
+      if (clicks) {
+        //Uncheck all checkboxes
+        $(".mailbox-messages input[type='checkbox']").iCheck("uncheck");
+        $(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
+      } else {
+        //Check all checkboxes
+        $(".mailbox-messages input[type='checkbox']").iCheck("check");
+        $(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
+      }
+      $(this).data("clicks", !clicks);
+    });   
+});
+
+
+</script>

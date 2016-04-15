@@ -37,4 +37,16 @@ public class MessageDAO {
     public MessageVO selectMessage(long not_snum) throws Exception{
         return session.selectOne(namespace+".selectMessage", not_snum);
     }
+
+    public int NotReadMessageCount(String vo) throws Exception {
+        return session.selectOne(namespace +".NotReadMessageCount", vo);
+    }
+
+    public List<MessageVO> SentList(Criteria cri)throws Exception {
+        return session.selectList(namespace+".SentList", cri);
+    } 
+    
+    public long SentcountPaging(Criteria cri)throws Exception{
+        return session.selectOne(namespace+".SentcountPaging", cri);
+    }
 }

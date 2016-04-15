@@ -3,8 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<head>
-
 <header class="main-header">	
 	<nav class="navbar navbar navbar-fixed-top"  role="navigation">
 		<div class="navbar-header">
@@ -25,7 +23,7 @@
 			<ul class="nav navbar-nav">	
 				<li class="dropdown messages-menu">
                 	<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="notreadmessage();"><i class="fa fa-envelope-o"></i>
-                  	<span class="label label-success"> ${notreadMessageNum} </span></a>
+                  	<span class="label label-success" id="NotReadMessageCount"> ${notreadMessageNum} </span></a>
                 	<ul class="dropdown-menu">
 	                  	<li class="header" >	
 	                  		You have ${notreadMessageNum} messages
@@ -131,5 +129,16 @@
       
       
 <script type="text/javascript">
-		
+	setInterval(function(){
+		$.ajax({
+			url : "/message/NotReadMessageCount",
+			type:"GET",
+            dataType:"json",
+            data : "",
+			success:function(response){
+				$("#NotReadMessageCount").empty();
+				$("#NotReadMessageCount").append(response.data);
+			}
+		})
+	},3000);
 </script>      

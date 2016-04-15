@@ -88,8 +88,14 @@ public class MessageController {
     
     @Auth
     @RequestMapping(value="/sendmessageform", method=RequestMethod.GET)
-    public void sendmessageform(@AuthUser UserVO auth) throws Exception{
-        
+    public void sendmessageform(Criteria cri, Model model, @AuthUser UserVO auth) throws Exception{
+        cri.setSnum(auth.getMem_snum());
+        cri.setId(auth.getMem_id());
+        model.addAttribute("list",service.SentList(cri));
+        PageMaker pageMaker = new PageMaker();
+        pageMaker.setCri(cri);
+        pageMaker.setTotalCount(service.SentcountPaging(cri));
+        model.addAttribute("pageMaker",pageMaker);
     }
     
     @Auth
@@ -98,6 +104,18 @@ public class MessageController {
         model.addAttribute("targetUser", targetUser);
     }
     
+    @Auth
+    @RequestMapping(value="/NotReadMessageCount", method=RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object>  NotReadMessageCount(@AuthUser UserVO auth) throws Exception{
+        MessageVO vo = new MessageVO();
+        int messagecount;
+        vo.setNot_getmem_id(auth.getMem_id());
+        Map<String, Object> map = new HashMap<String, Object>();
+        messagecount = service.NotReadMessageCount(auth.getMem_id());
+        map.put("data", messagecount);
+        return map;
+    }
     
     
 }
