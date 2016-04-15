@@ -68,18 +68,14 @@ function deletefriend(fri_snum){
 		
 		var divstr = "";
 		tablestr = "<div class=\"box-header with-border\">";
-
-				 for(var i=0;i<friendlist.length;i++) 
-					{ 
-  						var friend = friendlist[i].friendNo;
-						  divstr +=	"<li class=\"dropdown friend-menu\"><div class=\"pull-right\"><span title=\"add\" class=\"add-badge badge bg-green\" style=\"margin:0; display:none;\" onclick=\"onClickFriendAdd();\"><i class=\"fa fa-user-plus\"></i></span><span title=\"delete\" class=\"del-badge badge bg-red\" style=\"margin:0; display:none;\" onclick=\"onClickFriendDel();\"><i class=\"fa fa-user-times\"></i></span></div><img src=\'/displayFile?fileName="+friendlist[i].profile +"\' class=\"friend-img\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+friendlist[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"#\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\"><a href=\"#\" onclick=\"deletefriend(" +friendlist[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a><hr class=\"divider\"><a href=\"#\" ><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li></div>";
-                    } 
-						
- 					var frienddiv = document.getElementById("friendlist-div");
- 					frienddiv.innerHTML = divstr;
-				}
-				
-			});
+			for(var i=0;i<friendlist.length;i++){ 
+  				var friend = friendlist[i].friendNo;
+				divstr +=	"<li class=\"dropdown friend-menu\"><div class=\"pull-right\"><span title=\"add\" class=\"add-badge badge bg-green\" style=\"margin:0; display:none;\" onclick=\"onClickFriendAdd();\"><i class=\"fa fa-user-plus\"></i></span><span title=\"delete\" class=\"del-badge badge bg-red\" style=\"margin:0; display:none;\" onclick=\"onClickFriendDel();\"><i class=\"fa fa-user-times\"></i></span></div><img src=\'/displayFile?fileName="+friendlist[i].profile +"\' class=\"friend-img\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+friendlist[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"#\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\"><a href=\"#\" onclick=\"deletefriend(" +friendlist[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a><hr class=\"divider\"><a href=\"#\" ><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li></div>";
+			} 
+ 			var frienddiv = document.getElementById("friendlist-div");
+ 			frienddiv.innerHTML = divstr;
+		}
+	});
 }
 ;
 function addfriend(mem_snum){
@@ -101,30 +97,11 @@ function addfriend(mem_snum){
 		
 		var divstr = "";
 		tablestr = "<div class=\"box-header with-border\">";
-
-				 for(var i=0;i<friendlist.length;i++) 
-					{ 
-  						var friend = friendlist[i].friendNo;
-						  divstr +=	"<li class=\"dropdown friend-menu\">"+
-			             			"<div class=\"pull-right\">"+
-			               			"<span title=\"add\" class=\"add-badge badge bg-green\" style=\"margin:0; display:none;\" onclick=\"onClickFriendAdd();\"><i class=\"fa fa-user-plus\"></i></span>"+
-			                		"<span title=\"delete\" class=\"del-badge badge bg-red\" style=\"margin:0; display:none;\" onclick=\"onClickFriendDel();\"><i class=\"fa fa-user-times\"></i></span>"+
-			           				"</div>"+
-			            			"<img src=\'/displayFile?fileName="+friendlist[i].profile +"\' class=\"friend-img\" /></br>"+
-			              			"<a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+friendlist[i].fri_mem_id+"</a>"+
-			                "<ul class =\"dropdown-menu\">"+
-				          	"<li class=\"header\">"+
-			    			"<a href=\"#\"><i class=\"fa fa-user\"></i>Friend Page</a>"+  		
-			           	 	"<hr class=\"divider\">"+
-			           	 	"<a href=\"#\" onclick=\"deletefriend(" +friendlist[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a>" +
-			           	 	"<hr class=\"divider\">"+
-			    	        "<a href=\"#\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a>"+         		
-			     	       	  	  "</li>"+
-			               		  "</ul>"+
-			                      "</li>"+
-			                      "</div>";
-                    } 
- 					var frienddiv = document.getElementById("friendlist-div");
+		for(var i=0;i<friendlist.length;i++){ 
+			var friend = friendlist[i].friendNo;
+			divstr +=	"<li class=\"dropdown friend-menu\"><div class=\"pull-right\"><span title=\"add\" class=\"add-badge badge bg-green\" style=\"margin:0; display:none;\" onclick=\"onClickFriendAdd();\"><i class=\"fa fa-user-plus\"></i></span><span title=\"delete\" class=\"del-badge badge bg-red\" style=\"margin:0; display:none;\" onclick=\"onClickFriendDel();\"><i class=\"fa fa-user-times\"></i></span></div><img src=\'/displayFile?fileName="+friendlist[i].profile +"\' class=\"friend-img\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+friendlist[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"#\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\"><a href=\"#\" onclick=\"deletefriend(" +friendlist[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a><hr class=\"divider\"><a href=\"#\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li></div>";
+        } 
+		var frienddiv = document.getElementById("friendlist-div");
  					frienddiv.innerHTML = divstr;
 				}
 				
