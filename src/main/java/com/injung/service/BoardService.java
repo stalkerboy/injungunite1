@@ -17,7 +17,7 @@ import com.injung.dao.BoardDAO;
 public class BoardService  {
 
 	@Inject
-	private BoardDAO dao;
+	private BoardDAO dao; 
 	
 	
 	public List<BoardVO> getBoardListbyUserId(String mem_id) {
