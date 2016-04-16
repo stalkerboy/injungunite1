@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="rserve">
+
+	
+	<select id="ff" resultType="TestVo">
+      <![CDATA[
+         select *
+         from favor_category
+        
+      ]]>
+   </select>
+ 	
+ 	<select id="getCategory" parameterType="Long" resultType="string">
+      <![CDATA[
+         select category
+         from favor_category
+         where mem_snum = #{memNo }
+         order by category
+        
+      ]]>
+   </select>
+   
+   <select id="recommend" parameterType="string" resultType="BoardVO">
+      <![CDATA[
+         select *
+         from board
+         where boa_category = #{category } and boa_regdate >= sysdate-7       
+      ]]>
+   </select>
+   
+   <insert id="createscore" parameterType="Long">
+      <![CDATA[
+         insert into category_score
+         values(#{mem_snum },0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)     
+      ]]>
+   </insert>
+   
+   <insert id="createUserCategory" parameterType="map">
+      <![CDATA[
+         insert into favor_category
+         values(#{mem_snum }, #{default })     
+      ]]>
+   </insert>
+   
+   <insert id="updateUserCategory" parameterType="map">
+   		<![CDATA[
+         insert into favor_category
+         values(#{mem_snum }, #{favor })     
+      ]]>
+   </insert>
+   
+   <select id="selectCategoryByQueryBoard" parameterType="string" resultType="string">
+   		<![CDATA[
+         	select b.BOA_CATEGORY category
+			from member m, board b, query_boardlist q
+			where m.MEM_ID = #{mem_id } and m.MEM_SNUM = q.MEM_SNUM and q.BOA_SNUM = b.BOA_SNUM
+      		and sysdate - q.QUR_REGDATE < 7       
+      ]]>
+   </select>
+   
+   <select id="selectCategoryByLikeList" parameterType="string" resultType="string">
+   		<![CDATA[
+         	select b.BOA_CATEGORY category
+			from member m, board b, likelist l
+			where m.MEM_ID = #{mem_id } and m.MEM_SNUM = l.MEM_SNUM and l.BOA_SNUM = b.BOA_SNUM
+      		and sysdate - l.LKL_REGDATE < 7     
+      ]]>
+   </select>
+   
+   <select id="selectCategoryByBoardComment" parameterType="string" resultType="string">
+   		<![CDATA[
+         	select b.BOA_CATEGORY category
+			from member m, board b, board_comment c
+			where m.MEM_ID = #{mem_id } and m.MEM_SNUM = c.MEM_SNUM and c.BOA_SNUM = b.BOA_SNUM
+      		and sysdate - c.COM_REGDATE < 10       
+      ]]>
+   </select>
+   
+   <update id="updatescore" parameterType="map">
+   		<![CDATA[
+         	update category_score
+         	set game = #{score.game },
+         	education = #{score.education },
+         	IT = #{score.IT },
+         	fashion = #{score.fashion },
+         	daily = #{score.daily },
+         	health = #{score.health },
+         	news = #{score.news },
+         	travel = #{score.travel },
+         	sports = #{score.sports },
+         	food = #{score.food },
+         	music = #{score.music },
+         	movie = #{score.movie },
+         	book = #{score.book },
+         	car = #{score.car },
+         	pet = #{score.pet },
+         	nature = #{score.nature },
+         	goods = #{score.goods },
+         	beauty = #{score.beauty },
+         	cartoon = #{score.cartoon },
+         	love = #{score.love }         	
+         	where mem_snum = #{mem_snum}       
+      ]]>
+   </update>
+   
+   <select id="selectscore" parameterType="Long" resultType="string">
+   		<![CDATA[
+         	WITH T AS (
+  			SELECT * FROM CATEGORY_SCORE where mem_snum=#{mem_snum }
+  			)
+  			SELECT V FROM T
+  			UNPIVOT (C FOR V IN(EDUCATION, IT, GAME, FASHION, DAILY, HEALTH,
+                      NEWS, TRAVEL, SPORTS, FOOD, MUSIC, MOVIE, BOOK, CAR, PET,
+                      NATURE, GOODS, BEAUTY, CARTOON, LOVE))
+                      ORDER BY C DESC     
+      ]]>
+   </select>
+   
+   <delete id="deleteUserCategory" parameterType="Long">
+   		<![CDATA[
+         	delete from favor_category
+         	where mem_snum = #{mem_snum }
+      	]]>
+   </delete>
+   
+   
+</mapper>

@@ -197,12 +197,12 @@ function showfindpw(){
  
  
  function joinformSubmit(){
-//	 alert($('#joinform input[name=id]').val());
- 	 var base64img = myProfileImg.substring(myProfileImg.indexOf(',')+1);
-	 if(checkJoin()){
-		 $('#mem_profile').val(base64img);
-		 $('#joinform').submit(); 
-	 }
+	 //alert($('#joinform input[name=id]').val());
+ 	 var base64img = myProfileImg.substring(myProfileImg.indexOf(',')+1); 	 
+	 $('#mem_profile').val(base64img);
+	 alert("test");
+	 $('#joinform').submit();
+	
 	 	 
  }
  

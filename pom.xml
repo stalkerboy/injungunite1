@@ -29,6 +29,18 @@
 	
 	<dependencies>
 	
+		<!--  Rserve -->
+		<dependency>
+			<groupId>com.synclife</groupId>
+			<artifactId>exLib2</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<!--  Rengine -->
+		<dependency>
+			<groupId>com.synclife</groupId>
+			<artifactId>exLib</artifactId>
+			<version>1.0</version>
+		</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

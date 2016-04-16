@@ -19,16 +19,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.support.SessionStatus;
 
 import com.injung.annotation.Auth;
 import com.injung.annotation.AuthUser;
 import com.injung.service.BoardService;
 import com.injung.service.FriendService;
+import com.injung.service.Rservice;
+import com.injung.service.ScoreService;
 import com.injung.service.UserService;
 import com.injung.util.UploadFileUtils;
-import com.injung.vo.BoardVO;
-import com.injung.vo.CategoryVO;
 import com.injung.vo.FriendVO;
 import com.injung.vo.UserVO;
 
@@ -46,10 +45,18 @@ public class UserController {
 	@Inject
     private FriendService fservice;
 	
+	@Inject
+	private ScoreService scoreservice;
+	
+	@Inject
+	private Rservice rservice;
+	
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(UserVO vo ,HttpSession session) throws Exception {
 	    String path = session.getServletContext().getRealPath("/")+"resources/img/profile";
 	    String fileName = ".png";
+	    
+	    System.out.println("join");
 	    
 	    byte[] data = Base64.decodeBase64(vo.getMem_profile());
 	    String newFileName =  UploadFileUtils.uploadProfileFile(path, fileName, data);
@@ -63,15 +70,21 @@ public class UserController {
 	    Date oldformatDate = olddateformat.parse(vo.getMem_birth());
 	    vo.setMem_birth(newdateformat.format(oldformatDate));
 		service.userJoin(vo);
+		vo = service.getUserInfoById(vo.getMem_id());
+		scoreservice.createScoreTable(vo.getMem_snum());
+		scoreservice.createUserCategory(vo.getMem_snum());
+		
 		return "redirect:/";
 	}
 	
 	
 	@Auth
 	@RequestMapping(value="/main")
-	public String writeform(@AuthUser UserVO uv, Model model) {
+	public String writeform(@AuthUser UserVO uv, Model model) throws Exception {
 //		model.addAttribute("categoryList", service.getCategoryListById(uv.getMem_id()));
 //		return "user/usermain";
+	    scoreservice.calScore(uv.getMem_id(), uv.getMem_snum());
+	    scoreservice.setUserCategory(uv.getMem_snum());
 		return "user/usermain";
 	}
 	

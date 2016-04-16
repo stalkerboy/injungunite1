@@ -9,12 +9,15 @@
  <typeAlias alias="CategoryVO" type="com.injung.vo.CategoryVO"/>
  <typeAlias alias="MessageVO" type="com.injung.vo.MessageVO"/>
  <typeAlias alias="BoardCommentVO" type="com.injung.vo.BoardCommentVO"/>
+ <typeAlias alias="testVO" type="com.injung.vo.TestVO"/>
+ <typeAlias alias="ScoreVO" type="com.injung.vo.ScoreVO"/>
  </typeAliases>
  <mappers>
 		<mapper resource="/mappers/user.xml" />
 		<mapper resource="/mappers/board.xml" />
 		<mapper resource="/mappers/message.xml" />
 		<mapper resource="/mappers/friend.xml" />
+		<mapper resource="/mappers/rserve.xml" />
 	</mappers>
  </configuration>
  
