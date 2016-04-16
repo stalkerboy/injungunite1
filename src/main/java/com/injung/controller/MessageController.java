@@ -50,9 +50,6 @@ public class MessageController {
         messagesVo.setNot_getMem_snum(auth.getMem_snum());
         
         List<MessageVO> list = service.notReadReceiveList(messagesVo);
-        for(MessageVO aa: list)
-            System.out.println(aa);
-        
         
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("data",list);
@@ -60,8 +57,8 @@ public class MessageController {
     }
     
     @Auth
-    @RequestMapping(value="/recivemessageform", method=RequestMethod.GET)
-    public void recivemessageform(Criteria cri, Model model, @AuthUser UserVO auth) throws Exception{
+    @RequestMapping(value="/receivemessageform", method=RequestMethod.GET)
+    public void receivemessageform(Criteria cri, Model model, @AuthUser UserVO auth) throws Exception{
         cri.setSnum(auth.getMem_snum());
         cri.setId(auth.getMem_id());
         model.addAttribute("list", service.ReceiveList(cri));
@@ -77,12 +74,13 @@ public class MessageController {
         MessageVO mv = new MessageVO();
         mv.setNot_snum(not_snum);
         MessageVO readMessage = service.readMessage(not_snum);
+        
         if(readMessage.getNot_getMem_snum() == auth.getMem_snum()) {
             model.addAttribute("messageVO", readMessage);
             return "/message/readmessageform";
         }
         else{
-            return "/message/recivemessageform";
+            return "/message/receivemessageform";
         }
     }
     

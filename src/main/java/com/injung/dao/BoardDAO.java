@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.injung.vo.BoardVO;
-import com.injung.vo.CategoryVO;
 import com.injung.vo.BoardCommentVO;
 
 
@@ -27,17 +26,13 @@ public class BoardDAO {
 	}
 	public void insertTag(BoardVO bv) {
 		session.insert(namespace+".insertTag", bv);
-		
-	}
-	public void insertCategory(BoardVO bv) {
-		session.insert(namespace+".insertCategory", bv);		
 	}
 	
 	public List<BoardVO> selectBoardListByUserId(String mem_id) {
         return session.selectList(namespace+".selectBoardListByUserId", mem_id);        
     }
 	
-	public List<CategoryVO> selectCategoryListById(String mem_id) {        
+	public List<BoardVO> selectCategoryListById(String mem_id) {        
         return session.selectList(namespace+".selectCategoryListById", mem_id);
     }
 	
@@ -45,7 +40,7 @@ public class BoardDAO {
         return session.selectList(namespace+".selectBoardListByCategoryUserId", vo);        
     }
 	
-	public List<CategoryVO> selectCategoryList() {        
+	public List<BoardVO> selectCategoryList() {        
         return session.selectList(namespace+".selectCategoryList");
     }
 	

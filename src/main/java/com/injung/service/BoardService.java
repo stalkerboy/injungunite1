@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.injung.vo.BoardVO;
-import com.injung.vo.CategoryVO;
 import com.injung.vo.BoardCommentVO;
 import com.injung.vo.UserVO;
 import com.injung.dao.BoardDAO;
@@ -26,11 +25,11 @@ public class BoardService  {
 	
 	
 	
-	public List<CategoryVO> getCategoryListByUserId(String memid) throws Exception {
+	public List<BoardVO> getCategoryListByUserId(String memid) throws Exception {
 		return dao.selectCategoryListById(memid);
 	}
 	
-	public List<CategoryVO> getCategoryList() throws Exception {
+	public List<BoardVO> getCategoryList() throws Exception {
         return dao.selectCategoryList();
     }
     
@@ -43,7 +42,6 @@ public class BoardService  {
 			bv.setTag(tag);
 			dao.insertTag(bv);
 		}
-		dao.insertCategory(bv);
 	}
 	
 	public List<BoardVO> getBoardListbyCategoryUserId(BoardVO vo) {

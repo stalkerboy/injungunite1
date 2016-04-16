@@ -94,16 +94,15 @@
   <div class="box-header">
     <h3 class="box-title" style="color:black">FriendList</h3>
     <div class="box-tools pull-right">
-      <button class="label label-danger" onclick="onClickFriendEdit();">편집</button>
+      <button id="friendEditBtn" class="label label-danger" onclick="onClickFriendEdit();">편집</button>
     </div>
   </div><!-- /.box-header -->
   <div class="box-body no-padding">
     <ul class="users-list clearfix"  id="friendlist-div">
 		      <c:forEach items="${friendlist}" var="friendVO">	 	      
 			 <li class="dropdown friend-menu">
-             <div class="pull-right">
-               <span title="add" class="add-badge badge bg-green" style="margin:0; display:none;" onclick="onClickFriendAdd();"><i class="fa fa-user-plus"></i></span>
-                <span title="delete" class="del-badge badge bg-red" style="margin:0; display:none;" onclick="onClickFriendDel();"><i class="fa fa-user-times"></i></span>
+             <div class="pull-right">               
+                <span title="delete" class="del-badge badge bg-red" style="margin:0; display:none;" onclick="deletefriendFromMyList(${friendVO.fri_snum});"><i class="fa fa-user-times"></i></span>
             </div>
             <img src='/displayFile?fileName=${friendVO.fri_mem_profile}' class="friend-img" /></br>
               <a class="dropdown-toggle" data-toggle="dropdown" id="${friendVO.fri_mem_id}" href="#" aria-expanded="false" style="color:black">${friendVO.fri_mem_id}</a>
@@ -112,7 +111,7 @@
     			<a href="#"><i class="fa fa-user"></i>Friend Page</a>         		
            		<hr class="divider">
            		 
-    			<a href="#" onclick="deletefriend(${friendVO.fri_snum})"><i class="fa fa-user-times"></i>Friend Delete</a>
+    			<a href="#" onclick="deletefriendFromMyList(${friendVO.fri_snum})"><i class="fa fa-user-times"></i>Friend Delete</a>
     			        		
            		<hr class="divider">
     			<a href="#"><i class="fa fa-envelope-o"></i>Sent Message</a>        		

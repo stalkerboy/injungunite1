@@ -1,4 +1,5 @@
 var friendEditMode = false;
+var mem_id = '';
 function onClickFriendEdit(){
 	if(friendEditMode){
 		$(".del-badge").css("display","none");
@@ -11,7 +12,10 @@ function onClickFriendEdit(){
 }
 
 $("#searchfriend-btn").on("click", function(){
-	var mem_id = $("#friendId-search").val();			
+	mem_id = $("#friendId-search").val();
+	$("#friendEditBtn").css("display","none");
+	
+	$(".del-badge").css("display","none");
 	
 	$.ajax({
 		url : '/user/userfind',
@@ -32,13 +36,12 @@ $("#searchfriend-btn").on("click", function(){
             
 			for(var i=0;i<userfind.length;i++) 
 			{
-				var friend = userfind[i].friendNo;
-				divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"><span title=\"add\" class=\"add-badge badge bg-green\" style=\"margin:0; display:none;\" onclick=\"onClickFriendAdd();\"><i class=\"fa fa-user-plus\"></i></span><span title=\"delete\" class=\"del-badge badge bg-red\" style=\"margin:0; display:none;\" onclick=\"onClickFriendDel();\"><i class=\"fa fa-user-times\"></i></span></div><img src=\'/displayFile?fileName="+userfind[i].profile +"\' class=\"friend-img\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"#\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
+				divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/displayFile?fileName="+userfind[i].fri_mem_profile +"\' class=\"friend-img\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"#\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
            	 	if(userfind[i].ismyfriend==1){
 	           		divstr += "<a href=\"#\" onclick=\"deletefriend(" +userfind[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a>" ;
            	 	}
            	 	else if(userfind[i].ismyfriend==0) {
-           	 		divstr += "<a href=\"#\" onclick=\"addfriend(" +userfind[i].mem_snum +")\"><i class=\"fa fa-user-plus\"></i>Friend Add</a>" ;
+           	 		divstr += "<a href=\"#\" onclick=\"addfriend(" +userfind[i].fri_mem_snum +")\"><i class=\"fa fa-user-plus\"></i>Friend Add</a>" ;
            	 	}
            		divstr+= "<hr class=\"divider\"><a href=\"#\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li>";
             } 
@@ -49,6 +52,72 @@ $("#searchfriend-btn").on("click", function(){
 })
 
 function deletefriend(fri_snum){   
+	$("#friendEditBtn").css("display","none");
+	$.ajax({
+		url : '/user/deletefriend',
+		data : {"fri_snum":fri_snum, "mem_id": mem_id},
+		dataType : 'json',
+		type: 'POST',
+				
+		success : function(result) {
+			var userfind = result.userfind;
+			
+			var divstr = "";
+			tablestr = "<div class=\"box-header with-border\">";
+            
+			for(var i=0;i<userfind.length;i++) 
+			{
+				divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/displayFile?fileName="+userfind[i].fri_mem_profile +"\' class=\"friend-img\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"#\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
+           	 	if(userfind[i].ismyfriend==1){
+	           		divstr += "<a href=\"#\" onclick=\"deletefriend(" +userfind[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a>" ;
+           	 	}
+           	 	else if(userfind[i].ismyfriend==0) {
+           	 		divstr += "<a href=\"#\" onclick=\"addfriend(" +userfind[i].fri_mem_snum +")\"><i class=\"fa fa-user-plus\"></i>Friend Add</a>" ;
+           	 	}
+           		divstr+= "<hr class=\"divider\"><a href=\"#\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li>";
+            } 
+			var frienddiv = document.getElementById("friendlist-div");
+			frienddiv.innerHTML = divstr;
+		}
+	});
+}
+;
+function addfriend(mem_snum){
+	$("#friendEditBtn").css("display","none");
+	$.ajax({
+		url : '/user/addfriend',
+		data : {"mem_snum":mem_snum, "mem_id": mem_id},
+		dataType : 'json',
+		type: 'POST',
+		
+		success : function(result) {
+			var userfind = result.userfind;
+			
+			var divstr = "";
+			tablestr = "<div class=\"box-header with-border\">";
+            
+			for(var i=0;i<userfind.length;i++) 
+			{
+				divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/displayFile?fileName="+userfind[i].fri_mem_profile +"\' class=\"friend-img\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"#\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
+           	 	if(userfind[i].ismyfriend==1){
+	           		divstr += "<a href=\"#\" onclick=\"deletefriend(" +userfind[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a>" ;
+           	 	}
+           	 	else if(userfind[i].ismyfriend==0) {
+           	 		divstr += "<a href=\"#\" onclick=\"addfriend(" +userfind[i].fri_mem_snum +")\"><i class=\"fa fa-user-plus\"></i>Friend Add</a>" ;
+           	 	}
+           		divstr+= "<hr class=\"divider\"><a href=\"#\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li>";
+            } 
+			var frienddiv = document.getElementById("friendlist-div");
+			frienddiv.innerHTML = divstr;
+		}
+	});
+}
+
+
+
+
+function deletefriendFromMyList(fri_snum){   
+	var mem_id = $("#friendId-search").val();
 	$.ajax({
 		url : '/user/deletefriend',
 		headers : {
@@ -68,38 +137,10 @@ function deletefriend(fri_snum){
 			tablestr = "<div class=\"box-header with-border\">";
 			for(var i=0;i<friendlist.length;i++){ 
   				var friend = friendlist[i].friendNo;
-				divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"><span title=\"add\" class=\"add-badge badge bg-green\" style=\"margin:0; display:none;\" onclick=\"onClickFriendAdd();\"><i class=\"fa fa-user-plus\"></i></span><span title=\"delete\" class=\"del-badge badge bg-red\" style=\"margin:0; display:none;\" onclick=\"onClickFriendDel();\"><i class=\"fa fa-user-times\"></i></span></div><img src=\'/displayFile?fileName="+friendlist[i].profile +"\' class=\"friend-img\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+friendlist[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"#\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\"><a href=\"#\" onclick=\"deletefriend(" +friendlist[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a><hr class=\"divider\"><a href=\"#\" ><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li></div>";
+				divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"><span title=\"delete\" class=\"del-badge badge bg-red\" style=\"margin:0; display:none;\" onclick=\"deletefriendFromMyList("+friendVO.fri_snum+");\"><i class=\"fa fa-user-times\"></i></span></div><img src=\'/displayFile?fileName="+friendlist[i].profile +"\' class=\"friend-img\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+friendlist[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"#\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\"><a href=\"#\" onclick=\"deletefriendFromMyList(" +friendlist[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a><hr class=\"divider\"><a href=\"#\" ><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li></div>";
 			} 
  			var frienddiv = document.getElementById("friendlist-div");
  			frienddiv.innerHTML = divstr;
-		}
-	});
-}
-;
-function addfriend(mem_snum){
-	$.ajax({
-		url : '/user/addfriend',
-		headers : {
-            "Content-Type" : "application/json",
-            "X-HTTP-Method-Override" : "POST"
-         },
-		data : mem_snum,
-		dataType : 'json',
-		processData: false,
-		contentType: false,
-		type: 'POST',
-		
-		success : function(result) {
-			var friendlist = result.friendlist;
-			
-			var divstr = "";
-			tablestr = "<div class=\"box-header with-border\">";
-			for(var i=0;i<friendlist.length;i++){ 
-				var friend = friendlist[i].friendNo;
-				divstr +=	"<li class=\"dropdown friend-menu\"><div class=\"pull-right\"><span title=\"add\" class=\"add-badge badge bg-green\" style=\"margin:0; display:none;\" onclick=\"onClickFriendAdd();\"><i class=\"fa fa-user-plus\"></i></span><span title=\"delete\" class=\"del-badge badge bg-red\" style=\"margin:0; display:none;\" onclick=\"onClickFriendDel();\"><i class=\"fa fa-user-times\"></i></span></div><img src=\'/displayFile?fileName="+friendlist[i].profile +"\' class=\"friend-img\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+friendlist[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"#\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\"><a href=\"#\" onclick=\"deletefriend(" +friendlist[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a><hr class=\"divider\"><a href=\"#\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li></div>";
-	        } 
-			var frienddiv = document.getElementById("friendlist-div");
-			frienddiv.innerHTML = divstr;
 		}
 	});
 }

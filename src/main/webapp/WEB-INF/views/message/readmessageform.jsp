@@ -24,29 +24,30 @@
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
 
 	<div class="wrapper" >
-		<div style="height: 100px;"></div>
-		<div class="box box-primary" style="width: 90%; left:5%;">
-			<div class="box-header with-border">
-				<h3 class="box-title">${messageVO.not_subject }</h3>
-			</div><!-- /.box-header -->
-               
-			<div class="box-body no-padding">
-            	<div class="mailbox-read-info">
-                	
-                    <h5>From: ${messageVO.not_postmem_id } <span class="mailbox-read-time pull-right">${messageVO.not_regdate }</span></h5>
-				</div><!-- /.mailbox-read-info -->
-                  
-                <div id="divMessageContext" class="mailbox-read-message">${messageVO.not_context } 
-                </div><!-- /.mailbox-read-message -->
-			</div><!-- /.box-body -->
-                
-            <div class="box-footer">  
-            	<button class="btn btn-default"><i class="fa fa-trash-o"></i> Delete</button>
-                <button class="btn btn-default"><i class="glyphicon glyphicon-list-alt"></i> list</button>
-                <button class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
-                  
-			</div><!-- /.box-footer -->
-		</div><!-- /. box -->
+		<section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/portfolio-8.jpg" style="overflow-y: scroll;">
+			<div style="height: 100px;"></div>
+			<div class="box box-primary" style="width: 90%; left:5%;">
+				<div class="box-header with-border">
+					<h3 class="box-title">${messageVO.not_subject }</h3>
+				</div><!-- /.box-header -->
+	               
+				<div class="box-body no-padding">
+	            	<div class="mailbox-read-info">
+	                    <h5>From: ${messageVO.not_postmem_id } <span class="mailbox-read-time pull-right">${messageVO.not_regdate }</span></h5>
+					</div><!-- /.mailbox-read-info -->
+	                  
+	                <div id="divMessageContext" class="mailbox-read-message">${messageVO.not_context } 
+	                </div><!-- /.mailbox-read-message -->
+				</div><!-- /.box-body -->
+	                
+	            <div class="box-footer">  
+	            	<button class="btn btn-default"><i class="fa fa-trash-o"></i> Delete</button>
+	                <button class="btn btn-default"><i class="glyphicon glyphicon-list-alt"></i> list</button>
+	                <button class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
+	                  
+				</div><!-- /.box-footer -->
+			</div><!-- /. box -->
+		</section>
 	</div>
 
 

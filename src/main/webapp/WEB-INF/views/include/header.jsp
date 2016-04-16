@@ -25,14 +25,13 @@
                 	<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="notreadmessage();"><i class="fa fa-envelope-o"></i>
                   	<span class="label label-success" id="NotReadMessageCount"> ${notreadMessageNum} </span></a>
                 	<ul class="dropdown-menu">
-	                  	<li class="header" >	
-	                  		You have ${notreadMessageNum} messages
+	                  	<li class="header" >
 	                  		<div class="row">
 		                  		<div class="col-xs-6" style="text-align:center">
-			                		<a href="/Messages/ReceiveList">모두 보기 </a>
+			                		<a href="/message/receivemessageform">모두 보기 </a>
 			                	</div>	
 			                	<div class="col-xs-6" style="text-align:left">
-			                  		<a href="/Messages/Writeform">새 쪽지 보내기</a>
+			                  		<a href="/message/writemessageform">새 쪽지 보내기</a>
 			                  	</div>
 	                  		</div>
 	                  	</li>

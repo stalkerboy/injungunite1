@@ -6,7 +6,6 @@
  <typeAlias alias="UserVO" type="com.injung.vo.UserVO"/>
  <typeAlias alias="FriendVO" type="com.injung.vo.FriendVO"/>
  <typeAlias alias="BoardVO" type="com.injung.vo.BoardVO"/>
- <typeAlias alias="CategoryVO" type="com.injung.vo.CategoryVO"/>
  <typeAlias alias="MessageVO" type="com.injung.vo.MessageVO"/>
  <typeAlias alias="BoardCommentVO" type="com.injung.vo.BoardCommentVO"/>
  </typeAliases>

@@ -84,7 +84,7 @@
 	      		<ul  class="category-btn font-alt">
 	        		<li><a href="#" class="current" onclick="onClickCategoryBtn('${param['user'] }', 'All')">All</a></li>
         			<c:forEach items="${categoryList}" var="category">
-	        		<li><a href="#" onclick="onClickCategoryBtn('${param['user'] }', '${category.cat_name}');">${category.cat_name}</a></li>
+	        		<li><a href="#" onclick="onClickCategoryBtn('${param['user'] }', '${category.boa_category}');">${category.boa_category}</a></li>
 	        		</c:forEach>
 	      		</ul>
 	  		</div><!-- /.box-header -->

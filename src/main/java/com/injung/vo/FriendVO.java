@@ -4,17 +4,19 @@ public class FriendVO {
 
    private long fri_snum;
    private long mem_snum;
-   private String mem_id;
-   private String mem_name;
+       private String mem_id;
+       private String mem_name;
    
    private String fri_level;
    
    private long fri_mem_snum;
-   private String fri_mem_id;
-   private String fri_mem_name;
-   private String fri_mem_profile;
+       private String fri_mem_id;
+       private String fri_mem_name;
+       private String fri_mem_profile;
    private long following_count;
    private long follower_count;
+
+   private long ismyfriend;
    
    
    
@@ -88,6 +90,12 @@ public class FriendVO {
     }
     public void setFollowing_count(long following_count) {
         this.following_count = following_count;
+    }
+    public long getIsmyfriend() {
+        return ismyfriend;
+    }
+    public void setIsmyfriend(long ismyfriend) {
+        this.ismyfriend = ismyfriend;
     }
     
      

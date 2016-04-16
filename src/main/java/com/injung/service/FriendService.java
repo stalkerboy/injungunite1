@@ -34,9 +34,8 @@ public class FriendService {
        fdao.deletefriend(fri_snum);      
     }   
     
-    public List<UserVO> userfind(String mem_id, long userNo) throws Exception {
-        List<UserVO> users = fdao.userfind(mem_id, userNo);
-        return users;
+    public List<FriendVO> userfind(String searchId, long auth_mem_snum) throws Exception {
+        return fdao.userfind(searchId, auth_mem_snum);
     }  
     public FriendVO followingCount(String mem_id)throws Exception{
         return fdao.followingCount(mem_id);

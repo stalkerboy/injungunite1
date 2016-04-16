@@ -30,27 +30,13 @@
 		]]>
 	</select>
 	
-	<select id="ReceiveList" resultType="MessageVO">
-		<![CDATA[
-			select * 
-			from 
-			(
-			select 
-			/*+INDEX_DESC(note pk_not_snum)*/
-			rownum rm, n.not_snum, m.mem_id not_postmem_id, m.mem_name not_postmem_name, n.not_subject, n.not_isread, n.not_regdate, n.not_readdate from member m , note n 
-			where m.mem_snum = n.not_postmem_snum
-			and n.not_getmem_snum = #{snum}
-			and rownum <= #{page}*#{perPageNum})
-			where rm > (#{page}-1) * #{perPageNum} order by not_regdate desc
-		]]>	
-	</select>
+	
 	<select id="selectMessage" parameterType="long" resultType="MessageVO">
 		<![CDATA[
 			select not_snum, mem_id not_postmem_id, mem_name not_postmem_name, not_subject, not_context, not_isread, not_regdate, not_getmem_snum
 			 from member m ,note n	 
      		 where n.not_postmem_snum = m.MEM_SNUM 
      		 and n.NOT_SNUM = #{not_snum}
-	 		 and n.NOT_GETMEM_DELETED = 0 
 	 	]]> 
 	</select>
 	
@@ -62,7 +48,21 @@
 			and m.mem_snum = n.not_getmem_snum
  		]]>			 
 	</select>
-	
+	<select id="ReceiveList" resultType="MessageVO">
+		<![CDATA[
+			select * 
+			from 
+			(
+			select 
+			/*+INDEX_DESC(note pk_not_snum)*/
+			rownum rm, n.not_snum, m.mem_id not_postmem_id, m.mem_name not_postmem_name, n.not_subject, n.not_isread, n.not_regdate, n.not_readdate from member m , note n 
+			where m.mem_snum = n.not_postmem_snum
+			and n.not_getmem_deleted != 1
+			and n.not_getmem_snum = #{snum}
+			and rownum <= #{page}*#{perPageNum})
+			where rm > (#{page}-1) * #{perPageNum} order by not_regdate desc
+		]]>	
+	</select>
 	<select id="SentList" resultType="MessageVO">
 		<![CDATA[
 			select * 
@@ -72,9 +72,8 @@
 			/*+INDEX_DESC(note pk_not_snum)*/
 			rownum rm, n.not_snum,  m.mem_id not_getmem_id, m.mem_name not_getmem_name, n.not_subject, n.not_regdate from member m , note n 
 			where m.mem_snum = n.not_getmem_snum
-			and n.not_getmem_deleted != 1
+			and n.not_postmem_deleted != 1
 			and n.not_postmem_snum = #{snum}
-			and n.not_post_sent = 1
 			and rownum <= #{page}*#{perPageNum})
 			where rm > (#{page}-1) * #{perPageNum} order by not_regdate desc
 		]]>		

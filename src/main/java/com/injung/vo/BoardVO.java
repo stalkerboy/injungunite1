@@ -13,17 +13,12 @@ public class BoardVO {
 	    private String mem_profile;
 	private String boa_imgjson;
 	private String boa_imgpng;
-	private String cat_name;
+	private String boa_category;
 	private String tags;
 	private String tag;
 	private Long boa_count;
 	
-	public String getCategory() {
-		return cat_name;
-	}
-	public void setCategory(String cat_name) {
-		this.cat_name = cat_name;
-	}
+	
 	public Long getBoa_snum() {
 		return boa_snum;
 	}
@@ -99,10 +94,7 @@ public class BoardVO {
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
-    @Override
-    public String toString() {
-        return "BoardVO [boa_snum=" + boa_snum + ", boa_subject=" + boa_subject + ", boa_context=" + boa_context + ", boa_regdate=" + boa_regdate + ", boa_injeong=" + boa_injeong + ", boa_hitcnt=" + boa_hitcnt + ", mem_snum=" + mem_snum + ", mem_id=" + mem_id + ", boa_imgjson=" + boa_imgjson + ", boa_imgpng=" + boa_imgpng + ", cat_name=" + cat_name + ", tags=" + tags + ", tag=" + tag + "]";
-    }
+    
     public String getMem_profile() {
         return mem_profile;
     }
@@ -114,6 +106,16 @@ public class BoardVO {
     }
     public void setBoa_count(Long boa_count) {
         this.boa_count = boa_count;
+    }
+    public String getBoa_category() {
+        return boa_category;
+    }
+    public void setBoa_category(String boa_category) {
+        this.boa_category = boa_category;
+    }
+    @Override
+    public String toString() {
+        return "BoardVO [boa_snum=" + boa_snum + ", boa_subject=" + boa_subject + ", boa_context=" + boa_context + ", boa_regdate=" + boa_regdate + ", boa_injeong=" + boa_injeong + ", boa_hitcnt=" + boa_hitcnt + ", mem_snum=" + mem_snum + ", mem_id=" + mem_id + ", mem_profile=" + mem_profile + ", boa_imgjson=" + boa_imgjson + ", boa_imgpng=" + boa_imgpng + ", boa_category=" + boa_category + ", tags=" + tags + ", tag=" + tag + ", boa_count=" + boa_count + "]";
     }
 	
 }

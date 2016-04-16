@@ -4,26 +4,23 @@
 
 <mapper namespace="board">
 
-
 <select id="selectBoardListByUserId" parameterType="string" resultType="BoardVO">
       <![CDATA[
-      select b.boa_snum boa_snum, b.boa_imgpng boa_imgpng, b.boa_subject boa_subject, b.boa_context boa_context, b.boa_regdate boa_regdate, m.mem_snum mem_snum, m.mem_id mem_id, m.mem_profile mem_profile, c.cat_name
-		 from board b, member m, categorylist c
+      select b.boa_snum boa_snum, b.boa_imgpng boa_imgpng, b.boa_subject boa_subject, b.boa_context boa_context, b.boa_regdate boa_regdate, m.mem_snum mem_snum, m.mem_id mem_id, m.mem_profile mem_profile, b.boa_category
+		 from board b, member m
 		 where b.mem_snum = m.mem_snum 
 		 and m.mem_id = #{mem_id}
-		 and b.boa_snum = c.boa_snum
 		 order by b.boa_snum desc, b.boa_regdate desc 
       ]]>
    </select>   
 
-<select id="selectCategoryListById" parameterType="string" resultType="CategoryVO">
+<select id="selectCategoryListById" parameterType="string" resultType="BoardVO">
       <![CDATA[
-      select c.cat_name cat_name
-      from categorylist c, member m, board b 
-      where c.boa_snum = b.boa_snum 
-      	and b.mem_snum = m.mem_snum 
+      select b.boa_category
+      from member m, board b 
+      where b.mem_snum = m.mem_snum 
      		and m.mem_id = #{mem_id }
-   		GROUP BY c.CAT_NAME
+   		GROUP BY b.boa_category
       ]]>
    </select>
    
@@ -31,20 +28,14 @@
    
 <insert id="insertBoard" parameterType="BoardVO" >
 	   <![CDATA[      
-		insert into board(boa_snum, boa_subject, boa_regdate, mem_snum, boa_imgpng)
-			select seq_boa_snum.nextval, #{boa_subject}, sysdate, member.mem_snum, #{boa_imgpng}
+		insert into board(boa_snum, boa_subject, boa_regdate, mem_snum, boa_imgpng, boa_category)
+			select seq_boa_snum.nextval, #{boa_subject}, sysdate, member.mem_snum, #{boa_imgpng}, #{boa_category}
 			from member
 			where member.mem_snum=#{mem_snum}      
 	   ]]>
 	   <selectKey keyProperty="boa_snum" resultType="Long" order="AFTER">
 	   	select seq_boa_snum.currval from dual
 	   </selectKey>
-</insert>
-
-<insert id="insertCategory" parameterType="BoardVO" >
-      <![CDATA[
-      insert into categoryList values(seq_cat_snum.nextval, #{category}, #{boa_snum})
-      ]]>
 </insert>
 
 <insert id="insertTag" parameterType="BoardVO" >
@@ -55,19 +46,18 @@
 
 <select id="selectBoardListByCategoryUserId" parameterType="BoardVO" resultType="BoardVO">
       <![CDATA[
-      select b.boa_snum boa_snum, b.boa_imgpng boa_imgpng, b.boa_subject boa_subject, b.boa_context boa_context, b.boa_regdate boa_regdate, m.mem_snum mem_snum, m.mem_id mem_id, m.mem_profile mem_profile, c.cat_name
-		 from board b, member m, categorylist c
+      select b.boa_snum boa_snum, b.boa_imgpng boa_imgpng, b.boa_subject boa_subject, b.boa_context boa_context, b.boa_regdate boa_regdate, m.mem_snum mem_snum, m.mem_id mem_id, m.mem_profile mem_profile, b.boa_category
+		 from board b, member m
 		 where b.mem_snum = m.mem_snum 
 		 and m.mem_id = #{mem_id}
-		 and b.boa_snum = c.boa_snum
-		 and c.cat_name = #{cat_name}
+		 and b.boa_category = #{boa_category}
 		 order by b.boa_snum desc, b.boa_regdate desc 
       ]]>
    </select>
 
-<select id="selectCategoryList" resultType="CategoryVO">
+<select id="selectCategoryList" resultType="BoardVO">
       <![CDATA[
-      select cat_name
+      select cat_name boa_category
       from categorylist
    		GROUP BY CAT_NAME
       ]]>
@@ -158,6 +148,5 @@ select b.boa_snum, b.boa_imgpng, b.boa_subject, b.boa_regdate, m.mem_snum, m.mem
       	and m.mem_id = #{mem_id}
       ]]>
 </select>
-
 
 </mapper>

@@ -21,13 +21,12 @@ public class FriendDAO{
     private SqlSession session;
     
 
-    public List<UserVO> userfind(String mem_id, long userNo) throws Exception {
+    public List<FriendVO> userfind(String mem_id, long userNo) throws Exception {
         Map<String, Object> numMap = new HashMap<String, Object>();
         numMap.put("userNo", userNo);
         numMap.put("mem_id",mem_id);
-        List<UserVO> userfind = session.selectList(namespace+".userfind", numMap );
         
-        return userfind;
+        return session.selectList(namespace+".userfind", numMap );
     }
     
     public void deletefriend(long fri_snum) throws Exception {

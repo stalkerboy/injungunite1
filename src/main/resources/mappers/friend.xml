@@ -29,13 +29,7 @@
          into fri_list
          values(seq_fri_snum.nextval, null, #{mem_snum}, #{fri_mem_snum } )
       ]]>
-   </insert>   
-   <delete id="deleteFriend" parameterType="FriendVO">
-      <![CDATA[
-            delete from fri_list
-            where fri_snum=#{fri_snum }
-       ]]>
-   </delete>			
+   </insert>   		
 
  <select id="followingCount" parameterType="String" resultType="FriendVO">
       <![CDATA[
@@ -71,9 +65,9 @@
        ]]>
    </delete>
    
-   <select id="userfind" parameterType="map" resultType="UserVO" >
+   <select id="userfind" parameterType="map" resultType="FriendVO" >
     <![CDATA[
-     select s.mem_snum, s.mem_id, s.mem_profile, decode(s.mem_snum, f.fri_mem_snum, 1, 0) ismyfriend
+     select f.fri_snum, s.mem_snum fri_mem_snum, s.mem_id fri_mem_id, s.mem_profile fri_mem_profile, decode(s.mem_snum, f.fri_mem_snum, 1, 0) ismyfriend
      from
      (select m.mem_snum, m.mem_id, m.mem_profile
 	 from member m
@@ -83,9 +77,9 @@
       ]]>
    </select>
 
-	<select id="friendlist" parameterType="long" resultType="FriendVo">
+	<select id="friendlist" parameterType="long" resultType="FriendVO">
       <![CDATA[
-         select  f.mem_snum, fri_snum, m.mem_id fri_mem_id, m.mem_profile fri_mem_profile 
+         select  f.mem_snum fri_mem_nsum, f.fri_snum, m.mem_id fri_mem_id, m.mem_profile fri_mem_profile 
          from fri_list f, member m
          where f.fri_mem_snum = m.mem_snum and f.mem_snum = #{memNo }
       ]]>

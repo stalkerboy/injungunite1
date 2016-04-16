@@ -28,7 +28,6 @@ import com.injung.service.FriendService;
 import com.injung.service.UserService;
 import com.injung.util.UploadFileUtils;
 import com.injung.vo.BoardVO;
-import com.injung.vo.CategoryVO;
 import com.injung.vo.FriendVO;
 import com.injung.vo.UserVO;
 
@@ -109,7 +108,6 @@ public class UserController {
 	    
 	    model.addAttribute("friendlist", fservice.getFriendList(authVo.getMem_snum()));
 	    model.addAttribute("followingCount", fservice.followingCount(authVo.getMem_id()));
-        
         model.addAttribute("followerCount", fservice.followerCount(authVo.getMem_id()));
 	}
 	
@@ -121,49 +119,54 @@ public class UserController {
         
         long userNo = authUser.getMem_snum();
      
-        List<UserVO> users = fservice.userfind(mem_id, userNo);
+        List<FriendVO> users = fservice.userfind(mem_id, userNo);
         
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("userfind", users);
         return map;
     }
 	
-		
 	@Auth
     @RequestMapping(value="/deletefriend",  method = RequestMethod.POST)
     @ResponseBody
-    public  Map<String, Object> deletefriend(@RequestBody long fri_snum, @AuthUser UserVO authUser, Model model) throws Exception {
-       
+    public  Map<String, Object> deletefriend(FriendVO fv, @AuthUser UserVO authUser, Model model) throws Exception {
+       fservice.deletefriend(fv.getFri_snum());
+
+       List<FriendVO> users = fservice.userfind(fv.getMem_id(), authUser.getMem_snum());
+
+       Map<String, Object> map = new HashMap<String, Object>();
+       map.put("userfind", users);
+       return map;  
+	}
+	
+	@Auth
+    @RequestMapping(value="/addfriend", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> addfriend(FriendVO fv, @AuthUser UserVO authUser, Model model) throws Exception {
+	    fservice.addfriend(authUser.getMem_snum(), fv.getMem_snum());  
+	    
+	    List<FriendVO> users = fservice.userfind(fv.getMem_id(), authUser.getMem_snum());
+
+	    Map<String, Object> map = new HashMap<String, Object>();
+	    map.put("userfind", users);
+	    return map; 
+    }
+	
+	
+	
+	@Auth
+    @RequestMapping(value="/deletefriendfromMyList",  method = RequestMethod.POST)
+    @ResponseBody
+    public  Map<String, Object> deletefriendfromMyList(@RequestBody long fri_snum, @AuthUser UserVO authUser, Model model) throws Exception {
        fservice.deletefriend(fri_snum);
        
        long memNo = authUser.getMem_snum();
 
-       List<FriendVO> friendvo = fservice.friendlist(memNo);
-       
-
        Map<String, Object> map = new HashMap<String, Object>();
-       map.put("friendlist", friendvo);
-       return map;
-
-  
-   }
-    
-    @Auth
-    @RequestMapping(value="/addfriend", method = RequestMethod.POST)
-    @ResponseBody
-    public Map<String, Object> addfriend(@RequestBody long mem_snum, @AuthUser UserVO authUser, Model model) throws Exception {
-        
-       long memNo = authUser.getMem_snum();
-       fservice.addfriend(memNo ,mem_snum);                            
-       
-       List<FriendVO> friendvo = fservice.friendlist(memNo);
-       
-
-       Map<String, Object> map = new HashMap<String, Object>();
-       map.put("friendlist", friendvo);
-       return map; 
+       model.addAttribute("friendlist", fservice.getFriendList(authUser.getMem_snum()));
+       return map;  
     }
-
+    
 	@Auth
     @ResponseBody
     @RequestMapping(value="/userModify", method = RequestMethod.POST)

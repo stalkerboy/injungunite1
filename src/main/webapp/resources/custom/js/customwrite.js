@@ -773,7 +773,7 @@ function onClickWriteModal(){
          $("#datalist").empty();
          var strOption = "";
          for(var i=0; i<categorylist.length; i++){
-            strOption += "<option value=\""+ categorylist[i].cat_name + "\">" + categorylist[i].cat_name +"</option>"
+            strOption += "<option value=\""+ categorylist[i].boa_category + "\">" + categorylist[i].boa_category +"</option>"
          }
          $("#datalist").append(strOption);
       }

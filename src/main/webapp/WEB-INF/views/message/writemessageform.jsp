@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="/resources/plugins/AdminLTE/css/AdminLTE.min.css">
 	
 	<link rel="stylesheet" href="/resources/custom/css/custom.css">
-
+	<link rel="stylesheet" href="/resources/custom/css/hero.css">
 </head>
 <body>
 	<c:import url="/WEB-INF/views/include/header.jsp"></c:import>	
@@ -24,19 +24,21 @@
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
 
 	<div class="wrapper" >
-   		<div style="height: 100px;"></div>
-		<div class="box box-primary" style="margin:auto; width:90%; ">
-			<form id="writeMessageForm" action="/message/messagewrite" method="post">	
-				<h3>Compose New Message</h3>
-				<input type="email" class="form-control" name="not_getmem_id" id="not_getmem_id" placeholder="To:" value="${targetUser.mem_id}">
-	          	<input type="text" class="form-control" name="not_subject" placeholder="Subject:">           
-				<textarea id="editor1" name="not_context" rows="10" cols="80">
-				</textarea>
-	            <div class="pull-right">
-	            	<button type="button" class="btn btn-default" onclick="onClickMessageWriteBtn();"><i class="fa fa-envelope-o"></i> Send</button>
-	            </div>		 
-			</form>
-		</div>
+		<section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/portfolio-8.jpg" style="overflow-y: scroll;">
+	   		<div style="height: 100px;"></div>
+			<div class="box box-primary" style="margin:auto; width:90%; ">
+				<form id="writeMessageForm" action="/message/messagewrite" method="post">	
+					<h3>Write New Message</h3>
+					<input type="email" class="form-control" name="not_getmem_id" id="not_getmem_id" placeholder="To:" value="${targetUser.mem_id}">
+		          	<input type="text" class="form-control" name="not_subject" placeholder="Subject:">           
+					<textarea id="editor1" name="not_context" rows="10" cols="80">
+					</textarea>
+		            <div class="pull-right">
+		            	<button type="button" class="btn btn-default" onclick="onClickMessageWriteBtn();"><i class="fa fa-envelope-o"></i> Send</button>
+		            </div>		 
+				</form>
+			</div>
+		</section>
 	</div>
 <!-- js import -->
 <!-- jquery -->
@@ -51,6 +53,10 @@
 
 <script src='/resources/custom/js/customwrite.js'></script>
 <script src='/resources/custom/js/custommodals.js'></script>
+
+<script src="/resources/custom/js/jquery.superslides.min.js"></script>
+<script src="/resources/custom/js/custombackground.js"></script>
+
 <script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
 <script>
 	$(function() {

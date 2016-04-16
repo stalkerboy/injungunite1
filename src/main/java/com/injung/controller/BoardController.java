@@ -1,9 +1,6 @@
 package com.injung.controller;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +21,6 @@ import com.injung.annotation.AuthUser;
 import com.injung.vo.MongoVO;
 import com.injung.vo.BoardCommentVO;
 import com.injung.vo.BoardVO;
-import com.injung.vo.CategoryVO;
 import com.injung.vo.UserVO;
 import com.mongodb.DBObject;
 import com.mongodb.util.JSON;
@@ -62,7 +57,7 @@ public class BoardController {
         List<BoardVO> boardList = bservice.getBoardListbyUserId(mem_id);
         model.addAttribute("boardList", boardList);        
         
-        List<CategoryVO>listco = bservice.getCategoryListByUserId(mem_id);
+        List<BoardVO>listco = bservice.getCategoryListByUserId(mem_id);
         model.addAttribute("categoryList",listco);    
         
         model.addAttribute("boardCount", bservice.getBoardCount(mem_id));
@@ -78,7 +73,7 @@ public class BoardController {
     @ResponseBody
     public Map<String, Object> getBoardByCategory(@RequestParam("user") String mem_id, @RequestParam("category") String category, Model model) throws Exception {
        BoardVO vo = new BoardVO();
-       vo.setCategory(category);
+       vo.setBoa_category(category);
        vo.setMem_id(mem_id);
        List<BoardVO> lv =null;
        if (category.equals("All")){
@@ -98,7 +93,7 @@ public class BoardController {
     @RequestMapping(value="/getCategoryList", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> getCategoryList(Model model) throws Exception {
-       List<CategoryVO> lv = bservice.getCategoryList() ;
+       List<BoardVO> lv = bservice.getCategoryList() ;
        Map<String, Object> map = new HashMap<String, Object>();
        map.put("data", lv);
        return map;

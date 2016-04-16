@@ -41,7 +41,7 @@
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="/message/writemessageform">
 						<i class="fa fa-sticky-note-o"></i> 쪽지 보내기 </a></li>
-					<li><a href="/message/recivemessageform">
+					<li><a href="/message/receivemessageform">
 						<i class="fa fa-archive"></i> 받은 쪽지함 </a></li>
 					<li><a href="/message/sendmessageform">
 						<i class="fa fa-share-square"></i> 보낸 쪽지함 </a></li>
