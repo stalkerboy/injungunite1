@@ -9,8 +9,8 @@ public class BoardVO {
 	private Long boa_injeong;
 	private String boa_hitcnt;
 	private Long mem_snum;
-	    private String mem_id;
-	    private String mem_profile;
+	private String mem_id;
+	private String mem_profile;
 	private String boa_imgjson;
 	private String boa_imgpng;
 	private String cat_name;

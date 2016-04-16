@@ -47,7 +47,7 @@
 
 <!-- tabwrap.css 추가함. -->
 <link rel="stylesheet" href="/resources/custom/css/tabwrap.css">
-
+<script src='/resources/custom/js/custommodals.js'></script>
 </head>
 
 <body>
@@ -56,94 +56,87 @@
 	<!-- modals -->
 	<c:import url="/WEB-INF/views/modal/pwformodifymodal.jsp"></c:import>
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
+	<c:import url="/WEB-INF/views/modal/viewmodal.jsp"></c:import>
 	<div class="wrapper">
-		<section id="hero" class="module-hero bg-dark-30 js-fullheight"
-			data-background="/resources/img/portfolio-8.jpg"
-			style="overflow-y: scroll;">
-		<div class="col-md-12" style="height: 80px"></div>
-		<ul class="tabs">
-			<li class="active" rel="tab1">추천 글</li>
-			<li rel="tab2">친구 글</li>
-		</ul>
-		<div class="row">
-			<div class="input-group col-sm-3 pull-right"
-				style="right: 5%; margin: 5px 10px">
-				<span class="input-group-btn"> </span>
+		<section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/portfolio-8.jpg" style="overflow-y: scroll;">
+			<div class="col-md-12" style="height: 80px">
 			</div>
-		</div>
-		<div id="tab2" class="tab_content">
-			<div class="box box-danger"
-				style="width: 90%; left: 5%; background-color: rgba(255, 255, 255, 0);">
-				<div class="box-header ">
-					<h3 class="box-title">Latest Friend Board</h3>
+			<ul class="tabs">
+				<li class="active" rel="tab1">추천 </li>
+				<li rel="tab2">친구 </li>
+			</ul>
+			<div class="row">
+				<div class="input-group col-sm-3 pull-right" style="right: 5%; margin: 5px 10px">
+					<span class="input-group-btn"> </span>
 				</div>
-				<!-- /.box-header -->
-				<div class="box-body no-padding">
-					<div id="works-grid" class="works-grid works-grid-gutter">
-
-						<%-- 			<c:forEach items="${boardList}" var="board"> --%>
-						<article class="work-item">
-						<div class="work-wrapper">
-							<div class="work-thumbnail" style="margin: 15px 5px">
-								<img src="/resources/img/00.jpg"
-									style="max-width: 100%; height: auto;">
-								<%--                       <img src="/resources/img/boardimg/${board.boa_imgpng }" alt=""> --%>
+			</div>	
+			<div id="tab2" class="tab_content">
+				<div class="box box-danger"
+					style="width: 90%; left: 5%; background-color: rgba(255, 255, 255, 0);">
+					<div class="box-header ">
+						<h3 class="box-title">Latest Friend Board</h3>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body no-padding">
+					   <div class="works-grid-wrapper">		
+							<div id="works-grid" class="works-grid works-grid-gutter">
+								<c:forEach items="${boardList}" var="board">
+									<article class="work-item">
+										<div class="work-wrapper">
+											<div class="work-thumbnail" style="margin: 15px 5px">
+												<img src="/resources/img/boardimg/${board.boa_imgpng }" alt="">
+											</div>
+											<div class="work-caption" style="maring: 15px 5px">
+										  		<h4 class="work-title font-alt">${board.boa_subject }</h4>
+										  		<h4><span class="work-category font-serif"><a href="#" >${board.mem_id }</a></span></h4>
+										  	</div>
+										  	<a href="#" onclick="onClickBoard(${board.boa_snum});" class="work-link"></a>
+										</div> 
+									</article>
+								</c:forEach>		 		
 							</div>
-							<div class="work-caption" style="maring: 15px 5px">
-								<%--                       <h3 class="work-title font-alt">${board.boa_subject }</h3> --%>
-								<h4 class="work-title font-alt">
-									<b>동물</b>
-								</h4>
-								<%--                       <span class="work-category font-serif"><a href="#">${board.mem_id }</a></span> --%>
-								<span class="work-category font-serif"><a href="#">111</a></span>
-							</div>
-							<a href="portfolio-single-1.html" class="work-link"></a>
 						</div>
 					</div>
-				</div>
 				<!-- /.box-body -->
 				<div class="m-t-70 text-center">
 					<button id="read-more" class="btn btn-dark">Read More</button>
 				</div>
 			</div>
+			<!--  /. box -->
 		</div>
 		<div id="tab1" class="tab_content">
-			<div class="box box-danger"
-				style="width: 90%; left: 5%; background-color: rgba(255, 255, 255, 0);">
+			<div class="box box-danger" style="width: 90%; left: 5%; background-color: rgba(255, 255, 255, 0);">
 				<div class="box-header ">
 					<h3 class="box-title">Latest Recommend Board</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body no-padding">
-					<div id="works-grid" class="works-grid works-grid-gutter">
-
-						<%-- 			<c:forEach items="${boardList}" var="board"> --%>
-						<article class="work-item">
-						<div class="work-wrapper">
-							<div class="work-thumbnail" style="margin: 15px 5px">
-								<img src="/resources/img/00.jpg"
-									style="max-width: 100%; height: auto;">
-								<%--                       <img src="/resources/img/boardimg/${board.boa_imgpng }" alt=""> --%>
+					   <div class="works-grid-wrapper">		
+							<div id="works-grid" class="works-grid works-grid-gutter">
+								<c:forEach items="${boardList}" var="board">
+									<article class="work-item">
+										<div class="work-wrapper">
+											<div class="work-thumbnail" style="margin: 15px 5px">
+												<img src="/resources/img/boardimg/${board.boa_imgpng }" alt="">
+											</div>
+											<div class="work-caption" style="maring: 15px 5px">
+										  		<h4 class="work-title font-alt">${board.boa_subject }</h4>
+										  		<h4><span class="work-category font-serif"><a href="#" >${board.mem_id }</a></span></h4>
+										  	</div>
+										  	<a href="#" onclick="onClickBoard(${board.boa_snum});" class="work-link"></a>
+										</div> 
+									</article>
+								</c:forEach>		 		
 							</div>
-							<div class="work-caption" style="maring: 15px 5px">
-								<%--                       <h3 class="work-title font-alt">${board.boa_subject }</h3> --%>
-								<h4 class="work-title font-alt">
-									<b>동물</b>
-								</h4>
-								<%--                       <span class="work-category font-serif"><a href="#">${board.mem_id }</a></span> --%>
-								<span class="work-category font-serif"><a href="#">111</a></span>
-							</div>
-							<a href="portfolio-single-1.html" class="work-link"></a>
 						</div>
 					</div>
-				</div>
 				<!-- /.box-body -->
 				<div class="m-t-70 text-center">
 					<button id="read-more" class="btn btn-dark">Read More</button>
 				</div>
-			</div>
-		</div>
-		<!--/.box --> </section>
+			</div><!--/.box -->
+		</div>	
+	</section>
 	</div>
 
 	<!-- js import -->
@@ -157,7 +150,7 @@
 
 	<!-- <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
 	<script src='/resources/custom/js/customwrite.js'></script>
-	<script src='/resources/custom/js/custommodals.js'></script>
+
 
 	<!-- customboard.js 에서 .category-btn{ text-align:center;, margin:0 0 20px; }로 수정함  -->
 	<script src='/resources/custom/js/customboard.js'></script>

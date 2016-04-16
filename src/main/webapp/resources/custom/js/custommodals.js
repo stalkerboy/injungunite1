@@ -77,6 +77,7 @@ function notreadmessage(){
 };
 
 function onClickBoard(boa_snum){
+	alert("qwer");
 	$.ajax( {
 		url : "/board/view?bno="+boa_snum,
 		type: "get",

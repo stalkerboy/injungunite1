@@ -28,6 +28,7 @@ import com.injung.service.Rservice;
 import com.injung.service.ScoreService;
 import com.injung.service.UserService;
 import com.injung.util.UploadFileUtils;
+import com.injung.vo.BoardVO;
 import com.injung.vo.FriendVO;
 import com.injung.vo.UserVO;
 
@@ -85,6 +86,19 @@ public class UserController {
 //		return "user/usermain";
 	    scoreservice.calScore(uv.getMem_id(), uv.getMem_snum());
 	    scoreservice.setUserCategory(uv.getMem_snum());
+	    UserVO uservo = service.getUserInfoById(uv.getMem_id());
+	    model.addAttribute("userInfo", uservo);     
+        
+	    rservice.ff();     
+        rservice.rconnect();
+        rservice.readLift();
+        rservice.readRecom();
+        rservice.mapping();
+        rservice.matching();
+        rservice.dividecategory();
+	    List<BoardVO> boardList = rservice.getrecomBoard();
+        model.addAttribute("boardList", boardList);        
+               
 		return "user/usermain";
 	}
 	
