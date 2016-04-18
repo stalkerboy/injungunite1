@@ -66,7 +66,7 @@ function notreadmessage(){
     	  	var newcode = "";
     	  	$("#messagemenu").empty();
     	  	for(var i = 0; i<item.length; i++){
-    	  		newcode += "<li><a href=\"#\"><div class=\"pull-left\"><img src=\""+item[i].not_postmem_profile +" \" class=\"img-circle\" alt=\"User Image\"></div><h4>"+item[i].not_postmem_id+"<small><i class=\"fa fa-clock-o\"></i>"+ item[i].not_regdate+"</small></h4><p>" +item[i].not_subject + "</p></a></li>"
+    	  		newcode += "<li><a href=\"/message/receivereadmessageform?snum="+item[i].not_snum+"\"><div class=\"pull-left\"><img src=\""+item[i].not_postmem_profile +" \" class=\"img-circle\" alt=\"User Image\"></div><h4>"+item[i].not_postmem_id+"<small><i class=\"fa fa-clock-o\"></i>"+ item[i].not_regdate+"</small></h4><p>" +item[i].not_subject + "</p></a></li>"
 			}
 			$("#messagemenu").append(newcode);
     	},

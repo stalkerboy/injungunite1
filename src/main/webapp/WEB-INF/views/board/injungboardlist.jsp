@@ -91,7 +91,7 @@
 			<div class="box-body">
 				<div class="works-grid-wrapper">
 			      	<div id="works-grid" class="works-grid works-grid-gutter" >
-						<c:forEach items="${boardList}" var="board">
+						<c:forEach items="${injungBoardList}" var="board">
 			        	<article class="work-item">
 			            	<div class="work-wrapper">
 			                	<div class="work-thumbnail">

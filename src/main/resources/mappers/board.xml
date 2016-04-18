@@ -137,7 +137,7 @@ select b.boa_snum, b.boa_imgpng, b.boa_subject, b.boa_regdate, m.mem_snum, m.mem
 	where b.mem_snum=#{mem_snum}
     and b.boa_snum = l.boa_snum
 		and	m.mem_snum = b.mem_snum
-		and b.boa_regdate = sysdate-7  
+		and sysdate - b.boa_regdate < 7
 	
 ]]>
 </select>
