@@ -109,7 +109,7 @@ public class BoardController {
         
         byte[] data = Base64.decodeBase64(bv.getBoa_imgpng());
         
-        String path =  session.getServletContext().getRealPath("/") + "resources/img/boardimg/";
+        String path =  session.getServletContext().getRealPath("/") + "resources\\img\\boardimg";
         String newFileName = UploadFileUtils.uploadFile(path, fileName, data);
         
         bv.setBoa_imgpng(newFileName);

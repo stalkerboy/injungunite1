@@ -18,8 +18,10 @@ $('#writeSubmit').click(function(){
    $('#boa_imgjson').val(imgjson);
    imgpng = canvas.toDataURL('png');
    
-   var base64img = imgpng.substring(imgpng.indexOf(',')+1);
-   var base64img = imgpng.substring(imgpng.indexOf(',')+1);
+   var base64img = imgpng.replace(/^data:image\/(png|jpg);base64,/, "");
+//   var base64img = imgpng.substring(imgpng.indexOf(',')+1);
+   
+   
    
    $('#boa_imgpng').val(base64img);
 
@@ -29,8 +31,12 @@ $('#writeSubmit').click(function(){
    });
 
    $('#tags').val(tagTextList);
-   alert(imgjson);
-//   $('#writeform').submit();
+   
+//   console.log(imgpng);
+//   alert();
+//   alert(imgpng);
+//   alert(base64img);
+   $('#writeform').submit();
 });
 
 
@@ -241,7 +247,6 @@ function getObjectType(){
   }
   else if (activeObject){
     selectedObjectType = activeObject.get('type');
-
   }
   else{
     selectedObjectType = "null";

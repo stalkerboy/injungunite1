@@ -2,6 +2,7 @@ package com.injung.util;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.UUID;
@@ -88,7 +89,9 @@ public class UploadFileUtils {
 	}
 	
 	private static String makeThumbnail(String uploadPath, String path, String fileName) throws Exception {	    
-		BufferedImage sourceImg = ImageIO.read(new File(uploadPath+path, fileName));
+	    System.out.println(uploadPath+path +"/"+ fileName);
+	    BufferedImage sourceImg = ImageIO.read(new FileInputStream(new File(uploadPath+path +"/"+ fileName)));
+//		BufferedImage sourceImg = ImageIO.read(new File(uploadPath+path, fileName));
 		
 		BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.BALANCED, Scalr.Mode.AUTOMATIC, 200);
 		
