@@ -175,11 +175,11 @@ public class UserController {
 	@Auth
     @RequestMapping(value="/deletefriendfromMyList",  method = RequestMethod.POST)
     @ResponseBody
-    public  Map<String, Object> deletefriendfromMyList(@RequestBody long fri_snum, @AuthUser UserVO authUser, Model model) throws Exception {
+    public  Map<String, Object> deletefriendfromMyList(@RequestBody long fri_snum, @AuthUser UserVO authUser) throws Exception {
        fservice.deletefriend(fri_snum);
 
        Map<String, Object> map = new HashMap<String, Object>();
-       model.addAttribute("friendlist", fservice.getFriendList(authUser.getMem_snum()));
+       map.put("friendlist", fservice.getFriendList(authUser.getMem_snum()));
        return map;  
     }
     
