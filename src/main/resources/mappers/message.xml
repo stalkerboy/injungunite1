@@ -19,6 +19,7 @@
 		where n.not_postmem_snum = m.mem_snum
 		and not_isread = 0
 		and not_getmem_snum = #{not_getmem_snum}
+		and n.not_getmem_deleted = 0
 	 	]]>
 	</select>
 	
@@ -33,19 +34,21 @@
 	
 	<select id="selectMessage" parameterType="long" resultType="MessageVO">
 		<![CDATA[
-			select not_snum, mem_id not_postmem_id, mem_name not_postmem_name, not_subject, not_context, not_isread, not_regdate, not_getmem_snum
-			 from member m ,note n	 
-     		 where n.not_postmem_snum = m.MEM_SNUM 
-     		 and n.NOT_SNUM = #{not_snum}
+			select not_snum, m.mem_id not_postmem_id, m.mem_name not_postmem_name, not_subject, not_context, not_isread, not_regdate, not_getmem_snum, not_postmem_snum, gm.mem_id not_getmem_id
+			 from member m ,note n, member gm
+     		 where n.NOT_SNUM = #{not_snum}
+     		 and n.not_postmem_snum = m.MEM_SNUM
+     		 and gm.mem_snum =not_getmem_snum 
 	 	]]> 
 	</select>
 	
-	<select id="NotReadMessageCount" resultType="Integer">
+	<select id="NotReadMessageCount" resultType="Integer" parameterType="string">
 		<![CDATA[
          select nvl(count(1),0) not_readmessage_count from member m, note n
 			where n.not_isread = 0
-			and m.mem_id = #{not_getmem_id }
+			and m.mem_id = #{auth_id }
 			and m.mem_snum = n.not_getmem_snum
+			and n.not_getmem_deleted = 0
  		]]>			 
 	</select>
 	<select id="ReceiveList" resultType="MessageVO">
@@ -70,7 +73,7 @@
 			(
 			select 
 			/*+INDEX_DESC(note pk_not_snum)*/
-			rownum rm, n.not_snum,  m.mem_id not_getmem_id, m.mem_name not_getmem_name, n.not_subject, n.not_regdate from member m , note n 
+			rownum rm, n.not_snum,  m.mem_id not_getmem_id, m.mem_name not_getmem_name, n.not_subject, n.not_isread, n.not_regdate, n.not_readdate from member m , note n 
 			where m.mem_snum = n.not_getmem_snum
 			and n.not_postmem_deleted != 1
 			and n.not_postmem_snum = #{snum}
@@ -86,5 +89,25 @@
 		and not_getmem_snum != #{snum}
 		]]>
 	</select>
+	
+	<update id="deletesentmessage" parameterType="long" >
+		<![CDATA[
+		update note set not_postmem_deleted = 1, not_getmem_deleted= 0 where not_snum = #{MessageVO.not_snum}
+		]]>
+	</update>
+	
+	<!-- 받은쪽지 delete시 구현 -->
+	<update id="deletereceivemessage" parameterType="long" >
+		<![CDATA[
+		update note set not_getmem_deleted = 1, not_postmem_deleted= 0 where not_snum = #{MessageVO.not_snum}
+		]]>
+	</update>
+	
+	<update id="updateReceiveMessage" parameterType="long" >
+		<![CDATA[
+		update note set not_isread = 1 where not_snum=#{not_snum}
+		]]>
+	</update>
+	
 	
 </mapper>

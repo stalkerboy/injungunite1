@@ -82,34 +82,36 @@ function checkUser(formEl) {
 
 $(function(){
 	
-	$("#myid").change( function(){
+	$("#mem_id_join").change( function(){
 		$("#button-checkid").show();
 		$("#image-checkid").hide();		
 	});
 	$( "#button-checkid" ).click( function(){
-		var id = $("#myid").val();
-		console.log(id);
+		var id = $("#mem_id_join").val();
 		if( id == "" ) {
 		return;
 		} 
 					
 		$.ajax( {
-		url : "/user/checkid?id=" + id,
+		url : "/user/hasid?id=" + id,
 		type: "get",
 		dataType: "json",
 		data: "",
 		//  contentType: "application/json",
 		success: function( response ){
-		console.log( response );
-		if(response.data == true) {
-		$("#id").val( "" );
-		alert( "이미 존재하는 ID입니다. 다른 ID를 사용해 주세요." );
-		$("#id").focus();
-		return;
-		}
-		// 사용 가능한 경우
-		$("#button-checkid").hide();
-		$("#image-checkid").show();
+			if(response.data == true) {
+				$("#mem_id").val( "" );
+				$("#mem_id").focus();
+				$("#button-checkid").hide();
+				$("#image-checkid").show();
+				alert( "이미 존재하는 ID입니다. 다른 ID를 사용해 주세요." );
+				return;
+			}
+			else{
+				$("#button-checkid").show();
+				$("#image-checkid").hide();
+				alert( "사용 가능합니다." );
+			}
 		},
 		error: function( jqXHR, status, error ){
 		console.error( status + " : " + error );

@@ -17,5 +17,9 @@ public class MongoDAO {
 
     public void insertMongoVO(MongoVO mv){        
         mongoTemplate.insert(mv, "snsimg");                
+    }
+
+    public String findImgJsonBySnum(Long boa_snum) {
+        return null;
     }    
 }

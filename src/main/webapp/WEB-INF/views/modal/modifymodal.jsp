@@ -118,7 +118,7 @@
 								<div class="row">
 									<div class="col-sm-2">
 
-										<select id="datalist" name="boa_category" id="category"
+										<select id="datalist" name="category" id="category"
 											class="form-control"></select>
 									</div>
 									<div class="col-sm-10">
@@ -174,7 +174,7 @@
 									<table class="table table-hover table-striped">
 										<tbody>
 											<div class="canvas-wrapper">
-												<canvas class="responsive" id="canvas" width="800"
+												<canvas class="responsive" id="modifyCanvas" width="800"
 													height="450" style="border:1px solid #000000"></canvas>
 											</div>
 										</tbody>
@@ -209,9 +209,6 @@
 						data-dismiss="modal">Close</button>
 					<button id="writeSubmit" type="button"
 						class="btn btn-black pull-right">글쓰기</button>
-
-
-
 
 				</div>
 				<!-- /.box-footer -->
@@ -794,13 +791,9 @@
 							</button>
 						</div>
 					</div>
-
 					<div style="background-color: blue; height: 5px; margin-top: 5px"></div>
 
-
 					<div>
-
-
 						<div class="btn-group">
 							<button class="btn btn-default btn-sm">
 								<i class="fa fa-align-center"></i>
@@ -826,3 +819,10 @@
 	</div>
 	<!-- /.modal -->
 </div>
+
+
+
+<script>
+
+
+</script>

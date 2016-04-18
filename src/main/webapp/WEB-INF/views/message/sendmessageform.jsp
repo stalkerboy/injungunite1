@@ -49,7 +49,7 @@
                     <c:when test="${fn:length(list) > 0}">
                         <c:forEach items="${list }" var="MessagesVO">
                         <tr>
-                          <td><input type="checkbox" style="width:5%;"></td>
+                          <td><input class="checkboxMessage" value ="${MessagesVO.not_snum}" type="checkbox" style="width:5%;"></td>
                           <td class="mailbox-star" style="width:5%;">
                            	<c:choose>
                            	<c:when test="${MessagesVO.not_isread == 1 }">
@@ -60,7 +60,7 @@
                     		</c:otherwise>
                    			</c:choose>
                           </td>
-                          <td class="mailbox-name" style="width:10%;"><a href="#"><b>${MessagesVO.not_getmem_id}</b></a></td>
+                          <td class="mailbox-name" style="width:10%;"><a href="/message/writemessageform?mem_id=${MessagesVO.not_getmem_id}"><b>${MessagesVO.not_getmem_id}</b></a></td>
                           <td class="mailbox-subject" style="width:60%;"><a href="/message/sentreadmessageform?snum=${MessagesVO.not_snum}" ><b>${MessagesVO.not_subject}</b></a></td>
                           <td class="mailbox-date" style="width:20%;">${fn:substring(MessagesVO.not_regdate, 0, 16)}</td>
                         </tr>
@@ -77,17 +77,15 @@
                     <div class="pull-right">	
 					<ul class="pagination pagination-sm inline">
                         <c:if test="${pageMaker.prev }">
-                            <li><a href="/message/recivemessageform?page=${pageMaker.startPage -1}">&laquo;</a></li>
+                            <li><a href="/message/sendmessageform?page=${pageMaker.startPage -1}">&laquo;</a></li>
                         </c:if>
                         <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
-                            <li><a href="/message/recivemessageform?page=${idx}">${idx}</a></li>
+                            <li><a href="/message/sendmessageform?page=${idx}">${idx}</a></li>
                         </c:forEach>
                         <c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-                             <li><a href="/message/recivemessageform?page=${pageMaker.endPage +1}">&raquo;</a></li>
+                             <li><a href="/message/sendmessageform?page=${pageMaker.endPage +1}">&raquo;</a></li>
                         </c:if>
-                    </ul>                      
-
-                      
+                    </ul>  
                     </div><!-- /.pull-right -->
                   </div>
                 </div>
@@ -134,5 +132,12 @@ $(function () {
     });   
 });
 
+function deletemessage(){
+ 	$(".checkboxMessage").each(function() {
+		if($(this).is(":checked")){
+			location.href="/message/deletesentmessage?snum="+$(this).val();
+		};
+	});
+}
 
 </script>

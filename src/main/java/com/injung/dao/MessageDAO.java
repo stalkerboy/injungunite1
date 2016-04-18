@@ -38,8 +38,8 @@ public class MessageDAO {
         return session.selectOne(namespace+".selectMessage", not_snum);
     }
 
-    public int NotReadMessageCount(String vo) throws Exception {
-        return session.selectOne(namespace +".NotReadMessageCount", vo);
+    public int NotReadMessageCount(String auth_id) throws Exception {
+        return session.selectOne(namespace +".NotReadMessageCount", auth_id);
     }
 
     public List<MessageVO> SentList(Criteria cri)throws Exception {
@@ -48,5 +48,17 @@ public class MessageDAO {
     
     public long SentcountPaging(Criteria cri)throws Exception{
         return session.selectOne(namespace+".SentcountPaging", cri);
+    }
+
+    public MessageVO deletesentmessage(long not_snum) throws Exception{
+        return session.selectOne(namespace+".deletesentmessage", not_snum);
+    }
+    
+    public MessageVO deletereceivemessage(long not_snum) throws Exception{
+        return session.selectOne(namespace+".deletereceivemessage", not_snum);
+    }
+
+    public void updateReceiveMessage(long not_snum) {
+        session.update(namespace+".updateReceiveMessage", not_snum);
     }
 }

@@ -191,8 +191,56 @@ public class BoardController {
     @Auth
     @RequestMapping(value="/injungboardlist", method = RequestMethod.GET)
     public void injungboardlist(@AuthUser UserVO authUser, Model model) throws Exception {
-        model.addAttribute("injungboardlist", bservice.getInjungBoardList(authUser.getMem_snum()));
-        
+        List<BoardVO> injungBoardList = bservice.getInjungBoardList(authUser.getMem_snum());
+        List<BoardVO> injungCategoryList = bservice.getInjunCategoryList(authUser.getMem_id());
+        model.addAttribute("injungBoardList", injungBoardList);
+        model.addAttribute("injungCategoryList", injungCategoryList);
     }
+
+    @Auth
+    @RequestMapping(value="/getInjungBoardByCategory", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getInjungBoardByCategory(@AuthUser UserVO authUser, @RequestParam("category") String category, Model model) throws Exception {
+       BoardVO vo = new BoardVO();
+       vo.setBoa_category(category);
+       vo.setMem_snum(authUser.getMem_snum());
+    
+        List<BoardVO> lv =null;
+        if (category.equals("All")){
+            lv = bservice.getInjungBoardList(authUser.getMem_snum());
+        }
+        else{
+            lv = bservice.getInjungBoardListbyCategoryUserId(vo) ;
+        }
+        
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("data", lv);
+    
+        return map;
+     }
+    
+
+    @Auth
+    @RequestMapping(value="/search", method = RequestMethod.POST)
+    public void searchBoard(@RequestParam("search") String keyword, Model model) {
+        List<BoardVO> searchboardlist = bservice.searchboard(keyword);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("searchBoardlist", searchboardlist);
+    }
+    
+    
+    @Auth
+    @RequestMapping(value="/modifyBoard", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> modifyBoard(@AuthUser UserVO authUser, BoardVO bv,  Model model) throws Exception {
+       
+    
+        String boardJsonImg = mservice.getImgJson(bv.getBoa_snum());
+        
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("data", boardJsonImg);
+    
+        return map;
+     }
     
 }

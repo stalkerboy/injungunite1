@@ -13,7 +13,7 @@ public class MongoVO {
 	public void setBoard_snum(long board_snum) {
 		this.board_snum = board_snum;
 	}
-	public DBObject  getImgJson() {
+	public DBObject getImgJson() {
 		return imgJson;
 	}
 	public void setImgJson(DBObject imgJson) {

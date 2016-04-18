@@ -8,12 +8,14 @@
  <typeAlias alias="BoardVO" type="com.injung.vo.BoardVO"/>
  <typeAlias alias="MessageVO" type="com.injung.vo.MessageVO"/>
  <typeAlias alias="BoardCommentVO" type="com.injung.vo.BoardCommentVO"/>
+ <typeAlias alias="TestVO" type="com.injung.vo.TestVO"/>
  </typeAliases>
  <mappers>
 		<mapper resource="/mappers/user.xml" />
 		<mapper resource="/mappers/board.xml" />
 		<mapper resource="/mappers/message.xml" />
 		<mapper resource="/mappers/friend.xml" />
+		<mapper resource="/mappers/rserve.xml" />
 	</mappers>
  </configuration>
  

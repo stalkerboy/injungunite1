@@ -15,6 +15,10 @@ public class MongoService {
 	
 	public void insertMongoVO(MongoVO mv){       
         dao.insertMongoVO(mv);
+    }
+
+    public String getImgJson(Long boa_snum) {
+        return dao.findImgJsonBySnum(boa_snum);
     }   
     
 }

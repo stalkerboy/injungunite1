@@ -69,20 +69,38 @@ public class MessageController {
     }
     
     @Auth
-    @RequestMapping(value="/readmessageform", method=RequestMethod.GET)
-    public String readmessageform(@AuthUser UserVO auth, @RequestParam("snum") long not_snum, Model model) throws Exception{
+    @RequestMapping(value="/receivereadmessageform", method=RequestMethod.GET)
+    public String receivereadmessageform(@AuthUser UserVO auth, @RequestParam("snum") long not_snum, Model model) throws Exception{
         MessageVO mv = new MessageVO();
         mv.setNot_snum(not_snum);
         MessageVO readMessage = service.readMessage(not_snum);
         
         if(readMessage.getNot_getMem_snum() == auth.getMem_snum()) {
+            service.receiveMessageRead(not_snum);
             model.addAttribute("messageVO", readMessage);
-            return "/message/readmessageform";
+            return "/message/receivereadmessageform";
         }
         else{
             return "/message/receivemessageform";
         }
     }
+    @Auth
+    @RequestMapping(value="/sentreadmessageform", method=RequestMethod.GET)
+    public String sentreadmessageform(@AuthUser UserVO auth, @RequestParam("snum") long not_snum, Model model) throws Exception{
+        MessageVO mv = new MessageVO();
+        mv.setNot_snum(not_snum);
+        MessageVO readMessage = service.readMessage(not_snum);
+        
+        if(readMessage.getNot_postMem_snum() == auth.getMem_snum()) {
+            model.addAttribute("messageVO", readMessage);
+            return "/message/sentreadmessageform";
+        }
+        else{
+            return "/message/sendmessageform";
+        }
+    }
+    
+    
     
     @Auth
     @RequestMapping(value="/sendmessageform", method=RequestMethod.GET)
@@ -115,5 +133,21 @@ public class MessageController {
         return map;
     }
     
+    @Auth
+    @RequestMapping(value="/deletereceivemessage", method=RequestMethod.GET)
+    public String deletereceivemessage(@RequestParam("snum") long not_snum)throws Exception{
+        service.deletereceivemessage(not_snum);
+        
+        return "redirect:/message/receivemessageform";
+    }
+    
+    
+    @Auth
+    @RequestMapping(value="/deletesentmessage", method=RequestMethod.GET)
+    public String deletesentmessage(@RequestParam("snum") long not_snum)throws Exception{
+        service.deletesentmessage(not_snum);
+        
+        return "redirect:/message/sendmessageform";
+    }
     
 }

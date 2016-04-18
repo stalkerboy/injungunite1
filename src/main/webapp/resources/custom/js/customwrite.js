@@ -17,7 +17,10 @@ $('#writeSubmit').click(function(){
    imgjson = JSON.stringify(canvas);
    $('#boa_imgjson').val(imgjson);
    imgpng = canvas.toDataURL('png');
+   
    var base64img = imgpng.substring(imgpng.indexOf(',')+1);
+   var base64img = imgpng.substring(imgpng.indexOf(',')+1);
+   
    $('#boa_imgpng').val(base64img);
 
    tagTextList = [];
@@ -26,8 +29,8 @@ $('#writeSubmit').click(function(){
    });
 
    $('#tags').val(tagTextList);
-
-   $('#writeform').submit();
+   alert(imgjson);
+//   $('#writeform').submit();
 });
 
 

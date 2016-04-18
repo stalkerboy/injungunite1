@@ -35,8 +35,8 @@
 					<button type="button" hidden><input type="file" id="profileLoader" multiple></button>
 				</div>
 				<div class="fileDrop" id="profile">
-					<img id="defaultProfile" alt="profile" src="/resources/img/profile/${authUser.mem_profile }">
-				    Drag files here!
+					<img id="defaultProfile" alt="profile" src="/resources/img/profile/${authUser.mem_profile }" width="120" height="180" >
+				    &nbsp; 
 				</div>
             </div>
             <div class="row text-center">
@@ -82,7 +82,7 @@
             	<label>BIRTH-DATE</label><br>
                 <div style="display: inline-block; width:200px;">
                     <div class="input-group">
-                        <input id="mem_birth" type="text" class="date-picker form-control" name="mem_birth" placeholder="BirthDate" size="50" />
+                        <input id="mem_birth" type="text" class="date-picker form-control" name="mem_birth" placeholder="BirthDate" size="50" readonly/>
                         <label for="date-picker-2" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
                     </div>
                 </div>
@@ -93,6 +93,12 @@
                 <input type="reset" class="btn btn-white-line btn-lg" value="REWRITE">
                 <input type="button" class="stone-btn stone-btn-dark stone-btn-round btn-md" value="MODIFY" onclick="onClickModifyBtn();">
             </div>
+            
+            <form id="userdelete_form" name="deleteform" action="/user/deleteUser" method="post">  
+				<div class="row text-center">
+	                <input type="button" class="stone-btn stone-btn-dark stone-btn-round btn-md" value="DELETE" onclick="userDeleteConfirm();">
+	            </div>      
+	        </form>
     </section>
 
 
@@ -114,6 +120,16 @@
 <script src='/resources/custom/js/custommodals.js'></script>
 <script>
 $(".date-picker").datepicker();
+
+function userDeleteConfirm(){
+	if (confirm("정말 삭제하시겠습니까??") == true){
+		$("#userdelete_form").submit();
+	}
+	else{
+	    return;
+	}	
+}
+
 </script>
 </body>
 </html>

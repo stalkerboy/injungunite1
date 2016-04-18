@@ -17,6 +17,10 @@
 #joinmodal:before{
 	height:0;
 }
+.divJoinWarning{
+	color: red;
+	text-align: center;
+}
 </style>
 
 </head>
@@ -114,20 +118,29 @@
                 <input id="mem_profile" name="mem_profile" type="hidden">
 				<legend></legend>
                 <label class="block-label" for="myid">ID</label>
-				<img src="data:image/png;base64,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" id="image-checkid" style="display:none; width:16px"><br>
 				<div class="row">
 			        <div class="col-xs-8">
-                        <input id="mem_id" name="mem_id" type="text" class="form-control" placeholder="USER ID" >
+                        <input id="mem_id_join" name="mem_id" type="text" class="form-control" placeholder="USER ID"  >
 					</div>
 					<div class="col-xs-4">
                         <input id="button-checkid" class="btn btn-sm" type="button" value="check ID">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEc0lEQVR42q2UXUxbZRzGn3N6Ts9pT1tOacv3R/nY2JjL6MYcuzF0hpFtunSJmWYxhsUoURdDE43Ri203Xhq4wKibWty8MMZkaIbbwNAyYGUIlM9NLjYKK7LSQgstDLp++LbJdDMgCDznoien7/v8znne//9PYYtEX6BFCSUxMbREz9Ksc/50oCH+nNoqc5qirfu1ZSUaTotgeB5354acrIQ5sSUA5iJjPal/vXyf5nkshhcRjcUwE3Ljl8kfbZsGsBdZU6Fq25W3is5gIuBCt7sPMoZHliIDnTPXNxcR97VUlDPC2PvFH4oyiRzNrlYsR5ahZBXIFDJgn23eHED2DV97OPNozaGMw+jz9sMZeAAJTUOvzEHg8SxGAwONGwYI38rJgWocH+05C8+SFx1uOyiKQgqvhVKqQN9Mhz8cCxk2DFBZlI7qnWdKchR6dEzfQvBxEHJWjiwSzdBsD3zLHnOvabBuQ4CkBmXNfl1Z7cmCUxgLjpGSHAVDM8hRZBFjL4a8PbYe04AxvvZ/A8TvkvQCIzg+NpwVIwjD7u0mLjHoSDQCI0ebq9kfjUUMt4/3Of8BfA6R3Jni+8mvDe+gfzWA5pL6yiv5r5kMur3o8zngCXkgY3lkC1m4Mz0Az6Lb3HW8t+7Jegr1KCHZWUt1ZaKMkWHYP4DJRVcj+ec0quF/2lx7Kbk8T5VvfWPHm3A9cmE4MASe4ZCnyMXckh/DbofN/nKv8ek9FHn7sQ92f6JPEzKxQLqQlUhw092K666r/WS2GCNvRxKQlMtakQLlqH7uPb1WroPddwvxiNLkqUhilWgba/VHoxFDx0vdzmcB9XSs9mA9RnyjGJwZgZpPQoYiDQ+XHsD68Ea/lJaeIIPLmfZ9yvnyzEPnjNkvYnRhFFOhSYicikSTjV5XN6aDbnP7sdt1/46UwhfwfVr6mTjovYt78/cTNc2zUhSpC8kUC6HHY/dHETFreI2leve7CJFrMDiQWKMn0fgWZ9A13mVrP9ZlxAqi8CXOk5I7d1BbjvYpO8YXJhKbRV6FXZodSBe0aBpvxKvbTiFPzIMj0IcQtYQccqgCqftrd675w9GwwXa007kyIK6vYMmU6asKFLuwEAnCs+wBL+WgliUlviSNZL5dLMTksgsTISc0MnWiarqcdvw5P2W2Humowyr6uw8kFySWDHluVbFYgsXoAhm3M5BzPJScQMzzkaXMTJhzLIsCVT5mF7zovN9paz3SYcR/6JlGU1oUBJJTtVO9B0uxR/CHfRA4GZS8AAUvI0AOuYrsxKx5Ek1LZZtz3YC4Ui/rLEmcusqgO4AIHUEgOpcwV3By6ARNAtAz8TumSDTNlbY6rKEVR4X+h+wakUuu3Zt6AFISyVxslkDk2K4qxDxpqO7xbtuNSqtxLfNVAXEV/1RUJfKiZV96GTlwKaRShtS9EjfvtfkjpKF+rfjNuSlAXKU/lyQghvRSJAsi/pgegTfoNTdVtKwZzboAcb3QVGZiJWwtSzMiQzENVytazOs1j+svAUmopjhH/bkAAAAASUVORK5CYII=" id="image-checkid" style="display:none; width:16px">
 					</div>
 				</div><br>
-
+				
+				<div class="divJoinWarning" id="idcheckmsg" style="display: none;">이미 존재하는 아이디입니다.</div>
+				<div class="divJoinWarning" id="idlimit" style="display: none;">5~20자의 영문만 가능합니다.</div>
+	
                 <label class="block-label">PASSWORD</label><br>&nbsp;
-                <input id="mem_passwd" name="mem_passwd" type="password" value="" class="form-control" placeholder="Password" >
-				<input id="mem_passwdck" name="mem_passwdck" type="password" value="" class="form-control" placeholder="Password Check" ><br>
-
+                <input id="mem_passwd" name="mem_passwd" type="password" value="" class="form-control" placeholder="Password" onblur="onblur_event();">
+				<div class="divJoinWarning" id="pswd1Msg" class="error" style="display: none">필수 정보입니다.</div>
+				<div class="divJoinWarning" id="limitpw" style="display: none;">비밀번호는 4~15자를 입력하세요.</div>
+				
+				<input id="mem_passwdck" name="mem_passwdck" type="password" value="" class="form-control" placeholder="Password Check" onblur="onblur_pwcheck();">
+				<div class="divJoinWarning" id="pswd1Msg" class="error" style="display: none">필수 정보입니다.</div>
+				<div class="divJoinWarning" id="pwcheck" style="display: none;">패스워드가 일치하지 않습니다.</div>
+				<br>
+								
 				<label class="block-label" for="name">NAME</label><br>
 				<input id="mem_name" name="mem_name" type="text" value="" class="form-control" placeholder="Name" ><br>
 
@@ -145,7 +158,7 @@
                 <label class="block-label" for="birthDate">BirthDate</label>
                 <div class="controls">
 					<div class="input-group">
-						<input id="mem_birth" type="text" class="date-picker form-control" name="mem_birth" placeholder="BirthDate"/>
+						<input id="mem_birth" type="text" class="date-picker form-control" name="mem_birth" placeholder="BirthDate" readonly/>
 						<label for="mem_birth" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
 					</div>
 			    </div><br>
@@ -193,6 +206,37 @@ $(".date-picker").datepicker();
 </script>
 
 
+<script>
+function onblur_event(){
+	var mem_passwd = document.getElementById("mem_passwd").value;
+    if(mem_passwd == "")
+   	{
+    	$('.error').show(); 	
+    	$('#limitpw').hide();
+		$('#pwcheck').hide();
+   	}else if(mem_passwd.length<4 || mem_passwd.length>15)
+    	{
+    	$('#limitpw').show();
+    	$('.error').hide();   	
+		$('#pwcheck').hide();
+    	} 
+}
+function onblur_pwcheck() {
+	 $('.error').hide();
+	 var mem_passwd = document.getElementById("mem_passwd").value;
+	 var mem_passwdck = document.getElementById("mem_passwdck").value;
+	 if(mem_passwd!=mem_passwdck)
+	{ 
+		$('#pwcheck').show();
+		$('.error').hide();
+		$('#limitpw').hide();
+	}
+	 else{
+		 $('#pwcheck').hide();
+		$('#limitpw').hide()
+	 } 
+}
+</script>
 
 </body>
 </html>

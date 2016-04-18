@@ -28,7 +28,18 @@
 	
 	
 	<dependencies>
-	
+	<!--  Rserve -->
+		<dependency>
+			<groupId>com.synclife</groupId>
+			<artifactId>exLib2</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<!--  Rengine -->
+		<dependency>
+			<groupId>com.synclife</groupId>
+			<artifactId>exLib</artifactId>
+			<version>1.0</version>
+		</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -184,13 +195,14 @@
 			<version>1.8.2.RELEASE</version>
 		</dependency>
 	
-	
 		<!-- jackson -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.1.1</version>
 		</dependency>	
+		
+		
 		
 	</dependencies>
     <build>

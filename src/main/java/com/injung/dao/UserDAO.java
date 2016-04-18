@@ -61,4 +61,8 @@ public class UserDAO{
         return  session.selectOne(namespace+".selectPw", mem_snum);        
     }
 
+    public void userdelete(UserVO vo) {
+        session.delete(namespace+".userdelete", vo);
+    }
+
 }

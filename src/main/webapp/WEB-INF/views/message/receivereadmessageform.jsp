@@ -41,9 +41,9 @@
 				</div><!-- /.box-body -->
 	                
 	            <div class="box-footer">  
-	            	<button class="btn btn-default"><i class="fa fa-trash-o"></i> Delete</button>
-	                <button class="btn btn-default"><i class="glyphicon glyphicon-list-alt"></i> list</button>
-	                <button class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
+	            	<a class="btn btn-default" href="/message/deletereceivemessage?snum=${messageVO.not_snum}"><i class="fa fa-trash-o"></i> Delete</a>
+	                <a class="btn btn-default" href="/message/receivemessageform"><i class="glyphicon glyphicon-list-alt"></i> list</a>
+	                <a class="btn btn-default" href="/message/writemessageform?mem_id=${messageVO.not_postmem_id }"><i class="fa fa-reply"></i> Reply</a>
 	                  
 				</div><!-- /.box-footer -->
 			</div><!-- /. box -->

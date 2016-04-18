@@ -25,6 +25,8 @@ import com.injung.annotation.Auth;
 import com.injung.annotation.AuthUser;
 import com.injung.service.BoardService;
 import com.injung.service.FriendService;
+import com.injung.service.Rservice;
+import com.injung.service.ScoreService;
 import com.injung.service.UserService;
 import com.injung.util.UploadFileUtils;
 import com.injung.vo.BoardVO;
@@ -44,7 +46,13 @@ public class UserController {
 	
 	@Inject
     private FriendService fservice;
-	
+
+    @Inject
+    private ScoreService scoreservice;
+    
+    @Inject
+    private Rservice rservice;
+    
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(UserVO vo ,HttpSession session) throws Exception {
 	    String path = session.getServletContext().getRealPath("/")+"resources/img/profile";
@@ -62,22 +70,32 @@ public class UserController {
 	    Date oldformatDate = olddateformat.parse(vo.getMem_birth());
 	    vo.setMem_birth(newdateformat.format(oldformatDate));
 		service.userJoin(vo);
+		System.out.println(vo);
+        scoreservice.createScoreTable(vo.getMem_snum());
+        scoreservice.createUserCategory(vo.getMem_snum());
 		return "redirect:/";
 	}
 	
 	
 	@Auth
 	@RequestMapping(value="/main")
-	public String writeform(@AuthUser UserVO uv, Model model) {
-//		model.addAttribute("categoryList", service.getCategoryListById(uv.getMem_id()));
-//		return "user/usermain";
+	public String usermain(@AuthUser UserVO uv, Model model)  throws Exception{
+	    scoreservice.calScore(uv.getMem_id(), uv.getMem_snum());
+        scoreservice.setUserCategory(uv.getMem_snum());
+        model.addAttribute("userInfo", uv);     
+        
+        rservice.recommendalgorithm();
+        List<BoardVO> recomboardList = rservice.getrecomBoard();
+        model.addAttribute("boardList", recomboardList);
+
+        List<BoardVO> friendboardList = bservice.getBoardListbyFriend(uv.getMem_snum());
+        model.addAttribute("friendboardList", friendboardList);
 		return "user/usermain";
 	}
 	
 	@Auth
     @RequestMapping(value="/modifyform", method = RequestMethod.POST)
     public void modifyform() throws Exception {
-	    System.out.println("modifyform come");
     }
 	
 	
@@ -159,8 +177,6 @@ public class UserController {
     @ResponseBody
     public  Map<String, Object> deletefriendfromMyList(@RequestBody long fri_snum, @AuthUser UserVO authUser, Model model) throws Exception {
        fservice.deletefriend(fri_snum);
-       
-       long memNo = authUser.getMem_snum();
 
        Map<String, Object> map = new HashMap<String, Object>();
        model.addAttribute("friendlist", fservice.getFriendList(authUser.getMem_snum()));
@@ -190,6 +206,13 @@ public class UserController {
         service.modify(userInfo);
 	    Map<String, Object>map = new HashMap<String, Object>();
 	    return map;
+    }
+	
+	@Auth
+    @RequestMapping(value="/deleteUser", method = RequestMethod.POST)
+    public String deleteform(@AuthUser UserVO auth) throws Exception {
+        service.userdelete(auth);
+        return "redirect:/";
     }
 	
 }

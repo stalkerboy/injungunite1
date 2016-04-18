@@ -22,15 +22,41 @@
 	<!-- modals -->
 	<c:import url="/WEB-INF/views/modal/pwformodifymodal.jsp"></c:import>
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
-	<c:import url="/WEB-INF/views/modal/viewmodal.jsp"></c:import>
-	<c:import url="/WEB-INF/views/modal/modifymodal.jsp"></c:import>
-	
-	<button type="button" onclick="onClickModifyBoardBtn();">asdad</button>
+
+	<div class="wrapper" >
+		<section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/portfolio-8.jpg" style="overflow-y: scroll;">
+			<div style="height: 100px;"></div>
+			<div class="box box-primary" style="width: 90%; left:5%;">
+				<div class="box-header with-border">
+					<h3 class="box-title">${messageVO.not_subject }</h3>
+				</div><!-- /.box-header -->
+	               
+				<div class="box-body no-padding">
+	            	<div class="mailbox-read-info">
+	                    <h5>From: ${messageVO.not_postmem_id } <span class="mailbox-read-time pull-right">${messageVO.not_regdate }</span></h5>
+					</div><!-- /.mailbox-read-info -->
+	                  
+	                <div id="divMessageContext" class="mailbox-read-message">${messageVO.not_context } 
+	                </div><!-- /.mailbox-read-message -->
+				</div><!-- /.box-body -->
+	                
+	            <div class="box-footer">  
+	            	<a class="btn btn-default" href="/message/deletesentmessage?snum=${messageVO.not_snum}"><i class="fa fa-trash-o"></i> Delete</a>
+	                <a class="btn btn-default" href="/message/sendmessageform"><i class="glyphicon glyphicon-list-alt"></i> list</a>
+	                <a class="btn btn-default" href="/message/writemessageform?mem_id=${messageVO.not_getmem_id }"><i class="fa fa-reply"></i> Reply</a>
+	                  
+				</div><!-- /.box-footer -->
+			</div><!-- /. box -->
+		</section>
+	</div>
+
+
 <!-- js import -->
 <!-- jquery -->
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- bootstrap -->
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
@@ -38,23 +64,5 @@
 
 <script src='/resources/custom/js/customwrite.js'></script>
 <script src='/resources/custom/js/custommodals.js'></script>
-<script>
-function onClickModifyBoardBtn(boa_snum){
-	var mem_passwd = $("#mem_passwd").val() ;
-	$.ajax( {
-		url : "/board/modifyBoard",
-		type: "post",
-		dataType: "json",
-		data:{'boa_snum': boa_snum},
-		success: function( response ){
-			alert(response.data);
-// 			canvas = new fabric.Canvas('modifyCanvas');
-// 			canvas.loadFromJSON(response.data, function(){
-// 		        canvas.renderAll();
-// 		    });
-		}
-	});
-}
-</script>
 </body>
 </html>

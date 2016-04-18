@@ -69,5 +69,10 @@ public class UserService{
 	}
 
 
+    public void userdelete(UserVO vo) {
+        dao.userdelete(vo);
+    }
+
+
 	
 }

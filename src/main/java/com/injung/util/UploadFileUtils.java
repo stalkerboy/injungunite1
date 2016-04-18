@@ -33,6 +33,9 @@ public class UploadFileUtils {
 		String uploadedFileName = null;
 		
 		if(MediaUtils.getMediaTpye(formatName) != null) {
+		    System.out.println("uploadpath : " + uploadPath);
+		    System.out.println("savedPath : " + savedPath);
+		    System.out.println("savedName : " + savedName);
 			uploadedFileName = makeThumbnail(uploadPath, savedPath, savedName);
 		}		
 		

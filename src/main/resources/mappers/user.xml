@@ -17,8 +17,11 @@
 		<![CDATA[
 		 	 insert
          	 into member 
-          	values (seq_mem_snum.nextval, #{mem_id }, #{mem_passwd }, #{mem_name }, #{mem_email }, #{mem_gender }, #{mem_birth }, #{mem_profile }, 0, sysdate )   
+          	values (seq_mem_snum.nextval, #{mem_id }, #{mem_passwd }, #{mem_name }, #{mem_email }, #{mem_gender }, #{mem_birth }, #{mem_profile }, 0, sysdate )
      	 ]]>
+     	 <selectKey keyProperty="mem_snum" resultType="Long" order="AFTER">
+			   	select seq_mem_snum.currval from dual
+		   </selectKey>
 	</insert>
 
 	<select id="selectPw" parameterType="long" resultType="string">
@@ -83,5 +86,11 @@
             and mem_email = #{email }
             and mem_name= #{name }
 		]]>	
-	</select>	
+	</select>
+	
+	<delete id="userdelete">
+		<![CDATA[
+			delete from member where mem_snum = #{mem_snum }
+		]]>					
+	</delete>		
 </mapper>

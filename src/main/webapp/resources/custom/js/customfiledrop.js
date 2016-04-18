@@ -6,8 +6,8 @@ document.getElementById('profileLoader').onchange = function handleImage(e) {
     if (!f.type.match('image.*')) {
       continue;
     }
-    if(f.size > 50000){
-        alert("50 kb이하의 사진이 필요합니다.");
+    if(f.size > 2000000){
+        alert("20 mb이하의 사진이 필요합니다.");
         myProfileImg = defaultProfile;
         return;
     }
@@ -63,8 +63,8 @@ elDrop.addEventListener('drop', function(event) {
 
     for (var i=0, l=files.length; i<l; i++) {
         var file = files[i];
-        if(file.size > 50000){
-            alert("50 kb이하의 사진이 필요합니다.");
+        if(file.size > 2000000){
+            alert("20 mb이하의 사진이 필요합니다.");
             myProfileImg = defaultProfile;
             return;
         }

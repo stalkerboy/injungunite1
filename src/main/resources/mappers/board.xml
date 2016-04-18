@@ -22,7 +22,7 @@
      		and m.mem_id = #{mem_id }
    		GROUP BY b.boa_category
       ]]>
-   </select>
+</select>
    
    
    
@@ -136,7 +136,8 @@ select b.boa_snum, b.boa_imgpng, b.boa_subject, b.boa_regdate, m.mem_snum, m.mem
 	from board b, member m, likelist l
 	where b.mem_snum=#{mem_snum}
     and b.boa_snum = l.boa_snum
-		and	m.mem_snum = b.mem_snum  
+		and	m.mem_snum = b.mem_snum
+		and b.boa_regdate = sysdate-7  
 	
 ]]>
 </select>
@@ -149,4 +150,46 @@ select b.boa_snum, b.boa_imgpng, b.boa_subject, b.boa_regdate, m.mem_snum, m.mem
       ]]>
 </select>
 
+<select id="selectBoardListbyFriend" parameterType="long" resultType="BoardVO">
+	<![CDATA[
+  		select b.boa_snum, b.boa_subject, b.boa_imgpng, m.mem_id, b.BOA_CATEGORY
+		from board b, member m, fri_list f
+		where f.mem_snum=#{mem_snum } and b.mem_snum=m.mem_snum
+		and b.mem_snum = f.FRI_MEM_SNUM
+	
+	]]>
+</select>
+
+<select id="selectInjungCategoryListById" parameterType="String" resultType="BoardVO">
+<![CDATA[
+   	  select b.boa_category
+      from member m, board b, likelist l 
+      where b.mem_snum = m.mem_snum 
+      and b.boa_snum = l.boa_snum
+      and m.mem_id =#{mem_id }
+      GROUP BY b.boa_category  
+]]>
+</select>
+
+<select id="selectInjungBoardListByCategoryUserId" parameterType="BoardVO" resultType="BoardVO">
+      <![CDATA[
+      select b.boa_snum boa_snum, b.boa_imgpng boa_imgpng, b.boa_subject boa_subject, b.boa_context boa_context, b.boa_regdate boa_regdate, m.mem_snum mem_snum, m.mem_id mem_id, m.mem_profile mem_profile, b.boa_category
+		 from board b, member m, likelist l
+		 where b.mem_snum = m.mem_snum 
+		 and m.mem_id = #{mem_id}
+		 and b.boa_snum = l.boa_snum
+		 and b.boa_category = #{boa_category}
+		 and sysdate - b.boa_regdate < 7  
+		 order by b.boa_snum desc, b.boa_regdate desc 
+      ]]>
+   </select>
+   
+   <select id="selectSearchBoard" parameterType="string" resultType="BoardVO">
+	<![CDATA[
+  		select b.boa_snum, b.boa_subject, b.boa_imgpng, m.mem_id, b.BOA_CATEGORY
+		from board b, taglist t, member m
+		where (b.BOA_SUBJECT like '%'||#{keyword }||'%' or t.TAG_NAME like '%'||#{keyword }||'%')
+		and b.BOA_SNUM=t.BOA_SNUM(+) and b.MEM_SNUM=m.MEM_SNUM
+	]]>
+	</select>
 </mapper>

@@ -115,4 +115,20 @@ public class BoardService  {
     public BoardVO getBoardCount(String mem_id){
         return dao.getBoardCount(mem_id);
     }
+
+    public List<BoardVO> getBoardListbyFriend(long mem_snum) {
+        return dao.selectBoardListbyFriend(mem_snum);
+    }
+
+    public List<BoardVO> getInjunCategoryList(String mem_id) throws Exception {
+        return dao.selectInjungCategoryListById(mem_id);
+    }
+    
+    public List<BoardVO> getInjungBoardListbyCategoryUserId(BoardVO vo) {
+        return dao.selectInjungBoardListByCategoryUserId(vo);
+    }
+
+    public List<BoardVO> searchboard(String keyword) {        
+        return dao.selectSearchBoard(keyword);
+    }
 }

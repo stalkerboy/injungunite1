@@ -122,9 +122,9 @@
             </c:forEach>  
     </ul><!-- /.users-list -->
   </div><!-- /.box-body -->
-  <div class="box-footer text-center">
-    <a href="javascript::" class="uppercase" style="color:black">View All Users</a>
-  </div><!-- /.box-footer -->
+<!--   <div class="box-footer text-center"> -->
+<!--     <a href="javascript::" class="uppercase" style="color:black">View All Users</a> -->
+<!--   </div>/.box-footer -->
 </div><!--/.box -->
 </div>
 </section>
