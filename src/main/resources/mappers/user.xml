@@ -71,20 +71,20 @@
 	
 	<select id="findId" parameterType="string" resultType="UserVO">
 		<![CDATA[
-            select mem_snum no, mem_id id, mem_name name, mem_email email, mem_gender gender, mem_birth birthDate
+            select mem_id
             from member
-            where  mem_email = #{email }
-            and mem_name= #{name }
+            where  mem_email = #{mem_email }
+            and mem_name= #{mem_name }
 		]]>	
 	</select>
 	
 	<select id="findPw" parameterType="string" resultType="UserVO">
 		<![CDATA[
-            select mem_snum no, mem_passwd password, mem_id id, mem_name name, mem_email email, mem_gender gender, mem_birth birthDate
+            select mem_passwd
             from member
-            where  mem_id = #{id }
-            and mem_email = #{email }
-            and mem_name= #{name }
+            where  mem_id = #{mem_id }
+            and mem_email = #{mem_email }
+            and mem_name= #{mem_name }
 		]]>	
 	</select>
 	

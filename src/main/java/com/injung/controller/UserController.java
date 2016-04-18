@@ -215,4 +215,43 @@ public class UserController {
         return "redirect:/";
     }
 	
+
+
+    @ResponseBody
+    @RequestMapping( value="/findId")
+    public Map<String, Object> findId(@RequestParam("email") String email, @RequestParam("name") String name) throws Exception {
+        UserVO uv = new UserVO();
+        uv.setMem_email(email);
+        uv.setMem_name(name);
+        
+        UserVO findUser = service.findId(uv);
+        
+        System.out.println(findUser);
+        Map<String, Object>map = new HashMap<String, Object>();
+        map.put("result", "success");
+        map.put("data", findUser);
+        
+        return map;
+        
+    }
+    
+    
+    @ResponseBody
+    @RequestMapping( value="/findPw")
+    public Map<String, Object> findPw(@RequestParam("id") String id,@RequestParam("email") String email, @RequestParam("name") String name) throws Exception {
+        UserVO uv = new UserVO();
+        uv.setMem_id(id);
+        uv.setMem_email(email);
+        uv.setMem_name(name);
+        
+        UserVO findUser = service.findPw(uv);
+        
+        System.out.println(findUser);
+        Map<String, Object>map = new HashMap<String, Object>();
+        map.put("result", "success");
+        map.put("data", findUser);
+        
+        return map;
+        
+    }
 }

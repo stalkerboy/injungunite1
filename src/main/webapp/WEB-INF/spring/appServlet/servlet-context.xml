@@ -44,6 +44,8 @@
 			<mvc:exclude-mapping path="/resources/**" />
 			<mvc:exclude-mapping path="/user/logout" />
 			<mvc:exclude-mapping path="/user/hasid" />
+			<mvc:exclude-mapping path="/user/findId" />
+			<mvc:exclude-mapping path="/user/findPw" />
 			<beans:bean class="com.injung.interceptor.AuthInterceptor" />
 		</mvc:interceptor>
 		

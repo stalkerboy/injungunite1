@@ -76,27 +76,32 @@
 
 
 
-            <a href="#findId" data-toggle="collapse" data-target="#findId" style="color: #ffffff"><i class="fa fa-anchor">Find ID</i></a>
+			<a href="#findId" data-toggle="collapse" data-target="#findId" style="color: #ffffff"><i class="fa fa-anchor">Find ID</i></a>
                 <div id="findId" class="collapse">
                     <label class="block-label">Please Write your Info</label>
-                    <input type="text" id="femail" name="email" class="form-control" placeholder="E-MAIL" />
-                    <input type="text" id="fname" name="name" class="form-control" placeholder="NAME" />
+                    <input type="text" id="mem_email" name="mem_email" class="form-control" placeholder="E-MAIL" />
+                    <input type="text" id="mem_name" name="mem_name" class="form-control" placeholder="NAME" />
                     <input id="button-findid" type="button" value="Find ID" onclick="showfindid();"  class="btn btn-sm btn-block btn-flat">
+                    <label class="block-label" id="find-Id-Label" hidden>Your ID:</label>
+					<input id="findid"  name="mem_id" type="text" value="${findUser.mem_id}" class="form-control" style="display: none; background-color: #c0c0c0; color: #000000" disabled>
                     <br>
                 </div>
-
+                
                 <br>
                 <legend></legend>
-            <a href="#findPw"data-toggle="collapse" data-target="#findPw"style="color: #ffffff"><i class="fa  fa-anchor">Find Password</i></a>
-
-            <div id="findPw" class="collapse">
-                <label class="block-label">Please Write your Info</label>
-                <input type="text" id="pid" name="id" class="form-control" placeholder="ID" />
-                <input type="text" id="pemail" name="email" class="form-control" placeholder="E-MAIL" />
-                <input type="text" id="pname" name="name" class="form-control" placeholder="NAME" />
-                <input id="button-findpw" type="button" value="Find PW" onclick="showfindpw();"  class="btn btn-sm btn-block btn-flat">
-                <br>
-            </div>
+                
+           <a href="#findPw"data-toggle="collapse" data-target="#findPw"style="color: #ffffff"><i class="fa  fa-anchor">Password</i></a>
+              	<div id="findPw" class="collapse">
+					<label class="block-label">Please Write your Info</label>
+					<input type="text" id="pmem_id" name="mem_id" class="form-control" placeholder="ID" /> 
+					<input type="text" id="pmem_email" name="mem_email" class="form-control" placeholder="E-MAIL" /> 
+					<input type="text" id="pmem_name" name="mem_name" class="form-control" placeholder="NAME" /> 
+					<input id="button-findpw" type="button" value="Find PW" onclick="showfindpw();"  class="btn btn- btn-block btn-flat">
+					<label class="block-label" id="find-Pw-Label" hidden>Your ID:</label>
+					<input id="findpw"  name="mem_passwd" type="text" value="${findUser.mem_passwd}" class="form-control" style="display: none; background-color: #c0c0c0; color: #000000" disabled>
+					<br>
+				</div>
+			<br>						
             <legend></legend>
 
         </div>

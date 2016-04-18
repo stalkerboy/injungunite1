@@ -124,13 +124,13 @@ $(function(){
 
 
 function showfindid(){
-    var email = $("#femail").val();
-    var name = $("#fname").val();
+    var email = $("#mem_email").val();
+    var name = $("#mem_name").val();
     console.log(email);
     console.log(name);
     if( email == "" ) {
         return;
-    }else if(name ==""){
+    }if(name ==""){
         return;
     }
     $.ajax( {
@@ -138,7 +138,8 @@ function showfindid(){
         type: "get",
         dataType: "json",
         data: "",
-       //  contentType: "application/json",
+        //contentType: "application/json",
+        
         success: function( response ){
             if(response.data == null) {
                 alert( "존재하지 않는 ID입니다." );
@@ -150,7 +151,7 @@ function showfindid(){
             var button_find_id =  document.getElementById("button-findid");
             var find_id_label = document.getElementById("find-Id-Label");
 
-            find_id_btn.value = response.data.id;
+            find_id_btn.value = response.data.mem_id;
 
             find_id_label.style.display="block";
             find_id_btn.style.display="block";
@@ -160,10 +161,11 @@ function showfindid(){
 };
 
 
+
 function showfindpw(){
-    var id = $("#pid").val();
-    var email = $("#pemail").val();
-    var name = $("#pname").val();
+    var id = $("#pmem_id").val();
+    var email = $("#pmem_email").val();
+    var name = $("#pmem_name").val();
 
     if( id == "" ) {
         return;
@@ -188,7 +190,7 @@ function showfindpw(){
             var button_find_pw =  document.getElementById("button-findpw");
             var find_pw_label = document.getElementById("find-Pw-Label");
 
-            find_pw_btn.value = response.data.password;
+            find_pw_btn.value = response.data.mem_passwd;
 
             find_pw_label.style.display="block";
             find_pw_btn.style.display="block";
