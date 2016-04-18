@@ -80,7 +80,7 @@
 
 		<div class="box box-danger" style="width: 90%; left:5%; background-color:rgba(255,255,255,0);">
 			<div class="box-header">
-		    	<h3 class="box-title">Latest Board</h3>
+		    	<h3 class="box-title" style="color:#111">Latest Board</h3>
 	      		<ul  class="category-btn font-alt">
 	        		<li><a href="#" class="current" onclick="onClickCategoryBtn('${param['user'] }', 'All')">All</a></li>
         			<c:forEach items="${categoryList}" var="category">
