@@ -89,15 +89,12 @@ public class UserController {
 	    UserVO uservo = service.getUserInfoById(uv.getMem_id());
 	    model.addAttribute("userInfo", uservo);     
         
-	    rservice.ff();     
-        rservice.rconnect();
-        rservice.readLift();
-        rservice.readRecom();
-        rservice.mapping();
-        rservice.matching();
-        rservice.dividecategory();
-	    List<BoardVO> boardList = rservice.getrecomBoard();
-        model.addAttribute("boardList", boardList);        
+	    rservice.recommendalgorithm();
+	    List<BoardVO> recomboardList = rservice.getrecomBoard();
+        model.addAttribute("boardList", recomboardList);
+        
+        List<BoardVO> friendboardList = bservice.getBoardListbyFriend(uv.getMem_snum());
+        model.addAttribute("friendboardList", friendboardList);
                
 		return "user/usermain";
 	}

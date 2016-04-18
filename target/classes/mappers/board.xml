@@ -159,5 +159,23 @@ select b.boa_snum, b.boa_imgpng, b.boa_subject, b.boa_regdate, m.mem_snum, m.mem
       ]]>
 </select>
 
+<select id="selectBoardListbyFriend" parameterType="long" resultType="BoardVO">
+	<![CDATA[
+  		select b.boa_snum, b.boa_subject, b.boa_imgpng, m.mem_id, b.BOA_CATEGORY
+		from board b, member m, fri_list f
+		where f.mem_snum=#{mem_snum } and b.mem_snum=m.mem_snum
+		and b.mem_snum = f.FRI_MEM_SNUM
+	
+	]]>
+</select>
+
+<select id="selectSearchBoard" parameterType="string" resultType="BoardVO">
+	<![CDATA[
+  		select b.boa_snum, b.boa_subject, b.boa_imgpng, m.mem_id, b.BOA_CATEGORY
+		from board b, taglist t, member m
+		where (b.BOA_SUBJECT like '%'||#{keyword }||'%' or t.TAG_NAME like '%'||#{keyword }||'%')
+		and b.BOA_SNUM=t.BOA_SNUM(+) and b.MEM_SNUM=m.MEM_SNUM
+	]]>
+</select>
 
 </mapper>

@@ -1,9 +1,5 @@
 package com.injung.controller;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,18 +17,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.injung.annotation.Auth;
 import com.injung.annotation.AuthUser;
-import com.injung.vo.MongoVO;
-import com.injung.vo.BoardCommentVO;
-import com.injung.vo.BoardVO;
-import com.injung.vo.CategoryVO;
-import com.injung.vo.UserVO;
-import com.mongodb.DBObject;
-import com.mongodb.util.JSON;
 import com.injung.service.BoardService;
 import com.injung.service.FriendService;
 import com.injung.service.MongoService;
 import com.injung.service.UserService;
 import com.injung.util.UploadFileUtils;
+import com.injung.vo.BoardCommentVO;
+import com.injung.vo.BoardVO;
+import com.injung.vo.CategoryVO;
+import com.injung.vo.MongoVO;
+import com.injung.vo.UserVO;
+import com.mongodb.DBObject;
+import com.mongodb.util.JSON;
 
 @Controller
 @RequestMapping(value="/board")
@@ -198,6 +193,14 @@ public class BoardController {
     public void injungboardlist(@AuthUser UserVO authUser, Model model) throws Exception {
         model.addAttribute("injungboardlist", bservice.getInjungBoardList(authUser.getMem_snum()));
         
+    }
+    
+    @Auth
+    @RequestMapping(value="/search", method = RequestMethod.POST)
+    public void searchBoard(@RequestParam("search") String keyword, Model model) {
+        List<BoardVO> searchboardlist = bservice.searchboard(keyword);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("searchBoardlist", searchboardlist);
     }
     
 }

@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Main</title>
+<title>Search</title>
 
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
@@ -62,8 +62,7 @@
 			<div class="col-md-12" style="height: 80px">
 			</div>
 			<ul class="tabs">
-				<li class="active" rel="tab1">추천 </li>
-				<li rel="tab2">친구 </li>
+				<li class="active" rel="tab1">검색</li>				
 			</ul>
 			<div class="row">
 				<div class="input-group col-sm-3 pull-right" style="right: 5%; margin: 5px 10px">
@@ -107,13 +106,13 @@
 		<div id="tab1" class="tab_content">
 			<div class="box box-danger" style="width: 90%; left: 5%; background-color: rgba(255, 255, 255, 0);">
 				<div class="box-header ">
-					<h3 class="box-title">Latest Recommend Board</h3>
+					<h3 class="box-title">"${keyword }"에 대한 검색 결과</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body no-padding">
 					   <div class="works-grid-wrapper">		
 							<div id="works-grid" class="works-grid works-grid-gutter">
-								<c:forEach items="${boardList}" var="board">
+								<c:forEach items="${searchBoardlist}" var="board">
 									<article class="work-item">
 										<div class="work-wrapper">
 											<div class="work-thumbnail" style="margin: 15px 5px">

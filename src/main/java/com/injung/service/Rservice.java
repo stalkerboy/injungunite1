@@ -32,8 +32,8 @@ public class Rservice {
 	@Inject
 	private RDAO dao;
 	
-	public List<TestVO> ff() throws Exception{
-		List<TestVO> data = dao.ff();
+	public List<TestVO> getdb() throws Exception{
+		List<TestVO> data = dao.getdb();
 		
 		System.out.println(data.get(1).getCategory());
 		
@@ -355,5 +355,15 @@ public class Rservice {
 		Collections.shuffle(totallist);
 		
 		return totallist;
+	}
+	
+	public void recommendalgorithm() throws Exception {
+	    this.getdb();     
+        this.rconnect();
+        this.readLift();
+        this.readRecom();
+        this.mapping();
+        this.matching();
+        this.dividecategory();
 	}
 }

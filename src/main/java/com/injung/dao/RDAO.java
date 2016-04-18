@@ -21,7 +21,7 @@ public class RDAO {
 	
 	private static String namespace="rserve";
 	
-	public List<TestVO>ff(){
+	public List<TestVO> getdb(){
 		List<TestVO> data = session.selectList(namespace+".ff");
 		return data;
 	}

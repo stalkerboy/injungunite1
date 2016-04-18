@@ -87,6 +87,12 @@ public class BoardDAO {
     public BoardVO getBoardCount(String mem_id){
         return session.selectOne(namespace+".getBoardCount", mem_id);
     }
+    public List<BoardVO> selectBoardListbyFriend(long mem_snum) {        
+        return session.selectList(namespace+".selectBoardListbyFriend", mem_snum);
+    }
+    public List<BoardVO> selectSearchBoard(String keyword) {
+        return session.selectList(namespace+".selectSearchBoard", keyword);
+    }
     
 	
 }
