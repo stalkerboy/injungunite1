@@ -88,7 +88,6 @@ $(function(){
 	});
 	$( "#button-checkid" ).click( function(){
 		var id = $("#mem_id_join").val();
-		alert(id);
 		if( id == "" ) {
 		return;
 		} 
@@ -103,14 +102,14 @@ $(function(){
 			if(response.data == true) {
 				$("#mem_id").val( "" );
 				$("#mem_id").focus();
-				$("#button-checkid").hide();
-				$("#image-checkid").show();
+				$("#button-checkid").show();
+				$("#image-checkid").hide();
 				alert( "이미 존재하는 ID입니다. 다른 ID를 사용해 주세요." );
 				return;
 			}
 			else{
-				$("#button-checkid").show();
-				$("#image-checkid").hide();
+				$("#button-checkid").hide();
+				$("#image-checkid").show();
 				alert( "사용 가능합니다." );
 			}
 		},
