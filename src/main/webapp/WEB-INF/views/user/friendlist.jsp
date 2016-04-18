@@ -114,7 +114,7 @@
     			<a href="#" onclick="deletefriendFromMyList(${friendVO.fri_snum})"><i class="fa fa-user-times"></i>Friend Delete</a>
     			        		
            		<hr class="divider">
-    			<a href="#"><i class="fa fa-envelope-o"></i>Sent Message</a>        		
+    			<a href="/message/writemessageform"><i class="fa fa-envelope-o"></i>Sent Message</a>        		
      	       	</li>
               </ul>
             </li>

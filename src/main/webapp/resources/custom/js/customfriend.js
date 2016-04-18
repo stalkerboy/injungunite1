@@ -43,7 +43,7 @@ $("#searchfriend-btn").on("click", function(){
            	 	else if(userfind[i].ismyfriend==0) {
            	 		divstr += "<a href=\"#\" onclick=\"addfriend(" +userfind[i].fri_mem_snum +")\"><i class=\"fa fa-user-plus\"></i>Friend Add</a>" ;
            	 	}
-           		divstr+= "<hr class=\"divider\"><a href=\"#\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li>";
+           		divstr+= "<hr class=\"divider\"><a href=\"/message/writemessageform\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li>";
             } 
 			var frienddiv = document.getElementById("friendlist-div");
 			frienddiv.innerHTML = divstr;
@@ -74,7 +74,7 @@ function deletefriend(fri_snum){
            	 	else if(userfind[i].ismyfriend==0) {
            	 		divstr += "<a href=\"#\" onclick=\"addfriend(" +userfind[i].fri_mem_snum +")\"><i class=\"fa fa-user-plus\"></i>Friend Add</a>" ;
            	 	}
-           		divstr+= "<hr class=\"divider\"><a href=\"#\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li>";
+           		divstr+= "<hr class=\"divider\"><a href=\"/message/writemessageform\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li>";
             } 
 			var frienddiv = document.getElementById("friendlist-div");
 			frienddiv.innerHTML = divstr;
@@ -105,7 +105,7 @@ function addfriend(mem_snum){
            	 	else if(userfind[i].ismyfriend==0) {
            	 		divstr += "<a href=\"#\" onclick=\"addfriend(" +userfind[i].fri_mem_snum +")\"><i class=\"fa fa-user-plus\"></i>Friend Add</a>" ;
            	 	}
-           		divstr+= "<hr class=\"divider\"><a href=\"#\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li>";
+           		divstr+= "<hr class=\"divider\"><a href=\"/message/writemessageform\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li>";
             } 
 			var frienddiv = document.getElementById("friendlist-div");
 			frienddiv.innerHTML = divstr;
