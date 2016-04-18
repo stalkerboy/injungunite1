@@ -2,15 +2,12 @@ package com.injung.util;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
 
-
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.imgscalr.Scalr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -88,9 +85,8 @@ public class UploadFileUtils {
 		}
 	}
 	
-	private static String makeThumbnail(String uploadPath, String path, String fileName) throws Exception {	    
-	    System.out.println(uploadPath+path +"/"+ fileName);
-	    BufferedImage sourceImg = ImageIO.read(new FileInputStream(new File(uploadPath+path +"/"+ fileName)));
+	private static String makeThumbnail(String uploadPath, String path, String fileName) throws Exception {
+	    BufferedImage sourceImg = new BufferedImage(240, 240, BufferedImage.TYPE_INT_ARGB);
 //		BufferedImage sourceImg = ImageIO.read(new File(uploadPath+path, fileName));
 		
 		BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.BALANCED, Scalr.Mode.AUTOMATIC, 200);
