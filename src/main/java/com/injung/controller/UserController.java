@@ -110,7 +110,7 @@ public class UserController {
 	}
 	
 	
-	@Auth
+	
 	@RequestMapping("/hasid")
     @ResponseBody
     public Map<String, Object> checkid(@RequestParam("id") String id) throws Exception{

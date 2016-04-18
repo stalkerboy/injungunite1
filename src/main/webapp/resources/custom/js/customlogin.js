@@ -88,6 +88,7 @@ $(function(){
 	});
 	$( "#button-checkid" ).click( function(){
 		var id = $("#mem_id_join").val();
+		alert(id);
 		if( id == "" ) {
 		return;
 		} 
@@ -117,8 +118,8 @@ $(function(){
 		console.error( status + " : " + error );
 		}
 		});
-		});
-		});
+	});
+});
 			
 		
 
