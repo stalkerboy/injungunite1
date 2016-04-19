@@ -27,17 +27,19 @@ public class UploadFileUtils {
 		File target = new File(uploadPath+savedPath, savedName);
 		FileCopyUtils.copy(fileData, target);
 		
-		String formatName = originalName.substring(originalName.lastIndexOf(".")+1);
-		String uploadedFileName = null;
+		return savedPath + "/" + savedName;
 		
-		if(MediaUtils.getMediaTpye(formatName) != null) {
-		    System.out.println("uploadpath : " + uploadPath);
-		    System.out.println("savedPath : " + savedPath);
-		    System.out.println("savedName : " + savedName);
-			uploadedFileName = makeThumbnail(uploadPath, savedPath, savedName);
-		}		
-		
-		return uploadedFileName;
+//		String formatName = originalName.substring(originalName.lastIndexOf(".")+1);
+//		String uploadedFileName = null;
+//		
+//		if(MediaUtils.getMediaTpye(formatName) != null) {
+//		    System.out.println("uploadpath : " + uploadPath);
+//		    System.out.println("savedPath : " + savedPath);
+//		    System.out.println("savedName : " + savedName);
+//			uploadedFileName = makeThumbnail(uploadPath, savedPath, savedName);
+//		}		
+//		
+//		return uploadedFileName;
 	}
 	public static String uploadProfileFile(String uploadPath, String originalName, byte[] fileData) throws Exception{
 	    UUID uid = UUID.randomUUID();

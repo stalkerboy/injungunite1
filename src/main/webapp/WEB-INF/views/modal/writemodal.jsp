@@ -228,7 +228,7 @@
 
 <div class="myattr-modal">
 	<div class="modal-dialog modal-sm"> 
-	
+		
 		<div id="textModal" class="modal modal-primary">
 			<div class="modal-header">
 				<button class="btn btn-box-tool pull-right" data-dismiss="modal">
@@ -391,7 +391,6 @@
 	<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-</div>
 
 
 <div class="myattr-modal">
