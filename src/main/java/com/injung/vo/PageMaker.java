@@ -24,14 +24,11 @@ public class PageMaker {
       calcData();
   }
   
-  private void calcData(){
+  private void calcData(){     
       
-      endPage = (int)(Math.ceil(cri.getPage()/(double)displayPageNum)*displayPageNum); //10 20 
-     
+      endPage = (int)(Math.ceil(cri.getPage()/(double)displayPageNum)*displayPageNum); //10 20      
       startPage = (endPage - displayPageNum) +1; //1 11
-      
-      int tempEndPage = (int)(Math.ceil(totalCount/(double)cri.getPerPageNum()));
-      
+       int tempEndPage = (int)(Math.ceil(totalCount/(double)cri.getPerPageNum()));
       if(endPage > tempEndPage){
           endPage = tempEndPage;
       }

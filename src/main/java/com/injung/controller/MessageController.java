@@ -91,7 +91,6 @@ public class MessageController {
         MessageVO mv = new MessageVO();
         mv.setNot_snum(not_snum);
         MessageVO readMessage = service.readMessage(not_snum);
-        
         if(readMessage.getNot_postMem_snum() == auth.getMem_snum()) {
             model.addAttribute("messageVO", readMessage);
             return "/message/sentreadmessageform";
