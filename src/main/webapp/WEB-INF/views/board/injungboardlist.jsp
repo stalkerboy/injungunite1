@@ -21,98 +21,57 @@
 
 </head>
 <body>
-	<c:import url="/WEB-INF/views/include/header.jsp"></c:import>	
-	<c:import url="/WEB-INF/views/include/sidebar.jsp"></c:import>
-	<!-- modals -->
-	<c:import url="/WEB-INF/views/modal/pwformodifymodal.jsp"></c:import>
-	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
-	<c:import url="/WEB-INF/views/modal/viewmodal.jsp"></c:import>
+   <c:import url="/WEB-INF/views/include/header.jsp"></c:import>   
+   <c:import url="/WEB-INF/views/include/sidebar.jsp"></c:import>
+   <!-- modals -->
+   <c:import url="/WEB-INF/views/modal/pwformodifymodal.jsp"></c:import>
+   <c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
+   <c:import url="/WEB-INF/views/modal/viewmodal.jsp"></c:import>
     
 
-	
-<!-- 	<section id="portfolio" class="module-sm"> -->
+   
+<!--    <section id="portfolio" class="module-sm"> -->
 <section id="portfolio" class="module-sm" style="padding:70px 0;" data-background="/resources/img/portfolio-8.jpg">
-	<div class="wrapper" >
-		<div class="hero-caption">
-			<div class="hero-text">
-				<div class="row">
-					<h6 class="m-b-30">profile</h6>	
-					<img src="/resources/img/profile/${userInfo.mem_profile}" height="180" width="120">
-					
-					<h1 class="m-b-70">${userInfo.mem_id}</h1>
-					<h6 class="m-b-60">${userInfo.mem_name}</h6>
-					
-				</div>
-				<div class="container-fluid container-custom">
-					<div class="col-sm-4 col-xs-4 ">
-						<div class="counter text-light">
-							<div class="counter-header">
-								<h4 class="counter-title"><span class="counter-timer" data-from="0" data-to="${followingCount.following_count }" style="color:black;">${followingCount.following_count }</span></h4>
-							</div>
-							<div class="counter-content">	
-								<h4><font color="black">Following</font></h4>	
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4 col-xs-4 ">
-						<div class="counter text-light">
-							<div class="counter-header">
-								<h4 class="counter-title"><span class="counter-timer" data-from="0" data-to="${followerCount.follower_count }" style="color:black;">0</span></h4>
-							</div>	
-							<div class="counter-content">	
-								<h4><font color="black">Follower</font></h4>	
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4 col-xs-4 ">
-						<div class="counter text-light">
-							<div class="counter-header">
-								<h4 class="counter-title"><span class="counter-timer" data-from="0" data-to="${boardCount.boa_count }" style="color:black;">0</span></h4>
-							</div>		
-							<div class="counter-content">	
-								<h4><font color="black">My Board</font></h4>
-							</div>
-						</div>	
-					</div>
-				</div>
-			</div>
-		</div>
+   <div class="wrapper" >
+    
+          <h1 class="hero-title" style="text-align: center"><a href="/board/injungboardlist"><font color="black">Injung List</font></a></h1>
+   
 
-		<div class="box box-danger" style="width: 90%; left:5%; background-color:rgba(255,255,255,0);">
-			<div class="box-header">
-		    	<h3 class="box-title">Latest Board</h3>
-	      		<ul  class="category-btn font-alt">
-	        		<li><a href="#" class="current" onclick="onClickCategoryBtn('${param['user'] }', 'All')">All</a></li>
-        			<c:forEach items="${categoryList}" var="category">
-	        		<li><a href="#" onclick="onClickCategoryBtn('${param['user'] }', '${category.cat_name}');">${category.cat_name}</a></li>
-	        		</c:forEach>
-	      		</ul>
-	  		</div><!-- /.box-header -->
-			<div class="box-body">
-				<div class="works-grid-wrapper">
-			      	<div id="works-grid" class="works-grid works-grid-gutter" >
-						<c:forEach items="${injungBoardList}" var="board">
-			        	<article class="work-item">
-			            	<div class="work-wrapper">
-			                	<div class="work-thumbnail">
-			                    	<img src="/resources/img/boardimg/${board.boa_imgpng }" alt="">
-								</div>
-								<div class="work-caption">
-				                	<h4 class="work-title font-alt">${board.boa_subject }</h4>
-				                    <h4><span class="work-category font-serif"><a href="#" >${board.mem_id }</a></span></h4>
-								</div>
-				                <a href="#" onclick="onClickBoard(${board.boa_snum});" class="work-link"></a>
-							</div>
-			          	</article>
-						</c:forEach>
-					</div>
-				</div>
-			</div><!-- /.box-body -->
-			<div class="m-t-70 text-center">
-				<button id="read-more" class="btn btn-dark">Read More</button>
-			</div>
-		</div><!--/.box -->
-	</div>
+      <div class="box box-danger" style="width: 90%; left:5%; background-color:rgba(255,255,255,0);">
+         <div class="box-header">
+             <h3 class="box-title">Latest Board</h3>
+               <ul  class="category-btn font-alt">
+                 <li><a href="#" class="current" onclick="onClickCategoryBtn2('${authUser.mem_id }', 'All')">All</a></li>
+                 <c:forEach items="${injungCategoryList}" var="category">
+                 <li><a href="#" onclick="onClickCategoryBtn2('${authUser.mem_id }', '${category.boa_category}');">${category.boa_category}</a></li>
+                 </c:forEach>
+               </ul>
+           </div><!-- /.box-header -->
+         <div class="box-body">
+            <div class="works-grid-wrapper">
+                  <div id="works-grid" class="works-grid works-grid-gutter" >
+                  <c:forEach items="${injungBoardList}" var="board">
+                    <article class="work-item">
+                        <div class="work-wrapper">
+                            <div class="work-thumbnail">
+                                <img src="/resources/img/boardimg/${board.boa_imgpng }" alt="">
+                        </div>
+                        <div class="work-caption">
+                               <h4 class="work-title font-alt">${board.boa_subject }</h4>
+                                <h4><span class="work-category font-serif"><a href="#" >${board.mem_id }</a></span></h4>
+                        </div>
+                            <a href="#" onclick="onClickBoard(${board.boa_snum});" class="work-link"></a>
+                     </div>
+                      </article>
+                  </c:forEach>
+               </div>
+            </div>
+         </div><!-- /.box-body -->
+         <div class="m-t-70 text-center">
+            <button id="read-more" class="btn btn-dark">Read More</button>
+         </div>
+      </div><!--/.box -->
+   </div>
 </section>
 <!-- js import -->
 <!-- jquery -->

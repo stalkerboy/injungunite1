@@ -76,8 +76,8 @@ public class BoardDAO {
         session.update(namespace+".updateBoardHitCnt", boa_snum);
         
     }
-    public List<BoardVO> selectInjungBoardList(Long mem_snum){
-        return session.selectList(namespace+".selectInjungBoardList", mem_snum);
+    public List<BoardVO> selectInjungBoardList(String mem_id){
+        return session.selectList(namespace+".selectInjungBoardList", mem_id);
     }
     public BoardVO getBoardCount(String mem_id){
         return session.selectOne(namespace+".getBoardCount", mem_id);

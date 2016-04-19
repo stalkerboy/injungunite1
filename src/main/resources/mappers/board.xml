@@ -120,26 +120,26 @@
 
 <insert id="insertQueryBoardList" parameterType="map" >
       <![CDATA[
-      insert into QUERY_BOARDLIST values (seq_qur_snum.nextval, #{boa_snum}, #{mem_snum}, sysdate)
+     	 insert into QUERY_BOARDLIST values (seq_qur_snum.nextval, #{boa_snum}, #{mem_snum}, sysdate)
       ]]>
 </insert>
 
 <update id="updateBoardHitCnt" parameterType="long">
-<![CDATA[
-update board set boa_hitcnt = boa_hitcnt + 1 where boa_snum = #{boa_snum}
-]]>
+	<![CDATA[
+		update board set boa_hitcnt = boa_hitcnt + 1 where boa_snum = #{boa_snum}
+	]]>
 </update>
 
-<select id="selectInjungBoardList" parameterType="long" resultType="BoardVO">
-<![CDATA[
-select b.boa_snum, b.boa_imgpng, b.boa_subject, b.boa_regdate, m.mem_snum, m.mem_id, m.mem_profile 
-	from board b, member m, likelist l
-	where b.mem_snum=#{mem_snum}
-    and b.boa_snum = l.boa_snum
+<select id="selectInjungBoardList" parameterType="String" resultType="BoardVO">
+	<![CDATA[
+		select b.boa_snum, b.boa_imgpng, b.boa_subject, b.boa_regdate, m.mem_snum, m.mem_id, m.mem_profile 
+		from board b, member m, likelist l
+		where m.mem_id = #{mem_id}
+    	and b.boa_snum = l.boa_snum
 		and	m.mem_snum = b.mem_snum
 		and sysdate - b.boa_regdate < 7
 	
-]]>
+		]]>
 </select>
 <select id="getBoardCount" parameterType="String" resultType="BoardVO">
       <![CDATA[
@@ -162,12 +162,13 @@ select b.boa_snum, b.boa_imgpng, b.boa_subject, b.boa_regdate, m.mem_snum, m.mem
 
 <select id="selectInjungCategoryListById" parameterType="String" resultType="BoardVO">
 <![CDATA[
-   	  select b.boa_category
+   	  select b.boa_snum boa_snum, b.boa_imgpng boa_imgpng, b.boa_subject boa_subject, b.boa_context boa_context, b.boa_regdate boa_regdate, m.mem_snum mem_snum, m.mem_id mem_id, m.mem_profile mem_profile, b.boa_category
       from member m, board b, likelist l 
       where b.mem_snum = m.mem_snum 
       and b.boa_snum = l.boa_snum
       and m.mem_id =#{mem_id }
-      GROUP BY b.boa_category  
+      and sysdate - b.boa_regdate < 7
+      order by b.boa_snum desc, b.boa_regdate desc   
 ]]>
 </select>
 

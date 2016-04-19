@@ -106,8 +106,8 @@ public class BoardService  {
 
 
 
-    public List<BoardVO> getInjungBoardList(long mem_snum) {
-        return dao.selectInjungBoardList(mem_snum);
+    public List<BoardVO> getInjungBoardList(String mem_id) {
+        return dao.selectInjungBoardList(mem_id);
     }
 
 

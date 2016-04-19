@@ -191,7 +191,7 @@ public class BoardController {
     @Auth
     @RequestMapping(value="/injungboardlist", method = RequestMethod.GET)
     public void injungboardlist(@AuthUser UserVO authUser, Model model) throws Exception {
-        List<BoardVO> injungBoardList = bservice.getInjungBoardList(authUser.getMem_snum());
+        List<BoardVO> injungBoardList = bservice.getInjungBoardList(authUser.getMem_id());
         List<BoardVO> injungCategoryList = bservice.getInjunCategoryList(authUser.getMem_id());
         model.addAttribute("injungBoardList", injungBoardList);
         model.addAttribute("injungCategoryList", injungCategoryList);
@@ -203,11 +203,13 @@ public class BoardController {
     public Map<String, Object> getInjungBoardByCategory(@AuthUser UserVO authUser, @RequestParam("category") String category, Model model) throws Exception {
        BoardVO vo = new BoardVO();
        vo.setBoa_category(category);
-       vo.setMem_snum(authUser.getMem_snum());
+       vo.setMem_id(authUser.getMem_id());
     
         List<BoardVO> lv =null;
+        
         if (category.equals("All")){
-            lv = bservice.getInjungBoardList(authUser.getMem_snum());
+            lv = bservice.getInjunCategoryList(authUser.getMem_id());
+            System.out.println(lv);
         }
         else{
             lv = bservice.getInjungBoardListbyCategoryUserId(vo) ;
