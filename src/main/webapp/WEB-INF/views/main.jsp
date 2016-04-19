@@ -131,6 +131,7 @@
 					<div class="col-xs-4">
                         <input id="button-checkid" class="btn btn-sm" type="button" value="check ID">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEc0lEQVR42q2UXUxbZRzGn3N6Ts9pT1tOacv3R/nY2JjL6MYcuzF0hpFtunSJmWYxhsUoURdDE43Ri203Xhq4wKibWty8MMZkaIbbwNAyYGUIlM9NLjYKK7LSQgstDLp++LbJdDMgCDznoien7/v8znne//9PYYtEX6BFCSUxMbREz9Ksc/50oCH+nNoqc5qirfu1ZSUaTotgeB5354acrIQ5sSUA5iJjPal/vXyf5nkshhcRjcUwE3Ljl8kfbZsGsBdZU6Fq25W3is5gIuBCt7sPMoZHliIDnTPXNxcR97VUlDPC2PvFH4oyiRzNrlYsR5ahZBXIFDJgn23eHED2DV97OPNozaGMw+jz9sMZeAAJTUOvzEHg8SxGAwONGwYI38rJgWocH+05C8+SFx1uOyiKQgqvhVKqQN9Mhz8cCxk2DFBZlI7qnWdKchR6dEzfQvBxEHJWjiwSzdBsD3zLHnOvabBuQ4CkBmXNfl1Z7cmCUxgLjpGSHAVDM8hRZBFjL4a8PbYe04AxvvZ/A8TvkvQCIzg+NpwVIwjD7u0mLjHoSDQCI0ebq9kfjUUMt4/3Of8BfA6R3Jni+8mvDe+gfzWA5pL6yiv5r5kMur3o8zngCXkgY3lkC1m4Mz0Az6Lb3HW8t+7Jegr1KCHZWUt1ZaKMkWHYP4DJRVcj+ec0quF/2lx7Kbk8T5VvfWPHm3A9cmE4MASe4ZCnyMXckh/DbofN/nKv8ek9FHn7sQ92f6JPEzKxQLqQlUhw092K666r/WS2GCNvRxKQlMtakQLlqH7uPb1WroPddwvxiNLkqUhilWgba/VHoxFDx0vdzmcB9XSs9mA9RnyjGJwZgZpPQoYiDQ+XHsD68Ea/lJaeIIPLmfZ9yvnyzEPnjNkvYnRhFFOhSYicikSTjV5XN6aDbnP7sdt1/46UwhfwfVr6mTjovYt78/cTNc2zUhSpC8kUC6HHY/dHETFreI2leve7CJFrMDiQWKMn0fgWZ9A13mVrP9ZlxAqi8CXOk5I7d1BbjvYpO8YXJhKbRV6FXZodSBe0aBpvxKvbTiFPzIMj0IcQtYQccqgCqftrd675w9GwwXa007kyIK6vYMmU6asKFLuwEAnCs+wBL+WgliUlviSNZL5dLMTksgsTISc0MnWiarqcdvw5P2W2Humowyr6uw8kFySWDHluVbFYgsXoAhm3M5BzPJScQMzzkaXMTJhzLIsCVT5mF7zovN9paz3SYcR/6JlGU1oUBJJTtVO9B0uxR/CHfRA4GZS8AAUvI0AOuYrsxKx5Ek1LZZtz3YC4Ui/rLEmcusqgO4AIHUEgOpcwV3By6ARNAtAz8TumSDTNlbY6rKEVR4X+h+wakUuu3Zt6AFISyVxslkDk2K4qxDxpqO7xbtuNSqtxLfNVAXEV/1RUJfKiZV96GTlwKaRShtS9EjfvtfkjpKF+rfjNuSlAXKU/lyQghvRSJAsi/pgegTfoNTdVtKwZzboAcb3QVGZiJWwtSzMiQzENVytazOs1j+svAUmopjhH/bkAAAAASUVORK5CYII=" id="image-checkid" style="display:none; width:16px">
+                        <input id="button-checkid-number" class="btn btn-sm" type="button" value="check ID" style="display: none">
 					</div>
 				</div><br>
 				
@@ -249,11 +250,13 @@ function onblur_idcheck() {
 	if (regExp.test(document.getElementById('mem_id_join').value))
 		{
 			$('#notNumber').show();
+			$("#button-checkid").hide();
+			$("#button-checkid-number").show();
 		}
-	
+	else{
+			$("#button-checkid-number").hide();
+		}
 }
-
 </script>
-
 </body>
 </html>
