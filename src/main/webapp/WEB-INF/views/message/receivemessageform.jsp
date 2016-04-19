@@ -136,11 +136,27 @@ $(function () {
 function deletemessage(){
  	$(".checkboxMessage").each(function() {
 		if($(this).is(":checked")){
-			location.href="/message/deletereceivemessage?snum="+$(this).val();
-		};
+			var not_snum=$(this).val();
+ 			$.ajax({
+				url : '/message/deletereceivemessage',
+				headers : {
+		            "Content-Type" : "application/json",
+		            "X-HTTP-Method-Override" : "POST"
+		         },
+				data : not_snum ,
+				dataType : 'text',
+				processData: false,
+				contentType: false,
+				type: 'POST',
+				success : function(result) {
+				 
+				location.reload(true);
+					
+ 				}
+		
 	});
+		}});
 }
-
 </script>
 </body>
 </html>

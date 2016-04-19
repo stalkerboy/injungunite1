@@ -1,7 +1,16 @@
 package com.injung.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.inject.Inject;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,15 +23,6 @@ import com.injung.vo.Criteria;
 import com.injung.vo.MessageVO;
 import com.injung.vo.PageMaker;
 import com.injung.vo.UserVO;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.inject.Inject;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Controller
 @RequestMapping("/message")
@@ -134,12 +134,12 @@ public class MessageController {
     }
     
     @Auth
-    @RequestMapping(value="/deletereceivemessage", method=RequestMethod.GET)
-    public String deletereceivemessage(@RequestParam("snum") long not_snum)throws Exception{
-        service.deletereceivemessage(not_snum);
-        
-        return "redirect:/message/receivemessageform";
-    }
+    @RequestMapping(value="/deletereceivemessage", method=RequestMethod.POST)
+    @ResponseBody
+    public void deletereceivemessage(@RequestBody long not_snum)throws Exception{
+         service.deletereceivemessage(not_snum);
+                
+     }
     
     
     @Auth
