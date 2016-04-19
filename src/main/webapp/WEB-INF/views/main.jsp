@@ -125,7 +125,8 @@
                 <label class="block-label" for="myid">ID</label>
 				<div class="row">
 			        <div class="col-xs-8">
-                        <input id="mem_id_join" name="mem_id" type="text" class="form-control" placeholder="USER ID"  >
+                        <input id="mem_id_join" name="mem_id" type="text" class="form-control" placeholder="USER ID"  onblur="onblur_idcheck();">
+                        <div class="divJoinWarning" id="notNumber" style="display: none">숫자로만 아이디 생성 할 수 없습니다.</div>
 					</div>
 					<div class="col-xs-4">
                         <input id="button-checkid" class="btn btn-sm" type="button" value="check ID">
@@ -241,6 +242,17 @@ function onblur_pwcheck() {
 		$('#limitpw').hide()
 	 } 
 }
+
+function onblur_idcheck() {
+	$('#notNumber').hide();
+	var regExp = /^[0-9]+$/;
+	if (regExp.test(document.getElementById('mem_id_join').value))
+		{
+			$('#notNumber').show();
+		}
+	
+}
+
 </script>
 
 </body>
