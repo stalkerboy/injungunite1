@@ -136,8 +136,15 @@ public class UserController {
     public Map<String, Object> userfind(@RequestBody String mem_id, @AuthUser UserVO authUser) throws Exception {
         
         long userNo = authUser.getMem_snum();
-     
+       
         List<FriendVO> users = fservice.userfind(mem_id, userNo);
+        String myId = authUser.getMem_id();
+        for(int i=0;i<users.size();i++) {
+            if(myId.equals(users.get(i).getFri_mem_id())) {
+                users.remove(i);
+            }
+        }
+       
         
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("userfind", users);
@@ -226,7 +233,7 @@ public class UserController {
         
         UserVO findUser = service.findId(uv);
         
-        System.out.println(findUser);
+        
         Map<String, Object>map = new HashMap<String, Object>();
         map.put("result", "success");
         map.put("data", findUser);
@@ -246,12 +253,30 @@ public class UserController {
         
         UserVO findUser = service.findPw(uv);
         
-        System.out.println(findUser);
+        
         Map<String, Object>map = new HashMap<String, Object>();
         map.put("result", "success");
         map.put("data", findUser);
         
         return map;
         
+    }
+    
+    @Auth
+    @RequestMapping(value="/followinglist", method = RequestMethod.GET)
+    public void followinglist(@AuthUser UserVO authVo, Model model) throws Exception {
+        
+        model.addAttribute("friendlist", fservice.getFriendList(authVo.getMem_snum()));
+        model.addAttribute("followingCount", fservice.followingCount(authVo.getMem_id()));
+        model.addAttribute("followerCount", fservice.followerCount(authVo.getMem_id()));
+    }
+    
+    @Auth
+    @RequestMapping(value="/followerlist", method = RequestMethod.GET)
+    public void followerlist(@AuthUser UserVO authVo, Model model) throws Exception {
+        
+        model.addAttribute("friendlist", fservice.followerList(authVo.getMem_snum()));
+        model.addAttribute("followingCount", fservice.followingCount(authVo.getMem_id()));
+        model.addAttribute("followerCount", fservice.followerCount(authVo.getMem_id()));
     }
 }

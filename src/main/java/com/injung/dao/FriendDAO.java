@@ -61,5 +61,9 @@ public class FriendDAO{
     public FriendVO followerCount(String mem_id) throws Exception{
         return session.selectOne(namespace+".followerCount", mem_id);
     }
+
+    public List<FriendVO> followerList(long memNo) throws Exception {
+        return session.selectList(namespace+".followerList", memNo);
+    }
     
 }

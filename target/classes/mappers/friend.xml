@@ -85,5 +85,13 @@
       ]]>
    </select>
 
+	<select id="followerList" parameterType="long" resultType="FriendVo">
+      <![CDATA[
+         select f.fri_snum, m.mem_id fri_mem_id, m.mem_name fri_mem_name, m.mem_snum fri_mem_snum, m.mem_profile fri_mem_profile  
+         from fri_list f, member m
+         where f.mem_snum = m.mem_snum 
+         	and f.fri_mem_snum = #{mem_snum }
+      ]]>
+   </select>
 
 </mapper>

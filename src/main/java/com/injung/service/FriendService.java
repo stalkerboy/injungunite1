@@ -35,6 +35,7 @@ public class FriendService {
     }   
     
     public List<FriendVO> userfind(String searchId, long auth_mem_snum) throws Exception {
+        
         return fdao.userfind(searchId, auth_mem_snum);
     }  
     public FriendVO followingCount(String mem_id)throws Exception{
@@ -42,6 +43,10 @@ public class FriendService {
     }
     public FriendVO followerCount(String mem_id)throws Exception{
         return fdao.followerCount(mem_id);
+    }
+
+    public List<FriendVO> followerList(long memNo) throws Exception{
+        return fdao.followerList(memNo);
     }
     
     

@@ -43,7 +43,7 @@
     <div class="container-fluid container-custom">
 
       <div class="row">
-      <a href="/user/followinglist">
+       <a href="/user/followinglist">
         <div class="col-md-6">
           <div class="counter text-light" >
             <div class="counter-icon" style="color:black;">
@@ -51,7 +51,7 @@
             </div>
             <div class="counter-header" >
               <h4 class="counter-title">
-                <span class="counter-timer" data-from="0" data-to="${followingCount.following_count }" style="color:black;">${followingCount.following_count }</span>
+                 <span class="counter-timer" data-from="0" data-to="${followingCount.following_count }" style="color:black;">${followingCount.following_count }</span>
               </h4>
             </div>
             <div class="counter-content">
@@ -81,19 +81,10 @@
       </div>
     </div>
     
-    <div class="row">
-    	<div class="input-group col-sm-3 pull-right" style="right:5%; margin:5px 10px">
-    		<input type="text" id="friendId-search" class="form-control input-sm search-form" placeholder="친구검색">
-    		<span class="input-group-btn">
-    			<button type="button" id="searchfriend-btn" class="stone-btn stone-btn-dark btn-md search-btn">
-    			<i class="fa fa-search"></i>
-    			</button>
-    		</span>
-    	</div>
-    </div>
+   
 	<div class="box box-danger" style="width: 90%; left:5%; background-color:rgba(255,255,255,0);height:300px">
   <div class="box-header">
-    <h3 class="box-title" style="color:black">FriendList</h3>
+    <h3 class="box-title" style="color:black">Follower List</h3>
     <div class="box-tools pull-right">
       <button id="friendEditBtn" class="label label-danger" onclick="onClickFriendEdit();">편집</button>
     </div>
