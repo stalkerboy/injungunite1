@@ -143,14 +143,13 @@ function deletemessage(){
 		            "Content-Type" : "application/json",
 		            "X-HTTP-Method-Override" : "POST"
 		         },
-				data : not_snum ,
+				data : not_snum,
 				dataType : 'text',
 				processData: false,
 				contentType: false,
 				type: 'POST',
 				success : function(result) {
-				 
-				location.reload(true);
+  				location.reload(true);
 					
  				}
 		

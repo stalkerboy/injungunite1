@@ -39,7 +39,7 @@
                   <div class="mailbox-controls">
                     <!-- Check all button -->
                     <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
-                    <button class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                    <button class="btn btn-default btn-sm" onclick="deletemessage();"><i class="fa fa-trash-o"></i></button>
                     
                   </div>
                   <div class="table-responsive mailbox-messages">
@@ -135,9 +135,24 @@ $(function () {
 function deletemessage(){
  	$(".checkboxMessage").each(function() {
 		if($(this).is(":checked")){
-			location.href="/message/deletesentmessage?snum="+$(this).val();
-		};
+			var not_snum=$(this).val();
+ 			$.ajax({
+				url : '/message/deletesentmessage',
+				headers : {
+		            "Content-Type" : "application/json",
+		            "X-HTTP-Method-Override" : "POST"
+		         },
+				data : not_snum ,
+				dataType : 'text',
+				processData: false,
+				contentType: false,
+				type: 'POST',
+				success : function() {
+			    location.reload(true); 
+ 				}
+		
 	});
+		}});
 }
 
 </script>

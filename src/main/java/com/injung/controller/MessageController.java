@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,8 +33,7 @@ public class MessageController {
     
     @Inject
     private MessageService service;
-    
-    
+ 
     @RequestMapping(value="/messagewrite", method=RequestMethod.POST)
     public String write(MessageVO vo, @AuthUser UserVO auth) throws Exception{
         vo.setNot_postMem_snum(auth.getMem_snum());
@@ -137,17 +137,36 @@ public class MessageController {
     @RequestMapping(value="/deletereceivemessage", method=RequestMethod.POST)
     @ResponseBody
     public void deletereceivemessage(@RequestBody long not_snum)throws Exception{
-         service.deletereceivemessage(not_snum);
-                
+         service.deletereceivemessage(not_snum);                
+         
+     }
+    @Auth
+    @RequestMapping(value="/deletereceivemessage", method=RequestMethod.GET)
+    public String deletereceivemessage2(@RequestParam("snum") long not_snum )throws Exception{
+         
+        service.deletereceivemessage(not_snum);
+        
+        return "redirect:/message/receivemessageform";
+        
      }
     
     
     @Auth
-    @RequestMapping(value="/deletesentmessage", method=RequestMethod.GET)
-    public String deletesentmessage(@RequestParam("snum") long not_snum)throws Exception{
+    @RequestMapping(value="/deletesentmessage", method= RequestMethod.POST)
+    @ResponseBody
+    public void deletesentmessage(@RequestBody long not_snum)throws Exception{
+        
+        service.deletesentmessage(not_snum); 
+    }
+    
+    @Auth
+    @RequestMapping(value="/deletesentmessage", method= RequestMethod.GET)
+    public String deletesentmessage2(@RequestParam("snum") long not_snum)throws Exception{
+        
         service.deletesentmessage(not_snum);
         
         return "redirect:/message/sendmessageform";
     }
+  
     
 }

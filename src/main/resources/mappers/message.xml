@@ -92,14 +92,16 @@
 	
 	<update id="deletesentmessage" parameterType="long" >
 		<![CDATA[
-		update note set not_postmem_deleted = 1, not_getmem_deleted= 0 where not_snum = #{MessageVO.not_snum}
+		update note set not_postmem_deleted = 1
+		 where not_snum = #{MessageVO.not_snum}
 		]]>
 	</update>
 	
 	<!-- 받은쪽지 delete시 구현 -->
 	<update id="deletereceivemessage" parameterType="long" >
 		<![CDATA[
-		update note set not_getmem_deleted = 1, not_postmem_deleted= 0 where not_snum = #{MessageVO.not_snum}
+		update note set not_getmem_deleted = 1
+		 where not_snum = #{MessageVO.not_snum}
 		]]>
 	</update>
 	
