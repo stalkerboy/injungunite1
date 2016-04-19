@@ -80,6 +80,8 @@ function checkUser(formEl) {
     return true;
 }
 
+var checkid = false;
+
 $(function(){
 	
 	$("#mem_id_join").change( function(){
@@ -110,6 +112,7 @@ $(function(){
 			else{
 				$("#button-checkid").hide();
 				$("#image-checkid").show();
+				checkid = true;
 				alert( "사용 가능합니다." );
 			}
 		},
@@ -210,43 +213,45 @@ function showfindpw(){
 	 	 
  }
  
- function checkJoin(){
-	 return true;
- }
-// function checkJoin(formEl) {  
-//	var errorMessage = null;  
-//	var objFocus = null;  
-//	if (formEl.id.value.length == 0) {  
-//		errorMessage = "아이디를 넣어 주세요";  
-//		objFocus = formEl.id;  
-//	}  
-//	else if (formEl.password.value.length == 0) {  
-//		errorMessage = "비밀번호를 넣어 주세요";  
-//		objFocus = formEl.password;  
-//	}  
-//	else if (formEl.name.value.length == 0) {  
-//		errorMessage = "이름를 넣어 주세요";  
-//		objFocus = formEl.name;  
-//	}  
-//	else if (formEl.email.value.length == 0) {  
-//		errorMessage = "email를 넣어 주세요";  
-//		objFocus = formEl.email;  
-//	}  
-//	else if (formEl.gender.value.length == 0) {  
-//		errorMessage = "성별을 선택해 주세요";  
-//		objFocus = formEl.gender;  
-//	}  
-//	else if (formEl.birthDate.value.length == 0) {  
-//		errorMessage = "생년월일을 선택해 주세요";  
-//		objFocus = formEl.birthDate;  
-//	}  
-//	if (errorMessage != null) {  
-//		alert(errorMessage);  
-//		objFocus.focus();
-//		return false;  
-//	}  
-//	return true;  
-//} 
+ function checkJoin() {  
+	var errorMessage = null;  
+	var objFocus = null;  
+	if (!$('#mem_id_join').val()) {  
+		errorMessage = "아이디를 넣어 주세요";  
+		objFocus = $('#mem_id_join');  
+	}
+	else if (!checkid) {  
+		errorMessage = "아이디 중복체크를 하세요";  
+		objFocus = $('#mem_id_join');  
+	}
+	else if (!$('#mem_passwd').val()) {  
+		errorMessage = "비밀번호를 넣어 주세요";  
+		objFocus = $('#mem_passwd');  
+	}  
+	else if (!$('#mem_name_join').val()) {  
+		errorMessage = "이름를 넣어 주세요";  
+		objFocus = $('#mem_name_join');  
+	}  
+	else if (!$('#mem_email_join').val()) {  
+		errorMessage = "email를 넣어 주세요";  
+		objFocus = $('#mem_email_join');  
+	}    
+	else if (!$('#mem_birth_join').val()) {  
+		errorMessage = "생년월일을 선택해 주세요";  
+		objFocus = $('#mem_birth_join');  
+	}
+	else if (!$('#agree-prov').is(":checked")) {  
+		errorMessage = "정보 제공에 동의해 주세요";  
+		objFocus = $('#agree-prov');  
+	}
+	
+	if (errorMessage != null) {  
+		alert(errorMessage);  
+		objFocus.focus();
+		return false;  
+	}  
+	return true;  
+} 
 
  
  

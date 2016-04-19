@@ -97,7 +97,7 @@
 					<input type="text" id="pmem_email" name="mem_email" class="form-control" placeholder="E-MAIL" /> 
 					<input type="text" id="pmem_name" name="mem_name" class="form-control" placeholder="NAME" /> 
 					<input id="button-findpw" type="button" value="Find PW" onclick="showfindpw();"  class="btn btn- btn-block btn-flat">
-					<label class="block-label" id="find-Pw-Label" hidden>Your ID:</label>
+					<label class="block-label" id="find-Pw-Label" hidden>Your PassWord:</label>
 					<input id="findpw"  name="mem_passwd" type="text" value="${findUser.mem_passwd}" class="form-control" style="display: none; background-color: #c0c0c0; color: #000000" disabled>
 					<br>
 				</div>
@@ -147,10 +147,10 @@
 				<br>
 								
 				<label class="block-label" for="name">NAME</label><br>
-				<input id="mem_name" name="mem_name" type="text" value="" class="form-control" placeholder="Name" ><br>
+				<input id="mem_name_join" name="mem_name" type="text" value="" class="form-control" placeholder="Name" ><br>
 
 				<label class="block-label" for="email">E-MAIL</label><br>
-				<input id="mem_email" name="mem_email" type="email" value="" class="form-control" placeholder="Email" ><br>
+				<input id="mem_email_join" name="mem_email" type="email" value="" class="form-control" placeholder="Email" ><br>
 
 
                 <label>GENDER</label>
@@ -163,14 +163,14 @@
                 <label class="block-label" for="birthDate">BirthDate</label>
                 <div class="controls">
 					<div class="input-group">
-						<input id="mem_birth" type="text" class="date-picker form-control" name="mem_birth" placeholder="BirthDate" readonly/>
-						<label for="mem_birth" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
+						<input id="mem_birth_join" type="text" class="date-picker form-control" name="mem_birth" placeholder="BirthDate" readonly/>
+						<label for="mem_birth_join" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
 					</div>
 			    </div><br>
                 <legend></legend>
 				<fieldset>
 					<input id="agree-prov" type="checkbox" name="agreeProv" value="y">
-					<label>서비스 약관에 동의합니다.</label>
+					<label>사용자 정보 제공에 동의합니다.</label>
 				</fieldset>
 				
 				<div class="row text-center">
