@@ -39,3 +39,27 @@ function onClickCategoryBtn2(userid, cat_name){
 		}
 	});
 }
+
+function serchSubmit(){
+
+	 if(CheckSerch()){
+		 $('#search-form').submit(); 
+	 }
+	 	 
+}
+
+function CheckSerch() {  
+	var errorMessage = null;  
+	var objFocus = null;  
+	if (!$('#search').val()) {  
+		errorMessage = "검색할 단어를 입력하세요.";  
+		objFocus = $('#search');  
+	}
+	
+	if (errorMessage != null) {  
+		alert(errorMessage);  
+		objFocus.focus();
+		return false;  
+	}  
+	return true;  
+} 

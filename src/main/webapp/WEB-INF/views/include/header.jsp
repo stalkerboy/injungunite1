@@ -12,7 +12,7 @@
 				<div style="width:50px; display:inline-block;"><span></span></div>
 			    <div class="input-group">
 			        <input type="text" id="search" name="search" class="form-control input-sm search-form" placeholder="Search">
-		        	<span class="input-group-btn"><button type="submit" class="stone-btn stone-btn-dark btn-md search-btn" data-target="#search-form" >
+		        	<span class="input-group-btn"><button type="button" class="stone-btn stone-btn-dark btn-md search-btn" onclick="serchSubmit();" >
 		        		<i class="fa fa-search"></i></button>
 		        	</span>		
 			    </div>
@@ -127,4 +127,5 @@
 			}
 		})
 	},3000);
-</script>      
+</script>  
+<script src='/resources/custom/js/customboard.js'></script>    
