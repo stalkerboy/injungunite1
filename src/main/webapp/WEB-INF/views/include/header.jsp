@@ -79,9 +79,9 @@
                   		<li class="user-header">
 	                    	<img src="/resources/img/profile/${authUser.mem_profile }" class="img-circle" alt="User Image">
 	                    	<hr class="divider">
-	                 		<h5>${authUser.mem_id }</h5>
-	                 		<span class="label label-default">followers</span>   
-	                 		<span class="label label-primary">following</span>     
+	                 		<h3 style=" text-shadow: 0.1em 0.1em 0.15em #333">${authUser.mem_id }</h3>
+	                 		<h4>${authUser.mem_name }</h4>
+	                 		 
 	                  	</li>
                   		<br>
                     	<hr class="divider">

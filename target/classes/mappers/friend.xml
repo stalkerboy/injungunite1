@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="friend">
+
+<!--friend -->
+	<select id="selectFriendList" parameterType="long" resultType="FriendVo">
+      <![CDATA[
+         select f.fri_snum, m.mem_id fri_mem_id, m.mem_name fri_mem_name, m.mem_snum fri_mem_snum, m.mem_profile fri_mem_profile  
+         from fri_list f, member m
+         where f.fri_mem_snum = m.mem_snum 
+         	and f.mem_snum = #{mem_snum }
+      ]]>
+   </select>
+
+   <select id="selectFriend" parameterType="FriendVO" resultType="FriendVO">
+      <![CDATA[
+         select fri_snum
+         from fri_list
+         where mem_snum = #{mem_snum }
+         	and fri_snum = #{fri_snum}
+      ]]>
+   </select>   
+   
+   <insert id="insertFriend" parameterType="FriendVO">
+      <![CDATA[
+         insert
+         into fri_list
+         values(seq_fri_snum.nextval, null, #{mem_snum}, #{fri_mem_snum } )
+      ]]>
+   </insert>   		
+
+ <select id="followingCount" parameterType="String" resultType="FriendVO">
+      <![CDATA[
+       select count(f.fri_snum) following_count 
+       from fri_list f, member m 
+       where f.mem_snum = m.mem_snum 
+       and m.mem_id = #{mem_id}
+      ]]>
+   </select> 
+   
+    <select id="followerCount" parameterType="String" resultType="FriendVO">
+      <![CDATA[
+       select count(f.fri_snum) follower_count
+       from fri_list f, member m 
+       where f.fri_mem_snum = m.mem_snum 
+       and m.mem_id = #{mem_id}
+      ]]>
+   </select>     			
+
+
+<insert id="addfriend" parameterType="map">
+      <![CDATA[
+         insert
+         into fri_list
+         values(seq_fri_snum.nextval, null, #{memNo}, #{friendNo} )
+      ]]>
+   </insert> 
+  
+   <delete id="deletefriend" parameterType="long">
+      <![CDATA[
+            delete from fri_list
+            where fri_snum=#{fri_snum}
+       ]]>
+   </delete>
+   
+   <select id="userfind" parameterType="map" resultType="FriendVO" >
+    <![CDATA[
+     select f.fri_snum, s.mem_snum fri_mem_snum, s.mem_id fri_mem_id, s.mem_profile fri_mem_profile, decode(s.mem_snum, f.fri_mem_snum, 1, 0) ismyfriend
+     from
+     (select m.mem_snum, m.mem_id, m.mem_profile
+	 from member m
+	 where m.mem_id like '%' || #{mem_id} || '%') s,
+     fri_list f
+     where f.mem_snum(+) = #{userNo} and f.FRI_MEM_SNUM(+)= s.mem_snum
+      ]]>
+   </select>
+
+	<select id="friendlist" parameterType="long" resultType="FriendVO">
+      <![CDATA[
+         select  f.mem_snum fri_mem_nsum, f.fri_snum, m.mem_id fri_mem_id, m.mem_profile fri_mem_profile 
+         from fri_list f, member m
+         where f.fri_mem_snum = m.mem_snum and f.mem_snum = #{memNo }
+      ]]>
+   </select>
+
+
+</mapper>

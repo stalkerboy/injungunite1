@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+	<select id="selectUserByIdPw" parameterType="UserVO" resultType="UserVO">
+		<![CDATA[
+            select mem_snum, mem_id, mem_name, mem_email, mem_gender, mem_birth, mem_profile
+            from member
+            where  mem_id = #{mem_id }
+            and mem_passwd= #{mem_passwd }
+		]]>					
+	</select>
+	
+	<insert id="createUser" parameterType="UserVO">
+		<![CDATA[
+		 	 insert
+         	 into member 
+          	values (seq_mem_snum.nextval, #{mem_id }, #{mem_passwd }, #{mem_name }, #{mem_email }, #{mem_gender }, #{mem_birth }, #{mem_profile }, 0, sysdate )
+     	 ]]>
+     	 <selectKey keyProperty="mem_snum" resultType="Long" order="AFTER">
+			   	select seq_mem_snum.currval from dual
+		   </selectKey>
+	</insert>
+
+	<select id="selectPw" parameterType="long" resultType="string">
+		<![CDATA[
+		 	 select mem_passwd
+         	 from member 
+          	   where mem_snum = #{mem_snum}
+     	 ]]>
+	</select>
+
+	<select id="selectUserInfoById" parameterType="string" resultType="UserVO">
+			<![CDATA[
+				select mem_snum, mem_id, mem_name, mem_email, mem_gender, mem_birth, mem_profile
+	         	from member
+			 	where mem_id = #{mem_id }
+			]]>					
+	</select>
+
+	<select id="selectUser" parameterType="long" resultType="UserVO">
+		<![CDATA[
+			select mem_snum, mem_id, mem_name, mem_email, mem_gender, mem_birth
+         	from member
+		 	where mem_snum = #{mem_snum }
+		]]>					
+	</select>
+	
+
+
+	
+	<delete id="delete"  parameterType="string" >
+		<![CDATA[
+			delete from member where mem_id = #{id }
+		]]>					
+	</delete>
+	
+	<update id="update" parameterType="UserVO" >
+		<![CDATA[
+			update member 
+			set mem_passwd = #{mem_passwd }, 	
+			mem_name = #{mem_name }, 
+			mem_email = #{mem_email }, 
+			mem_gender = #{mem_gender }, 
+			mem_birth = #{mem_birth },
+			mem_profile = #{mem_profile } 
+			where mem_snum = #{mem_snum } ]]>
+	</update>
+	
+	<select id="findId" parameterType="string" resultType="UserVO">
+		<![CDATA[
+            select mem_id
+            from member
+            where  mem_email = #{mem_email }
+            and mem_name= #{mem_name }
+		]]>	
+	</select>
+	
+	<select id="findPw" parameterType="string" resultType="UserVO">
+		<![CDATA[
+            select mem_passwd
+            from member
+            where  mem_id = #{mem_id }
+            and mem_email = #{mem_email }
+            and mem_name= #{mem_name }
+		]]>	
+	</select>
+	
+	<delete id="userdelete">
+		<![CDATA[
+			delete from member where mem_snum = #{mem_snum }
+		]]>					
+	</delete>		
+</mapper>
