@@ -31,16 +31,18 @@
 
 	
 <!-- 	<section id="portfolio" class="module-sm"> -->
-<section id="portfolio" class="module-sm" style="padding:70px 0;" data-background="/resources/img/portfolio-8.jpg">
+<section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/portfolio-8.jpg" style="overflow-y: scroll;">
 	<div class="wrapper" >
+		<div class="blank-space">
+		</div>
 		<div class="hero-caption">
 			<div class="hero-text">
 				<div class="row">
 					<h6 class="m-b-30">profile</h6>	
 					<img src="/resources/img/profile/${userInfo.mem_profile}" height="180" width="120">
 					
-					<h1 class="m-b-70">${userInfo.mem_id}</h1>
-					<h6 class="m-b-60">${userInfo.mem_name}</h6>
+					<h2 class="m-b-70" style=" text-shadow: 0.1em 0.1em 0.15em #333">${userInfo.mem_id}</h2>
+					<h4 class="m-b-60">${userInfo.mem_name}</h4>
 					
 				</div>
 				<div class="container-fluid container-custom">
@@ -80,7 +82,7 @@
 
 		<div class="box box-danger" style="width: 90%; left:5%; background-color:rgba(255,255,255,0);">
 			<div class="box-header">
-		    	<h3 class="box-title" style="color:#111">Latest Board</h3>
+		    	<h3 class="box-title" style="color:black">Latest Board</h3>
 	      		<ul  class="category-btn font-alt">
 	        		<li><a href="#" class="current" onclick="onClickCategoryBtn('${param['user'] }', 'All')">All</a></li>
         			<c:forEach items="${categoryList}" var="category">

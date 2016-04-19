@@ -19,6 +19,7 @@
 	
 	<link rel="stylesheet" href="/resources/custom/css/customboard.css">
 
+
 </head>
 <body>
    <c:import url="/WEB-INF/views/include/header.jsp"></c:import>   
@@ -31,15 +32,16 @@
 
    
 <!--    <section id="portfolio" class="module-sm"> -->
-<section id="portfolio" class="module-sm" style="padding:70px 0;" data-background="/resources/img/portfolio-8.jpg">
+ <section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/portfolio-8.jpg" style="overflow-y: scroll;">
    <div class="wrapper" >
-    
-          <h1 class="hero-title" style="text-align: center"><a href="/board/injungboardlist"><font color="black">Injung List</font></a></h1>
+    	<div class="blank-space">
+    	</div>
+          <h2 class="hero-title" style="text-align: center"><a href="/board/injungboardlist"><font color="black">Injung List</font></a></h2>
    
 
       <div class="box box-danger" style="width: 90%; left:5%; background-color:rgba(255,255,255,0);">
          <div class="box-header">
-             <h3 class="box-title">Latest Board</h3>
+              <h3 class="box-title" style="color:black">Latest Board</h3>
                <ul  class="category-btn font-alt">
                  <li><a href="#" class="current" onclick="onClickCategoryBtn2('${authUser.mem_id }', 'All')">All</a></li>
                  <c:forEach items="${injungCategoryList}" var="category">

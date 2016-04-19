@@ -35,9 +35,10 @@
  
  <section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/portfolio-8.jpg" style="overflow-y: scroll;">
  <div class="wrapper" >
-	<div class="col-md-12" style="height: 100px" >
-          <h1 class="hero-title" style="text-align: center"><a href="/user/friendlist"><font color="black">Friend List</font></a></h1>
-      </div>
+	<div class="blank-space">
+	</div>
+          <h2 class="hero-title" style="text-align: center"><a href="/user/friendlist"><font color="black">Friend List</font></a></h2>
+      
 
     <div class="container-fluid container-custom">
 

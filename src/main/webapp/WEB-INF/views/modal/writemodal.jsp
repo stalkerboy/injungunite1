@@ -227,7 +227,7 @@
 
 
 <div class="myattr-modal">
-	<div class="modal-dialog modal-sm"> 
+	 
 		
 		<div id="textModal" class="modal modal-primary">
 			<div class="modal-header">
@@ -387,14 +387,14 @@
 			</div>
 		</div>
 		<!-- /.modal-content -->
-	</div>
+	
 	<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
 
 
-<div class="myattr-modal">
-	<div class="modal-dialog modal-sm">
+<div class="myattr-modal" >
+	
 		<div id="drawModal" class="modal modal-primary">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -491,7 +491,7 @@
 			<!-- /.modal-content -->
 		</div>
 		<!-- /.modal-dialog -->
-	</div>
+	
 	<!-- /.modal -->
 </div>
 
@@ -499,7 +499,7 @@
 
 
 <div class="myattr-modal">
-	<div class="modal-dialog modal-sm">
+
 		<div id="imgModal" class="modal modal-primary">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -725,11 +725,11 @@
 
 		</div>
 		<!-- /.modal-content -->
-	</div>
+	
 	<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-</div>
+
 
 
 <div class="myattr-modal">
