@@ -58,7 +58,7 @@
                     		</c:otherwise>
                    			</c:choose>
                           </td>
-                          <td class="mailbox-name" style="width:10%;"><a href="/message/writemessageform?mem_id=${MessagesVO.not_postmem_id}"><b>${MessagesVO.not_postmem_id}</b> ${MessagesVO.not_postmem_name}</a></td>
+                          <td class="mailbox-name" style="width:10%;"><a href="/message/writemessageform?mem_id=${MessagesVO.not_postmem_id}"><b>${MessagesVO.not_postmem_id}</b></a></td>
                           <td class="mailbox-subject" style="width:60%;"><a href="/message/receivereadmessageform?snum=${MessagesVO.not_snum}" >${MessagesVO.not_subject}</a></td>
                           <td class="mailbox-date" style="width:20%;">${fn:substring(MessagesVO.not_regdate, 0, 16)}</td>
                         </tr>

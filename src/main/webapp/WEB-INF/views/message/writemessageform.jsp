@@ -30,7 +30,7 @@
 				<form id="writeMessageForm" action="/message/messagewrite" method="post">	
 					<h3>Write New Message</h3>
 					<input type="email" class="form-control" name="not_getmem_id" id="not_getmem_id" placeholder="To:" value="${targetUser.mem_id}">
-		          	<input type="text" class="form-control" name="not_subject" placeholder="Subject:">           
+		          	<input type="text" class="form-control" id="not_subject" name="not_subject" placeholder="Subject:">           
 					<textarea id="editor1" name="not_context" rows="10" cols="80">
 					</textarea>
 		            <div class="pull-right">
@@ -65,18 +65,27 @@
 	
 	function onClickMessageWriteBtn(){
 		var mem_id = $("#not_getmem_id").val() ;
+		
+		if(!$("#not_subject").val())
+		{
+			alert("제목을 입력해주세요.");
+			return ;
+		}
 		$.ajax( {
 			url : "/user/hasid?id="+mem_id,
 			type: "get",
 			dataType: "json",
 			success: function( response ){
 				var hasId = response.data;
+				 
 				if(hasId){
 					$("#writeMessageForm").submit() ;
 				}
 				else{
 					alert("check id!");
 				}
+				
+				   
 			}
 		});
 	}

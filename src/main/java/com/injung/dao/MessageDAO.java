@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.injung.vo.Criteria;
 import com.injung.vo.MessageVO;
+import com.injung.vo.UserVO;
 
 @Repository
 public class MessageDAO {
@@ -61,4 +62,8 @@ public class MessageDAO {
     public void updateReceiveMessage(long not_snum) {
         session.update(namespace+".updateReceiveMessage", not_snum);
     }
+    public MessageVO selectUserInfoById(String not_subject)throws Exception{
+        return session.selectOne(namespace+".selectMessageinfoBySub",not_subject);
+    }   
+    
 }

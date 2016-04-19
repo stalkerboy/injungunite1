@@ -65,4 +65,9 @@ public class MessageService {
         dao.updateReceiveMessage(not_snum);
     }
     
+    public boolean hassub(String not_subject) throws Exception {
+        return dao.selectUserInfoById(not_subject) != null;
+        
+    }
+    
 }

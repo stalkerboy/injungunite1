@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,10 +35,9 @@ public class MessageController {
     
     @Auth
     @RequestMapping(value="/messagewrite", method=RequestMethod.POST)
-    public String write(MessageVO vo, @AuthUser UserVO auth) throws Exception{
+    public String write(MessageVO vo, @AuthUser UserVO auth, Model model) throws Exception{
         String userid = auth.getMem_id();
-        vo.setNot_postMem_snum(auth.getMem_snum());
-        service.writeMessage(vo);
+              
         return "redirect:/board/boardlist?user=" + userid;
     }
     
@@ -121,6 +119,7 @@ public class MessageController {
     @RequestMapping(value="/writemessageform", method=RequestMethod.GET)
     public void writemessageform(@AuthUser UserVO auth, UserVO targetUser, Model model) throws Exception{        
         model.addAttribute("targetUser", targetUser);
+                
     }
     
     @Auth
@@ -170,6 +169,6 @@ public class MessageController {
         
         return "redirect:/message/sendmessageform";
     }
-  
+    
     
 }
