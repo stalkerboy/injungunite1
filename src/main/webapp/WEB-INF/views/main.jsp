@@ -65,7 +65,7 @@
 				<div class="row">
 				    <div class="col-xs-7">
                         <fieldset>
-    						<input type="checkbox" id="useCookie" name="useCookie"/>
+    						<input type="checkbox" id="idSaveCheck" name="useCookie"/>
                             <label>Remember ID</label>
 						</fieldset>
 					</div>
