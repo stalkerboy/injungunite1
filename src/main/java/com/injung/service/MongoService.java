@@ -19,6 +19,10 @@ public class MongoService {
 
     public String getImgJson(Long boa_snum) {
         return dao.findImgJsonBySnum(boa_snum);
+    }
+
+    public void updateMongoVO(MongoVO mv) {
+        dao.updateMongoVO(mv);
     }   
     
 }

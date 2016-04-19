@@ -102,28 +102,51 @@ public class BoardController {
     
     @Auth
     @RequestMapping(value="/write")
-    public String write(@AuthUser UserVO uv, BoardVO bv, HttpSession session) throws Exception{
-        System.out.println(bv);
-        
-        String fileName = ".png";
-        
-        byte[] data = Base64.decodeBase64(bv.getBoa_imgpng());
-        
-        String path =  session.getServletContext().getRealPath("/") + "resources\\img\\boardimg";
-        String newFileName = UploadFileUtils.uploadFile(path, fileName, data);
-        
-        bv.setBoa_imgpng(newFileName);
-
-        bv.setMem_snum(uv.getMem_snum());
-        
-        bservice.writeBoard(bv);
+    public String write(@AuthUser UserVO uv, BoardVO bv, HttpSession session,
+            @RequestParam("formType") String formType) throws Exception{
+        if(formType.equals("w-modal")) {
+            // 모달 타입이 쓰기일 경우
+            String fileName = ".png";
             
-        MongoVO mv = new MongoVO();
-        mv.setBoard_snum(bv.getBoa_snum());
-        mv.setImgJson((DBObject) JSON.parse(bv.getBoa_imgjson()));
-        
-        mservice.insertMongoVO(mv);
-        
+            byte[] data = Base64.decodeBase64(bv.getBoa_imgpng());
+            
+            String path =  session.getServletContext().getRealPath("/") + "resources\\img\\boardimg";
+            String newFileName = UploadFileUtils.uploadFile(path, fileName, data);
+            
+            bv.setBoa_imgpng(newFileName);
+
+            bv.setMem_snum(uv.getMem_snum());
+            
+            bservice.writeBoard(bv);
+                
+            MongoVO mv = new MongoVO();
+            mv.setBoard_snum(bv.getBoa_snum());
+            mv.setImgJsonStr(bv.getBoa_imgjson());
+            mv.setImgJson((DBObject) JSON.parse(bv.getBoa_imgjson()));
+            
+            mservice.insertMongoVO(mv);
+        } else if(formType.equals("m-modal")) {
+            // 모달 타입이 수정일 경우
+            String fileName = ".png";
+            
+            byte[] data = Base64.decodeBase64(bv.getBoa_imgpng());
+            
+            String path =  session.getServletContext().getRealPath("/") + "resources\\img\\boardimg";
+            String newFileName = UploadFileUtils.uploadFile(path, fileName, data);
+            
+            bv.setBoa_imgpng(newFileName);
+            bv.setMem_snum(uv.getMem_snum());
+            
+            bservice.modifyBoard(bv);
+                
+            MongoVO mv = new MongoVO();
+            mv.setBoard_snum(bv.getBoa_snum());
+            mv.setImgJsonStr(bv.getBoa_imgjson());
+            mv.setImgJson((DBObject) JSON.parse(bv.getBoa_imgjson()));
+            
+            mservice.updateMongoVO(mv);
+            
+        }
         return "redirect:/user/main";
     }
     
@@ -230,18 +253,19 @@ public class BoardController {
         model.addAttribute("searchBoardlist", searchboardlist);
     }
     
-    
     @Auth
-    @RequestMapping(value="/modifyBoard", method = RequestMethod.GET)
+    @RequestMapping(value="/modifyBoardForm", method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, Object> modifyBoard(@AuthUser UserVO authUser, BoardVO bv,  Model model) throws Exception {
-       
-    
+    public Map<String, Object> modifyBoardForm(@AuthUser UserVO authUser, BoardVO bv,  Model model) throws Exception {
+       System.out.println(bv);
         String boardJsonImg = mservice.getImgJson(bv.getBoa_snum());
         
         Map<String, Object> map = new HashMap<String, Object>();
+        
+        map.put("board", bservice.getBoard(bv.getBoa_snum()));
         map.put("data", boardJsonImg);
-    
+        map.put("taglist", bservice.getTagList(bv.getBoa_snum()));
+        map.put("categorylist", bservice.getCategoryList() );
         return map;
      }
     

@@ -97,4 +97,15 @@ public class BoardDAO {
     public List<BoardVO> selectSearchBoard(String keyword) {
         return session.selectList(namespace+".selectSearchBoard", keyword);
     }
+    public void updateBoard(BoardVO bv) {
+        session.update(namespace+".updateBoard", bv);
+       
+   }
+   public void deleteTag(BoardVO bv) {
+        session.update(namespace+".deleteTag", bv);
+       
+   }
+   public List<BoardVO> selectTagList(long boa_snum) {
+       return session.selectList(namespace+".selectTagList", boa_snum);
+   }
 }

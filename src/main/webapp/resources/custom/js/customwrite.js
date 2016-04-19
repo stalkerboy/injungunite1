@@ -784,6 +784,7 @@ function onClickWriteModal(){
             strOption += "<option value=\""+ categorylist[i].boa_category + "\">" + categorylist[i].boa_category +"</option>"
          }
          $("#datalist").append(strOption);
+         $("#formType").val('w-form');
       }
    });
 }

@@ -1,11 +1,14 @@
 package com.injung.vo;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import com.mongodb.DBObject;
 
+@Document(collection = "snsimg")
 public class MongoVO {
 	private long board_snum;   
     private DBObject  imgJson;
-    
+    private String imgJsonStr;
     
 	public long getBoard_snum() {
 		return board_snum;
@@ -18,5 +21,11 @@ public class MongoVO {
 	}
 	public void setImgJson(DBObject imgJson) {
 		this.imgJson = imgJson;
-	}    
+	}
+    public String getImgJsonStr() {
+        return imgJsonStr;
+    }
+    public void setImgJsonStr(String imgJsonStr) {
+        this.imgJsonStr = imgJsonStr;
+    }    
 }

@@ -131,4 +131,18 @@ public class BoardService  {
     public List<BoardVO> searchboard(String keyword) {        
         return dao.selectSearchBoard(keyword);
     }
+
+
+    public void modifyBoard(BoardVO bv) {
+        dao.updateBoard(bv);
+        dao.deleteTag(bv);
+        for(String tag: bv.getTags().split(",")){
+            bv.setTag(tag);
+            dao.insertTag(bv);
+        }   
+    }
+    
+    public List<BoardVO> getTagList(long boa_snum) {
+        return dao.selectTagList(boa_snum);
+    }
 }

@@ -65,7 +65,7 @@
 
 <select id="selectBoard" parameterType="long" resultType="BoardVO">
       <![CDATA[
-      select b.boa_snum, b.boa_subject, b.boa_regdate, b.boa_hitcnt, m.mem_snum,m.mem_id, b.boa_imgpng, m.mem_profile, lc.boa_injeong
+      select b.boa_snum, b.boa_subject, b.boa_regdate, b.boa_hitcnt, m.mem_snum,m.mem_id, b.boa_imgpng, m.mem_profile, lc.boa_injeong, b.boa_category
 		 from board b, member m, (select b.boa_snum, count(l.boa_snum) boa_injeong from board b, likelist l where b.boa_snum = l.boa_snum(+) group by b.boa_snum) lc
 		 where b.boa_snum = #{boa_snum} 
 		 	and b.mem_snum = m.mem_snum
@@ -191,6 +191,28 @@
 		from board b, taglist t, member m
 		where (b.BOA_SUBJECT like '%'||#{keyword }||'%' or t.TAG_NAME like '%'||#{keyword }||'%')
 		and b.BOA_SNUM=t.BOA_SNUM(+) and b.MEM_SNUM=m.MEM_SNUM
+	]]>
+	</select>
+	
+	
+	<update id="updateBoard" parameterType="BoardVO" >
+		   <![CDATA[
+		   update board set boa_subject = #{boa_subject}, boa_imgpng = #{boa_imgpng}, boa_category = #{boa_category}
+				where boa_snum=#{boa_snum}      
+		   ]]>
+	</update>
+		
+	<delete id="deleteTag" parameterType="BoardVO" >
+		<![CDATA[
+		   delete from taglist where boa_snum=#{boa_snum}      
+		   ]]>
+	</delete>
+	
+	<select id="selectTagList" parameterType="long" resultType="BoardVO">
+	<![CDATA[
+  		select tag_name tag
+			from taglist
+			where boa_snum= #{ boa_snum }
 	]]>
 	</select>
 </mapper>

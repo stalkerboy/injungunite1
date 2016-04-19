@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,9 +24,14 @@
 	<c:import url="/WEB-INF/views/modal/pwformodifymodal.jsp"></c:import>
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
 	<c:import url="/WEB-INF/views/modal/viewmodal.jsp"></c:import>
-	<c:import url="/WEB-INF/views/modal/modifymodal.jsp"></c:import>
 	
-	<button type="button" onclick="onClickModifyBoardBtn();">asdad</button>
+	<div class="wrapper" >
+	   	<div style="height: 100px;"></div>
+		<div class="box box-info" style="width: 80%; left:10%;">
+			<button type="button" onclick="onClickModifyBoardBtn(${param['bno'] });">asdad</button>
+	   	</div>
+   	</div>
+	
 <!-- js import -->
 <!-- jquery -->
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -38,23 +44,6 @@
 
 <script src='/resources/custom/js/customwrite.js'></script>
 <script src='/resources/custom/js/custommodals.js'></script>
-<script>
-function onClickModifyBoardBtn(boa_snum){
-	var mem_passwd = $("#mem_passwd").val() ;
-	$.ajax( {
-		url : "/board/modifyBoard",
-		type: "post",
-		dataType: "json",
-		data:{'boa_snum': boa_snum},
-		success: function( response ){
-			alert(response.data);
-// 			canvas = new fabric.Canvas('modifyCanvas');
-// 			canvas.loadFromJSON(response.data, function(){
-// 		        canvas.renderAll();
-// 		    });
-		}
-	});
-}
-</script>
+<script src='/resources/custom/js/custommodify.js'></script>
 </body>
 </html>
