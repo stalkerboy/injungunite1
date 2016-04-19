@@ -92,7 +92,7 @@
            <a href="#findPw"data-toggle="collapse" data-target="#findPw"style="color: #ffffff"><i class="fa  fa-anchor">Password</i></a>
               	<div id="findPw" class="collapse">
 					<label class="block-label">Please Write your Info</label>
-					<input type="text" id="pmem_id" name="mem_id" class="form-control" placeholder="ID" /> 
+					<input type="text" id="pmem_id" name="pmem_id" class="form-control" placeholder="ID" /> 
 					<input type="text" id="pmem_email" name="mem_email" class="form-control" placeholder="E-MAIL" /> 
 					<input type="text" id="pmem_name" name="mem_name" class="form-control" placeholder="NAME" /> 
 					<input id="button-findpw" type="button" value="Find PW" onclick="showfindpw();"  class="btn btn- btn-block btn-flat">
@@ -122,7 +122,7 @@
                 <label class="block-label" for="myid">ID</label>
 				<div class="row">
 			        <div class="col-xs-8">
-                        <input id="mem_id_join" name="mem_id" type="text" class="form-control" placeholder="USER ID"  onblur="onblur_idcheck();">
+                        <input id="mem_id_join" name="mem_id_join" type="text" class="form-control" placeholder="USER ID"  onblur="onblur_idcheck();">
 					</div>
 					<div class="col-xs-4">
                         <input id="button-checkid" class="btn btn-sm" type="button" value="check ID">
