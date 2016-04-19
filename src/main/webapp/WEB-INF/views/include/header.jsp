@@ -126,6 +126,6 @@
 				$("#NotReadMessageCount").append(response.data);
 			}
 		})
-	},3000);
+	},1000);
 </script>  
 <script src='/resources/custom/js/customboard.js'></script>    
