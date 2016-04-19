@@ -73,7 +73,7 @@ function checkUser(formEl) {
         objFocus = formEl.password;
     }
     if (errorMessage != null) {
-        alert(errorMessage);
+        swal({title:errorMessage, type:"warning"});
         objFocus.focus();
         return false;
     }
@@ -106,14 +106,14 @@ $(function(){
 				$("#mem_id").focus();
 				$("#button-checkid").show();
 				$("#image-checkid").hide();
-				alert( "이미 존재하는 ID입니다. 다른 ID를 사용해 주세요." );
+				swal( 'Oops...','존재하는 ID입니다!    다른 아이디를 사용하세요.','error');
 				return;
 			}
 			else{
 				$("#button-checkid").hide();
 				$("#image-checkid").show();
 				checkid = true;
-				alert( "사용 가능합니다." );
+				swal( 'Success!!','사용가능한 ID입니다.','success');
 			}
 		},
 		error: function( jqXHR, status, error ){
@@ -145,20 +145,12 @@ function showfindid(){
         
         success: function( response ){
             if(response.data == null) {
-                alert( "존재하지 않는 ID입니다." );
+            	   swal( 'Oops...','존재하지 않는 ID입니다!','error');
 
             return;
             }
-
-            var find_id_btn =  document.getElementById("findid");
-            var button_find_id =  document.getElementById("button-findid");
-            var find_id_label = document.getElementById("find-Id-Label");
-
-            find_id_btn.value = response.data.mem_id;
-
-            find_id_label.style.display="block";
-            find_id_btn.style.display="block";
-            button_find_id.style.display="none";
+            var find_id = response.data.mem_id;
+            swal({ title: "Your ID", text: find_id, type:"info"}); 
         }
     });
 };
@@ -185,19 +177,11 @@ function showfindpw(){
         //  contentType: "application/json",
         success: function( response ){
             if(response.data == null) {
-                alert( "존재하지 않는 ID입니다." );
+            	swal( 'Oops...','존재하지 않는 ID입니다!','error');
                 return;
             }
-
-            var find_pw_btn =  document.getElementById("findpw");
-            var button_find_pw =  document.getElementById("button-findpw");
-            var find_pw_label = document.getElementById("find-Pw-Label");
-
-            find_pw_btn.value = response.data.mem_passwd;
-
-            find_pw_label.style.display="block";
-            find_pw_btn.style.display="block";
-            button_find_pw.style.display="none";
+            var find_pw = response.data.mem_passwd;
+            swal({ title: "Your Password", text: find_pw, type:"info"}); 
         }
     });
  };
@@ -217,43 +201,68 @@ function showfindpw(){
 	var errorMessage = null;  
 	var objFocus = null;  
 	if (!$('#mem_id_join').val()) {  
-		errorMessage = "아이디를 넣어 주세요";  
-		objFocus = $('#mem_id_join');  
+		errorMessage = "아이디를 넣어 주세요.";  	
 	}
 	else if (!checkid) {  
-		errorMessage = "아이디 중복체크를 하세요";  
-		objFocus = $('#mem_id_join');  
+		errorMessage = "아이디 중복체크를 하세요.";  	
 	}
 	else if (!$('#mem_passwd').val()) {  
-		errorMessage = "비밀번호를 넣어 주세요";  
-		objFocus = $('#mem_passwd');  
+		errorMessage = "비밀번호를 넣어 주세요.";  
 	}  
 	else if (!$('#mem_name_join').val()) {  
-		errorMessage = "이름를 넣어 주세요";  
-		objFocus = $('#mem_name_join');  
+		errorMessage = "이름를 넣어 주세요.";    
 	}  
 	else if (!$('#mem_email_join').val()) {  
-		errorMessage = "email를 넣어 주세요";  
-		objFocus = $('#mem_email_join');  
+		errorMessage = "email를 넣어 주세요.";   
 	}    
 	else if (!$('#mem_birth_join').val()) {  
-		errorMessage = "생년월일을 선택해 주세요";  
-		objFocus = $('#mem_birth_join');  
+		errorMessage = "생년월일을 선택해 주세요.";  
 	}
 	else if (!$('#agree-prov').is(":checked")) {  
-		errorMessage = "정보 제공에 동의해 주세요";  
-		objFocus = $('#agree-prov');  
+		errorMessage = "정보 제공에 동의해 주세요.";  
 	}
 	
 	if (errorMessage != null) {  
-		alert(errorMessage);  
-		objFocus.focus();
+		 swal( 'Check...',errorMessage,'warning');
 		return false;  
 	}  
 	return true;  
 } 
 
- 
+ function onblur_event(){
+		var mem_passwd = document.getElementById("mem_passwd").value;
+	    if(mem_passwd == "")
+	   	{
+	    	swal( 'Oops...','필수 입력 정보입니다.','warning'); 	
+	    	
+	   	}else if(mem_passwd.length<4 || mem_passwd.length>15)
+	    	{
+	   		swal( 'Oops...','비밀번호는 4~15자를 입력하세요.','warning'); 	
+	    	} 
+	}
+	function onblur_pwcheck() {
+		 $('.error').hide();
+		 var mem_passwd = document.getElementById("mem_passwd").value;
+		 var mem_passwdck = document.getElementById("mem_passwdck").value;
+		 if(mem_passwd!=mem_passwdck)
+		{ 
+			 swal( 'Oops...','패스워드가 일치하지 않습니다.','warning'); 	
+		}
+		
+	}
+
+	function onblur_idcheck() {
+		var regExp = /^[0-9]+$/;
+		if (regExp.test(document.getElementById('mem_id_join').value))
+			{
+				swal( 'error...','숫자로만 아이디 생성 할 수 없습니다.','error');
+				$("#button-checkid").hide();
+				$("#button-checkid-number").show();
+			}
+		else{
+				$("#button-checkid-number").hide();
+			}
+	}
  
  
  

@@ -11,6 +11,7 @@
 <link href="/resources/custom/css/custom.css" rel="stylesheet">
 
 <link href="/resources/plugins/datepicker/datepicker3.css" rel="stylesheet">
+<link href="/resources/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
 <style>
@@ -39,7 +40,7 @@
 			<div class="centent-align-center">
 
 				<hr class="divider" style="width:250px">
-				<h4 style="font-weight: 900">사람의 정을 나누다</h4>
+				<h4 style="font-weight: 900; color:white">사람의 정을 나누다</h4>
 				<h1><a href="#">INJUNG</a></h1>
 				<hr class="divider" style="width:250px">
 				<button type="button" class="btn btn-md btn-white-line xs-hidden" data-toggle="modal" data-target="#login" >Log In</button>&nbsp;&nbsp;
@@ -81,9 +82,7 @@
                     <label class="block-label">Please Write your Info</label>
                     <input type="text" id="mem_email" name="mem_email" class="form-control" placeholder="E-MAIL" />
                     <input type="text" id="mem_name" name="mem_name" class="form-control" placeholder="NAME" />
-                    <input id="button-findid" type="button" value="Find ID" onclick="showfindid();"  class="btn btn-sm btn-block btn-flat">
-                    <label class="block-label" id="find-Id-Label" hidden>Your ID:</label>
-					<input id="findid"  name="mem_id" type="text" value="${findUser.mem_id}" class="form-control" style="display: none; background-color: #c0c0c0; color: #000000" disabled>
+                    <input id="button-findid" type="button" value="Find ID" onclick="showfindid();"  class="btn btn-sm btn-block btn-flat"> 
                     <br>
                 </div>
                 
@@ -97,8 +96,6 @@
 					<input type="text" id="pmem_email" name="mem_email" class="form-control" placeholder="E-MAIL" /> 
 					<input type="text" id="pmem_name" name="mem_name" class="form-control" placeholder="NAME" /> 
 					<input id="button-findpw" type="button" value="Find PW" onclick="showfindpw();"  class="btn btn- btn-block btn-flat">
-					<label class="block-label" id="find-Pw-Label" hidden>Your PassWord:</label>
-					<input id="findpw"  name="mem_passwd" type="text" value="${findUser.mem_passwd}" class="form-control" style="display: none; background-color: #c0c0c0; color: #000000" disabled>
 					<br>
 				</div>
 			<br>						
@@ -126,7 +123,6 @@
 				<div class="row">
 			        <div class="col-xs-8">
                         <input id="mem_id_join" name="mem_id" type="text" class="form-control" placeholder="USER ID"  onblur="onblur_idcheck();">
-                        <div class="divJoinWarning" id="notNumber" style="display: none">숫자로만 아이디 생성 할 수 없습니다.</div>
 					</div>
 					<div class="col-xs-4">
                         <input id="button-checkid" class="btn btn-sm" type="button" value="check ID">
@@ -140,12 +136,9 @@
 	
                 <label class="block-label">PASSWORD</label><br>&nbsp;
                 <input id="mem_passwd" name="mem_passwd" type="password" value="" class="form-control" placeholder="Password" onblur="onblur_event();">
-				<div class="divJoinWarning" id="pswd1Msg" class="error" style="display: none">필수 정보입니다.</div>
-				<div class="divJoinWarning" id="limitpw" style="display: none;">비밀번호는 4~15자를 입력하세요.</div>
-				
+						
 				<input id="mem_passwdck" name="mem_passwdck" type="password" value="" class="form-control" placeholder="Password Check" onblur="onblur_pwcheck();">
-				<div class="divJoinWarning" id="pswd1Msg" class="error" style="display: none">필수 정보입니다.</div>
-				<div class="divJoinWarning" id="pwcheck" style="display: none;">패스워드가 일치하지 않습니다.</div>
+		
 				<br>
 								
 				<label class="block-label" for="name">NAME</label><br>
@@ -200,6 +193,7 @@
 <script src="/resources/custom/js/customlogin.js"></script>
 
 <script src="/resources/custom/js/customfiledrop.js"></script>
+<script src="/resources/plugins/sweetalert/sweetalert.min.js"></script>
 <!-- video player -->
 <script>
 $(document).ready(function () {
@@ -212,51 +206,5 @@ $(document).ready(function () {
 $(".date-picker").datepicker();
 </script>
 
-
-<script>
-function onblur_event(){
-	var mem_passwd = document.getElementById("mem_passwd").value;
-    if(mem_passwd == "")
-   	{
-    	$('.error').show(); 	
-    	$('#limitpw').hide();
-		$('#pwcheck').hide();
-   	}else if(mem_passwd.length<4 || mem_passwd.length>15)
-    	{
-    	$('#limitpw').show();
-    	$('.error').hide();   	
-		$('#pwcheck').hide();
-    	} 
-}
-function onblur_pwcheck() {
-	 $('.error').hide();
-	 var mem_passwd = document.getElementById("mem_passwd").value;
-	 var mem_passwdck = document.getElementById("mem_passwdck").value;
-	 if(mem_passwd!=mem_passwdck)
-	{ 
-		$('#pwcheck').show();
-		$('.error').hide();
-		$('#limitpw').hide();
-	}
-	 else{
-		 $('#pwcheck').hide();
-		$('#limitpw').hide()
-	 } 
-}
-
-function onblur_idcheck() {
-	$('#notNumber').hide();
-	var regExp = /^[0-9]+$/;
-	if (regExp.test(document.getElementById('mem_id_join').value))
-		{
-			$('#notNumber').show();
-			$("#button-checkid").hide();
-			$("#button-checkid-number").show();
-		}
-	else{
-			$("#button-checkid-number").hide();
-		}
-}
-</script>
 </body>
 </html>
