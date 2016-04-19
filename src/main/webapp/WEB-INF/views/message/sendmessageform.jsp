@@ -29,7 +29,7 @@
 	<section id="hero" class="module bg-dark-30 js-fullheight" style="padding:70px 0;" data-background="/resources/img/portfolio-8.jpg">
 	<div style="height: 150px;"></div>
 		</section>
-	<h2 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SentMessagebox <small>13 new messages</small></h2>
+	<h2 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SentMessagebox</h2>
               <div class="box box-primary" style="width:90%;left:5%;">
 		<div class="box-header with-border">
 			<!-- /.box-tools -->

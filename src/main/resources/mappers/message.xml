@@ -27,7 +27,7 @@
 		<![CDATA[
 		select count(not_snum) from note  
 		where not_snum > 0
-		and not_getmem_snum = #{snum}
+		and not_getmem_snum = #{snum} and not_getmem_deleted = 0
 		]]>
 	</select>
 	
@@ -86,7 +86,7 @@
 		<![CDATA[
 		select count(not_snum) from note  
 		where not_snum > 0
-		and not_getmem_snum != #{snum}
+		and not_getmem_snum != #{snum} and not_postmem_deleted = 0
 		]]>
 	</select>
 	

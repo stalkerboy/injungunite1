@@ -12,7 +12,7 @@ public class Criteria {
 
     public Criteria() {
         this.page = 1;
-        this.perPageNum = 20;
+        this.perPageNum = 10;
     }
     
     
@@ -46,6 +46,7 @@ public class Criteria {
 
     public long getPerPageNum() {
         return this.perPageNum;
+          
     }
 
     public void setPerPageNum(long perPageNum) {        

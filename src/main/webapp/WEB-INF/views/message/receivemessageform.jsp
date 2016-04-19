@@ -29,7 +29,7 @@
 	<section id="hero" class="module bg-dark-30 js-fullheight" style="padding:70px 0;" data-background="/resources/img/portfolio-8.jpg">
 	<div style="height: 150px;"></div>
 	</section>
-	<h2 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ReceiveMessagebox</h2>	
+	<h2 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ReceiveMessagebox  <small> ${messagecount} new messages</small></h2>	
               <div class="box box-primary" style="width:90%;left:5%;">
                 <div class="box-header with-border">
                 </div><!-- /.box-header -->
@@ -75,13 +75,13 @@
                     <div class="pull-right">	
 					<ul class="pagination pagination-sm inline">
                         <c:if test="${pageMaker.prev }">
-                            <li><a href="/message/recivemessageform?page=${pageMaker.startPage -1}">&laquo;</a></li>
+                            <li><a href="/message/receivemessageform?page=${pageMaker.startPage -1}">&laquo;</a></li>
                         </c:if>
                         <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
-                            <li><a href="/message/recivemessageform?page=${idx}">${idx}</a></li>
+                            <li><a href="/message/receivemessageform?page=${idx}">${idx}</a></li>
                         </c:forEach>
                         <c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-                             <li><a href="/message/recivemessageform?page=${pageMaker.endPage +1}">&raquo;</a></li>
+                             <li><a href="/message/receivemessageform?page=${pageMaker.endPage +1}">&raquo;</a></li>
                         </c:if>
                     </ul>                      
                     </div><!-- /.pull-right -->

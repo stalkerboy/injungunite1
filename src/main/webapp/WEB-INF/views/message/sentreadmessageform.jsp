@@ -36,7 +36,7 @@
 	                    <h5>From: ${messageVO.not_postmem_id } <span class="mailbox-read-time pull-right">${messageVO.not_regdate }</span></h5>
 					</div><!-- /.mailbox-read-info -->
 	                  
-	                <div id="divMessageContext" class="mailbox-read-message">${messageVO.not_context } 
+	                <div id="divMessageContext" class="mailbox-read-message">${messageVO.not_context} 
 	                </div><!-- /.mailbox-read-message -->
 				</div><!-- /.box-body -->
 	                

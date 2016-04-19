@@ -33,12 +33,14 @@ public class MessageController {
     
     @Inject
     private MessageService service;
- 
+    
+    @Auth
     @RequestMapping(value="/messagewrite", method=RequestMethod.POST)
     public String write(MessageVO vo, @AuthUser UserVO auth) throws Exception{
+        String userid = auth.getMem_id();
         vo.setNot_postMem_snum(auth.getMem_snum());
         service.writeMessage(vo);
-        return "redirect:/user/main";
+        return "redirect:/board/boardlist?user=" + userid;
     }
     
  
@@ -65,6 +67,7 @@ public class MessageController {
         PageMaker pageMaker = new PageMaker();
         pageMaker.setCri(cri);
         pageMaker.setTotalCount(service.ReceivecountPaging(cri));
+        model.addAttribute("messagecount", service.NotReadMessageCount(auth.getMem_id()));
         model.addAttribute("pageMaker",pageMaker);
     }
     
