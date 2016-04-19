@@ -20,7 +20,7 @@
 			</div>
 			<div class='box-body row'>
             	<div class="col-sm-7">
-                	<img class="img-responsive pad" src="/resources/img/profile/${fn:substring(boardVO.boa_imgpng, 0, 12)}${fn:substring(boardVO.boa_imgpng, 14, 100)}" alt="Photo" width="400" height="200" >
+                	<img class="img-responsive pad" src="/resources/img/profile/${boardVO.boa_imgpng}" alt="Photo" width="400" height="200" >
                 </div>
                 <div class='col-sm-5'>
 					<img class="img-responsive img-circle img-sm" src='/resources/img/boardimg/${boardVO.mem_profile }' alt="alt text">
