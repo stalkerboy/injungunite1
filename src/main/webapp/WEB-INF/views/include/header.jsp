@@ -7,7 +7,7 @@
 	<nav class="navbar navbar navbar-fixed-top"  role="navigation">
 		<div class="navbar-header">
 	 		&nbsp;
-	 		<form id="search-form" class="form-inline" role="form" method="post" action="/board/search" target="_blank">
+	 		<form id="search-form" class="form-inline" role="form" method="post" action="/board/search" >
 			    &nbsp;
 				<div style="width:50px; display:inline-block;"><span></span></div>
 			    <div class="input-group">
