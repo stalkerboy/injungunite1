@@ -82,7 +82,7 @@
     </div>
     
     <div class="row">
-    	<div class="input-group col-sm-3 pull-right" style="right:5%; margin:5px 10px">
+    	<div class="input-group col-sm-2 pull-right" style="right:5%; margin:5px 10px">
     		<input type="text" id="friendId-search" class="form-control input-sm search-form" placeholder="친구검색">
     		<span class="input-group-btn">
     			<button type="button" id="searchfriend-btn" class="stone-btn stone-btn-dark btn-md search-btn">
