@@ -282,10 +282,11 @@ label {
     height:100%; width:100%;
     display: table;
 }
-.item-align-center{
-    display: table-cell;
-    vertical-align: middle;
-    text-align:center;
+.item-align-center {
+    /* display: table-cell; */
+    /* vertical-align: middle; */
+    text-align: center;
+    margin-top: 200px;
 }
 .modal {
     text-align: center;
