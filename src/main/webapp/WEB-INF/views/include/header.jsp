@@ -128,4 +128,3 @@
 		})
 	},1000);
 </script>  
-<script src='/resources/custom/js/customboard.js'></script>    
