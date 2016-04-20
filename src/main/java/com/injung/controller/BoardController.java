@@ -18,17 +18,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.injung.annotation.Auth;
 import com.injung.annotation.AuthUser;
-import com.injung.vo.MongoVO;
-import com.injung.vo.BoardCommentVO;
-import com.injung.vo.BoardVO;
-import com.injung.vo.UserVO;
-import com.mongodb.DBObject;
-import com.mongodb.util.JSON;
 import com.injung.service.BoardService;
 import com.injung.service.FriendService;
 import com.injung.service.MongoService;
 import com.injung.service.UserService;
 import com.injung.util.UploadFileUtils;
+import com.injung.vo.BoardCommentVO;
+import com.injung.vo.BoardVO;
+import com.injung.vo.MongoVO;
+import com.injung.vo.NoticeVO;
+import com.injung.vo.UserVO;
+import com.mongodb.DBObject;
+import com.mongodb.util.JSON;
 
 @Controller
 @RequestMapping(value="/board")
@@ -272,5 +273,17 @@ public class BoardController {
         map.put("categorylist", bservice.getCategoryList() );
         return map;
      }
+    
+    @Auth
+    @RequestMapping(value="/notice", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> selectNotice(Model model) {
+        List<NoticeVO> noticelist = bservice.selectNotice();
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("data", noticelist);
+        
+        return map;
+                
+    }
     
 }

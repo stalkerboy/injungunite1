@@ -9,6 +9,7 @@
  <typeAlias alias="MessageVO" type="com.injung.vo.MessageVO"/>
  <typeAlias alias="BoardCommentVO" type="com.injung.vo.BoardCommentVO"/>
  <typeAlias alias="TestVO" type="com.injung.vo.TestVO"/>
+ <typeAlias alias="NoticeVO" type="com.injung.vo.NoticeVO"/>
  </typeAliases>
  <mappers>
 		<mapper resource="/mappers/user.xml" />

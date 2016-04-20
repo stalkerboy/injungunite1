@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.injung.vo.BoardVO;
+import com.injung.vo.NoticeVO;
 import com.injung.vo.BoardCommentVO;
 
 
@@ -108,4 +109,8 @@ public class BoardDAO {
    public List<BoardVO> selectTagList(long boa_snum) {
        return session.selectList(namespace+".selectTagList", boa_snum);
    }
+public List<NoticeVO> selectNotice() {
+    
+    return session.selectList(namespace+".selectNotice");
+}
 }

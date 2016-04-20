@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.injung.vo.BoardVO;
+import com.injung.vo.NoticeVO;
 import com.injung.vo.BoardCommentVO;
 import com.injung.vo.UserVO;
 import com.injung.dao.BoardDAO;
@@ -144,5 +145,12 @@ public class BoardService  {
     
     public List<BoardVO> getTagList(long boa_snum) {
         return dao.selectTagList(boa_snum);
+    }
+
+
+
+    public List<NoticeVO> selectNotice() {
+        
+        return dao.selectNotice();
     }
 }

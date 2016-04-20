@@ -76,6 +76,26 @@ function notreadmessage(){
 	})
 };
 
+function selectnotice(){
+	$.ajax({
+    	url :"/board/notice",
+        type:"POST",
+        dataType:"json",
+        success:function(result){
+    		var item = result.data;
+    	  	var newcode = "";
+    	  	$("#notice").empty();
+    	  	for(var i = 0; i<item.length; i++){
+    	  		newcode += "<li><a href=\"#\"><i class=\"fa fa-users text-aqua\"></i>"+item[i].no_context+"</a></li>"
+			}
+			$("#notice").append(newcode);
+    	},
+        error:function(xhr, status, error){
+        	console.error( status + " : " + error );
+        }
+	})
+};
+
 function onClickBoard(boa_snum){
 	$.ajax( {
 		url : "/board/view?bno="+boa_snum,

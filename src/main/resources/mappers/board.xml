@@ -215,4 +215,10 @@
 			where boa_snum= #{ boa_snum }
 	]]>
 	</select>
+	
+	<select id="selectNotice" resultType="NoticeVO">
+	<![CDATA[
+  		select * from notice			
+	]]>
+	</select>
 </mapper>
