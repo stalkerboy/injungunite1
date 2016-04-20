@@ -37,6 +37,8 @@ public class MessageController {
     @RequestMapping(value="/messagewrite", method=RequestMethod.POST)
     public String write(MessageVO vo, @AuthUser UserVO auth, Model model) throws Exception{
         String userid = auth.getMem_id();
+        vo.setNot_postMem_snum(auth.getMem_snum());
+        service.writeMessage(vo);
               
         return "redirect:/board/boardlist?user=" + userid;
     }
