@@ -30,23 +30,28 @@ $("#searchfriend-btn").on("click", function(){
 		type: 'POST',
 		success : function(result) {					
 			var userfind = result.userfind;
-			
-			var divstr = "";
-			tablestr = "<div class=\"box-header with-border\">";
-            
-			for(var i=0;i<userfind.length;i++) 
-			{
-				divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/displayFile?fileName="+userfind[i].fri_mem_profile +"\' class=\"friend-img\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
-           	 	if(userfind[i].ismyfriend==1){
-	           		divstr += "<a href=\"#\" onclick=\"deletefriend(" +userfind[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a>" ;
-           	 	}
-           	 	else if(userfind[i].ismyfriend==0) {
-           	 		divstr += "<a href=\"#\" onclick=\"addfriend(" +userfind[i].fri_mem_snum +")\"><i class=\"fa fa-user-plus\"></i>Friend Add</a>" ;
-           	 	}
-           		divstr+= "<hr class=\"divider\"><a href=\"/message/writemessageform?mem_id="+ userfind[i].fri_mem_id +"\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li>";
-            }  
-			var frienddiv = document.getElementById("friendlist-div");
-			frienddiv.innerHTML = divstr;
+	         
+	         var divstr = "";
+	         tablestr = "<div class=\"box-header with-border\">";
+	            
+	         if(userfind == '') {
+	            divstr += "<p>존재하지 않는 ID 입니다.</p>";
+	         }
+	         else {         
+	         for(var i=0;i<userfind.length;i++) 
+	         {
+	            divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/displayFile?fileName="+userfind[i].fri_mem_profile +"\' class=\"friend-img\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
+	                  if(userfind[i].ismyfriend==1){
+	                    divstr += "<a href=\"#\" onclick=\"deletefriend(" +userfind[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a>" ;
+	                  }
+	                  else if(userfind[i].ismyfriend==0) {
+	                     divstr += "<a href=\"#\" onclick=\"addfriend(" +userfind[i].fri_mem_snum +")\"><i class=\"fa fa-user-plus\"></i>Friend Add</a>" ;
+	                  }
+	                 divstr+= "<hr class=\"divider\"><a href=\"/message/writemessageform?mem_id="+ userfind[i].fri_mem_id +"\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li>";
+	            }
+	         }
+	         var frienddiv = document.getElementById("friendlist-div");
+	         frienddiv.innerHTML = divstr;
 		}
 	})
 })

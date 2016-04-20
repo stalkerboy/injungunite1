@@ -73,8 +73,14 @@
             <div class="box-body no-padding">
                   <div class="works-grid-wrapper">      
                      <div id="works-grid" class="works-grid works-grid-gutter">
-                        <c:forEach items="${searchBoardlist}" var="board">
-                           <article class="work-item">
+                        <c:set var="board" value="${searchBoardlist}"/>
+                        <c:choose>
+                           <c:when test='${empty board}'>
+                              <p>검색결과가 없습니다.</p>
+                           </c:when>
+                           <c:otherwise>
+                           <c:forEach items="${searchBoardlist}" var="board">    
+                              <article class="work-item">
                               <div class="work-wrapper">
                                  <div class="work-thumbnail" style="margin: 15px 5px">
                                     <img src="/resources/img/boardimg/${board.boa_imgpng }" alt="">
@@ -86,7 +92,9 @@
                                    <a href="#" onclick="onClickBoard(${board.boa_snum});" class="work-link"></a>
                               </div> 
                            </article>
-                        </c:forEach>             
+                           </c:forEach>            
+                           </c:otherwise>
+                        </c:choose>                                   
                      </div>
                   </div>
                </div>
