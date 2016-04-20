@@ -248,9 +248,11 @@ public class BoardController {
     @Auth
     @RequestMapping(value="/search", method = RequestMethod.POST)
     public void searchBoard(@RequestParam("search") String keyword, Model model) {
+        if(!keyword.equals("")) {
         List<BoardVO> searchboardlist = bservice.searchboard(keyword);
         model.addAttribute("keyword", keyword);
         model.addAttribute("searchBoardlist", searchboardlist);
+        }
     }
     
     @Auth
