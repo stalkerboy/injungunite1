@@ -102,13 +102,14 @@
 
 <script src='/resources/plugins/fabric/js/fabric.min.js'></script>
 
-<script src='/resources/custom/js/customwrite.js'></script>
+
 <script src='/resources/custom/js/custommodals.js'></script>
 <script src="/resources/plugins/iCheck/icheck.min.js"></script>
 
 <script src="/resources/custom/js/jquery.superslides.min.js"></script>
 <script src="/resources/custom/js/custombackground.js"></script>
 
+<script src='/resources/custom/js/customwrite.js'></script>
 <script>
 $(function () {
     $('.mailbox-messages input[type="checkbox"]').iCheck({

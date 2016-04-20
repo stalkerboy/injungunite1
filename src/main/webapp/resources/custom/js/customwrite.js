@@ -792,7 +792,7 @@ function onClickWriteModal(){
          $("#writeSubmit").html("글쓰기");
          
          $("div#taglistdiv").empty();
-         onClickClearBtn();
+//         onClickClearBtn();
       }
    });
 }
