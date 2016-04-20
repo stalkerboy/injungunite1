@@ -99,7 +99,7 @@
               <a class="dropdown-toggle" data-toggle="dropdown" id="${friendVO.fri_mem_id}" href="#" aria-expanded="false" style="color:black">${friendVO.fri_mem_id}</a>
               <ul class ="dropdown-menu">
 	          	<li class="header">
-    			<a href="#"><i class="fa fa-user"></i>Friend Page</a>         		
+    			<a href="/board/boardlist?user=${friendVO.fri_mem_id}"><i class="fa fa-user"></i>Friend Page</a>         		
            		<hr class="divider">
            		<c:if test ='${friendVO.ismyfriend ==1}'>
            			<a href="#" onclick="deletefriendFromMyFollower(${friendVO.fri_snum})"><i class="fa fa-user-times"></i>Friend Delete</a>
