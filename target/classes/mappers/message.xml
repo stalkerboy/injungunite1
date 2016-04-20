@@ -53,11 +53,11 @@
 	</select>
 	<select id="ReceiveList" resultType="MessageVO">
 		<![CDATA[
-			select * 
+	select * 
 			from 
 			(
 			select 
-			/*+INDEX_DESC(note pk_not_snum)*/
+			/*+INDEX_DESC(n SYS_C0011806)*/
 			rownum rm, n.not_snum, m.mem_id not_postmem_id, m.mem_name not_postmem_name, n.not_subject, n.not_isread, n.not_regdate, n.not_readdate from member m , note n 
 			where m.mem_snum = n.not_postmem_snum
 			and n.not_getmem_deleted != 1
@@ -72,7 +72,7 @@
 			from 
 			(
 			select 
-			/*+INDEX_DESC(note pk_not_snum)*/
+			/*+INDEX_DESC(n SYS_C0011806)*/
 			rownum rm, n.not_snum,  m.mem_id not_getmem_id, m.mem_name not_getmem_name, n.not_subject, n.not_isread, n.not_regdate, n.not_readdate from member m , note n 
 			where m.mem_snum = n.not_getmem_snum
 			and n.not_postmem_deleted != 1
