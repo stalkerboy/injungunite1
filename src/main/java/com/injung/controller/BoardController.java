@@ -257,12 +257,14 @@ public class BoardController {
     @RequestMapping(value="/modifyBoardForm", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, Object> modifyBoardForm(@AuthUser UserVO authUser, BoardVO bv,  Model model) throws Exception {
-       System.out.println(bv);
         String boardJsonImg = mservice.getImgJson(bv.getBoa_snum());
         
         Map<String, Object> map = new HashMap<String, Object>();
-        
-        map.put("board", bservice.getBoard(bv.getBoa_snum()));
+        BoardVO board = bservice.getBoard(bv.getBoa_snum());
+        if (board.getMem_snum()!=authUser.getMem_snum()){
+            return map;
+        }
+        map.put("board", board);
         map.put("data", boardJsonImg);
         map.put("taglist", bservice.getTagList(bv.getBoa_snum()));
         map.put("categorylist", bservice.getCategoryList() );

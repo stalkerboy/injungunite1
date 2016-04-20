@@ -785,6 +785,9 @@ function onClickWriteModal(){
          }
          $("#datalist").append(strOption);
          $("#formType").val('w-form');
+         
+         $("#writeform").trigger("reset");
+         $("div#taglistdiv").empty();
       }
    });
 }
