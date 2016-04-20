@@ -784,11 +784,63 @@ function onClickWriteModal(){
             strOption += "<option value=\""+ categorylist[i].boa_category + "\">" + categorylist[i].boa_category +"</option>"
          }
          $("#datalist").append(strOption);
-         $("#formType").val('w-form');
+         $("#formType").val('w-modal');
          
          $("#writeform").trigger("reset");
+         
+         $("#writemodal .box-title").html("글쓰기");
+         $("#writeSubmit").html("글쓰기");
+         
          $("div#taglistdiv").empty();
+         onClickClearBtn();
       }
    });
 }
 
+function onClickModifyBoardBtn(boa_snum){
+	$.ajax( {
+		url : "/board/modifyBoardForm?boa_snum="+boa_snum,
+		type: "get",
+		dataType: "json",
+		success: function( response ){
+			
+			board = response.board;
+			taglist = response.taglist;
+			categorylist = response.categorylist;
+			
+			
+			$("#boa_snum").val(boa_snum) ;
+			canvas.loadFromJSON(response.data, function(){
+		        canvas.renderAll();
+		    });
+			
+			$("#boa_subject").val(board.boa_subject);
+			
+			
+	         $("#datalist").empty();
+	         var strOption = "";
+	         for(var i=0; i<categorylist.length; i++){
+	            strOption += "<option value=\""+ categorylist[i].boa_category + "\">" + categorylist[i].boa_category +"</option>"
+	         }
+	         $("#datalist").append(strOption);
+	         
+	         $("#datalist").val(board.boa_category);
+	         
+			
+			$("div#taglistdiv").empty();
+			tagNum = 0;
+			for(var i=0; i<taglist.length; i++){
+				var tagText = taglist[i].tag;
+			   	var newtagcode =
+			      "<div id=\'tag" + tagNum + "\'><span  class=\' boardtag label label-danger pull-right\'>" + tagText + "<a href=\'#\' onclick=\'onClickTagRemove(" + tagNum + ");\'><i class=\'fa fa-close\'></a></span></div>";
+			   tagNum = tagNum + 1;
+			   $("div#taglistdiv").append(newtagcode);
+			}
+		   $("#formType").val("m-modal");
+
+	         $("#writemodal .box-title").html("글수정");
+	         $("#writeSubmit").html("글수정");
+			$("#writemodal").modal();
+		}
+	});
+}

@@ -25,6 +25,7 @@ public class UserDAO{
 	}
 	
 	public void createUser(UserVO vo)throws Exception{
+	    System.out.println(vo);
 		session.insert(namespace+".createUser", vo);
 	}
 
