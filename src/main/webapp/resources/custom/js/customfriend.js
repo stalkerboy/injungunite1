@@ -166,9 +166,10 @@ function deletefriendFromMyFollower(fri_snum){
 		type: 'POST',
 				
 		success : function(result) {
-			swal( 'Success!!','친구삭제 완료.','success');
-			location.href="/user/followerlist";
-
+			swal({ title:'Success!!', text:'친구삭제 완료.', showCancelButton: false, type:'success'},
+					function(){
+				location.href="/user/followerlist";
+			});
 		}
 	});
 }
@@ -183,8 +184,10 @@ function addfriendFromMyFolloer(mem_snum){
 		type: 'POST',
 		
 		success : function(result) {
-			swal( 'Success!!','친구추가 완료.','success');
-			location.href="/user/followerlist";
+			swal({ title:'Success!!', text:'친구추가 완료.', showCancelButton: false, type:'success'},
+					function(){
+				location.href="/user/followerlist";
+			});
 		}
 	});
 }
