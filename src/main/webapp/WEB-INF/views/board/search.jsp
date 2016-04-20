@@ -47,6 +47,7 @@
 
 <!-- tabwrap.css 추가함. -->
 <link rel="stylesheet" href="/resources/custom/css/tabwrap.css">
+<link href="/resources/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 <script src='/resources/custom/js/custommodals.js'></script>
 </head>
 
@@ -125,6 +126,7 @@
    <script src='/resources/custom/js/customboard.js'></script>
    <script src="/resources/custom/js/jquery.superslides.min.js"></script>
    <script src="/resources/custom/js/custombackground.js"></script>
+   <script src="/resources/plugins/sweetalert/sweetalert.min.js"></script>
 
    <!-- tab기능 추가 시 스크립트 추가부분 -->
    <script type="text/javascript">

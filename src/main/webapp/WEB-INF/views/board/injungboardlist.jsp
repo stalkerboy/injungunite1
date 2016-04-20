@@ -18,6 +18,8 @@
 	<link rel="stylesheet" href="/resources/custom/css/hero.css">
 	
 	<link rel="stylesheet" href="/resources/custom/css/customboard.css">
+	
+	<link href="/resources/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 
 
 </head>
@@ -95,6 +97,7 @@
 <script src="/resources/custom/js/jquery.superslides.min.js"></script>
 
 <script src="/resources/custom/js/custombackground.js"></script>
+<script src="/resources/plugins/sweetalert/sweetalert.min.js"></script>
 
 </body>
 </html>

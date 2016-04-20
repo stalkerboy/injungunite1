@@ -184,7 +184,7 @@ function CheckSerch() {
 	}
 	
 	if (errorMessage != null) {  
-		swal( 'Oops...',erroMessage,'warning');;  
+		swal( 'Oops...',errorMessage,'warning');;  
 		objFocus.focus();
 		return false;  
 	}  
