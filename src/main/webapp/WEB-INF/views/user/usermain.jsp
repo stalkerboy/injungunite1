@@ -21,6 +21,7 @@
 	
 	<link rel="stylesheet" href="/resources/custom/css/tabwrap.css">
 	<link rel="stylesheet" href="/resources/custom/css/customboard.css">
+	<link href="/resources/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 
 	</head>
 <body>
@@ -131,6 +132,7 @@
 <script src='/resources/custom/js/custommodals.js'></script>
 
 <script src="/resources/custom/js/custombackground.js"></script>
+<script src="/resources/plugins/sweetalert/sweetalert.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$(".tab_content").show();

@@ -11,7 +11,7 @@ function onClickPwForModifyBtn() {
 				post_to_url("/user/modifyform");
 			}
 			else{
-				alert("check pw!");
+				swal( 'Oops...','비밀번호를 확인하세요.','warning');;
 			}
 		}
 	});
@@ -184,7 +184,7 @@ function CheckSerch() {
 	}
 	
 	if (errorMessage != null) {  
-		alert(errorMessage);  
+		swal( 'Oops...',erroMessage,'warning');;  
 		objFocus.focus();
 		return false;  
 	}  

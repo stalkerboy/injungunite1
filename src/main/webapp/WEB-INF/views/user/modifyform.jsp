@@ -15,6 +15,7 @@
 	
 	<link rel="stylesheet" href="/resources/custom/css/custom.css">
 	<link rel="stylesheet" href="/resources/custom/css/hero.css">
+	<link href="/resources/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<c:import url="/WEB-INF/views/include/header.jsp"></c:import>	
@@ -118,6 +119,7 @@
 <script src="/resources/custom/js/custombackground.js"></script>
 <script src="/resources/custom/js/customfiledrop.js"></script>
 <script src='/resources/custom/js/custommodals.js'></script>
+<script src="/resources/plugins/sweetalert/sweetalert.min.js"></script>
 <script>
 $(".date-picker").datepicker();
 

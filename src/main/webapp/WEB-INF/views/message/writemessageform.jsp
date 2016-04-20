@@ -15,6 +15,7 @@
 	
 	<link rel="stylesheet" href="/resources/custom/css/custom.css">
 	<link rel="stylesheet" href="/resources/custom/css/hero.css">
+	<link href="/resources/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<c:import url="/WEB-INF/views/include/header.jsp"></c:import>	
@@ -58,6 +59,7 @@
 <script src="/resources/custom/js/custombackground.js"></script>
 
 <script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
+<script src="/resources/plugins/sweetalert/sweetalert.min.js"></script>
 <script>
 	$(function() {
 		CKEDITOR.replace('editor1',{height:500});
@@ -68,7 +70,7 @@
 		
 		if(!$("#not_subject").val())
 		{
-			alert("제목을 입력해주세요.");
+			swal( 'Oops...','제목을 입력하세요.','warning');;
 			return ;
 		}
 		$.ajax( {
@@ -82,7 +84,7 @@
 					$("#writeMessageForm").submit() ;
 				}
 				else{
-					alert("check id!");
+					swal( 'Oops...','수신인을 입력하세요.','warning');
 				}
 				
 				   

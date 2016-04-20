@@ -54,10 +54,10 @@ document.getElementById('imgLoader').onchange = function handleImage(e) {
 
     var reader = new FileReader();
     reader.onerror = function(e) {
-      alert('File read error');
+    	swal( 'Oops...','File read Error','warning');
     };
     reader.onabort = function(e) {
-      alert('File read cancelled');
+    	swal( 'Oops...','File read Canceled','warning');
     };
 
     reader.onload = (function(event) {
