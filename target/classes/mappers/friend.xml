@@ -87,10 +87,12 @@
 
 	<select id="followerList" parameterType="long" resultType="FriendVo">
       <![CDATA[
-         select f.fri_snum, m.mem_id fri_mem_id, m.mem_name fri_mem_name, m.mem_snum fri_mem_snum, m.mem_profile fri_mem_profile  
-         from fri_list f, member m
-         where f.mem_snum = m.mem_snum 
-         	and f.fri_mem_snum = #{mem_snum }
+      	select f.fri_snum, s.mem_snum fri_mem_snum, s.mem_id fri_mem_id, s.mem_profile fri_mem_profile, decode(s.mem_snum, f.fri_mem_snum, 1, 0) ismyfriend
+    	from (select ftm.fri_snum, ftm.mem_snum, mtm.mem_id, mtm.mem_name, mtm.mem_profile 
+        from fri_list ftm, member mtm
+        where ftm.fri_mem_snum = #{memNo }
+        and ftm.mem_snum = mtm.mem_snum) s, fri_list f
+    	where f.mem_snum(+) = #{memNo } and f.FRI_MEM_SNUM(+)= s.mem_snum
       ]]>
    </select>
 

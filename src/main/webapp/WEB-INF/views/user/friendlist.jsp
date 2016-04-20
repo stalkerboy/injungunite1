@@ -17,6 +17,7 @@
 	
 	<link rel="stylesheet" href="/resources/custom/css/hero.css">
 	
+	<link rel="stylesheet" href="/resources/plugins/sweetalert/sweetalert.css"  type="text/css">
 	<style>
 		.users-list>li {
 			width: 200px;
@@ -138,16 +139,12 @@
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 <script src='/resources/plugins/fabric/js/fabric.min.js'></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
 <script src='/resources/custom/js/customwrite.js'></script>
-
 <script src="/resources/custom/js/custombackground.js"></script>
 <script src='/resources/custom/js/custommodals.js'></script>
-
 <script src='/resources/custom/js/appear.js'></script>
 <script src="/resources/custom/js/jquery.superslides.min.js"></script>
-
 <script src="/resources/custom/js/customfriend.js"></script>
-
+<script src="/resources/plugins/sweetalert/sweetalert.min.js"></script>
 </body>
 </html>

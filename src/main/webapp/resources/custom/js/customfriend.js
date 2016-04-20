@@ -60,6 +60,7 @@ function deletefriend(fri_snum){
 		type: 'POST',
 				
 		success : function(result) {
+			swal( 'Success!!','친구삭제 완료.','success');
 			var userfind = result.userfind;
 			
 			var divstr = "";
@@ -91,6 +92,7 @@ function addfriend(mem_snum){
 		type: 'POST',
 		
 		success : function(result) {
+			swal( 'Success!!','친구추가 완료.','success');
 			var userfind = result.userfind;
 			
 			var divstr = "";
@@ -130,6 +132,7 @@ function deletefriendFromMyList(fri_snum){
 		type: 'POST',
 				
 		success : function(result) {
+			swal( 'Success!!','친구삭제 완료.','success');
 			var friendlist = result.friendlist;
 			
 			var divstr = "";
@@ -144,3 +147,43 @@ function deletefriendFromMyList(fri_snum){
 	});
 }
 ;
+
+
+
+function deletefriendFromMyFollower(fri_snum){   
+	$.ajax({
+		url : '/user/deletefriendfromfollower',
+		headers : {
+            "Content-Type" : "application/json",
+            "X-HTTP-Method-Override" : "POST"
+        },
+        
+		data : fri_snum,
+		dataType : 'json',
+		processData: false,
+		contentType: false,
+		type: 'POST',
+				
+		success : function(result) {
+			swal( 'Success!!','친구삭제 완료.','success');
+			location.href="/user/followerlist";
+
+		}
+	});
+}
+;
+
+function addfriendFromMyFolloer(mem_snum){
+	$("#friendEditBtn").css("display","none");
+	$.ajax({
+		url : '/user/addfriendfromfollower',
+		data : {"mem_snum":mem_snum, "mem_id": mem_id},
+		dataType : 'json',
+		type: 'POST',
+		
+		success : function(result) {
+			swal( 'Success!!','친구추가 완료.','success');
+			location.href="/user/followerlist";
+		}
+	});
+}

@@ -279,4 +279,28 @@ public class UserController {
         model.addAttribute("followingCount", fservice.followingCount(authVo.getMem_id()));
         model.addAttribute("followerCount", fservice.followerCount(authVo.getMem_id()));
     }
+    
+    @Auth
+    @RequestMapping(value="/deletefriendfromfollower",  method = RequestMethod.POST)
+    @ResponseBody
+    public  Map<String, Object> deletefriendfromfollower(@RequestBody long fri_snum) throws Exception {
+       fservice.deletefriend(fri_snum);
+       
+       Map<String, Object>map = new HashMap<String, Object>();
+       map.put("result", "success");
+       
+       
+       return map;
+    }
+    
+    @Auth
+    @RequestMapping(value="/addfriendfromfollower", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> addfriendfromfollower(FriendVO fv, @AuthUser UserVO authUser, Model model) throws Exception {
+        fservice.addfriend(authUser.getMem_snum(), fv.getMem_snum());  
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("userfind", "success");
+        return map; 
+    }
 }

@@ -17,6 +17,7 @@
 	
 	<link rel="stylesheet" href="/resources/custom/css/hero.css">
 	
+	<link rel="stylesheet" href="/resources/plugins/sweetalert/sweetalert.css"  type="text/css">
 	<style>
 		.users-list>li {
 			width: 200px;
@@ -85,9 +86,7 @@
 	<div class="box box-danger" style="width: 90%; left:5%; background-color:rgba(255,255,255,0);height:300px">
   <div class="box-header">
     <h3 class="box-title" style="color:black">Follower List</h3>
-    <div class="box-tools pull-right">
-      <button id="friendEditBtn" class="label label-danger" onclick="onClickFriendEdit();">편집</button>
-    </div>
+    
   </div><!-- /.box-header -->
   <div class="box-body no-padding">
     <ul class="users-list clearfix"  id="friendlist-div">
@@ -102,8 +101,13 @@
 	          	<li class="header">
     			<a href="#"><i class="fa fa-user"></i>Friend Page</a>         		
            		<hr class="divider">
-           		 
-    			<a href="#" onclick="deletefriendFromMyList(${friendVO.fri_snum})"><i class="fa fa-user-times"></i>Friend Delete</a>
+           		<c:if test ='${friendVO.ismyfriend ==1}'>
+           			<a href="#" onclick="deletefriendFromMyFollower(${friendVO.fri_snum})"><i class="fa fa-user-times"></i>Friend Delete</a>
+           		</c:if> 
+           		<c:if test ='${friendVO.ismyfriend ==0}'>
+           			<a href="#" onclick="addfriendFromMyFolloer(${friendVO.fri_mem_snum})"><i class="fa fa-user-plus"></i>Friend Add</a>
+           		</c:if>
+    			
     			        		
            		<hr class="divider">
     			<a href="/message/writemessageform"><i class="fa fa-envelope-o"></i>Sent Message</a>        		
@@ -129,16 +133,12 @@
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 <script src='/resources/plugins/fabric/js/fabric.min.js'></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
 <script src='/resources/custom/js/customwrite.js'></script>
-
 <script src="/resources/custom/js/custombackground.js"></script>
 <script src='/resources/custom/js/custommodals.js'></script>
-
 <script src='/resources/custom/js/appear.js'></script>
 <script src="/resources/custom/js/jquery.superslides.min.js"></script>
-
 <script src="/resources/custom/js/customfriend.js"></script>
-
+<script src="/resources/plugins/sweetalert/sweetalert.min.js"></script>
 </body>
 </html>
