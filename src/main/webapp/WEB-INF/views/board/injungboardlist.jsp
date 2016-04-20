@@ -34,7 +34,7 @@
 
    
 <!--    <section id="portfolio" class="module-sm"> -->
- <section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/portfolio-8.jpg" style="overflow-y: scroll;">
+ <section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/main.jpg" style="overflow-y: scroll;">
    <div class="wrapper" >
     	<div class="blank-space">
     	</div>

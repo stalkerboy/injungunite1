@@ -17,7 +17,10 @@
 	
 	<link rel="stylesheet" href="/resources/plugins/AdminLTE/css/AdminLTE.min.css">
 	
+	<link rel="stylesheet" href="/resources/custom/css/hero.css">
+	
 	<link rel="stylesheet" href="/resources/custom/css/custom.css">
+	
 	
 	<link rel="stylesheet" href="/resources/custom/css/tabwrap.css">
 	<link rel="stylesheet" href="/resources/custom/css/customboard.css">
@@ -34,9 +37,10 @@
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
 	<c:import url="/WEB-INF/views/modal/viewmodal.jsp"></c:import>
 
-	<div class="wrapper">
-		<section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/portfolio-8.jpg" style="overflow-y: scroll;">
-			<div class="col-md-12" style="height: 80px">
+	
+	<section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/main.jpg" style="overflow-y: scroll;">
+			<div class="wrapper">
+			<div class="blank-space">
 			</div>
 			<ul class="tabs">
 				<li class="active" rel="tab1">추천 </li>
@@ -113,8 +117,9 @@
 				</div>
 			</div><!--/.box -->
 		</div>	
+		</div>
 	</section>
-	</div>
+	
 
 <!-- js import -->
 <!-- jquery -->

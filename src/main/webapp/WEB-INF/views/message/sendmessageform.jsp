@@ -26,7 +26,7 @@
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
 
 <div class="wrapper" >
-	<section id="hero" class="module bg-dark-30 js-fullheight" style="padding:70px 0;" data-background="/resources/img/portfolio-8.jpg">
+	<section id="hero" class="module bg-dark-30 js-fullheight" style="padding:70px 0;" data-background="/resources/img/main.jpg">
 	<div style="height: 150px;"></div>
 		</section>
 	<h2 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SentMessagebox</h2>

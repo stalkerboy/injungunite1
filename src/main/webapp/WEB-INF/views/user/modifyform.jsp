@@ -24,7 +24,7 @@
 	<c:import url="/WEB-INF/views/modal/pwformodifymodal.jsp"></c:import>
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
 
-    <section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/mypage1.jpg" style="overflow-y: scroll;">
+    <section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/main.jpg" style="overflow-y: scroll;">
         <div class="inline-block" style="height: 10%;"></div>
 
             <div class="row text-center" >

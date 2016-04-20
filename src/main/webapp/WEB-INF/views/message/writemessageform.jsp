@@ -25,7 +25,7 @@
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
 
 	<div class="wrapper" >
-		<section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/portfolio-8.jpg" style="overflow-y: scroll;">
+		<section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/main.jpg" style="overflow-y: scroll;">
 	   		<div style="height: 100px;"></div>
 			<div class="box box-primary" style="margin:auto; width:90%; ">
 				<form id="writeMessageForm" action="/message/messagewrite" method="post">	

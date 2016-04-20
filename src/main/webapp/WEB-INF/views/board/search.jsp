@@ -59,7 +59,7 @@
    <c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
    <c:import url="/WEB-INF/views/modal/viewmodal.jsp"></c:import>
   
-      <section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/portfolio-8.jpg" style="overflow-y: scroll;">
+      <section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/main.jpg" style="overflow-y: scroll;">
          <div class="wrapper">
          <div class="blank-space">
     	 </div>
