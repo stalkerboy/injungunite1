@@ -31,6 +31,7 @@
 	<!-- modals -->
 	<c:import url="/WEB-INF/views/modal/pwformodifymodal.jsp"></c:import>
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
+	<c:import url="/WEB-INF/views/modal/viewmodal.jsp"></c:import>
 
 	<div class="wrapper">
 		<section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/portfolio-8.jpg" style="overflow-y: scroll;">
@@ -49,7 +50,7 @@
 				<div class="box box-danger"
 					style="width: 90%; left: 5%; background-color: rgba(255, 255, 255, 0);">
 					<div class="box-header ">
-						<h3 class="box-title">Latest Friend Board</h3>
+						<h3 class="box-title" style="color:black">Latest Friend Board</h3>
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body no-padding">
@@ -82,7 +83,7 @@
 		<div id="tab1" class="tab_content">
 			<div class="box box-danger" style="width: 90%; left: 5%; background-color: rgba(255, 255, 255, 0);">
 				<div class="box-header ">
-					<h3 class="box-title">Latest Recommend Board</h3>
+					<h3 class="box-title" style="color:black">Latest Recommend Board</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body no-padding">
