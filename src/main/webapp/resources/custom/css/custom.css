@@ -687,4 +687,8 @@ h1 a:hover {
 	background-color: #4ba7ba;
 }
 
+.dropdown-toggle {
+	 font-size:23px;
+}
+
 }

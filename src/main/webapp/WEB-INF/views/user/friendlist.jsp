@@ -105,7 +105,7 @@
              <div class="pull-right">               
                 <span title="delete" class="del-badge badge bg-red" style="margin:0; display:none;" onclick="deletefriendFromMyList(${friendVO.fri_snum});"><i class="fa fa-user-times"></i></span>
             </div>
-            <img src='/displayFile?fileName=${friendVO.fri_mem_profile}' class="friend-img" /></br>
+            <img src='/resources/img/profile/${friendVO.fri_mem_profile}' class="friend-img" style="width:180px; height:180px" /></br>
               <a class="dropdown-toggle" data-toggle="dropdown" id="${friendVO.fri_mem_id}" href="#" aria-expanded="false" style="color:black">${friendVO.fri_mem_id}</a>
               <ul class ="dropdown-menu">
 	          	<li class="header">
