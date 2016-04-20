@@ -19,13 +19,13 @@
 				class="dropdown-toggle binded" data-toggle="dropdown">MY PAGE</a>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="#" data-toggle="modal" data-target="#writemodal" onclick="onClickWriteModal();">
-						<i class="fa fa-pencil"></i> 글쓰기 </a></li>
+						<i class="fa fa-pencil"></i> POSTING </a></li>
 					<li><a href="/board/boardlist?user=${authUser.mem_id }" >
-						<i class="fa fa-child"></i> 내글보기 </a></li>
+						<i class="fa fa-child"></i> MYPAGE </a></li>
 					<li><a href="/board/injungboardlist">
-						<i class="fa fa-columns"></i> 인정 글보기 </a></li>
+						<i class="fa fa-columns"></i> INJUNG LIST </a></li>
 					<li><a href="#" data-toggle="modal" data-target="#checkPw1"  >
-						<i class="fa fa-cogs"></i> 계정관리 </a></li>
+						<i class="fa fa-cogs"></i> SETTINGS </a></li>
 				</ul>
 			</li>
 
@@ -33,18 +33,18 @@
 				data-toggle="dropdown">FRIEND</a>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="/user/friendlist">
-						<i class="fa fa-users"></i> 내친구 리스트 </a></li>
+						<i class="fa fa-users"></i> MY FRIEND LIST</a></li>
 				</ul></li>
 
 			<li class="dropdown"><a href="#" class="dropdown-toggle binded"
 				data-toggle="dropdown">MESSAGE</a>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="/message/writemessageform">
-						<i class="fa fa-sticky-note-o"></i> 쪽지 보내기 </a></li>
+						<i class="fa fa-sticky-note-o"></i> SEND MESSAGE </a></li>
 					<li><a href="/message/receivemessageform">
-						<i class="fa fa-archive"></i> 받은 쪽지함 </a></li>
+						<i class="fa fa-archive"></i> MESSAGE BOX </a></li>
 					<li><a href="/message/sendmessageform">
-						<i class="fa fa-share-square"></i> 보낸 쪽지함 </a></li>
+						<i class="fa fa-share-square"></i> SEND MESSAGE BOX </a></li>
 				</ul></li>
 		</ul>
 	</div>

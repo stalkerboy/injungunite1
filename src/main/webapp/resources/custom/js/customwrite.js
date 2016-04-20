@@ -788,8 +788,8 @@ function onClickWriteModal(){
          
          $("#writeform").trigger("reset");
          
-         $("#writemodal .box-title").html("글쓰기");
-         $("#writeSubmit").html("글쓰기");
+         $("#writemodal .box-title").html("POSTING");
+         $("#writeSubmit").html("Write");
          
          $("div#taglistdiv").empty();
 //         onClickClearBtn();
@@ -838,8 +838,8 @@ function onClickModifyBoardBtn(boa_snum){
 			}
 		   $("#formType").val("m-modal");
 
-	         $("#writemodal .box-title").html("글수정");
-	         $("#writeSubmit").html("글수정");
+	         $("#writemodal .box-title").html("MODIFY");
+	         $("#writeSubmit").html("MODIFY");
 			$("#writemodal").modal();
 		}
 	});

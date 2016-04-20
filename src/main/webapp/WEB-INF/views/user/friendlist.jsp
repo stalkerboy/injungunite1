@@ -34,7 +34,7 @@
 	<c:import url="/WEB-INF/views/modal/pwformodifymodal.jsp"></c:import>
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
  
- <section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/portfolio-8.jpg" style="overflow-y: scroll;">
+ <section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/background.jpg" style="overflow-y: scroll;">
  <div class="wrapper" >
 	<div class="blank-space">
 	</div>
@@ -84,7 +84,7 @@
     
     <div class="row">
     	<div class="input-group col-sm-2 pull-right" style="right:5%; margin:5px 10px">
-    		<input type="text" id="friendId-search" class="form-control input-sm search-form" placeholder="친구검색">
+    		<input type="text" id="friendId-search" class="form-control input-sm search-form" placeholder="Search">
     		<span class="input-group-btn">
     	<button type="button" id="searchfriend-btn" class="stone-btn stone-btn-dark btn-md search-btn" >
      	  			

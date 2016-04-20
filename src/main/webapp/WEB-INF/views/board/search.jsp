@@ -68,7 +68,7 @@
         
          <div class="box box-danger" style="width: 90%; left: 5%; background-color: rgba(255, 255, 255, 0);">
             <div class="box-header ">
-               <h6 class="box-title" style="color:black">(${keyword })에 대한 검색 결과</h6>
+               <h6 class="box-title" style="color:black">Search about (${keyword })</h6>
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
@@ -77,7 +77,7 @@
                         <c:set var="board" value="${searchBoardlist}"/>
                         <c:choose>
                            <c:when test='${empty board}'>
-                              <p>검색결과가 없습니다.</p>
+                            <div style="margin-left:40px"><h4>No Result</h4></div>
                            </c:when>
                            <c:otherwise>
                            <c:forEach items="${searchBoardlist}" var="board">    

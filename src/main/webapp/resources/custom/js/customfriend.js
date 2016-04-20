@@ -35,7 +35,7 @@ $("#searchfriend-btn").on("click", function(){
 	         tablestr = "<div class=\"box-header with-border\">";
 	            
 	         if(userfind == '') {
-	            divstr += "<p>존재하지 않는 ID 입니다.</p>";
+	            divstr += "<div style=\"margin:0 auto; font-size:17px; text-align:center\"><p>Can not found.</p></div>";
 	         }
 	         else {         
 	         for(var i=0;i<userfind.length;i++) 
