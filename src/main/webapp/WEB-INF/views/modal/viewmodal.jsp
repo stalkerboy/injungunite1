@@ -7,7 +7,7 @@
 <div id="viewmodal" class="modal fade" id="viewmodal" >
 	<div class="modal-dialog modal" style="width: 80%;" >
 
-		<div class="box box-widget" id="viewmodalbox">
+		<div class="box box-widget" id="viewmodalbox" style="margin:0px;">
 			<div class='box-header with-border'>
             	<div class='user-block'>
                 	<img class='img-circle' src='/resources/img/profile/${boardVO.mem_profile }' alt='user image' >
