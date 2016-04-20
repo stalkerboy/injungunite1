@@ -86,7 +86,8 @@
     	<div class="input-group col-sm-2 pull-right" style="right:5%; margin:5px 10px">
     		<input type="text" id="friendId-search" class="form-control input-sm search-form" placeholder="친구검색">
     		<span class="input-group-btn">
-    			<button type="button" id="searchfriend-btn" class="stone-btn stone-btn-dark btn-md search-btn">
+    	<button type="button" id="searchfriend-btn" class="stone-btn stone-btn-dark btn-md search-btn" >
+     	  			
     			<i class="fa fa-search"></i>
     			</button>
     		</span>
@@ -95,9 +96,7 @@
 	<div class="box box-danger" style="width: 90%; left:5%; background-color:rgba(255,255,255,0);height:300px">
   <div class="box-header">
     <h3 class="box-title" style="color:black">FriendList</h3>
-    <div class="box-tools pull-right">
-      <button id="friendEditBtn" class="label label-danger" onclick="onClickFriendEdit();">편집</button>
-    </div>
+    
   </div><!-- /.box-header -->
   <div class="box-body no-padding">
     <ul class="users-list clearfix"  id="friendlist-div">
@@ -146,5 +145,6 @@
 <script src="/resources/custom/js/jquery.superslides.min.js"></script>
 <script src="/resources/custom/js/customfriend.js"></script>
 <script src="/resources/plugins/sweetalert/sweetalert.min.js"></script>
+
 </body>
 </html>

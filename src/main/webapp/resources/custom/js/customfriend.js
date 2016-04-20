@@ -180,7 +180,7 @@ function deletefriendFromMyFollower(fri_snum){
 }
 ;
 
-function addfriendFromMyFolloer(mem_snum){
+/*function addfriendFromMyFolloer(mem_snum){
 	$("#friendEditBtn").css("display","none");
 	$.ajax({
 		url : '/user/addfriendfromfollower',
@@ -195,4 +195,4 @@ function addfriendFromMyFolloer(mem_snum){
 			});
 		}
 	});
-}
+}*/
