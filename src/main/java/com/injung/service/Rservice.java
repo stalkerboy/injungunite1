@@ -278,8 +278,8 @@ public class Rservice {
 		return categoryList;
 	}
 	
-	public List<String> matching() throws Exception {
-		List<String> catelist = this.getCategory(190);
+	public List<String> matching(long mem_snum) throws Exception {
+		List<String> catelist = this.getCategory(mem_snum);
 		List<String> catevalue = new ArrayList<String>();
 		String totalCategory = catelist.get(0)+","+catelist.get(1)+","+catelist.get(2);
 		String subCategory1 = catelist.get(0)+","+catelist.get(1);
@@ -317,8 +317,8 @@ public class Rservice {
 		return catevalue;
 	}
 	
-	public Set<String> dividecategory() throws Exception {
-		List<String> catevalue = this.matching();
+	public Set<String> dividecategory(long mem_snum) throws Exception {
+		List<String> catevalue = this.matching(mem_snum);
 		Set<String> recomset = new HashSet<String>();
 		
 		for(int i=0;i<catevalue.size();i++) {
@@ -331,9 +331,9 @@ public class Rservice {
 		return recomset;
 	}
 	
-	public Set<List<BoardVO>> recommend() throws Exception{		
+	public Set<List<BoardVO>> recommend(long mem_snum) throws Exception{		
 		Set<List<BoardVO>> boardset = new HashSet<List<BoardVO>>();
-		Set<String> recomset = this.dividecategory();
+		Set<String> recomset = this.dividecategory(mem_snum);
 		Iterator<String> it = recomset.iterator();
 		while(it.hasNext()) {
 			String category = it.next();			
@@ -343,9 +343,9 @@ public class Rservice {
 		return boardset;
 	}
 	
-	public List<BoardVO> getrecomBoard() throws Exception {
+	public List<BoardVO> getrecomBoard(long mem_snum) throws Exception {
 		List<BoardVO> totallist = new ArrayList<BoardVO>();
-		Set<List<BoardVO>> recomboardlist = this.recommend();
+		Set<List<BoardVO>> recomboardlist = this.recommend(mem_snum);
 		Iterator<List<BoardVO>> it = recomboardlist.iterator();
 		while(it.hasNext()) {
 			
@@ -357,13 +357,13 @@ public class Rservice {
 		return totallist;
 	}
 	
-	public void recommendalgorithm() throws Exception {
+	public void recommendalgorithm(long mem_snum) throws Exception {
 	    this.getdb();     
         this.rconnect();
         this.readLift();
         this.readRecom();
         this.mapping();
-        this.matching();
-        this.dividecategory();
+        this.matching(mem_snum);
+        this.dividecategory(mem_snum);
 	}
 }

@@ -84,8 +84,8 @@ public class UserController {
         scoreservice.setUserCategory(uv.getMem_snum());
         model.addAttribute("userInfo", uv);     
         
-        rservice.recommendalgorithm();
-        List<BoardVO> recomboardList = rservice.getrecomBoard();
+        rservice.recommendalgorithm(uv.getMem_snum());
+        List<BoardVO> recomboardList = rservice.getrecomBoard(uv.getMem_snum());
         model.addAttribute("boardList", recomboardList);
 
         List<BoardVO> friendboardList = bservice.getBoardListbyFriend(uv.getMem_snum());
