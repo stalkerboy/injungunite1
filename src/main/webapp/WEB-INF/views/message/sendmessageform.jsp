@@ -80,7 +80,16 @@
                             <li><a href="/message/sendmessageform?page=${pageMaker.startPage -1}">&laquo;</a></li>
                         </c:if>
                         <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
-                            <li><a href="/message/sendmessageform?page=${idx}">${idx}</a></li>
+                                                        
+                            <c:choose>
+                        		<c:when  test="${param['page'] == idx}">
+                        			<li><a class="num_box visited" href="/message/sendmessageform?page=${idx}" >${idx}</a></li>
+                        		</c:when>
+                        		<c:otherwise>
+                        			<li><a class="num_box " href="/message/sendmessageform?page=${idx}" >${idx}</a></li>
+                        		</c:otherwise>
+                        	</c:choose>
+                            
                         </c:forEach>
                         <c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
                              <li><a href="/message/sendmessageform?page=${pageMaker.endPage +1}">&raquo;</a></li>
