@@ -153,4 +153,10 @@ public class BoardService  {
         
         return dao.selectNotice();
     }
+
+
+
+    public void deleteBoard(BoardVO board) {
+        dao.deleteBoard(board);
+    }
 }

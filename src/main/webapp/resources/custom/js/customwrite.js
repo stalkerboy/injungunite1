@@ -798,6 +798,7 @@ function onClickWriteModal(){
 }
 
 function onClickModifyBoardBtn(boa_snum){
+	$('.modal').modal('hide');
 	$.ajax( {
 		url : "/board/modifyBoardForm?boa_snum="+boa_snum,
 		type: "get",

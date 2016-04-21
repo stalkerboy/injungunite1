@@ -174,8 +174,8 @@
 									<table class="table table-hover table-striped">
 										<tbody>
 											<div class="canvas-wrapper">
-												<canvas class="responsive" id="canvas" width="800"
-													height="450" style="border:1px solid #000000"></canvas>
+												<canvas class="responsive" id="canvas" width="1000"
+													height="600" style="border:1px solid #000000"></canvas>
 											</div>
 										</tbody>
 									</table>

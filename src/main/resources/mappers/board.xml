@@ -221,4 +221,11 @@
   		select * from notice			
 	]]>
 	</select>
+	
+	<delete id="deleteBoard" parameterType="BoardVO" >
+      <![CDATA[
+      delete from board where boa_snum = #{boa_snum}
+      ]]>
+	</delete>
+	
 </mapper>

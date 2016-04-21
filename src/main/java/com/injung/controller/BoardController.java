@@ -235,7 +235,6 @@ public class BoardController {
         
         if (category.equals("All")){
             lv = bservice.getInjunCategoryList(authUser.getMem_id());
-            System.out.println(lv);
         }
         else{
             lv = bservice.getInjungBoardListbyCategoryUserId(vo) ;
@@ -286,6 +285,17 @@ public class BoardController {
         
         return map;
                 
+    }
+    
+    @Auth
+    @RequestMapping(value="/boardDelete", method = RequestMethod.POST)
+    public String boardDelete(@AuthUser UserVO authUser, BoardVO bv)  throws Exception {
+        BoardVO board = bservice.getBoard(bv.getBoa_snum());
+        if (board.getMem_snum()!=authUser.getMem_snum()){
+            return "redirect:/board/boardlist?user="+authUser.getMem_id();
+        }
+        bservice.deleteBoard(board);
+        return "redirect:/board/boardlist?user="+authUser.getMem_id();
     }
     
 }

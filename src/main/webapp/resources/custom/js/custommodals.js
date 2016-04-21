@@ -116,12 +116,12 @@ function onClickBoard(boa_snum){
 			newStrCom += "<div class=\'box-header with-border\'><div class=\'user-block\'><img class=\'img-circle\' src=\'/resources/img/profile/" + boardVO.mem_profile + "\' alt=\'user image\' ><span class=\'username\'><a href=\"#\">" +boardVO.mem_id+"</a></span><span class=\'description\'>"+ boardVO.boa_regdate +"</span></div><div class=\'box-tools\'>" ;
 
 			if(boardVO.mem_snum == mem_snum){
-				newStrCom += "<a class=\"btn btn-box-tool\" data-toggle=\"dropdown\" ><i class=\'fa fa-cogs\'></i></a><ul class =\"dropdown-menu\" style=\"left: auto; right: 0;\"><li class=\"header\"><a href=\"#\" onclick=\"\"><i class=\"fa fa-edit\"></i>Modify</a><hr class=\"divider\"><a href=\"#\" onclick=\"\" ><span class=\"glyphicon glyphicon-remove\"></span>Delete</a></li></ul>";
+				newStrCom += "<a class=\"btn btn-box-tool\" data-toggle=\"dropdown\" ><i class=\'fa fa-cogs\'></i></a><ul class =\"dropdown-menu\" style=\"left: auto; right: 0;\"><li class=\"header\"><a href=\"#\" onclick=\"onClickModifyBoardBtn(" + boardVO.boa_snum + ");\"><i class=\"fa fa-edit\"></i>Modify</a><hr class=\"divider\"><a href=\"#\" onclick=\"onClickBoardDelete(" + boardVO.boa_snum + ");\" ><span class=\"glyphicon glyphicon-remove\"></span>Delete</a></li></ul>";
 			}	
 			newStrCom += "<button class=\'btn btn-box-tool\' data-dismiss=\'modal\'><i class=\'fa fa-times\'></i></button></div></div>";
 
 //			바디 ~ overflow전
-			newStrCom += "<div class=\'box-body row\'><div class=\"col-sm-8 \"><img class=\"img-responsive pad\" src=\"/resources/img/boardimg/"+ boardVO.boa_imgpng + "\" alt=\"Photo\" width=\"1000px\" height=\"800px\" ></div><div class=\'col-sm-4 \' ><img class=\"img-responsive img-circle img-sm\" src=\'/resources/img/profile/"+ boardVO.mem_profile+ "\' alt=\"alt text\"><div class=\"input-group\"><input id=\"com_context\" type=\"text\" class=\"form-control input-sm\"  placeholder=\"comment\"><span class=\"input-group-btn\"><button type=\"button\" class=\"btn\" onclick=\"onClickCommentWriteBtn(" + boardVO.boa_snum + ");\">comment</button></span></div><br>";
+			newStrCom += "<div class=\'box-body row\'><div class=\"col-sm-8 \"><img class=\"img-responsive pad\" src=\"/resources/img/boardimg/"+ boardVO.boa_imgpng + "\" alt=\"Photo\" width=\"1000px\" height=\"600px\" ></div><div class=\'col-sm-4 \' ><img class=\"img-responsive img-circle img-sm\" src=\'/resources/img/profile/"+ boardVO.mem_profile+ "\' alt=\"alt text\"><div class=\"input-group\"><input id=\"com_context\" type=\"text\" class=\"form-control input-sm\"  placeholder=\"comment\"><span class=\"input-group-btn\"><button type=\"button\" class=\"btn\" onclick=\"onClickCommentWriteBtn(" + boardVO.boa_snum + ");\">comment</button></span></div><br>";
 
 //			overflow~commets 
 			newStrCom += "<div style=\"overflow: auto; max-height: 500px;\"  ><div id=\"div_comments\" class=\'box-comments\'>";
@@ -225,3 +225,6 @@ function CheckSerch() {
 	return true;  
 } 
 
+function onClickBoardDelete(boa_snum){
+	post_to_url("/board/boardDelete", {"boa_snum":boa_snum});
+}
