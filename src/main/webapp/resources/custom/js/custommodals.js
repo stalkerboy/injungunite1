@@ -86,7 +86,7 @@ function selectnotice(){
     	  	var newcode = "";
     	  	$("#notice").empty();
     	  	for(var i = 0; i<item.length; i++){
-    	  		newcode += "<li><a href=\"#\"><i class=\"fa fa-users text-aqua\"></i>"+item[i].no_context+"</a></li>"
+    	  		newcode += "<li><p><i class=\"fa fa-users text-aqua\"></i>"+item[i].no_context+"</p></li>"
 			}
 			$("#notice").append(newcode);
     	},

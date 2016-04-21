@@ -10,7 +10,7 @@
 	 		<form id="search-form" class="form-inline" role="form" method="post" action="/board/search" >
 			    &nbsp;
 				<div style="width:50px; display:inline-block;"><span></span></div>
-			    <div class="input-group">
+			    <div class="input-group" style="margin-left:43px">
 			        <input type="text" id="search" name="search" class="form-control input-sm search-form" placeholder="Search">
 		        	<span class="input-group-btn"><button type="button" class="stone-btn stone-btn-dark btn-md search-btn" onclick="serchSubmit();" >
 		        		<i class="fa fa-search"></i></button>
@@ -25,15 +25,12 @@
                 	<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="notreadmessage();"><i class="fa fa-envelope-o"></i>
                   	<span class="label label-success" id="NotReadMessageCount"> ${notreadMessageNum} </span></a>
                 	<ul class="dropdown-menu">
-	                  	<li class="header" >
-	                  		<div class="row">
-		                  		<div class="col-xs-6" style="text-align:center">
-			                		<a href="/message/receivemessageform">모두 보기 </a>
-			                	</div>	
-			                	<div class="col-xs-6" style="text-align:left">
-			                  		<a href="/message/writemessageform">새 쪽지 보내기</a>
-			                  	</div>
-	                  		</div>
+	                  	<li class="header" style="background:grey">
+	                  				                  		
+			                		<div class="h6-style" ><a href="/message/receivemessageform">All Messages.</a> </div>
+			                	
+			                  		<div class="h6-style"><a href="/message/writemessageform">Write Message.</a></div>
+	                  		
 	                  	</li>
 	                  	<li>
 	                  		<ul id="messagemenu" class="menu">
@@ -85,7 +82,7 @@
               	</li> 
               	<!-- Control Sidebar Toggle Button -->
               	<li>
-              		<a href="#" data-toggle="modal" data-target="#writemodal" onclick="onClickWriteModal();"><i class="fa fa-pencil"></i></a>
+              		<a href="#" data-toggle="modal" data-target="#writemodal" onclick="onClickWriteModal();" style="margin-right:90px"><i class="fa fa-pencil"></i></a>
               	</li>
               	<li>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

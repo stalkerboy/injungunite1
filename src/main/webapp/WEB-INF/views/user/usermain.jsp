@@ -42,6 +42,9 @@
 			<div class="wrapper">
 			<div class="blank-space">
 			</div>
+			<div class="blank-space">
+			</div>
+			
 			<ul class="tabs">
 				<li class="active" rel="tab1">추천 </li>
 				<li rel="tab2">친구 </li>
