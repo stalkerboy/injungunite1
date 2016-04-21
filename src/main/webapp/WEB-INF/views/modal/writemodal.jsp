@@ -109,10 +109,9 @@
 					<form id="writeform" action="/board/write" method="post">
 						<input type="hidden" id="formType" name="formType" value="w-modal">
 						<input type="hidden" id="boa_snum" name="boa_snum" value="">
-						<input type="text" id="boa_imgjson" name="boa_imgjson" value=""
-							hidden> <input type="text" id="boa_imgpng"
-							name="boa_imgpng" value="" hidden> <input type="text"
-							id="tags" name="tags" value="" hidden>
+						<textarea type="text" id="boa_imgjson" name="boa_imgjson" value="" hidden></textarea> 
+						<textarea type="text" id="boa_imgpng" name="boa_imgpng" value="" hidden></textarea> 
+						<input type="text" id="tags" name="tags" value="" hidden>
 						<div class="modal-content">
 							<div class="modal-header text-align">
 								<div class="row">

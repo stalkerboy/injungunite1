@@ -21,10 +21,7 @@ $('#writeSubmit').click(function(){
    var base64img = imgpng.replace(/^data:image\/(png|jpg);base64,/, "");
 //   var base64img = imgpng.substring(imgpng.indexOf(',')+1);
    
-   
-   
    $('#boa_imgpng').val(base64img);
-
    tagTextList = [];
    $('.boardtag').each(function() {
        tagTextList.push( this.innerText );
