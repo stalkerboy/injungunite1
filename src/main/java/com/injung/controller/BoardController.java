@@ -162,6 +162,8 @@ public class BoardController {
         map.put("boardVO", bservice.getBoard(boa_snum));
         map.put("boardCommentList", bservice.getBoardCommentList(boa_snum));
         map.put("hasMyInjung", bservice.hasMyInjung(authuser.getMem_snum(), boa_snum));
+        map.put("taglist", bservice.getTagList(boa_snum));
+        map.put("myMem_snum", authuser.getMem_snum());
         return map;
     }
     

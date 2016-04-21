@@ -105,31 +105,45 @@ function onClickBoard(boa_snum){
 			var boardVO = response.boardVO;
 			var boardCommentList = response.boardCommentList;
 			var hasMyInjung = response.hasMyInjung;
+			var taglist = response.taglist;
+			var mem_snum = response.myMem_snum;
 			var newStrCom = '';
+			
+//			alert(boardVO.mem_snum +" : " + mem_snum);
+			
 			$("#viewmodalbox").empty();
 //			헤더
-			newStrCom += "<div class=\'box-header with-border\'><div class=\'user-block\'><img class=\'img-circle\' src=\'/resources/img/profile/" + boardVO.mem_profile + "\' alt=\'user image\' ><span class=\'username\'><a href=\"#\">" +boardVO.mem_id+"</a></span><span class=\'description\'>"+ boardVO.boa_regdate +"</span></div><div class=\'box-tools\'><button class=\'btn btn-box-tool\' data-dismiss=\'modal\'><i class=\'fa fa-times\'></i></button></div></div>";
+			newStrCom += "<div class=\'box-header with-border\'><div class=\'user-block\'><img class=\'img-circle\' src=\'/resources/img/profile/" + boardVO.mem_profile + "\' alt=\'user image\' ><span class=\'username\'><a href=\"#\">" +boardVO.mem_id+"</a></span><span class=\'description\'>"+ boardVO.boa_regdate +"</span></div><div class=\'box-tools\'>" ;
+
+			if(boardVO.mem_snum == mem_snum){
+				newStrCom += "<a class=\"btn btn-box-tool\" data-toggle=\"dropdown\" ><i class=\'fa fa-cogs\'></i></a><ul class =\"dropdown-menu\" style=\"left: auto; right: 0;\"><li class=\"header\"><a href=\"#\" onclick=\"\"><i class=\"fa fa-edit\"></i>Modify</a><hr class=\"divider\"><a href=\"#\" onclick=\"\" ><span class=\"glyphicon glyphicon-remove\"></span>Delete</a></li></ul>";
+			}	
+			newStrCom += "<button class=\'btn btn-box-tool\' data-dismiss=\'modal\'><i class=\'fa fa-times\'></i></button></div></div>";
 
 //			바디 ~ overflow전
-			newStrCom += "<div class=\'box-body row\'><div class=\"col-sm-8 \"><img class=\"img-responsive pad\" src=\"/resources/img/boardimg/"+ boardVO.boa_imgpng + "\" alt=\"Photo\" width=\"1200px\" height=\"600px\" ></div><div class=\'col-sm-4 \' ><img class=\"img-responsive img-circle img-sm\" src=\'/resources/img/profile/"+ boardVO.mem_profile+ "\' alt=\"alt text\"><div class=\"input-group\"><input id=\"com_context\" type=\"text\" class=\"form-control input-sm\" style=\"padding: 30px 30px ;\" placeholder=\"comment\"><span class=\"input-group-btn\"><button type=\"button\" class=\"btn\" style=\"padding: 22px 10px ;\" onclick=\"onClickCommentWriteBtn(" + boardVO.boa_snum + ");\">comment</button></span></div><br>";
+			newStrCom += "<div class=\'box-body row\'><div class=\"col-sm-8 \"><img class=\"img-responsive pad\" src=\"/resources/img/boardimg/"+ boardVO.boa_imgpng + "\" alt=\"Photo\" width=\"1000px\" height=\"800px\" ></div><div class=\'col-sm-4 \' ><img class=\"img-responsive img-circle img-sm\" src=\'/resources/img/profile/"+ boardVO.mem_profile+ "\' alt=\"alt text\"><div class=\"input-group\"><input id=\"com_context\" type=\"text\" class=\"form-control input-sm\"  placeholder=\"comment\"><span class=\"input-group-btn\"><button type=\"button\" class=\"btn\" onclick=\"onClickCommentWriteBtn(" + boardVO.boa_snum + ");\">comment</button></span></div><br>";
 
 //			overflow~commets 
-			newStrCom += "<div style=\"height: 700px; overflow: auto;\"><div id=\"div_comments\" class=\'box-comments\'>";
+			newStrCom += "<div style=\"overflow: auto; max-height: 500px;\"  ><div id=\"div_comments\" class=\'box-comments\'>";
 			for(var i=0; i<boardCommentList.length; i++){
 				newStrCom += "<div class=\'box-comment\'><img class=\'img-circle img-sm\' src=\'/resources/img/profile/"+ boardCommentList[i].mem_profile +"\' alt=\'user image\'><div class=\'comment-text\'><span class=\"username\">"+ boardCommentList[i].mem_id + "<span class=\'text-muted pull-right\'>"+ boardCommentList[i].com_regdate +"</span></span>"+ boardCommentList[i].com_context + "</div></div>";
 			}
 //			comments루프 다음
-			newStrCom += "</div><a href=\"#\" class=\"btn form-control\" style=\"text-align: center;\">view more</a></div></div></div><div class=\"box-footer\"><div id=\"divinjungbtn\">"; 
+			newStrCom += "</div><a href=\"#\" class=\"btn form-control\" style=\"text-align: center;\">view more</a></div></div></div><div class=\"box-footer\"><div class=\"col-sm-8 \">"; 
+			for(var i=0; i<taglist.length; i++){
+				newStrCom += "<h4 style=\"float: left; margin-right: 5px;\"><span  class=\'label label-danger\'>#" + taglist[i].tag + "</span></h4>";
+			}
+			newStrCom += "</div><div class=\'col-sm-4 text-center\' ><div id=\"divinjungbtn\" style=\"float: left;\">"
+			
 			if(hasMyInjung){
 				newStrCom += "<button class=\'btn btn-default btn-xs\' onclick=\"onClickInjungCancelBtn("+ boardVO.boa_snum +");\"><i class=\'fa fa-thumbs-o-down\'></i> 인정취소</button>";
 			}
 			else{
 				newStrCom += "<button class=\'btn btn-default btn-xs\' onclick=\"onClickInjungBtn("+boardVO.boa_snum+");\"><i class=\'fa fa-thumbs-o-up\'></i> 인정</button>";
 			}
-			newStrCom += "<span class=\'text-muted\'>"+ boardVO.boa_injeong+" 명이 인정했습니다.</span></div></div>";
+			newStrCom += "<span class=\'text-muted\'>"+ boardVO.boa_injeong+" 명이 인정했습니다.</span></div></div></div>";
 			
-			$("#viewmodalbox").append(newStrCom);
-			
+			$("#viewmodalbox").append(newStrCom);			
 			$("#viewmodal").modal();
 		}
 	});	
