@@ -27,7 +27,7 @@ $("#searchfriend-btn").on("click", function(){
 		dataType : 'json',
 		processData: false,
 		contentType: false,
-		type: 'POST',
+		type: 'POST',	
 		success : function(result) {					
 			var userfind = result.userfind;
 	         
@@ -40,7 +40,12 @@ $("#searchfriend-btn").on("click", function(){
 	         else {         
 	         for(var i=0;i<userfind.length;i++) 
 	         {
-	            divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
+	        	if(userfind[i].ismyfriend==1){
+	            divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
+	        	}
+	        	else{
+	        		divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";	
+	        	}
 	                  if(userfind[i].ismyfriend==1){
 	                	console.log(userfind[i].ismyfirned);
 	                    divstr += "<a href=\"#\" onclick=\"deletefriend(" +userfind[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a>" ;
@@ -74,7 +79,12 @@ function deletefriend(fri_snum){
             
 			for(var i=0;i<userfind.length;i++) 
 			{
-				divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
+				if(userfind[i].ismyfriend==1){
+		            divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
+		        	}
+		        	else{
+		        		divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";		
+		        	}
            	 	if(userfind[i].ismyfriend==1){
 	           		divstr += "<a href=\"#\" onclick=\"deletefriend(" +userfind[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a>" ;
            	 	}
@@ -106,7 +116,13 @@ function addfriend(mem_snum){
             
 			for(var i=0;i<userfind.length;i++) 
 			{
-				divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\""+userfind[i].fri_mem_id+"\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
+				if(userfind[i].ismyfriend==1){
+		            divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
+		        	}
+		        	else{
+		        		divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";		
+		        	}	
+				
            	 	if(userfind[i].ismyfriend==1){
 	           		divstr += "<a href=\"#\" onclick=\"deletefriend(" +userfind[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a>" ;
            	 	}
