@@ -41,13 +41,21 @@
 		<div class="hero-caption">
 			<div class="hero-text">
 				<div class="row">
-					<h6 class="m-b-30">profile</h6>	
-					<img src="/resources/img/profile/${userInfo.mem_profile}" height="180" width="120">
-					
-					<h2 class="m-b-70" style=" text-shadow: 0.1em 0.1em 0.15em #333">${userInfo.mem_id}</h2>
-					<h4 class="m-b-60">${userInfo.mem_name}</h4>
-					
+					<div class="col-sm-5 ">
+						<div class="pull-right">
+							<h6 class="m-b-30">profile</h6>	
+							<img src="/resources/img/profile/${userInfo.mem_profile}" height="180" width="120">
+						</div>
+					</div>
+					<div class="col-sm-7">
+						<div class="pull-left">
+							<h2 class="m-b-70" style=" text-shadow: 0.1em 0.1em 0.15em #333; margin-top:35px;">${userInfo.mem_id}</h2>
+							<div class="h4-style" style="margin-top:40px">${userInfo.mem_name}</div>
+							<div class="h4-style" style="margin-top:15px">${userInfo.mem_email}</div>
+						</div>
+					</div>
 				</div>
+				<h6 class="m-b-30"></h6>	
 				<div class="container-fluid container-custom">
 					<div class="col-sm-4 col-xs-4 ">
 						<div class="counter text-light">
@@ -55,7 +63,7 @@
 								<h4 class="counter-title"><span class="counter-timer" data-from="0" data-to="${followingCount.following_count }" style="color:black;">${followingCount.following_count }</span></h4>
 							</div>
 							<div class="counter-content">	
-								<h4><font color="black">Following</font></h4>	
+								<div class="h4-style">Following</div>	
 							</div>
 						</div>
 					</div>
@@ -65,7 +73,7 @@
 								<h4 class="counter-title"><span class="counter-timer" data-from="0" data-to="${followerCount.follower_count }" style="color:black;">0</span></h4>
 							</div>	
 							<div class="counter-content">	
-								<h4><font color="black">Follower</font></h4>	
+								<div class="h4-style">Follower</div>	
 							</div>
 						</div>
 					</div>
@@ -75,17 +83,17 @@
 								<h4 class="counter-title"><span class="counter-timer" data-from="0" data-to="${boardCount.boa_count }" style="color:black;">0</span></h4>
 							</div>		
 							<div class="counter-content">	
-								<h4><font color="black">My Board</font></h4>
+								<div class="h4-style">>My Board</div>
 							</div>
 						</div>	
 					</div>
 				</div>
 			</div>
 		</div>
-
+		<h6 class="m-b-30"></h6>
 		<div class="box box-danger" style="width: 90%; left:5%; background-color:rgba(255,255,255,0);">
 			<div class="box-header">
-		    	<h3 class="box-title" style="color:black">Latest Board</h3>
+		    	<h3 class="box-title" style="color:black"><i class="fa fa-arrow-down" aria-hidden="true">Latest Board</i></h3>
 	      		<ul  class="category-btn font-alt">
 	        		<li><a href="#" class="current" onclick="onClickCategoryBtn('${param['user'] }', 'All')">All</a></li>
         			<c:forEach items="${categoryList}" var="category">

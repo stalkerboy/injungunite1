@@ -691,4 +691,31 @@ h1 a:hover {
 	 font-size:23px;
 }
 
+.noresult {
+	letter-spacing:10px;
+    font-size:18px;
+    font-weight:700;
+    color:#dd4b39; 
+    text-decoration:underline;
+}
+
+.h4-style {
+	letter-spacing:10px;
+    font-size:20px;
+    font-weight:700;
+    color:#313131; 
+    
+}
+.h5-style {
+	letter-spacing:10px;
+    font-size:16px;
+    font-weight:700;
+    color:#4e4e4e; 
+}
+.h6-style {
+	letter-spacing:10px;
+    font-size:14px;
+    font-weight:600;
+    color:#4e4e4e; 
+}
 }
