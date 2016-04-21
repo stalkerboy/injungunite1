@@ -105,7 +105,7 @@
 			<div class="box-body">
 				<div class="works-grid-wrapper">
 			      	<div id="works-grid" class="works-grid works-grid-gutter" >
-						<c:forEach items="${boardList}" var="board">
+						<c:forEach items="${boardList}" var="board"  begin="0" end="11">
 			        	<article class="work-item">
 			            	<div class="work-wrapper">
 			                	<div class="work-thumbnail">
@@ -149,6 +149,37 @@
 
 <script src="/resources/custom/js/custombackground.js"></script>
 <script src="/resources/plugins/sweetalert/sweetalert.min.js"></script>
+<script>
 
+$(document).ready(function () {
+	var curImgIndex = 12;
+	var boardLen = "${fn:length(boardList) }";
+	
+	var boardList = new Array();
+	<c:forEach items="${boardList}" var="board">
+		var json = new Object();
+		json.boa_imgpng = "${board.boa_imgpng}";
+		json.boa_subject = "${board.boa_subject}";
+		json.mem_id = "${board.mem_id}";
+		json.boa_snum = "${board.boa_snum}";
+		boardList.push(json);
+	</c:forEach>
+	
+    $("section").scroll(function() {        
+        maxHeight = $(".wrapper").height();
+        currentScroll = $("section").scrollTop() + $("section").height();
+        if (maxHeight <= currentScroll +50) {
+        	if(boardLen>curImgIndex){
+        		var startCurImgIndex = curImgIndex;
+        		
+        		for(var i = startCurImgIndex; i<boardLen & i<startCurImgIndex+12; i++,curImgIndex++){
+        			var appendStr = "<article class=\"work-item\"><div class=\"work-wrapper\"><div class=\"work-thumbnail\"><img src=\"/resources/img/boardimg/"+ boardList[i].boa_imgpng +"\" ></div><div class=\"work-caption\"><h4 class=\"work-title font-alt\">" + boardList[i].boa_subject + "</h4><h4><span class=\"work-category font-serif\"><a href=\"#\" >" +boardList[i].mem_id +"</a></span></h4></div><a href=\"#\" onclick=\"onClickBoard("+ boardList[i].boa_snum +");\" class=\"work-link\"></a></div></article>";
+        			$("#works-grid").append(appendStr);        			
+        		}	
+        	}
+        }
+    });
+});
+</script>
 </body>
 </html>
