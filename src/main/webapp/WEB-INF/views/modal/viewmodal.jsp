@@ -11,7 +11,7 @@
 			<div class='box-header with-border'>
             	<div class='user-block'>
                 	<img class='img-circle' src='/resources/img/profile/${boardVO.mem_profile }' alt='user image' >
-                    	<span class='username'><a href="#">${boardVO.mem_id }</a></span>
+                    	<div class="h4-style"><a href="#">${boardVO.mem_id }</a></div>
                     	<span class='description'>${boardVO.boa_regdate }</span>
 				</div>
                 <div class='box-tools'>

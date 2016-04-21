@@ -79,18 +79,18 @@ button {
 	background: rgba(50, 50, 50, 0.85);
 }
 
-.btn-color-a, .btn-color-b {
+.btn-orange-a, .btn-orange-b {
 	color: #fff;
 	background: #e6ae49;
 	border: none;
 }
 
-.btn-color-a:hover {
+.btn-orange-a:hover {
 	color: #fff;
 	background: rgba(230, 174, 73, 0.85);
 }
 
-.btn-color-b:hover {
+.btn-orange-b:hover {
 	color: #fff;
 	/*color: #e6ae49;
         background: #fff;*/
@@ -110,7 +110,7 @@ button {
 	color: #323232;
 }
 
-.btn-black-line, .btn-white-line, .btn-color-line {
+.btn-black-line, .btn-white-line, .btn-orange-line, btn-deorange-line {
 	border: 2px solid;
 	background: none;
 }
@@ -126,15 +126,26 @@ button {
 	background: #323232;
 }
 
-.btn-color-line {
+.btn-orange-line {
 	color: #e6ae49;
 	border-color: #e6ae49;
 	padding: 9px 20px;
 }
 
-.btn-color-line:hover {
+.btn-orange-line:hover {
 	color: #fff;
 	background: #e6ae49;
+}
+
+.btn-deorange-line {
+	color: #fff;
+	border-color: #fff;
+	padding: 9px 20px;
+}
+
+.btn-deorange-line:hover {
+	color: #e6ae49;
+	background: #fff;
 }
 
 .btn-white-line {

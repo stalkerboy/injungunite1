@@ -106,22 +106,22 @@ function onClickBoard(boa_snum){
 			var boardCommentList = response.boardCommentList;
 			var hasMyInjung = response.hasMyInjung;
 			var taglist = response.taglist;
-			var mem_snum = response.myMem_snum;
+			var auth = response.authUser;
 			var newStrCom = '';
 			
 //			alert(boardVO.mem_snum +" : " + mem_snum);
 			
 			$("#viewmodalbox").empty();
 //			헤더
-			newStrCom += "<div class=\'box-header with-border\'><div class=\'user-block\'><img class=\'img-circle\' src=\'/resources/img/profile/" + boardVO.mem_profile + "\' alt=\'user image\' ><span class=\'username\'><a href=\"#\">" +boardVO.mem_id+"</a></span><span class=\'description\'>"+ boardVO.boa_regdate +"</span></div><div class=\'box-tools\'>" ;
+			newStrCom += "<div class=\'box-header with-border\'><div class=\'user-block\'><img class=\'img-circle\' src=\'/resources/img/profile/" + boardVO.mem_profile + "\' alt=\'user image\' style=\"margin-right:15px\"><div class=\'h4-style\'><a href=\"/board/boardlist?user="+boardVO.mem_id+"\" style=\"color:white; margin-top:5px\">" +boardVO.mem_id+"</a></div><span class=\'description\'>"+ boardVO.boa_regdate +"</span></div><div class=\'box-tools\'>" ;
 
-			if(boardVO.mem_snum == mem_snum){
+			if(boardVO.mem_snum == auth.mem_snum){
 				newStrCom += "<a class=\"btn btn-box-tool\" data-toggle=\"dropdown\" ><i class=\'fa fa-cogs\'></i></a><ul class =\"dropdown-menu\" style=\"left: auto; right: 0;\"><li class=\"header\"><a href=\"#\" onclick=\"onClickModifyBoardBtn(" + boardVO.boa_snum + ");\"><i class=\"fa fa-edit\"></i>Modify</a><hr class=\"divider\"><a href=\"#\" onclick=\"onClickBoardDelete(" + boardVO.boa_snum + ");\" ><span class=\"glyphicon glyphicon-remove\"></span>Delete</a></li></ul>";
 			}	
 			newStrCom += "<button class=\'btn btn-box-tool\' data-dismiss=\'modal\'><i class=\'fa fa-times\'></i></button></div></div>";
 
 //			바디 ~ overflow전
-			newStrCom += "<div class=\'box-body row\'><div class=\"col-sm-8 \"><img class=\"img-responsive pad\" src=\"/resources/img/boardimg/"+ boardVO.boa_imgpng + "\" alt=\"Photo\" width=\"1000px\" height=\"600px\" ></div><div class=\'col-sm-4 \' ><img class=\"img-responsive img-circle img-sm\" src=\'/resources/img/profile/"+ boardVO.mem_profile+ "\' alt=\"alt text\"><div class=\"input-group\"><input id=\"com_context\" type=\"text\" class=\"form-control input-sm\"  placeholder=\"comment\"><span class=\"input-group-btn\"><button type=\"button\" class=\"btn\" onclick=\"onClickCommentWriteBtn(" + boardVO.boa_snum + ");\">comment</button></span></div><br>";
+			newStrCom += "<div class=\'box-body row\'><div class=\"col-sm-8 \"><img class=\"img-responsive pad\" src=\"/resources/img/boardimg/"+ boardVO.boa_imgpng + "\" alt=\"Photo\" width=\"1000px\" height=\"600px\" ></div><div class=\'col-sm-4 \' ><img class=\"img-responsive img-circle img-sm\" src=\'/resources/img/profile/"+ auth.mem_profile+ "\' alt=\"alt text\" style=\"margin-right:15px\"><div class=\"input-group\"><input id=\"com_context\" type=\"text\" class=\"form-control input-sm\"  placeholder=\"comment\"><span class=\"input-group-btn\"><button type=\"button\" class=\"btn\" onclick=\"onClickCommentWriteBtn(" + boardVO.boa_snum + ");\">comment</button></span></div><br>";
 
 //			overflow~commets 
 			newStrCom += "<div style=\"overflow: auto; max-height: 500px;\"  ><div id=\"div_comments\" class=\'box-comments\'>";
@@ -136,10 +136,10 @@ function onClickBoard(boa_snum){
 			newStrCom += "</div><div class=\'col-sm-4 text-center\' ><div id=\"divinjungbtn\" style=\"float: left;\">"
 			
 			if(hasMyInjung){
-				newStrCom += "<button class=\'btn btn-default btn-xs\' onclick=\"onClickInjungCancelBtn("+ boardVO.boa_snum +");\"><i class=\'fa fa-thumbs-o-down\'></i> 인정취소</button>";
+				newStrCom += "<button class=\'btn btn-black-line btn-xs\' onclick=\"onClickInjungCancelBtn("+ boardVO.boa_snum +");\" style=\"margin-right:20px\"><i class=\'fa fa-thumbs-o-down\'></i> 인정취소</button>";
 			}
 			else{
-				newStrCom += "<button class=\'btn btn-default btn-xs\' onclick=\"onClickInjungBtn("+boardVO.boa_snum+");\"><i class=\'fa fa-thumbs-o-up\'></i> 인정</button>";
+				newStrCom += "<button class=\'btn btn-black-line btn-xs\' onclick=\"onClickInjungBtn("+boardVO.boa_snum+");\" style=\"margin-right:20px\"><i class=\'fa fa-thumbs-o-up\'></i> 인정</button>";
 			}
 			newStrCom += "<span class=\'text-muted\'>"+ boardVO.boa_injeong+" 명이 인정했습니다.</span></div></div></div>";
 			
@@ -178,7 +178,7 @@ function onClickInjungBtn(boa_snum){
 		data:{'boa_snum': boa_snum},
 		success: function( response ){
 			$("#divinjungbtn").empty();
-			var innerInjung = "<button class=\'btn btn-default btn-xs\' onclick=\"onClickInjungCancelBtn(" + boa_snum + ");\"><i class=\'fa fa-thumbs-o-down\'></i> 인정취소</button>";
+			var innerInjung = "<button class=\'btn btn-deorange-line btn-xs\' onclick=\"onClickInjungCancelBtn(" + boa_snum + ");\" style=\"margin-right:20px\"><i class=\'fa fa-thumbs-o-down\'></i> 인정취소</button>";
 			innerInjung += "<span class=\'text-muted\'>" + response.data.boa_injeong +" 명이 인정했습니다.</span>";
 			$("#divinjungbtn").append(innerInjung);
 		}
@@ -193,7 +193,7 @@ function onClickInjungCancelBtn(boa_snum){
 		data:{'boa_snum': boa_snum},
 		success: function( response ){
 			$("#divinjungbtn").empty();
-			var innerInjungCancel = "<button class=\'btn btn-default btn-xs\' onclick=\"onClickInjungBtn("+ boa_snum +")\"><i class=\'fa fa-thumbs-o-up\'></i> 인정</button>";
+			var innerInjungCancel = "<button class=\'btn btn-orange-line btn-xs\' onclick=\"onClickInjungBtn("+ boa_snum +")\" style=\"margin-right:20px\"><i class=\'fa fa-thumbs-o-up\'></i> 인정</button>";
 			innerInjungCancel += "<span class=\'text-muted\'>" + response.data.boa_injeong +" 명이 인정했습니다.</span>";
 			$("#divinjungbtn").append(innerInjungCancel);
 		}
