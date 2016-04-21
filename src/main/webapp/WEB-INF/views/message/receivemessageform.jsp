@@ -25,12 +25,13 @@
 	<c:import url="/WEB-INF/views/modal/pwformodifymodal.jsp"></c:import>
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
 
-<div class="wrapper">
-	<section id="hero" class="module bg-dark-30 js-fullheight" style="padding:70px 0;" data-background="/resources/img/main.jpg">
-	<div style="height: 150px;"></div>
-	</section>
-	<h2 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ReceiveMessagebox  <small> ${messagecount} new messages</small></h2>	
-              <div class="box box-primary" style="width:90%;left:5%;">
+
+	<section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/main.jpg" style="overflow-y: scroll;">
+	<div class="wrapper">
+		<div style="height: 150px;"></div>
+	
+		<div class="h3-style" style="margin-left:95px">ReceiveMessagebox  <h4 style="color:blue"> ${messagecount} new messages</h4></div>
+        	<div class="box box-primary" style="width:90%;left:5%;">
                 <div class="box-header with-border">
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
@@ -41,30 +42,30 @@
                     
                   </div>
                   <div class="table-responsive mailbox-messages">
-                    <table class="table table-hover table-striped">
-                      <tbody>
-                      <c:choose>
-                    <c:when test="${fn:length(list) > 0}">
-                        <c:forEach items="${list }" var="MessagesVO">
-                        <tr>
-                          <td><input class="checkboxMessage" value ="${MessagesVO.not_snum}" type="checkbox" style="width:5%;"></td>
-                          <td class="mailbox-star" style="width:5%;">
-                           	<c:choose>
-                           	<c:when test="${MessagesVO.not_isread == 1 }">
-                    			<i class="fa fa-folder-open-o"></i>
+					<table class="table table-hover table-striped">
+                    	<tbody>
+                      		<c:choose>
+                   				<c:when test="${fn:length(list) > 0}">
+                        			<c:forEach items="${list }" var="MessagesVO">
+                        			<tr>
+				                        <td><input class="checkboxMessage" value ="${MessagesVO.not_snum}" type="checkbox" style="width:5%;"></td>
+				                        <td class="mailbox-star" style="width:5%;">
+			                           	<c:choose>
+			                           		<c:when test="${MessagesVO.not_isread == 1 }">
+			                    				<i class="fa fa-folder-open-o"></i>
+			                    			</c:when>
+			                    			<c:otherwise>
+			                    				<i class="fa fa-envelope-o"></i>
+			                    			</c:otherwise>
+                   						</c:choose>
+                          				</td>
+			                          <td class="mailbox-name" style="width:10%;"><a href="/message/writemessageform?mem_id=${MessagesVO.not_postmem_id}"><b>${MessagesVO.not_postmem_id}</b></a></td>
+			                          <td class="mailbox-subject" style="width:60%;"><a href="/message/receivereadmessageform?snum=${MessagesVO.not_snum}" >${MessagesVO.not_subject}</a></td>
+			                          <td class="mailbox-date" style="width:20%;">${fn:substring(MessagesVO.not_regdate, 0, 16)}</td>
+                        		</tr>
+                        		</c:forEach>
                     		</c:when>
-                    		<c:otherwise>
-                    			<i class="fa fa-envelope-o"></i>
-                    		</c:otherwise>
-                   			</c:choose>
-                          </td>
-                          <td class="mailbox-name" style="width:10%;"><a href="/message/writemessageform?mem_id=${MessagesVO.not_postmem_id}"><b>${MessagesVO.not_postmem_id}</b></a></td>
-                          <td class="mailbox-subject" style="width:60%;"><a href="/message/receivereadmessageform?snum=${MessagesVO.not_snum}" >${MessagesVO.not_subject}</a></td>
-                          <td class="mailbox-date" style="width:20%;">${fn:substring(MessagesVO.not_regdate, 0, 16)}</td>
-                        </tr>
-                        </c:forEach>
-                    </c:when>
-                    </c:choose>
+                    	</c:choose>
                       </tbody>
                     </table><!-- /.table -->
                   </div><!-- /.mail-box-messages -->
@@ -96,10 +97,10 @@
                     </div><!-- /.pull-right -->
                   </div>
                 </div>
-              </div><!-- /. box -->
-      
+                <div style="height:20px"></div>	
+          </div><!-- /. box -->
     </div><!-- ./wrapper -->
-
+</section>
 <!-- js import -->
 <!-- jquery -->
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>

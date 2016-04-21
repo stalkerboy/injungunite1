@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="/resources/plugins/AdminLTE/css/AdminLTE.min.css">
 	
 	<link rel="stylesheet" href="/resources/custom/css/custom.css">
+	<link rel="stylesheet" href="/resources/custom/css/hero.css">
+	<link rel="stylesheet" href="/resources/plugins/iCheck/flat/flat.css">
 
 </head>
 <body>
@@ -23,32 +25,34 @@
 	<c:import url="/WEB-INF/views/modal/pwformodifymodal.jsp"></c:import>
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
 
-	<div class="wrapper" >
+	
 		<section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/main.jpg" style="overflow-y: scroll;">
-			<div style="height: 100px;"></div>
-			<div class="box box-primary" style="width: 90%; left:5%;">
-				<div class="box-header with-border">
-					<h3 class="box-title">${messageVO.not_subject }</h3>
-				</div><!-- /.box-header -->
-	               
-				<div class="box-body no-padding">
-	            	<div class="mailbox-read-info">
-	                    <h5>From: ${messageVO.not_postmem_id } <span class="mailbox-read-time pull-right">${messageVO.not_regdate }</span></h5>
-					</div><!-- /.mailbox-read-info -->
-	                  
-	                <div id="divMessageContext" class="mailbox-read-message">${messageVO.not_context} 
-	                </div><!-- /.mailbox-read-message -->
-				</div><!-- /.box-body -->
-	                
-	            <div class="box-footer">  
-	            	<a class="btn btn-default" href="/message/deletesentmessage?snum=${messageVO.not_snum}"><i class="fa fa-trash-o"></i> Delete</a>
-	                <a class="btn btn-default" href="/message/sendmessageform"><i class="glyphicon glyphicon-list-alt"></i> list</a>
-	                <a class="btn btn-default" href="/message/writemessageform?mem_id=${messageVO.not_getmem_id }"><i class="fa fa-reply"></i> Reply</a>
-	                  
-				</div><!-- /.box-footer -->
-			</div><!-- /. box -->
+			<div class="wrapper" >
+				<div class="blank-space"></div>
+					<div class="box box-primary" style="width: 90%; left:5%;">
+					<div class="box-header with-border">
+						<h3 class="box-title">${messageVO.not_subject }</h3>
+					</div><!-- /.box-header -->
+		               
+					<div class="box-body no-padding">
+		            	<div class="mailbox-read-info">
+		                    <div class="h5-style">From: ${messageVO.not_postmem_id } <span class="mailbox-read-time pull-right">${messageVO.not_regdate }</span></div>
+						</div><!-- /.mailbox-read-info -->
+		                  
+		                <div id="divMessageContext" class="mailbox-read-message">${messageVO.not_context} 
+		                </div><!-- /.mailbox-read-message -->
+					</div><!-- /.box-body -->
+		                
+		            <div class="box-footer">  
+		            	<a class="btn btn-danger" href="/message/deletesentmessage?snum=${messageVO.not_snum}"><i class="fa fa-trash-o"></i> Delete</a>
+		                <a class="btn btn-warning" href="/message/sendmessageform"><i class="glyphicon glyphicon-list-alt"></i> list</a>
+		                <a class="btn btn-primary" href="/message/writemessageform?mem_id=${messageVO.not_getmem_id }"><i class="fa fa-reply"></i> Reply</a>
+		                  
+					</div><!-- /.box-footer -->
+				</div><!-- /. box -->
+			</div>	
 		</section>
-	</div>
+	
 
 
 <!-- js import -->
@@ -64,7 +68,9 @@
 
 <script src='/resources/custom/js/customwrite.js'></script>
 <script src='/resources/custom/js/custommodals.js'></script>
-
+<script src="/resources/custom/js/custombackground.js"></script>
+<script src="/resources/plugins/iCheck/icheck.min.js"></script>
+<script src="/resources/custom/js/jquery.superslides.min.js"></script>
 
 </body>
 </html>

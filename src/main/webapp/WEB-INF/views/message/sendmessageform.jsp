@@ -25,81 +25,83 @@
 	<c:import url="/WEB-INF/views/modal/pwformodifymodal.jsp"></c:import>
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
 
-<div class="wrapper" >
-	<section id="hero" class="module bg-dark-30 js-fullheight" style="padding:70px 0;" data-background="/resources/img/main.jpg">
-	<div style="height: 150px;"></div>
-		</section>
-	<h2 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SentMessagebox</h2>
-              <div class="box box-primary" style="width:90%;left:5%;">
-		<div class="box-header with-border">
-			<!-- /.box-tools -->
-		</div>
-		<!-- /.box-header -->
-		<div class="box-body no-padding">
-                  <div class="mailbox-controls">
-                    <!-- Check all button -->
-                    <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
-                    <button class="btn btn-default btn-sm" onclick="deletemessage();"><i class="fa fa-trash-o"></i></button>
-                    
-                  </div>
-                  <div class="table-responsive mailbox-messages">
-                    <table class="table table-hover table-striped">
-                      <tbody>
-                      <c:choose>
-                    <c:when test="${fn:length(list) > 0}">
-                        <c:forEach items="${list }" var="MessagesVO">
-                        <tr>
-                          <td><input class="checkboxMessage" value ="${MessagesVO.not_snum}" type="checkbox" style="width:5%;"></td>
-                          <td class="mailbox-star" style="width:5%;">
-                           	<c:choose>
-                           	<c:when test="${MessagesVO.not_isread == 1 }">
-                    			<i class="fa fa-folder-open-o"></i>
-                    		</c:when>
-                    		<c:otherwise>
-                    			<i class="fa fa-envelope-o"></i>
-                    		</c:otherwise>
-                   			</c:choose>
-                          </td>
-                          <td class="mailbox-name" style="width:10%;"><a href="/message/writemessageform?mem_id=${MessagesVO.not_getmem_id}"><b>${MessagesVO.not_getmem_id}</b></a></td>
-                          <td class="mailbox-subject" style="width:60%;"><a href="/message/sentreadmessageform?snum=${MessagesVO.not_snum}" ><b>${MessagesVO.not_subject}</b></a></td>
-                          <td class="mailbox-date" style="width:20%;">${fn:substring(MessagesVO.not_regdate, 0, 16)}</td>
-                        </tr>
-                        </c:forEach>
-                    </c:when>
-                    </c:choose>
-                      </tbody>
-                    </table><!-- /.table -->
-                  </div><!-- /.mail-box-messages -->
-                </div><!-- /.box-body -->
-                <div class="box-footer no-padding">
-                  <div class="mailbox-controls">
-                    <!-- Check all button -->                    
-                    <div class="pull-right">	
-					<ul class="pagination pagination-sm inline">
-                        <c:if test="${pageMaker.prev }">
-                            <li><a href="/message/sendmessageform?page=${pageMaker.startPage -1}">&laquo;</a></li>
-                        </c:if>
-                        <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
-                                                        
-                            <c:choose>
-                        		<c:when  test="${param['page'] == idx}">
-                        			<li><a class="num_box visited" href="/message/sendmessageform?page=${idx}" >${idx}</a></li>
-                        		</c:when>
-                        		<c:otherwise>
-                        			<li><a class="num_box " href="/message/sendmessageform?page=${idx}" >${idx}</a></li>
-                        		</c:otherwise>
-                        	</c:choose>
-                            
-                        </c:forEach>
-                        <c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-                             <li><a href="/message/sendmessageform?page=${pageMaker.endPage +1}">&raquo;</a></li>
-                        </c:if>
-                    </ul>  
-                    </div><!-- /.pull-right -->
-                  </div>
-                </div>
+
+	 <section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/main.jpg" style="overflow-y: scroll;">
+	<div class="wrapper" >
+		<div style="height: 150px;"></div>
+		
+		<div class="h3-style" style="margin-left:95px">Sent Messagebox</div>
+        	<div class="box box-primary" style="width:90%;left:5%;">
+				<div class="box-header with-border">
+				<!-- /.box-tools -->
+				</div>
+			<!-- /.box-header -->
+				<div class="box-body no-padding">
+            		<div class="mailbox-controls">
+	                <!-- Check all button -->
+	                	<button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+	                	<button class="btn btn-default btn-sm" onclick="deletemessage();"><i class="fa fa-trash-o"></i></button>   
+	                </div>
+	                <div class="table-responsive mailbox-messages">
+	                	<table class="table table-hover table-striped">
+	                    	<tbody>
+	                      	<c:choose>
+	                    		<c:when test="${fn:length(list) > 0}">
+	                        		<c:forEach items="${list }" var="MessagesVO">
+	                        		<tr>
+	                          			<td><input class="checkboxMessage" value ="${MessagesVO.not_snum}" type="checkbox" style="width:5%;"></td>
+	                          			<td class="mailbox-star" style="width:5%;">
+										<c:choose>
+	                        				<c:when test="${MessagesVO.not_isread == 1 }">
+	                    						<i class="fa fa-folder-open-o"></i>
+											</c:when>
+											<c:otherwise>
+	                    						<i class="fa fa-envelope-o"></i>
+	                    					</c:otherwise>
+	                   					</c:choose>
+	                          			</td>
+	                          			<td class="mailbox-name" style="width:10%;"><a href="/message/writemessageform?mem_id=${MessagesVO.not_getmem_id}"><b>${MessagesVO.not_getmem_id}</b></a></td>
+		                          		<td class="mailbox-subject" style="width:60%;"><a href="/message/sentreadmessageform?snum=${MessagesVO.not_snum}" ><b>${MessagesVO.not_subject}</b></a></td>
+		                          		<td class="mailbox-date" style="width:20%;">${fn:substring(MessagesVO.not_regdate, 0, 16)}</td>
+	                        		</tr>
+	                        		</c:forEach>
+	                    		</c:when>
+	                    	</c:choose>
+	                      </tbody>
+	                    </table><!-- /.table -->
+	                  </div><!-- /.mail-box-messages -->
+                	</div><!-- /.box-body -->
+	                <div class="box-footer no-padding">
+	                  <div class="mailbox-controls">
+	                    <!-- Check all button -->                    
+	                    <div class="pull-right">	
+						<ul class="pagination pagination-sm inline">
+	                        <c:if test="${pageMaker.prev }">
+	                            <li><a href="/message/sendmessageform?page=${pageMaker.startPage -1}">&laquo;</a></li>
+	                        </c:if>
+	                        <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
+	                                                        
+	                            <c:choose>
+	                        		<c:when  test="${param['page'] == idx}">
+	                        			<li><a class="num_box visited" href="/message/sendmessageform?page=${idx}" >${idx}</a></li>
+	                        		</c:when>
+	                        		<c:otherwise>
+	                        			<li><a class="num_box " href="/message/sendmessageform?page=${idx}" >${idx}</a></li>
+	                        		</c:otherwise>
+	                        	</c:choose>
+	                            
+	                        </c:forEach>
+	                        <c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+	                             <li><a href="/message/sendmessageform?page=${pageMaker.endPage +1}">&raquo;</a></li>
+	                        </c:if>
+	                    </ul>  
+	                    </div><!-- /.pull-right -->
+	                  </div>
+                	</div>
+                	<div style="height:20px"></div>	
               </div><!-- /. box -->
     </div><!-- ./wrapper -->
+   </section> 
 <!-- js import -->
 <!-- jquery -->
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -165,3 +167,5 @@ function deletemessage(){
 }
 
 </script>
+</body>
+</html>

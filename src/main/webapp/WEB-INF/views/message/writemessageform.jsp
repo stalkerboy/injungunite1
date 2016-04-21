@@ -27,16 +27,19 @@
 	<div class="wrapper" >
 		<section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/main.jpg" style="overflow-y: scroll;">
 	   		<div style="height: 100px;"></div>
-			<div class="box box-primary" style="margin:auto; width:90%; ">
+			<div class="box box-primary" style="margin:auto; width:86%; ">
 				<form id="writeMessageForm" action="/message/messagewrite" method="post">	
-					<h3>Write New Message</h3>
+					<div class="col-md-11">
+					<div class="h3-style" style="margin-top:5px">Write New Message</div>
+					</div>
+					
+					<div class="com-md-1">
+		            	<button type="button" class="btn btn-default btn-lg" onclick="onClickMessageWriteBtn();"><i class="fa fa-envelope-o"></i> Send</button>
+		            </div>		 
 					<input type="email" class="form-control" name="not_getmem_id" id="not_getmem_id" placeholder="To:" value="${targetUser.mem_id}">
 		          	<input type="text" class="form-control" id="not_subject" name="not_subject" placeholder="Subject:">           
 					<textarea id="editor1" name="not_context" rows="10" cols="80">
 					</textarea>
-		            <div class="pull-right">
-		            	<button type="button" class="btn btn-default" onclick="onClickMessageWriteBtn();"><i class="fa fa-envelope-o"></i> Send</button>
-		            </div>		 
 				</form>
 			</div>
 		</section>
