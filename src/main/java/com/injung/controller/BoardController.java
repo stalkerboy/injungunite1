@@ -234,7 +234,7 @@ public class BoardController {
         List<BoardVO> lv =null;
         
         if (category.equals("All")){
-            lv = bservice.getInjunCategoryList(authUser.getMem_id());
+            lv = bservice.getInjungBoardList(authUser.getMem_id());
         }
         else{
             lv = bservice.getInjungBoardListbyCategoryUserId(vo) ;
