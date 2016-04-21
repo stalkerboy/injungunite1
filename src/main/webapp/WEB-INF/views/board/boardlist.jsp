@@ -55,6 +55,7 @@
 						</div>
 					</div>
 				</div>
+			
 				<h6 class="m-b-30"></h6>	
 				<div class="container-fluid container-custom">
 					<div class="col-sm-4 col-xs-4 ">
@@ -83,7 +84,7 @@
 								<h4 class="counter-title"><span class="counter-timer" data-from="0" data-to="${boardCount.boa_count }" style="color:black;">0</span></h4>
 							</div>		
 							<div class="counter-content">	
-								<div class="h4-style">>My Board</div>
+								<div class="h4-style">My Board</div>
 							</div>
 						</div>	
 					</div>

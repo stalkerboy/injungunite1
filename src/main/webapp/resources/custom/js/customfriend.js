@@ -35,13 +35,13 @@ $("#searchfriend-btn").on("click", function(){
 	         tablestr = "<div class=\"box-header with-border\">";
 	            
 	         if(userfind == '') {
-	            divstr += "<div style=\"margin:0 auto; font-size:17px; text-align:center\"><p>Can not found.</p></div>";
+	            divstr += "<div class=\"noresult\">Can not found.</div>";
 	         }
 	         else {         
 	         for(var i=0;i<userfind.length;i++) 
 	         {
 	        	if(userfind[i].ismyfriend==1){
-	            divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
+	            divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:orange\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
 	        	}
 	        	else{
 	        		divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";	
@@ -71,30 +71,10 @@ function deletefriend(fri_snum){
 		type: 'POST',
 				
 		success : function(result) {
-			swal( 'Success!!','친구삭제 완료.','success');
-			var userfind = result.userfind;
-			
-			var divstr = "";
-			tablestr = "<div class=\"box-header with-border\">";
-            
-			for(var i=0;i<userfind.length;i++) 
-			{
-				if(userfind[i].ismyfriend==1){
-		            divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
-		        	}
-		        	else{
-		        		divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";		
-		        	}
-           	 	if(userfind[i].ismyfriend==1){
-	           		divstr += "<a href=\"#\" onclick=\"deletefriend(" +userfind[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a>" ;
-           	 	}
-           	 	else if(userfind[i].ismyfriend==0) {
-           	 		divstr += "<a href=\"#\" onclick=\"addfriend(" +userfind[i].fri_mem_snum +")\"><i class=\"fa fa-user-plus\"></i>Friend Add</a>" ;
-           	 	}
-           		divstr+= "<hr class=\"divider\"><a href=\"/message/writemessageform?mem_id="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li>";
-            } 
-			var frienddiv = document.getElementById("friendlist-div");
-			frienddiv.innerHTML = divstr;
+			swal({ title:'Success!!', text:'친구삭제 완료.', showCancelButton: false, type:'success'},
+					function(){
+				location.href="/user/friendlist";
+			});
 		}
 	});
 }
@@ -108,35 +88,14 @@ function addfriend(mem_snum){
 		type: 'POST',
 		
 		success : function(result) {
-			swal( 'Success!!','친구추가 완료.','success');
-			var userfind = result.userfind;
-			
-			var divstr = "";
-			tablestr = "<div class=\"box-header with-border\">";
-            
-			for(var i=0;i<userfind.length;i++) 
-			{
-				if(userfind[i].ismyfriend==1){
-		            divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";
-		        	}
-		        	else{
-		        		divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"></div><img src=\'/resources/img/profile/"+userfind[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+userfind[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\">";		
-		        	}	
-				
-           	 	if(userfind[i].ismyfriend==1){
-	           		divstr += "<a href=\"#\" onclick=\"deletefriend(" +userfind[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a>" ;
-           	 	}
-           	 	else if(userfind[i].ismyfriend==0) {
-           	 		divstr += "<a href=\"#\" onclick=\"addfriend(" +userfind[i].fri_mem_snum +")\"><i class=\"fa fa-user-plus\"></i>Friend Add</a>" ;
-           	 	}
-           		divstr+= "<hr class=\"divider\"><a href=\"/message/writemessageform?mem_id="+userfind[i].fri_mem_id +"\"><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li>";
-           		
-            } 
-			var frienddiv = document.getElementById("friendlist-div");
-			frienddiv.innerHTML = divstr;
+			swal({ title:'Success!!', text:'친구추가 완료.', showCancelButton: false, type:'success'},
+					function(){
+				location.href="/user/friendlist";
+			});
 		}
 	});
-}
+};
+
 
 
 
@@ -155,17 +114,10 @@ function deletefriendFromMyList(fri_snum){
 		type: 'POST',
 				
 		success : function(result) {
-			swal( 'Success!!','친구삭제 완료.','success');
-			var friendlist = result.friendlist;
-			
-			var divstr = "";
-			tablestr = "<div class=\"box-header with-border\">";
-			for(var i=0;i<friendlist.length;i++){ 
-  				var friend = friendlist[i].friendNo;
-				divstr += "<li class=\"dropdown friend-menu\"><div class=\"pull-right\"><span title=\"delete\" class=\"del-badge badge bg-red\" style=\"margin:0; display:none;\" onclick=\"deletefriendFromMyList("+friendlist[i].fri_snum+");\"><i class=\"fa fa-user-times\"></i></span></div><img src=\'/resources/img/profile/"+friendlist[i].fri_mem_profile +"\' class=\"friend-img\" style=\"width:180px; height:180px\" /></br><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" aria-expanded=\"false\" style=\"color:black\">"+friendlist[i].fri_mem_id+"</a><ul class =\"dropdown-menu\"><li class=\"header\"><a href=\"/board/boardlist?user="+ friendlist[i].fri_mem_id +"\"><i class=\"fa fa-user\"></i>Friend Page</a><hr class=\"divider\"><a href=\"#\" onclick=\"deletefriendFromMyList(" +friendlist[i].fri_snum +")\"><i class=\"fa fa-user-times\"></i>Friend delete</a><hr class=\"divider\"><a href=\"/message/writemessageform?mem_id="+friendlist[i].fri_mem_id +"\" ><i class=\"fa fa-envelope-o\"></i>Sent Message</a></li></ul></li></div>";
-			} 
- 			var frienddiv = document.getElementById("friendlist-div");
- 			frienddiv.innerHTML = divstr;
+			swal({ title:'Success!!', text:'친구삭제 완료.', showCancelButton: false, type:'success'},
+					function(){
+				location.href="/user/friendlist";
+			});
 		}
 	});
 }
@@ -197,7 +149,7 @@ function deletefriendFromMyFollower(fri_snum){
 }
 ;
 
-/*function addfriendFromMyFolloer(mem_snum){
+function addfriendFromMyFolloer(mem_snum){
 	$("#friendEditBtn").css("display","none");
 	$.ajax({
 		url : '/user/addfriendfromfollower',
@@ -212,4 +164,27 @@ function deletefriendFromMyFollower(fri_snum){
 			});
 		}
 	});
-}*/
+};
+function deletefriendFromMyFollowing(fri_snum){   
+	$.ajax({
+		url : '/user/deletefriendfromfollowing',
+		headers : {
+            "Content-Type" : "application/json",
+            "X-HTTP-Method-Override" : "POST"
+        },
+        
+		data : fri_snum,
+		dataType : 'json',
+		processData: false,
+		contentType: false,
+		type: 'POST',
+				
+		success : function(result) {
+			swal({ title:'Success!!', text:'친구삭제 완료.', showCancelButton: false, type:'success'},
+					function(){
+				location.href="/user/followinglist";
+			});
+		}
+	});
+}
+;

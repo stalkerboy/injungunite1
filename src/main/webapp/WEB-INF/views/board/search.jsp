@@ -68,7 +68,9 @@
         
          <div class="box box-danger" style="width: 90%; left: 5%; background-color: rgba(255, 255, 255, 0);">
             <div class="box-header ">
-               <h6 class="box-title" style="color:black">Search about (${keyword })</h6>
+               <h6 class="box-title" style="color:black">Search About (</h6>
+               <h6 class="box-title" style="color:orange">${keyword }</h6>
+               <h6 class="box-title" style="color:black">)</h6>
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
@@ -77,7 +79,7 @@
                         <c:set var="board" value="${searchBoardlist}"/>
                         <c:choose>
                            <c:when test='${empty board}'>
-                            <div style="margin-left:40px"><h4>No Result</h4></div>
+                            <div class="noresult">No Result</div>
                            </c:when>
                            <c:otherwise>
                            <c:forEach items="${searchBoardlist}" var="board">    
@@ -100,6 +102,7 @@
                   </div>
                </div>
             <!-- /.box-body -->
+            <div class="blank-space"></div>
             <div class="m-t-70 text-center">
                <button id="read-more" class="btn btn-dark">Read More</button>
             </div>

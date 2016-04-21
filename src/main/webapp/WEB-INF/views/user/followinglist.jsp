@@ -35,7 +35,7 @@
 	<c:import url="/WEB-INF/views/modal/writemodal.jsp"></c:import>
  
  <section id="hero" class="module-hero bg-dark-30 js-fullheight" data-background="/resources/img/main.jpg" style="overflow-y: scroll;">
- <div class="wrapper" >
+ 	<div class="wrapper" >
 	<div class="blank-space">
 	</div>
           <h2 class="hero-title" style="text-align: center"><a href="/user/friendlist"><font color="black">Friend List</font></a></h2>
@@ -44,26 +44,26 @@
     <div class="container-fluid container-custom">
 
       <div class="row">
-       <a href="/user/followinglist">
-        <div class="col-md-6">
+      <div class="col-md-3"></div>
+      <div class="col-md-3">
+      	<a href="/user/followinglist"> 
           <div class="counter text-light" >
             <div class="counter-icon" style="color:black;">
               <i class="fa fa-hand-pointer-o"></i>
             </div>
             <div class="counter-header" >
               <h4 class="counter-title">
-                 <span class="counter-timer" data-from="0" data-to="${followingCount.following_count }" style="color:black;">${followingCount.following_count }</span>
+                <span class="counter-timer" data-from="0" data-to="${followingCount.following_count }" style="color:black;">${followingCount.following_count }</span>
               </h4>
             </div>
             <div class="counter-content">
-              <h5><font color="black">Following</font></h5>
+              <div class="h4-style">Following</div>
             </div>
           </div>
-        </div>
-       </a>
-       
+       	</a>
+      </div>
+      <div class="col-md-3">
 		<a href="/user/followerlist">
-        <div class="col-md-6">
           <div class="counter text-light">
             <div class="counter-icon" style="color:black;">
               <i class="fa fa-hand-peace-o"></i>
@@ -74,50 +74,46 @@
               </h4>
             </div>
             <div class="counter-content">
-              <h5><font color="black">Follower</font></h5>
+              <div class="h4-style">Follower</div>
             </div>
           </div>
-        </div>
-        </a>        
+        </a>
+       </div> 
+       <div class="col-md-3"></div>       
       </div>
     </div>
     
-   
+    
 	<div class="box box-danger" style="width: 90%; left:5%; background-color:rgba(255,255,255,0);height:300px">
-  <div class="box-header">
-    <h3 class="box-title" style="color:black">Following List</h3>
-   
-  </div><!-- /.box-header -->
-  <div class="box-body no-padding">
-    <ul class="users-list clearfix"  id="friendlist-div">
-		      <c:forEach items="${friendlist}" var="friendVO">	 	      
-			 <li class="dropdown friend-menu">
-             <div class="pull-right">               
-                <span title="delete" class="del-badge badge bg-red" style="margin:0; display:none;" onclick="deletefriendFromMyList(${friendVO.fri_snum});"><i class="fa fa-user-times"></i></span>
-            </div>
-            <img src='/resources/img/profile/${friendVO.fri_mem_profile}' class="friend-img" style="width:180px; height:180px" /></br>
-              <a class="dropdown-toggle" data-toggle="dropdown" id="${friendVO.fri_mem_id}" href="#" aria-expanded="false" style="color:black">${friendVO.fri_mem_id}</a>
-              <ul class ="dropdown-menu">
-	          	<li class="header">
-    			<a href="#"><i class="fa fa-user"></i>Friend Page</a>         		
-           		<hr class="divider">
-           		 
-    			<a href="#" onclick="deletefriendFromMyList(${friendVO.fri_snum})"><i class="fa fa-user-times"></i>Friend Delete</a>
+  		<div class="box-header">
+    		<h3 class="box-title" style="color:black"><i class="fa fa-arrow-down" aria-hidden="true">Following List</i></h3>
+  		</div><!-- /.box-header -->
+  		<div class="box-body no-padding">
+    		<ul class="users-list clearfix"  id="friendlist-div">
+				<c:forEach items="${friendlist}" var="friendVO">	 	      
+			 	<li class="dropdown friend-menu">
+             	<div class="pull-right">               
+                	<span title="delete" class="del-badge badge bg-red" style="margin:0; display:none;" onclick="deletefriendFromMyList(${friendVO.fri_snum});"><i class="fa fa-user-times"></i></span>
+           		</div>
+            	<img src='/resources/img/profile/${friendVO.fri_mem_profile}' class="friend-img" style="width:180px; height:180px" /></br>
+              	<a class="dropdown-toggle" data-toggle="dropdown" id="${friendVO.fri_mem_id}" href="#" aria-expanded="false" style="color:orange">${friendVO.fri_mem_id}</a>
+              	<ul class ="dropdown-menu">
+	          		<li class="header">
+    				<a href="#"><i class="fa fa-user"></i>Friend Page</a>         		
+           			<hr class="divider">
+ 
+    				<a href="#" onclick="deletefriendFromMyFollowing(${friendVO.fri_snum})"><i class="fa fa-user-times"></i>Friend Delete</a>
     			        		
-           		<hr class="divider">
-    			<a href="/message/writemessageform"><i class="fa fa-envelope-o"></i>Sent Message</a>        		
-     	       	</li>
-              </ul>
-            </li>
-              
-            </c:forEach>  
-    </ul><!-- /.users-list -->
-  </div><!-- /.box-body -->
-<!--   <div class="box-footer text-center"> -->
-<!--     <a href="javascript::" class="uppercase" style="color:black">View All Users</a> -->
-<!--   </div>/.box-footer -->
-</div><!--/.box -->
-</div>
+           			<hr class="divider">
+    				<a href="/message/writemessageform"><i class="fa fa-envelope-o"></i>Sent Message</a>        		
+     	       		</li>
+              	</ul>
+            	</li>
+            	</c:forEach>  
+    		</ul><!-- /.users-list -->
+  		</div><!-- /.box-body -->
+	</div><!--/.box -->
+	</div>
 </section>
 
 
@@ -136,4 +132,7 @@
 <script src="/resources/custom/js/customfriend.js"></script>
 <script src="/resources/plugins/sweetalert/sweetalert.min.js"></script>
 </body>
+<script type="text/javascript">
+var randomColor = Math.floor(Math.random()*16777215).toString(16);
+</script>
 </html>
