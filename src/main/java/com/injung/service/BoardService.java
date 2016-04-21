@@ -35,15 +35,19 @@ public class BoardService  {
     }
     
 	
-	
 	public void writeBoard(BoardVO bv) throws Exception {
-		
-		dao.insertBoard(bv);
-		for(String tag: bv.getTags().split(",")){
-			bv.setTag(tag);
-			dao.insertTag(bv);
-		}
-	}
+        
+        dao.insertBoard(bv);
+        
+        if(bv.getTag()==null){
+            return;
+        }else{
+        for(String tag: bv.getTags().split(",")){
+            bv.setTag(tag);
+            dao.insertTag(bv);
+            }
+        }
+    }
 	
 	public List<BoardVO> getBoardListbyCategoryUserId(BoardVO vo) {
         return dao.selectBoardListByCategoryUserId(vo);

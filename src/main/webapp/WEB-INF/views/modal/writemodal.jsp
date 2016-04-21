@@ -129,14 +129,14 @@
 
 							</div>
 							<div class="modal-body">
-								<button type="button" class="btn btn-default btn-sm"
+								<button type="button" class="btn btn-default btn-sm" 
 									id="textBtn">
 									<img
 										src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAtklEQVQ4T73SsQkCQRCF4e+6ELQAYyNFjC1ABFswMzSwAusQTAQxtAArsARDS1BQ9tiV8zyEO9CNFnbev2/mTYaZ+ueES5BleNTXm2KXAPfo4oBbhIXHSbyHT1JtF3usioAjxiUXVYBUMse1CKjq4BvgrT7ZK0N+CgipbWMAeQp1W2gMSMLGM+igjyEW5Lvw3xaS9eTktYl1h9h4BpVxlWMcoYclWlGxxhmbKkIZMED7y258PD0BkYoiZMYTzLwAAAAASUVORK5CYII="
 										style="width: 12px; height: 12px;">text</i>
 								</button>
 
-								<button type="button" class="btn btn-default btn-sm"
+								<button type="button" class="btn btn-default btn-sm" 
 									onclick="document.getElementById('imgLoader').click()">
 									<i class="fa fa-photo">image</i>
 								</button>

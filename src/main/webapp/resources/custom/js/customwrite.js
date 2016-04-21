@@ -21,6 +21,7 @@ $('#writeSubmit').click(function(){
    var base64img = imgpng.replace(/^data:image\/(png|jpg);base64,/, "");
 //   var base64img = imgpng.substring(imgpng.indexOf(',')+1);
    
+   if(checkWriteboard()){
    $('#boa_imgpng').val(base64img);
    tagTextList = [];
    $('.boardtag').each(function() {
@@ -34,7 +35,21 @@ $('#writeSubmit').click(function(){
 //   alert(imgpng);
 //   alert(base64img);
    $('#writeform').submit();
+   }
 });
+
+  function checkWriteboard(){
+   var errorMessage = null;  
+	var objFocus = null;  
+	if (!$('#boa_subject').val()) {  
+		errorMessage = "제목을 입력해주세요.";  	
+	}
+	if (errorMessage != null) {  
+		 swal( 'Check...',errorMessage,'warning');
+		return false;  
+	}  
+	return true;  
+  }
 
 
 
