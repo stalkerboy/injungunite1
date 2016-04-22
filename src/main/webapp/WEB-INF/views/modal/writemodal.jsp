@@ -103,7 +103,7 @@
 					</div>
 				</div>
 				<!-- /.box-header -->
-				<div class="box-body">
+				<div class="box-body" style="background:#E8E9F1">
 
 
 					<form id="writeform" action="/board/write" method="post">
@@ -113,7 +113,7 @@
 						<textarea type="text" id="boa_imgpng" name="boa_imgpng" value="" hidden></textarea> 
 						<input type="text" id="tags" name="tags" value="" hidden>
 						<div class="modal-content">
-							<div class="modal-header text-align">
+							<div class="modal-header text-align" style="background:#E4E4EC">
 								<div class="row">
 									<div class="col-sm-2">
 
@@ -128,7 +128,7 @@
 
 
 							</div>
-							<div class="modal-body">
+							<div class="modal-body" style="background:#E4E4EC">
 								<button type="button" class="btn btn-default btn-sm" 
 									id="textBtn">
 									<img
@@ -172,7 +172,7 @@
 								<div class="table-responsive">
 									<table class="table table-hover table-striped">
 										<tbody>
-											<div class="canvas-wrapper">
+											<div class="canvas-wrapper" style=" background:#fff; display:inline-block">
 												<canvas class="responsive" id="canvas" width="1000"
 													height="600" style="border:1px solid #000000"></canvas>
 											</div>
@@ -203,7 +203,7 @@
 
 				</div>
 				<!-- /.box-body -->
-				<div class="box-footer clearfix">
+				<div class="box-footer clearfix" style="background:#E8E9F1">
 					<button type="button" class="btn btn-black pull-right"
 						data-dismiss="modal">Close</button>
 					<button id="writeSubmit" type="button"

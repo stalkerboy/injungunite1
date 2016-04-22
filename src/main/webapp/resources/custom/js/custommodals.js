@@ -122,7 +122,7 @@ function onClickBoard(boa_snum){
 			newStrCom += "<button class=\'btn btn-box-tool\' data-dismiss=\'modal\'><i class=\'fa fa-times\'></i></button></div></div>";
 
 //			바디 ~ overflow전
-			newStrCom += "<div class=\'box-body row\'><div class=\"col-sm-8 \"><img class=\"img-responsive pad\" src=\"/resources/img/boardimg/"+ boardVO.boa_imgpng + "\" alt=\"Photo\" width=\"1000px\" height=\"600px\" ></div><div class=\'col-sm-4 \' ><img class=\"img-responsive img-circle img-sm\" src=\'/resources/img/profile/"+ auth.mem_profile+ "\' alt=\"alt text\" style=\"margin-right:15px\"><div class=\"input-group\"><input id=\"com_context\" type=\"text\" class=\"form-control input-sm\"  placeholder=\"comment\"><span class=\"input-group-btn\"><button type=\"button\" class=\"btn\" onclick=\"onClickCommentWriteBtn(" + boardVO.boa_snum + ");\">comment</button></span></div><br>";
+			newStrCom += "<div class=\'box-body row\' style=\"background: #E4E4EC;\"><div class=\"col-sm-8 \"><img class=\"img-responsive pad\" src=\"/resources/img/boardimg/"+ boardVO.boa_imgpng + "\" alt=\"Photo\" width=\"1000px\" height=\"600px\" style=\"background:white\"></div><div class=\'col-sm-4 \' ><img class=\"img-responsive img-circle img-sm\" src=\'/resources/img/profile/"+ auth.mem_profile+ "\' alt=\"alt text\" style=\"margin-right:15px\"><div class=\"input-group\"><input id=\"com_context\" type=\"text\" class=\"form-control input-sm\"  placeholder=\"comment\"><span class=\"input-group-btn\"><button type=\"button\" class=\"btn\" onclick=\"onClickCommentWriteBtn(" + boardVO.boa_snum + ");\">comment</button></span></div><br>";
 
 //			overflow~commets 
 			newStrCom += "<div style=\"overflow: auto; max-height: 500px;\"  ><div id=\"div_comments\" class=\'box-comments\'>";
@@ -130,7 +130,7 @@ function onClickBoard(boa_snum){
 				newStrCom += "<div class=\'box-comment\'><img class=\'img-circle img-sm\' src=\'/resources/img/profile/"+ boardCommentList[i].mem_profile +"\' alt=\'user image\' margin-right: 5px;><div class=\'h5-style\'><a href=\"/board/boardlist?user="+boardCommentList[i].mem_id+"\">"+ boardCommentList[i].mem_id +"</a></div><span class=\'text-muted pull-right\'>"+ boardCommentList[i].com_regdate +"</span>"+ boardCommentList[i].com_context + "</div>";
 			}
 //			comments루프 다음
-			newStrCom += "</div><a href=\"#\" class=\"btn form-control\" style=\"text-align: center;\">view more</a></div></div></div><div class=\"box-footer\"><div class=\"col-sm-8 \">"; 
+			newStrCom += "</div><a href=\"#\" class=\"btn form-control\" style=\"text-align: center;\">view more</a></div></div></div><div class=\"box-footer\"style=\"background:#E8E9F1\"><div class=\"col-sm-8 \">"; 
 			for(var i=0; i<taglist.length; i++){
 				newStrCom += "<h4 style=\"float: left; margin-right: 5px;\"><span  class=\'label label-danger\'>#" + taglist[i].tag + "</span></h4>";
 			}

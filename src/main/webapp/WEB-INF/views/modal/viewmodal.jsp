@@ -19,7 +19,7 @@
 				</div>
 			</div>
 			<div class='box-body row'>
-            	<div class="col-sm-7">
+            	<div class="col-sm-7" style="background:white">
                 	<img class="img-responsive pad" src="/resources/img/profile/${boardVO.boa_imgpng}" alt="Photo" width="400" height="200" >
                 </div>
                 <div class='col-sm-5'>

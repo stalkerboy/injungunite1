@@ -26,7 +26,7 @@ ul.tabs li {
     margin-left: 10px;
 }
 ul.tabs li.active {
-    background: #FFFFFF;
+    background: #E0D4D4;;
     border-bottom: 1px solid #FFFFFF;
 }
 

@@ -44,14 +44,14 @@
 					<div class="col-sm-5 ">
 						<div class="pull-right">
 							<h6 class="m-b-30">profile</h6>	
-							<img src="/resources/img/profile/${userInfo.mem_profile}" height="180" width="120">
+							<img src="/resources/img/profile/${userInfo.mem_profile}" height="180" width="120" style="border-radius: 50%">
 						</div>
 					</div>
 					<div class="col-sm-7">
 						<div class="pull-left">
 							<h2 class="m-b-70" style=" text-shadow: 0.1em 0.1em 0.15em #333; margin-top:35px;">${userInfo.mem_id}</h2>
-							<div class="h4-style" style="margin-top:40px">${userInfo.mem_name}</div>
-							<div class="h4-style" style="margin-top:15px">${userInfo.mem_email}</div>
+							<div class="h4-style" style="margin-top:35px">${userInfo.mem_name}</div>
+							<div class="h4-style" style="margin-top:10px">${userInfo.mem_email}</div>
 						</div>
 					</div>
 				</div>
