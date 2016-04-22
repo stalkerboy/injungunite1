@@ -71,12 +71,12 @@
 	                 		<div class="divider"></div>
 	                 		<div class="col-xs-6">
 	                 			<p onclick="location.href='/user/mypage'" style="color:orange"><strong>following</strong></p>
-								<button type="button" class="btn btn-default btn-round btn-sm " onclick="location.href='/user/followinglist'" style="background:orange; color:white">${followingCount.following_count }</button>	
+								<button type="button" id="following" class="btn btn-default btn-round btn-sm " onclick="location.href='/user/followinglist'" style="background:orange; color:white"></button>	
                    			</div>
                   
 		                  	<div class="col-xs-6">
 		                  		<p onclick="location.href='/user/logout'"><strong>follower</strong><p>
-	                       		<button type="button" class="btn btn-default btn-round btn-sm" onclick="location.href='/user/followerlist'" style="color:orange">${followerCount.follower_count }</button>
+	                       		<button type="button" id="follower" class="btn btn-default btn-round btn-sm" onclick="location.href='/user/followerlist'" style="color:orange"></button>
 		                    </div>
 		                    <br>
 	                  	</li>
@@ -85,7 +85,7 @@
                   			<!-- Menu Footer-->
                   		<li class="user-footer" style="background:#f9f9f9">
 							<div class="col-xs-6">
-								<button type="button" class="btn btn-default btn-round btn-sm " onclick="location.href='/user/mypage'">Mypage</button>	
+								<button type="button" class="btn btn-default btn-round btn-sm " onclick="location.href='/board/boardlist?user=${authUser.mem_id }'">Mypage</button>	
                    			</div>
                   
 		                  	<div class="col-xs-6">
@@ -123,4 +123,19 @@
 			}
 		})
 	},1000);
+	
+	function countfollow() {
+		$.ajax({
+			url : "/user/countfollow",
+			type:"GET",
+            dataType:"json",
+            data : "",
+			success:function(response){				
+				$("#following").empty();
+				$("#follower").empty();
+				$("#following").append(response.followingCnt.following_count);				
+				$("#follower").append(response.followerCnt.follower_count);
+			}
+		})	
+	}
 </script>  

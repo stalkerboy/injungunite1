@@ -123,10 +123,11 @@ public class UserController {
 	@Auth
 	@RequestMapping(value="/friendlist", method = RequestMethod.GET)
 	public void friendlist(@AuthUser UserVO authVo, Model model) throws Exception {
-	    
+	    	    
 	    model.addAttribute("friendlist", fservice.getFriendList(authVo.getMem_snum()));
 	    model.addAttribute("followingCount", fservice.followingCount(authVo.getMem_id()));
-        model.addAttribute("followerCount", fservice.followerCount(authVo.getMem_id()));
+        model.addAttribute("followerCount", fservice.followerCount(authVo.getMem_id()));    
+        
 	}
 	
 	
@@ -312,5 +313,17 @@ public class UserController {
        
        
        return map;
+    }
+    
+    @Auth
+    @RequestMapping(value="/countfollow", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> countfollow(@AuthUser UserVO authVo) throws Exception {
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        map.put("followingCnt", fservice.followingCount(authVo.getMem_id()));
+        map.put("followerCnt", fservice.followerCount(authVo.getMem_id()));
+                
+        return map;
     }
 }
