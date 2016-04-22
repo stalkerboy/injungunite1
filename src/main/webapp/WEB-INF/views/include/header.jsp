@@ -27,9 +27,9 @@
                 	<ul class="dropdown-menu">
 	                  	<li class="header" style="background:grey">
 	                  				                  		
-			                		<div class="h6-style" ><a href="/message/receivemessageform">All Messages.</a> </div>
+			                		<div class="h6-style" style="text-align:center"><a href="/message/receivemessageform">All Messages.</a> </div>
 			                	
-			                  		<div class="h6-style"><a href="/message/writemessageform">Write Message.</a></div>
+			                  		<div class="h6-style" style="text-align:center"><a href="/message/writemessageform">Write Message.</a></div>
 	                  		
 	                  	</li>
 	                  	<li>
@@ -42,7 +42,10 @@
                 <li class="dropdown notifications-menu">
                 	<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="selectnotice();"><i class="fa fa-archive"></i><span class="label label-warning">5</span></a>
                 	<ul class="dropdown-menu">
-                  	<li class="header">You have 5 notifications</li>
+                		<li class="header" style="background:grey">
+                  			<div class="h6-style" style="color:skyblue; text-align:center">You have 5 notifications</div>
+                  			<div class="divider"></div>
+                  		</li>	
 	                  	<li>
 	                    <!-- inner menu: contains the actual data -->
 	                    	<ul id="notice" class="menu">	                      		
@@ -58,15 +61,17 @@
                		</a>
                 	<ul class="dropdown-menu">
 	                  <!-- User image -->
-                  		<li class="user-header">
+                  		<li class="user-header"style="height:100px">
 	                    	<img src="/resources/img/profile/${authUser.mem_profile }" class="img-circle" alt="User Image">
-	                    	<hr class="divider">
-	                 		<h3 style=" text-shadow: 0.1em 0.1em 0.15em #333">${authUser.mem_id }</h3>
-	                 		<h4>${authUser.mem_name }</h4>
-	                 		 
+	                    	
+	                    </li>
+	                    <li class="user-body" style="height:100px; text-align:center; background:#FFFFCC">
+	                 		<div class="h4-style" style=" text-shadow: 0.1em 0.1em 0.15em #333">${authUser.mem_id }</div> 
+	                 		<div class="h5-style">${authUser.mem_name }</div>
+	                 		<br>
+                    		
 	                  	</li>
-                  		<br>
-                    	<hr class="divider">
+                  		
                  
                   			<!-- Menu Footer-->
                   		<li class="user-footer">

@@ -139,13 +139,13 @@ button {
 
 .btn-deorange-line {
 	color: #fff;
-	border-color: #fff;
-	padding: 9px 20px;
+	background: #e6ae49;
 }
 
 .btn-deorange-line:hover {
 	color: #e6ae49;
-	background: #fff;
+	border-color: #e6ae49;
+	padding: 9px 20px;
 }
 
 .btn-white-line {
