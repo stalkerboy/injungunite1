@@ -136,7 +136,7 @@
 		from board b, member m, likelist l
 		where m.mem_id = #{mem_id}
     	and b.boa_snum = l.boa_snum
-		and	l.mem_snum = b.mem_snum
+		and	l.mem_snum = m.mem_snum
 		and sysdate - l.lkl_regdate < 7
 	
 		]]>
