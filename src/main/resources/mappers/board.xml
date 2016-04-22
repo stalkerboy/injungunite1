@@ -187,7 +187,7 @@
    
    <select id="selectSearchBoard" parameterType="string" resultType="BoardVO">
 	<![CDATA[
-  		select b.boa_snum, b.boa_subject, b.boa_imgpng, m.mem_id, b.BOA_CATEGORY
+  		select distinct b.boa_snum, b.boa_subject, b.boa_imgpng, m.mem_id, b.BOA_CATEGORY
 		from board b, taglist t, member m
 		where (b.BOA_SUBJECT like '%'||#{keyword }||'%' or t.TAG_NAME like '%'||#{keyword }||'%')
 		and b.BOA_SNUM=t.BOA_SNUM(+) and b.MEM_SNUM=m.MEM_SNUM
