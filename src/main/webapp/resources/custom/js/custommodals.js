@@ -86,7 +86,7 @@ function selectnotice(){
     	  	var newcode = "";
     	  	$("#notice").empty();
     	  	for(var i = 0; i<item.length; i++){
-    	  		newcode += "<li><p style=\"margin=bottom:3px\"><i class=\"fa fa-users text-aqua\"></i>"+item[i].no_context+"</p></li>"
+    	  		newcode += "<li><p style=\"margin=bottom:3px; background:#FDF1F1\"><i class=\"fa fa-paper-plane text-yellow\" style=\"margin-right:5px\"></i>"+item[i].no_context+"</p></li>"
 			}
 			$("#notice").append(newcode);
     	},

@@ -55,26 +55,35 @@
               	</li>
               
               	<li class="dropdown user user-menu">
-                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                	<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="countfollow();">
                   		<img src="/resources/img/profile/${authUser.mem_profile }"  class="user-image" alt="User Image">
                   		<span class="hidden-xs">${authUser.mem_id }</span>
                		</a>
                 	<ul class="dropdown-menu">
 	                  <!-- User image -->
-                  		<li class="user-header"style="height:100px">
+                  		<li class="user-header"style="height:100px; background:#f9f9f9">
 	                    	<img src="/resources/img/profile/${authUser.mem_profile }" class="img-circle" alt="User Image">
 	                    	
 	                    </li>
-	                    <li class="user-body" style="height:100px; text-align:center; background:#FFFFCC">
+	                    <li class="user-body" style="height:100px; text-align:center; background:#fff">
 	                 		<div class="h4-style" style=" text-shadow: 0.1em 0.1em 0.15em #333">${authUser.mem_id }</div> 
 	                 		<div class="h5-style">${authUser.mem_name }</div>
-	                 		<br>
-                    		
+	                 		<div class="divider"></div>
+	                 		<div class="col-xs-6">
+	                 			<p onclick="location.href='/user/mypage'" style="color:orange"><strong>following</strong></p>
+								<button type="button" class="btn btn-default btn-round btn-sm " onclick="location.href='/user/followinglist'" style="background:orange; color:white">${followingCount.following_count }</button>	
+                   			</div>
+                  
+		                  	<div class="col-xs-6">
+		                  		<p onclick="location.href='/user/logout'"><strong>follower</strong><p>
+	                       		<button type="button" class="btn btn-default btn-round btn-sm" onclick="location.href='/user/followerlist'" style="color:orange">${followerCount.follower_count }</button>
+		                    </div>
+		                    <br>
 	                  	</li>
                   		
                  
                   			<!-- Menu Footer-->
-                  		<li class="user-footer">
+                  		<li class="user-footer" style="background:#f9f9f9">
 							<div class="col-xs-6">
 								<button type="button" class="btn btn-default btn-round btn-sm " onclick="location.href='/user/mypage'">Mypage</button>	
                    			</div>

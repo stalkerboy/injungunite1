@@ -221,6 +221,9 @@ public class BoardController {
         List<BoardVO> injungCategoryList = bservice.getInjunCategoryList(authUser.getMem_id());
         model.addAttribute("injungBoardList", injungBoardList);
         model.addAttribute("injungCategoryList", injungCategoryList);
+        model.addAttribute("followingCount", fservice.followingCount(authUser.getMem_id()));
+        model.addAttribute("followerCount", fservice.followerCount(authUser.getMem_id()));
+        
     }
 
     @Auth
@@ -249,11 +252,13 @@ public class BoardController {
 
     @Auth
     @RequestMapping(value="/search", method = RequestMethod.POST)
-    public void searchBoard(@RequestParam("search") String keyword, Model model) {
+    public void searchBoard(@RequestParam("search") String keyword, @AuthUser UserVO authUser, Model model) throws Exception {
         if(!keyword.equals("")) {
         List<BoardVO> searchboardlist = bservice.searchboard(keyword);
         model.addAttribute("keyword", keyword);
         model.addAttribute("searchBoardlist", searchboardlist);
+        model.addAttribute("followingCount", fservice.followingCount(authUser.getMem_id()));
+        model.addAttribute("followerCount", fservice.followerCount(authUser.getMem_id()));
         }
     }
     
