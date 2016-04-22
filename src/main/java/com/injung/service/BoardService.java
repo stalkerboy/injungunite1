@@ -39,7 +39,8 @@ public class BoardService  {
         
         dao.insertBoard(bv);
         
-        if(bv.getTag()==null){
+        System.out.println(bv.getTags());
+        if(bv.getTags().equals("")){
             return;
         }else{
         for(String tag: bv.getTags().split(",")){
