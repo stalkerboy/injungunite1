@@ -11,11 +11,11 @@ function onClickTagRemove(tagNum){
    $(targetdiv).remove();
 }
 
-$('#writemodal').on('hide', function() {
-	$('#textModal').hide();
-	$('#imgModal').hide();
-	$('#drawModal').hide();
-	$('#defaultModal').hide();
+$('#writemodal').on('hidden', function() {
+	$('#textModal').modal('hide');
+	$('#imgModal').modal('hide');
+	$('#drawModal').modal('hide');
+	$('#defaultModal').modal('hide');
 });
 
 $('#writeSubmit').click(function(){
