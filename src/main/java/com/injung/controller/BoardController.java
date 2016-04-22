@@ -218,6 +218,7 @@ public class BoardController {
     @RequestMapping(value="/injungboardlist", method = RequestMethod.GET)
     public void injungboardlist(@AuthUser UserVO authUser, Model model) throws Exception {
         List<BoardVO> injungBoardList = bservice.getInjungBoardList(authUser.getMem_id());
+        System.out.println(injungBoardList);
         List<BoardVO> injungCategoryList = bservice.getInjunCategoryList(authUser.getMem_id());
         model.addAttribute("injungBoardList", injungBoardList);
         model.addAttribute("injungCategoryList", injungCategoryList);
