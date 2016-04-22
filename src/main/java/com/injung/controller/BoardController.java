@@ -148,7 +148,7 @@ public class BoardController {
             mservice.updateMongoVO(mv);
             
         }
-        return "redirect:/user/main";
+        return "redirect:/board/boardlist?user="+uv.getMem_id();
     }
     
     @Auth

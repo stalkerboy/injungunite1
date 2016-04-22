@@ -11,7 +11,7 @@ function onClickPwForModifyBtn() {
 				post_to_url("/user/modifyform");
 			}
 			else{
-				swal( 'Oops...','비밀번호를 확인하세요.','warning');;
+				swal( 'Oops...','비밀번호를 확인하세요.','warning');
 			}
 		}
 	});

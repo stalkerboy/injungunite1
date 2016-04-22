@@ -406,7 +406,7 @@
 				<button class="btn btn-box-tool pull-right" data-dismiss="modal">
 					<i class="fa fa-times"></i>
 				</button>
-				<h4 class="modal-title">그리기속성</h4>
+				<h4 class="modal-title">Draw Attribute</h4>
 			</div>
 			<div class="modal-body">
 				<div class="text-justify">
@@ -774,7 +774,7 @@
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">&times;</button>
-					<h4 class="modal-title">기본속성</h4>
+					<h4 class="modal-title">Default Attribute</h4>
 				</div>
 				<div class="modal-body">
 					<div class="text-justify">

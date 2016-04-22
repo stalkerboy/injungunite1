@@ -11,6 +11,13 @@ function onClickTagRemove(tagNum){
    $(targetdiv).remove();
 }
 
+$('#writemodal').on('hide', function() {
+	$('#textModal').hide();
+	$('#imgModal').hide();
+	$('#drawModal').hide();
+	$('#defaultModal').hide();
+});
+
 $('#writeSubmit').click(function(){
    canvas.deactivateAll();
    var imgjson = {};
